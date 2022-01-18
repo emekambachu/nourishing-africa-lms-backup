@@ -1,0 +1,52 @@
+.font-roboto{
+    font-family: Roboto, inter, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 19px;
+
+    /* or 158% */
+    text-align: center;
+
+    color: #6F6F6F;
+}
+
+.text-grey{
+    color: #6F6F6F;
+}
+
+.footer-links{
+    color: #6F6F6F;
+    text-decoration-line: underline;
+    font-size: 13px;
+}
+
+.footer-links:hover{
+    color: #006600;
+}
+
+.footer-bg{
+    background-color: #f3f2f2;
+}
+
+.text-medium{
+    font-size: 14px;
+}
+
+.text-green{
+    color: #006600;
+}
+
+.btn-main{
+    padding: 14px 20px;
+    width: 150px;
+    height: 56px;
+    background: #006600;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.btn-main:hover{
+    text-decoration-line: none;
+    color: #fff;
+}

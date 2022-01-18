@@ -1,0 +1,286 @@
+.blink-me-8 {
+  animation: blinker 1s linear infinite;
+}
+
+.submit-acknowledge {
+  width: 20px;
+  margin: 0px;
+}
+
+input[type=radio], input[type=checkbox] {
+  width: auto;
+  margin-bottom: 0;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-secondary {
+  color: #fff;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.test-display {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  min-height: 200px;
+}
+
+.test-side-nav {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.test-review {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.arrow-set {
+  /* width: 200%; */
+  list-style: none;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: 0;
+  margin: 0;
+  /* border: 2px solid #723606; */
+  white-space: nowrap;
+}
+
+.arrow-set li {
+  display: inline-block;
+}
+
+.arrow-set li span {
+  color: #64768a;
+  text-decoration: none;
+  padding: 20px 0px 20px 50px;
+  background: #ffffff;
+  position: relative;
+  display: block;
+  font-size: 16px;
+}
+
+.arrow-set li span:after, .arrow-set li span:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  left: 100%;
+}
+
+.arrow-set li span:after {
+  border-left: 30px solid #ffffff;
+  z-index: 2;
+}
+
+.arrow-set li span:before {
+  border-left: 30px solid #723606;
+  margin-left: 2px;
+  z-index: 1;
+}
+
+.arrow-set li:first-child span {
+  padding-left: 20px;
+}
+
+.arrow-set li span:hover {
+  color: #fff;
+  background: #723606;
+}
+
+.arrow-set li span:hover:after {
+  border-left-color: #723606;
+}
+
+.arrow-set-primary {
+  border: 2px solid #007bff;
+  white-space: nowrap;
+}
+
+.arrow-set li.primary span {
+  color: #fff;
+  background: #007bff;
+}
+
+.arrow-set li.primary span:after {
+  border-left: 30px solid #007bff;
+}
+
+.arrow-set-primary li span:before {
+  border-left: 30px solid #007bff;
+}
+
+.arrow-set li.primary span:before {
+  border-left: 30px solid  #fff;
+}
+
+.arrow-set li.primary span:hover, .arrow-set li.primary.active span {
+  background: #0069d9;
+}
+
+.arrow-set li.primary span:hover:after, .arrow-set li.primary.active span:after {
+  border-left-color: #0069d9;
+}
+
+.arrow-set-secondary {
+  border: 2px solid #723606;
+  white-space: nowrap;
+}
+
+.arrow-set li.secondary span {
+  color: #fff;
+  background: #723606;
+}
+
+.arrow-set li.secondary span:after {
+  border-left: 30px solid #723606;
+}
+
+.arrow-set-secondary li span:before {
+  border-left: 30px solid #723606;
+}
+
+.arrow-set li.secondary span:before {
+  border-left: 30px solid  #fff;
+}
+
+.arrow-set li.secondary span:hover, .arrow-set li.secondary.active span {
+  background: #C7413B;
+}
+
+.arrow-set li.secondary span:hover:after, .arrow-set li.secondary.active span:after {
+  border-left-color: #C7413B;
+}
+
+.arrow-set-success {
+  /* border: 2px solid #28a745; */
+  white-space: nowrap;
+}
+
+.arrow-set li.success span {
+  color: #fff;
+  background: #28a745;
+}
+
+.arrow-set li.success span:after {
+  border-left: 30px solid #28a745;
+}
+
+.arrow-set-success li span:before {
+  border-left: 30px solid #28a745;
+}
+
+.arrow-set li.success span:before {
+  border-left: 30px solid  #fff;
+}
+
+.arrow-set li.success span:hover, .arrow-set li.success.active span {
+  background: #218838;
+}
+
+.arrow-set li.success span:hover:after, .arrow-set li.success.active span:after {
+  border-left-color: #218838;
+}
+
+.arrow-set-info {
+  border: 2px solid #17a2b8;
+  white-space: nowrap;
+}
+
+.arrow-set li.info span {
+  color: #fff;
+  background: #17a2b8;
+}
+
+.arrow-set li.info span:after {
+  border-left: 30px solid #17a2b8;
+}
+
+.arrow-set-info li span:before {
+  border-left: 30px solid #17a2b8;
+}
+
+.arrow-set li.info span:before {
+  border-left: 30px solid  #fff;
+}
+
+.arrow-set li.info span:hover, .arrow-set li.info.active span {
+  background: #138496;
+}
+
+.arrow-set li.info span:hover:after, .arrow-set li.info.active span:after {
+  border-left-color: #138496;
+}
+
+.arrow-set-warning {
+  border: 2px solid #ffc107;
+  white-space: nowrap;
+}
+
+.arrow-set li.warning span {
+  color: #fff;
+  background: #ffc107;
+}
+
+.arrow-set li.warning span:after {
+  border-left: 30px solid #ffc107;
+}
+
+.arrow-set-warning li span:before {
+  border-left: 30px solid #ffc107;
+}
+
+.arrow-set li.warning span:before {
+  border-left: 30px solid  #fff;
+}
+
+.arrow-set li.warning span:hover, .arrow-set li.warning.active span {
+  background: #e0a800;
+}
+
+.arrow-set li.warning span:hover:after, .arrow-set li.warning.active span:after {
+  border-left-color: #e0a800;
+}
+
+.arrow-set-danger {
+  border: 2px solid #dc3545;
+  white-space: nowrap;
+}
+
+.arrow-set li.danger span {
+  color: #fff;
+  background: #dc3545;
+}
+
+.arrow-set li.danger span:after {
+  border-left: 30px solid #dc3545;
+}
+
+.arrow-set-danger li span:before {
+  border-left: 30px solid #dc3545;
+}
+
+.arrow-set li.danger span:before {
+  border-left: 30px solid  #fff;
+}
+
+.arrow-set li.danger span:hover, .arrow-set li.danger.active span {
+  background: #c82333;
+}
+
+.arrow-set li.danger span:hover:after, .arrow-set li.danger.active span:after {
+  border-left-color: #c82333;
+}
