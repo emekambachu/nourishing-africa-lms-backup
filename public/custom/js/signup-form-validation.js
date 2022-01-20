@@ -2,26 +2,26 @@ $(document).ready(function(){
 
     // Trigger auto form pop-up
     let hash = $(location).attr('hash');
-    if (hash === '#signup-form') {
+    if (hash === '#login-form') {
         $('a.popup-with-form')[0].click();
     }
 
     // Start form validation
     document.getElementById("sign-up-button").addEventListener("click", function(event){
 
-        let website = document.forms["signup-form"]["website"].value;
-        let facebook = document.forms["signup-form"]["facebook"].value;
-        let twitter = document.forms["signup-form"]["twitter"].value;
-        let instagram = document.forms["signup-form"]["instagram"].value;
-        let linkedin = document.forms["signup-form"]["linkedin"].value;
+        let website = document.forms["login-form"]["website"].value;
+        let facebook = document.forms["login-form"]["facebook"].value;
+        let twitter = document.forms["login-form"]["twitter"].value;
+        let instagram = document.forms["login-form"]["instagram"].value;
+        let linkedin = document.forms["login-form"]["linkedin"].value;
 
-        let focusArea = document.forms["signup-form"]["focus_area"].value;
-        let country = document.forms["signup-form"]["country"].value;
-        let companyStage = document.forms["signup-form"]["company_stage"].value;
-        let companyType = document.forms["signup-form"]["company_type"].value;
+        let focusArea = document.forms["login-form"]["focus_area"].value;
+        let country = document.forms["login-form"]["country"].value;
+        let companyStage = document.forms["login-form"]["company_stage"].value;
+        let companyType = document.forms["login-form"]["company_type"].value;
 
-        let password = document.forms["signup-form"]["password"].value;
-        let password_confirmation = document.forms["signup-form"]["password_confirmation"].value;
+        let password = document.forms["login-form"]["password"].value;
+        let password_confirmation = document.forms["login-form"]["password_confirmation"].value;
 
         // URL Validator function
         function validURL(str) {
@@ -151,7 +151,7 @@ $(document).ready(function(){
         for(let i=0; i < links.length; i++) {
             if(links[i] !== '' && validURL(links[i]) === false) {
 
-                // document.querySelector("#signup-form").querySelector("#invalid-url").innerHTML = "<p id='link-alert' style='display: none; background-color: #FF1635;' class='mt-1 text-white padding-5px-all text-md-center'>url is invalid</p>"
+                // document.querySelector("#login-form").querySelector("#invalid-url").innerHTML = "<p id='link-alert' style='display: none; background-color: #FF1635;' class='mt-1 text-white padding-5px-all text-md-center'>url is invalid</p>"
 
                 document.getElementById("invalid-url").
                     innerHTML = "<p class='mt-1 text-danger text-md-center'>"+links[i]+" url is invalid</p>";
@@ -173,7 +173,7 @@ $(document).ready(function(){
     });
 
     // Validate Image
-    $('#signup-form input[name=image]').on('change', function(){
+    $('#login-form input[name=image]').on('change', function(){
 
         let formData = new FormData();
         let file = document.getElementsByName("image")[0].files[0];

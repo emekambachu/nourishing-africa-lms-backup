@@ -10,20 +10,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
     <meta name="author" content="nourishing africa">
 
-    <!--Content Security Policy-->
-{{--    <meta http-equiv="Content-Security-Policy"--}}
-{{--          content="default-src 'self';--}}
-{{--          script-src * 'self' data: 'unsafe-inline';--}}
-{{--          style-src * 'self' data: 'unsafe-inline';--}}
-{{--          img-src 'self' shield.sitelock.com/shield/nourishingafrica.com;--}}
-{{--          font-src * 'self';--}}
-{{--          media-src 'self';--}}
-{{--          object-src 'self';--}}
-{{--          child-src 'self';--}}
-{{--          frame-src 'self';--}}
-{{--          worker-src 'self';--}}
-{{--          form-action 'self' https://nourishingafrica.us4.list-manage.com/subscribe/post?u=8d6c3d892f4444def72b2173a&id=612875e9df">--}}
-
 <!--SEO-->
 @yield('meta')
 
