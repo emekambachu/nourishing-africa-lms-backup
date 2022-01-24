@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'yaedp-users' => [
+            'driver' => 'session',
+            'provider' => 'yaedp-users',
+        ],
     ],
 
     /*
@@ -63,6 +68,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'yaedp-users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\YaedpUser::class,
         ],
 
         // 'users' => [
@@ -89,6 +99,13 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'yaedp-users' => [
+            'provider' => 'yaedp-users',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

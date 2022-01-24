@@ -250,14 +250,11 @@
 }
 
 .login-form{
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom: 1px solid #444444;
+    border: 1px solid #444444;
     width: 100%;
     outline: none;
     padding: 10px;
-    background-color: #F6F7FF;
+    background-color: #fff;
     font-family: Inter, serif;
     font-style: normal;
     font-weight: normal;
@@ -285,6 +282,14 @@
     cursor: pointer;
 }
 
+.field-icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: 12px;
+    position: relative;
+    z-index: 2;
+}
+
 .login-form-btn{
     height: 49px;
     width: 100%;
@@ -305,4 +310,31 @@
     font-size: 14px;
     line-height: 17px;
     color: #4F4E4E;
+}
+
+.learning-bg-brown{
+    background: #6B0101;
+}
+
+.learning-text-brown{
+    color: #6B0101;
+}
+
+.na-text-manrope{
+    font-family: Manrope, serif;
+}
+
+.learning-intro-header{
+    position: absolute;
+    width: 267px;
+    height: 41px;
+
+    font-family: Manrope, serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 41px;
+
+    /* identical to box height */
+    color: #6B0101;
 }

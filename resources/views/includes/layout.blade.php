@@ -194,25 +194,25 @@
                 </button>
                 <div class="navbar-collapse collapse justify-content-md-center" id="navbar-collapse-toggle-1">
                     <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal navtopmenu" data-in="fadeIn" data-out="fadeOut">
-                        <li class="dropdown simple-dropdown"><a href="{{ url('/') }}" style="color: #267c26">Home</a></li>
-                        <li class="dropdown simple-dropdown"><a href="{{ url('about') }}" style="color: #267c26">About Us</a>
+                        <li class="dropdown simple-dropdown"><a href="{{ route('home') }}" style="color: #267c26">Home</a></li>
+                        <li class="dropdown simple-dropdown"><a href="{{ route('about') }}" style="color: #267c26">About Us</a>
                             <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                             <!-- start sub menu -->
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown d-none"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                               href="{{ url('about') }}">Impact and Reach</a></li>
+                                                               href="{{ route('about') }}">Impact and Reach</a></li>
                                 <li class="dropdown d-none"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                               href="{{ url('about') }}">Our Approach</a></li>
+                                                               href="{{ route('about') }}">Our Approach</a></li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('team.new') }}?page=our_team">Our Team</a></li>
+                                                        href="{{ route('team') }}?page=our_team">Our Team</a></li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('team.new') }}?page=our_board">Our Board</a></li>
+                                                        href="{{ route('team') }}?page=our_board">Our Board</a></li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('team.new') }}?page=our_partners">Our Partners</a></li>
+                                                        href="{{ route('team') }}?page=our_partners">Our Partners</a></li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('team.new') }}?page=our_ambassadors">Our Ambassadors</a></li>
+                                                        href="{{ route('team') }}?page=our_ambassadors">Our Ambassadors</a></li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ url('careers') }}">Nourishing Africa Careers</a></li>
+                                                        href="{{ route('careers') }}">Nourishing Africa Careers</a></li>
                             </ul>
                         </li>
                         <li class="dropdown simple-dropdown"><a href="#" style="color: #267c26">Membership</a>
@@ -221,22 +221,10 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ url('entrepreneurs') }}">Our Members</a></li>
+                                       href="{{ route('entrepreneurs') }}">Our Members</a></li>
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ url('membership') }}">Membership</a></li>
-
-                                <li class="dropdown">
-                                    @guest
-                                        <a class="dropdown-toggle" data-toggle="dropdown"
-                                           href="{{ route('entrepreneur.sign-up-form') }}">Sign up</a>
-                                    @else
-                                        <a class="dropdown-toggle" data-toggle="dropdown"
-                                           href="{{ route('user-logout') }}">Log out</a>
-                                    @endguest
-                                </li>
-
-
+                                       href="{{ route('membership') }}">Membership</a></li>
                             </ul>
                         </li>
                         <li class="dropdown simple-dropdown">
@@ -246,16 +234,10 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ route('esp-index-page') }}">Entrepreneur Support Program</a></li>
+                                       href="{{ route('esp.page') }}">Entrepreneur Support Program</a></li>
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ route('esp.login.form') }}">ESP Login</a></li>
-                                {{--                                <li class="dropdown">--}}
-                                {{--                                    <a class="dropdown-toggle" data-toggle="dropdown"--}}
-                                {{--                                           href="{{ route('investor-login') }}">Investment Portal</a></li>--}}
-                                {{--                                <li class="dropdown">--}}
-                                {{--                                    <a class="dropdown-toggle" data-toggle="dropdown"--}}
-                                {{--                                           href="{{ route('intern-matchmaking.institution.login-form') }}">Talent Matching</a></li>--}}
+                                       href="{{ route('esp.login') }}">ESP Login</a></li>
                             </ul>
                         </li>
                         <li class="dropdown simple-dropdown">
@@ -265,7 +247,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ url('data') }}">Data</a>
+                                       href="{{ route('data') }}">Data</a>
                                 </li>
                                 <li class="dropdown simple-dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Funding</a>
@@ -273,22 +255,23 @@
                                     <ul class="dropdown-menu" role="menu" style="background-color: rgb(255, 255, 255);">
                                         <li class="dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown"
-                                               href="{{ url('funding') }}" style="color: #006600" >Financial Support</a></li>
+                                               href="{{ route('funding') }}" style="color: #006600" >Financial Support</a></li>
                                         <li class="dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown"
-                                               href="{{ url('capacity-building') }}" style="color: #006600">Capacity Building</a></li>
+                                               href="{{ route('capacity-building') }}" style="color: #006600">Capacity Building</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ url('events') }}">Events</a></li>
+                                                        href="{{ route('events') }}">Events</a></li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ url('jobs') }}">Jobs</a></li>
+                                                        href="{{ route('jobs') }}">Jobs</a></li>
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ url('trainings') }}">Trainings and Workshops</a>
+                                       href="{{ route('trainings') }}">Trainings and Workshops</a>
                                 </li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ url('technology-innovation') }}">Technology and Innovation</a>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown"
+                                        href="{{ route('technology-innovation') }}">Technology and Innovation</a>
                                 </li>
                             </ul>
                         </li>
@@ -299,7 +282,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ url('ask-an-expert') }}">Ask an Expert</a></li>
+                                       href="{{ route('ask-an-expert') }}">Ask an Expert</a></li>
 
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
@@ -308,11 +291,11 @@
 
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ url('first-thursdays') }}">First Thursdays</a></li>
+                                       href="{{ route('first-thursdays') }}">First Thursdays</a></li>
 
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ url('podcasts') }}">Podcasts</a>
+                                       href="{{ route('podcasts') }}">Podcasts</a>
                                 </li>
 
                                 <li class="dropdown simple-dropdown"><a href="#">Food Culture</a>
@@ -321,31 +304,19 @@
                                     <ul class="dropdown-menu" role="menu" style="background-color: rgb(255, 255, 255);">
                                         <li class="dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown"
-                                               href="{{ url('food') }}" style="color: #006600">Food</a>
+                                               href="{{ route('food') }}" style="color: #006600">Food</a>
                                         </li>
                                         <li class="dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown"
-                                               href="{{ url('chefs-and-cooks') }}" style="color: #006600">Chefs and Cooks</a>
+                                               href="{{ route('chefs-and-cooks') }}" style="color: #006600">Chefs and Cooks</a>
                                         </li>
                                     </ul>
                                 </li>
-
-                                {{-- <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown"
-                                    href="{{ url('recorded-webinars') }}">Recorded Webinars</a>
-                                </li>
-
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                    href="{{ url('covid19') }}">Covid-19</a>
-                                </li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                    href="{{ url('covid-agribusiness') }}">Covid-19 and Agribusiness</a>
-                                </li> --}}
                             </ul>
                         </li>
 
                         <li class="dropdown simple-dropdown">
-                            <a href="{{ route('front_news_update.all') }}" style="color: #267c26">News & Updates</a>
+                            <a href="{{ route('news-and-updates') }}" style="color: #267c26">News & Updates</a>
                         </li>
 
                         <li class="dropdown simple-dropdown d-sm-block d-md-none">
@@ -354,70 +325,17 @@
                             <!-- start sub menu -->
                             <ul class="dropdown-menu" role="menu" style="margin-top: 15px; margin-left: -25px;">
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('login') }}">Membership Login</a></li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="#">Investors Login</a></li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="#">Institutions Login</a></li>
+                                                        href="{{ route('member.login') }}">Membership Login</a></li>
                             </ul>
                         </li>
-                        {{-- <li class="dropdown simple-dropdown"><a href="javascript:void(0)" style="color: #267c26">Events</a>
-                            <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                            <!-- start sub menu -->
-                            <ul class="dropdown-menu" role="menu">
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                    href="{{ url('events') }}">Events</a></li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                    href="{{ url('virtual-roadshow') }}">Virtual Road Show</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown simple-dropdown"><a href="#" style="color: #267c26">Food Culture</a>
-                            <i class="dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                            <!-- start sub menu -->
-                            <ul class="dropdown-menu" role="menu">
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="{{ url('food') }}">Food</a>
-                                </li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ url('chefs-and-cooks') }}">Chefs and Cooks</a>
-                                </li>
-                            </ul>
-                        </li> --}}
                     </ul>
                 </div>
             </div>
 
             <div class="col-auto pr-lg-0">
                 <div class="pr-md-5">
-                    @auth
-                        <ul id="accordion-mobile" class="nav navbar-nav no-margin alt-font text-normal"
-                            data-in="fadeIn" data-out="fadeOut" style="background-color: transparent !important;">
-                            <li class="dropdown simple-dropdown" style="background-color: #efb443 !important; border-radius: 5px;">
-                                <a href="{{ route('member.dashboard') }}" class="m-0 text-white" style="background-color: #efb443 !important; padding: 8px; border-radius: 5px; font-family: inter; font-size: 14px;">
-                                    Dashboard
-                                    <i class="dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                </a>
-                                <!-- start sub menu -->
-                                <ul class="dropdown-menu" role="menu" style="margin-top: 15px; margin-left: -25px;">
-                                    <li class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown"
-                                           href="{{ route('new-member-profile-setting') }}">Profile</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown"
-                                           href="{{ route('new-member-profile-ps') }}">Account</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown"
-                                           href="{{ route('user-logout') }}">Logout</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    @else
-                        <ul id="accordion-mobile" class="nav navbar-nav no-margin alt-font text-normal d-none d-sm-none d-md-block"
+                    <ul id="accordion-mobile"
+                        class="nav navbar-nav no-margin alt-font text-normal d-none d-sm-none d-md-block"
                             data-in="fadeIn" data-out="fadeOut"
                             style="background-color: transparent !important;">
                             <li class="dropdown simple-dropdown"
@@ -430,15 +348,10 @@
                                 <!-- start sub menu -->
                                 <ul class="dropdown-menu" role="menu" style="margin-top: 15px; margin-left: -25px;">
                                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                            href="{{ route('login') }}">Membership Login</a></li>
-                                    <!--<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                            href="#">Investors Login</a></li>
-                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                            href="#">Institutions Login</a></li>-->
+                                                            href="{{ route('member.login') }}">Membership Login</a></li>
                                 </ul>
                             </li>
                         </ul>
-                    @endauth
                 </div>
             </div>
         </div>
@@ -471,10 +384,8 @@
                     <ul class="list-unstyled add-link-sub">
                         <li><a class="text-small text-white"
                                href="https://nourishingafrica.com/subscribe">Subscribe</a></li>
-                        <!-- <li><a class="text-small text-white" href="https://nourishingafrica.com/about">About us</a></li> -->
                         <li><a class="text-small text-white"
                                href="https://nourishingafrica.com/team">The Team</a></li>
-                        <!-- <li><a class="text-small text-white" href="https://nourishingafrica.com/careers">Careers</a></li> -->
                         <li><a class="text-small text-white"
                                href="https://nourishingafrica.com/terms-of-use">Terms of Use</a></li>
                         <li><a class="text-small text-white"
@@ -508,9 +419,12 @@
                             <li><a class="linkedin text-white-2" href="https://www.linkedin.com/company/nourishing-africa/"
                                    target="_blank"><i class="fab fa-linkedin"></i></a></li>
                             <li><a class="instagram text-white-2" href="https://www.instagram.com/nourish_africa/"
-                                   target="_blank"><i class="fab fa-instagram no-margin-right" aria-hidden="true"></i></a></li>
-                            <li><a class="instagram text-white-2" href="https://www.youtube.com/channel/UCDb5yT_Y9BGrURR-wSi2oaw"
-                                   target="_blank"><i class="fab fa-youtube no-margin-right" aria-hidden="true"></i></a></li>
+                                   target="_blank"><i class="fab fa-instagram no-margin-right"
+                                                      aria-hidden="true"></i></a></li>
+                            <li><a class="instagram text-white-2"
+                                   href="https://www.youtube.com/channel/UCDb5yT_Y9BGrURR-wSi2oaw"
+                                   target="_blank"><i class="fab fa-youtube no-margin-right"
+                                                      aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
 

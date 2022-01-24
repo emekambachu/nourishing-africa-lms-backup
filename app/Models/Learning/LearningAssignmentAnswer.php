@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Models\Learning;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class LearningAssignmentAnswer extends Model
+{
+    protected $fillable = [
+        'learning_module_id',
+        'learning_category_id',
+        'learning_assignment_question_id',
+        'answer',
+        'passed',
+    ];
+
+    public function learningAssignmentsQuestion(){
+        return $this->belongsTo(LearningAssignmentQuestion::class, 'learning_assignment_question_id', 'id');
+    }
+}
