@@ -63,6 +63,6 @@ class YaedpLoginController extends Controller
     //perform logout
     public function logout(){
         Auth::guard('yaedp-users')->logout();
-        return redirect()->route('yeadp.login');
+        return redirect()->route('yaedp.login');
     }
 }

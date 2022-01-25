@@ -15,6 +15,11 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
+
+            if (!auth()->guard('yaedp-users')->check()) {
+                return redirect()->route('yaedp.login');
+            }
+
             return route('login');
         }
     }

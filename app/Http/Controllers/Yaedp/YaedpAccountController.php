@@ -26,4 +26,9 @@ class YaedpAccountController extends Controller
 
         return view('yaedp.account.courses.index');
     }
+
+    public function assignments(){
+
+        return view('yaedp.account.assignments.index');
+    }
 }

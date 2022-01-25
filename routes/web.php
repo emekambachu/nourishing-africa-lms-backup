@@ -109,7 +109,7 @@ Route::get('yaedp/login',
 Route::post('yaedp/login/submit',
     [App\Http\Controllers\Auth\Yaedp\YaedpLoginController::class, 'login'])
     ->name('yaedp.login.submit');
-Route::get('yaedp/logout',
+Route::post('yaedp/logout',
     [App\Http\Controllers\Auth\Yaedp\YaedpLoginController::class, 'logout'])
     ->name('yaedp.logout');
 
@@ -123,6 +123,9 @@ Route::get('yaedp/account/modules',
 Route::get('yaedp/account/courses',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'courses'])
     ->name('yaedp.account.courses');
+Route::get('yaedp/account/assignments',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'assignments'])
+    ->name('yaedp.account.assignments');
 
 // Password Reset
 Route::get('yaedp/forgot-password',
