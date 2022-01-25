@@ -93,7 +93,6 @@ class Handler extends ExceptionHandler
         if ($request->is('yaedp') || $request->is('yaedp/*')) {
             return redirect()->guest('/yaedp/login');
         }
-
         return redirect()->guest(route('login'));
     }
 }

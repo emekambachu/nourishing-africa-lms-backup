@@ -22,12 +22,11 @@
     <script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>
 
     {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nourishingafrica.com/#organization","name":"Nourishing Africa","url":"https://nourishingafrica.com/","sameAs":["https://www.facebook.com/nourishafrica1","https://instagram.com/nourish_africa","https://www.linkedin.com/company/28506256","https://twitter.com/nourish_africa"],"logo":{"@type":"ImageObject","@id":"https://nourishingafrica.com/#logo","url":"https://nourishingafrica.com/wp-content/uploads/2019/04/NA-1-Official.png","width":848,"height":519,"caption":"Nourishing Africa"},"image":{"@id":"https://nourishingafrica.com/#logo"}},{"@type":"WebSite","@id":"https://nourishingafrica.com/#website","url":"https://nourishingafrica.com/","name":"Nourishing Africa","description":"A home for 1 million agri-food entrepreneurs transforming Africa&#039;s agricultural","publisher":{"@id":"https://nourishingafrica.com/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://nourishingafrica.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://nourishingafrica.com/#webpage","url":"https://nourishingafrica.com/","inLanguage":"en-US","name":"Welcome to Nourishing Africa Hub - Nourishing Africa","isPartOf":{"@id":"https://nourishingafrica.com/#website"},"about":{"@id":"https://nourishingafrica.com/#organization"},"datePublished":"2019-12-03T12:51:31+00:00","dateModified":"2020-02-07T15:22:22+00:00","description":"Welcome to Nourishing Africa Hub, A Home for Agri-Food Entrepreneurs Transforming Africa\u2019s Agricultural Landscape."}]}
-
 </script>
 @endsection
 
 @section('top-assets')
-    <link rel="stylesheet" href="{{ asset('custom/css/learning/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('learning-assets/style.css') }}" />
 @endsection
 
 @section('content')
@@ -40,8 +39,9 @@
 
                 <div class="col-12 col-lg-4 wow fadeInLeft margin-20px-tb padding-four-all md-padding-eight-all md-padding-15px-lr sm-padding-50px-tb border-radius-4" style="visibility: visible; animation-name: fadeInLeft; background-color: #fff;">
                     <div class="row m-0">
-                        <div class="col-12 col-xl-10 margin-six-bottom lg-margin-six-bottom md-margin-30px-bottom sm-no-margin-bottom">
-                            <h4 class="na-text-dark-green na-header-text font-weight-600 text-center md-width-70 mx-auto mx-lg-0 sm-width-100 sm-margin-30px-bottom">YAEDP</h4>
+                        <div class="col-12 margin-six-bottom lg-margin-six-bottom md-margin-30px-bottom sm-no-margin-bottom">
+                            <h4 class="na-text-dark-green learning-intro-header text-center mx-auto mx-lg-0 sm-width-100 mb-0">Welcome to YAEDP</h4>
+                            <p class="text-center font-normal-manrope-black">Login to start learning</p>
                         </div>
                         <!-- start feature box item -->
                         <div class="col-12 aligncenter margin-six-bottom md-margin-30px-bottom last-paragraph-no-margin">
@@ -80,9 +80,10 @@
 
                                     <div class="col-md-6 col-lg-6 col-xs-6">
                                         <div class="float-left" style="display: block;">
-                                            <input style="display: inline; width: 50px;" type="checkbox"
+                                            <input class="login-form-checkbox"
+                                                   style="display: inline; width: 20px;" type="checkbox"
                                                    name="remember" id="remember">
-                                            <label class="text-medium">Remember me</label>
+                                            <label class="text-small">Remember me</label>
                                         </div>
                                     </div>
 
@@ -100,8 +101,11 @@
                                         <button type="submit" class="login-form-btn">Login</button>
                                     </div>
 
-                                    <div class="col-12 mt-2">
-                                        <p class="text-center login-shortcut">
+                                    <div class="col-12">
+                                        <p class="font-small-manrope-black margin-10px-bottom">
+                                            By using this you agree to our <a class="login-link" href="">Terms of Service</a> and <a class="login-link" href="">Privacy Policy</a>
+                                        </p>
+                                        <p class="text-center login-shortcut margin-10px-bottom">
                                             No account? <a class="na-text-dark-green"
                                            href="https://nourishingafrica.com/yaedp/application">Sign up</a>
                                         </p>

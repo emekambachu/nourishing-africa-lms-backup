@@ -1,0 +1,2636 @@
+.text-size-medium {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px !important;
+}
+
+membership-opportunities-text.na-member-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+}
+
+.na-text-grey {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    /* identical to box height, or 162% */
+    color: #888888;
+}
+
+.na-text-light-green {
+    color: #11bd11;
+}
+
+.membership-opportunities-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    color: #606060;
+}
+
+.badge-csuccess {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 19px;
+    /* identical to box height, or 162% */
+
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #058f24;
+    background: #eefcee;
+    border-radius: 30px;
+}
+
+.opportunies-title {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    /* or 162% */
+
+    color: #747373;
+}
+
+.opportunies-when {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    /* or 162% */
+
+    color: #efb443;
+}
+
+.mem-survey-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    color: #ffffff;
+}
+
+.mem-survey-desc {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height, or 137% */
+
+    color: #e8e8e8;
+}
+
+.survey-btn {
+    width: 83px;
+    height: 50px;
+
+    background: #ffffff;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #006600;
+}
+
+.survey-select {
+    height: 50px;
+    padding: 10px;
+    background: #f2fff2;
+    border-radius: 5px;
+}
+
+.mem-quick-menu-txt {
+    color: #9b9a9a;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.mem-quick-menu-txt-num {
+    padding-top: 3px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #000000;
+}
+
+.membership-forum-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    color: #292929;
+}
+
+.membership-forum-text-sub {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #606060;
+}
+
+.membership-forum-link {
+    position: relative;
+    top: -45px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #006600;
+}
+
+.membership-forum-link:hover {
+    color: #006600;
+}
+
+.membership-update-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    color: #000000;
+}
+
+.membership-forum-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #606060;
+}
+
+.membership-forum-mem-nums {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #efb443;
+}
+
+.membership-forum-btn {
+    position: relative;
+    top: -48px;
+    width: 48px;
+    height: 37px;
+    background: #006600;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ffffff;
+}
+
+.membership-forum-btn:hover {
+    color: #ffffff;
+}
+
+.membership-update-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #353535;
+}
+
+.membership-update-date {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #979797;
+}
+
+.membership-fav-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height */
+
+    color: #292929;
+}
+
+.membership-fav-link {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+    color: #006600;
+}
+
+.membership-fav-link:hover {
+    color: #006600;
+}
+
+.membership-fav-type-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    /* or 144% */
+
+    color: #555555;
+}
+
+.membership-fav-type-msg {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    /* or 164% */
+
+    color: #6f6e6e;
+}
+.badge-cinfo {
+    width: fit-content;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 24px;
+    background: #efb443;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #ffffff;
+}
+
+.membership-podcst-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #efb443;
+}
+
+.membership-podcast-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #4e4d4d;
+}
+
+.membership-podacst-by {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #878787;
+}
+
+.membership-podcast-link {
+    margin-top: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    text-decoration-line: underline;
+
+    color: #006600;
+}
+
+.membership-podcast-link:hover {
+    color: #006600;
+}
+
+.filter-div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #ffffff;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.1);
+}
+
+.filter-form-btn {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 28px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    height: 48px;
+    background: #006600;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.filter-form-text {
+    background: #ffffff;
+    height: 48px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.filter-div-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 28px;
+    /* identical to box height, or 156% */
+
+    color: #000000;
+}
+
+.mem-filter-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 24px;
+
+    width: 109px;
+    height: 48px;
+
+    background: #ffffff;
+    border: 0px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+
+    color: #006600;
+}
+
+.entrepreneur-toplink {
+    width: 327px;
+    height: 49px;
+    background: #f5f6fa;
+    border: 1px solid #006600;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #006600;
+}
+
+.entrepreneur-toplink-edit {
+    width: 110px;
+    height: 40px;
+    background: #006600;
+    border: 0px;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #f5f6fa;
+}
+
+.entrepreneur-toplink-edit:hover {
+    color: #f5f6fa;
+}
+
+.entrepreneur-toplink:hover {
+    color: #006600;
+}
+
+.membership-entrepreneur-card {
+    background: #ffffff;
+    border-radius: 5px;
+    max-height: fit-content;
+}
+
+.membership-entrepreneur-card:hover {
+    border: 1px solid #006600;
+    box-shadow: 4px 4px 16px rgba(0, 102, 0, 0.05);
+}
+
+.membership-entrepreneur-img {
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.membership-entrepreneur-country {
+    position: relative;
+    top: 10px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #efb443;
+}
+
+.membership-entrepreneur-name {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    /* identical to box height, or 142% */
+
+    color: #1a1b1c;
+}
+
+.membership-entrepreneur-cname {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    /* identical to box height, or 162% */
+
+    color: #1a1b1c;
+}
+
+.membership-entrepreneur-desc {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    /* or 162% */
+
+    color: #6f6e6e;
+}
+
+.membership-entrepreneur-desc > p {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    /* or 162% */
+
+    color: #6f6e6e;
+}
+
+.membership-entrepreneur-btn {
+    width: 96px;
+    height: 43px;
+    background: #006600;
+    border: 0px;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    /* identical to box height, or 162% */
+
+    color: #ffffff;
+}
+
+.membership-funding-country {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+
+    color: #006600;
+}
+
+.membership-funding-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #555555;
+}
+
+.membership-funding-desc {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    /* or 162% */
+
+    color: #6f6e6e;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.mem-podcast-desc > p > a {
+    color: #ffffff !important;
+}
+
+.mem-podcast-desc > p > a:hover {
+    text-decoration: underline;
+}
+
+.membership-funding-desc.p.a {
+    color: #ffffff !important;
+}
+
+.membership-data-green-card {
+    border-left: 5px solid #efb443;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.25));
+    border-radius: 5px;
+    background-color: #006600;
+}
+
+.membership-data-green-country {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 24px;
+
+    position: absolute;
+    width: fit-content;
+    height: 31px;
+
+    background: #e8ffe8;
+    border-radius: 20px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    /* identical to box height, or 162% */
+
+    color: #006600;
+}
+
+.membership-data-green-date {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+
+    color: #c5c5c5;
+}
+
+.membership-data-green-desc {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #e0e0e0;
+}
+
+.membership-data-white-card {
+    border-left: 5px solid #006600;
+    filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.1));
+    border-radius: 5px;
+}
+
+.membership-data-white-country {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 24px;
+
+    position: absolute;
+    width: 132px;
+    height: 31px;
+
+    background: #fff9ed;
+    border-radius: 20px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    /* identical to box height, or 162% */
+
+    color: #efb443;
+}
+
+.membership-data-white-date {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+
+    color: #393939;
+}
+
+.membership-data-white-desc {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #393939;
+}
+.mem-oc-h {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    /* identical to box height, or 162% */
+    color: #006600;
+}
+
+.mem-oc-t {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    /* identical to box height, or 162% */
+
+    color: #585858;
+}
+
+.mem-oc-b {
+    align-items: center;
+    padding: 16px 32px;
+
+    width: 103px;
+    height: 49px;
+
+    background: #006600;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 0px;
+    border-radius: 5px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #ffffff;
+}
+
+.mem-oc-b:hover {
+    align-items: center;
+    padding: 16px 32px;
+
+    width: 103px;
+    height: 49px;
+
+    background: #006600;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 0px;
+    border-radius: 5px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #ffffff;
+}
+
+.mem-podcast-arch {
+    padding-left: 25px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    /* or 142% */
+
+    color: #ffffff;
+}
+
+.mem-podcast-badge {
+    background: #edffed;
+    border-radius: 20px;
+}
+
+.badge-cgrey {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 19px;
+    /* identical to box height, or 162% */
+
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #058f24;
+    background: #eefcee;
+    border-radius: 30px;
+}
+
+.text-grey {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    /* identical to box height */
+
+    color: #8e8e8e;
+}
+
+.mem-podcast-listen-btn {
+    background: #ffffff;
+    border: 1px solid #006600;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 16px rgba(0, 102, 0, 0.15);
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    color: #006600;
+}
+
+.mem-podast-badge-txt {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 23px;
+    /* identical to box height, or 162% */
+
+    color: #006600;
+}
+
+.membership-webinar-title {
+    padding-left: 3px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
+    /* or 144% */
+
+    color: #006600;
+}
+
+.mem-webinar-speakers {
+    padding-left: 3px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #000000;
+}
+
+.mem-webinar-speaker-name {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    padding-left: 3px;
+    padding-right: 3px;
+    color: #8c8c8c;
+}
+
+.mem-event-img-div {
+    display: table-cell;
+    max-height: 232px;
+    border: 0px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.mem-event-image {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+    background-position: center;
+    background-size: cover;
+}
+
+.membership-event-card {
+    max-height: auto;
+    background: #ffffff;
+    border: 0px;
+    border-radius: 5px;
+}
+
+.membership-event-card:hover {
+    box-shadow: 4px 4px 16px rgba(0, 102, 0, 0.05);
+}
+
+.mem-event-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    /* or 144% */
+
+    color: #000000;
+}
+
+.mem-event-desc {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
+    /* or 144% */
+
+    color: #555555;
+}
+
+.mem-event-date {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    /* identical to box height */
+
+    color: #8e8e8e;
+}
+
+.mem-event-link {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #006600;
+    width: fit-content;
+    background-color: transparent;
+    border: 1px solid #006600;
+    border-radius: 5px;
+}
+
+.mem-event-link:hover {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #006600;
+    border: 1px solid #006600;
+    border-radius: 5px;
+}
+
+.mem-event-time {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    /* identical to box height */
+
+    color: #8e8e8e;
+}
+
+.mem-fav-badge {
+    text-align: center;
+    padding: 4px;
+    width: 28px;
+    height: 23px;
+
+    background: #f1f1f1;
+    border-radius: 7px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+
+    color: #9d9d9d;
+}
+
+.membership-fav-card {
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.mem-fav-data {
+    padding-left: 10px;
+    padding-bottom: 10px;
+    background-color: transparent;
+    border: 1px solid#EEEEEE;
+    border-radius: 5px;
+    transform: rotate(90deg);
+    letter-spacing: 3px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    /* or 8px */
+
+    color: #373737;
+}
+
+.mem-fav-menu {
+    margin-top: 10px;
+    margin-left: -180px;
+    padding: 5px;
+    background: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+.mem-fav-menu > li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 26px;
+    /* identical to box height, or 185% */
+
+    color: #373737;
+}
+
+.mem-fav-menu > li:hover {
+    background: #ebfeeb;
+    border-radius: 5px;
+}
+
+.mem-fav-published {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+
+    color: #c5c5c5;
+}
+
+.mem-fav-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    /* identical to box height, or 162% */
+
+    color: #373737;
+}
+
+.mem-fav-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    /* or 162% */
+
+    color: #4d4d4d;
+}
+
+.mem-fav-funding-h6 {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    /* identical to box height, or 142% */
+
+    color: #1a1b1c;
+}
+
+.mem-fav-funding-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    /* or 162% */
+
+    color: #4d4d4d;
+}
+.mem-fav-fund-img {
+    width: 120px;
+    height: 29.19px;
+}
+.mem-fav-podcast-head {
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.mem-fav-pod-link {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #ffffff;
+}
+
+.mem-fav-event-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #ffffff;
+}
+
+.mem-fav-event-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #d3d3d3;
+}
+
+.mem-fav-event-time {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #777777;
+}
+
+.mem-fav-event-date {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #777777;
+}
+
+.mem-opp-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    /* or 162% */
+
+    color: #747373;
+}
+
+.mem-opp-time {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    /* or 162% */
+
+    color: #efb443;
+}
+
+.text-opp-green {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 19px;
+    /* identical to box height, or 162% */
+
+    color: #006600;
+}
+
+.mem-update-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    /* or 162% */
+
+    color: #696969;
+}
+
+.mem-update-btn {
+    border: 0px;
+
+    background: #006600;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 29px;
+    /* identical to box height, or 208% */
+
+    color: #ffffff;
+}
+
+.mem-not-card {
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.mem-not-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #000000;
+}
+
+.mem-not-time {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #979696;
+}
+
+.mem-not-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #747373;
+}
+
+.mem-not-link {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #006600;
+}
+
+.mem-not-link:hover {
+    color: #006600;
+}
+
+.mem-setting-pic-card {
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.mem-setting-detail-card {
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.mem-sec-ctrl-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    /* identical to box height, or 162% */
+
+    color: #313131;
+}
+
+.mem-sec-top-link {
+    border-bottom: 3px solid #eeeeee;
+}
+
+.mem-sec-top-link > a {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #777777;
+}
+
+.mem-sec-top-link-active {
+    border-bottom: 3px solid #006600;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #006600;
+}
+
+.mem-sec-btn-update {
+    background: #006600;
+    border-radius: 5px;
+    border: 0px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 26px;
+    /* identical to box height, or 185% */
+
+    color: #ffffff;
+}
+
+.mem-sec-btn-cancel {
+    background-color: #ffffff;
+    border: 1px solid #006600;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 26px;
+    /* identical to box height, or 185% */
+
+    color: #006600;
+}
+
+.mem-sec-ctrl {
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+}
+
+.mem-set-img {
+    background-color: #c4c4c4;
+    width: 159.84px;
+    height: 155px;
+    border-radius: 50%;
+    border: 0px;
+}
+
+.img-div {
+    border: 0px;
+}
+
+.mem-srt-img-upload {
+    position: absolute;
+    top: 175px;
+    right: 70px;
+    background-color: #006600;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+.mem-set-side-menu {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #000000;
+}
+
+.delete-account {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    /* identical to box height, or 162% */
+
+    color: #006600;
+}
+
+.delete-account-stmt {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    /* or 162% */
+
+    color: #5b5b5b;
+}
+
+.mem-setting-data {
+    background-color: transparent;
+    border: 0px;
+    letter-spacing: 3px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    /* or 8px */
+
+    color: #373737;
+}
+
+.mem-setting-company-div {
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    box-sizing: border-box;
+    box-shadow: 0px 3.84857px 9.62142px rgba(0, 0, 0, 0.05);
+    border-radius: 9.62142px;
+}
+
+.mem-set-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #8f8f8f;
+}
+
+.mem-set-status {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #006600;
+}
+
+.mem-set-edit-btn {
+    width: 58px;
+    height: 37px;
+    background: #006600;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ffffff;
+    border: 0px;
+}
+
+.mem-set-delete-btn {
+    background-color: #ffffff;
+    position: absolute;
+    width: 76px;
+    height: 37px;
+    border: 1px solid #d60000;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #d60000;
+}
+
+.mem-set-primary-btn {
+    background-color: #ffffff;
+    position: absolute;
+    width: 76px;
+    height: 37px;
+    border: 1px solid #006600;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #006600;
+}
+
+.mem-set-pipe {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 24px;
+    line-height: 24px;
+    color: #d6d6d6;
+}
+
+.mem-set-notification-badge {
+    position: absolute;
+    width: 77px;
+    height: 31px;
+    left: 10px;
+    top: -25px;
+    background: #ebfeeb;
+    border-radius: 20px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #006600;
+}
+
+.mem-set-username {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    color: #000000;
+}
+
+.mem-set-userpos {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #818080;
+}
+
+.mem-view-details-name {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3e3d3d;
+}
+
+.mem-view details-val {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #7e7e7e;
+}
+
+.mem-edit-img-upload {
+    position: relative;
+    bottom: -60px;
+    left: -60px;
+    background-color: #006600;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.img-caption-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #878787;
+}
+
+.mem-settiing-success-button {
+    width: 97px;
+    height: 49px;
+    background: #006600;
+    border-radius: 5px;
+    border: 0px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #ffffff;
+}
+
+.member-success-btn-small {
+    width: auto;
+    padding: 12px;
+    background: #006600;
+    border-radius: 5px;
+    border: 0px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 12px;
+    /* identical to box height */
+    color: #ffffff;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #006600;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #006600;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.mem-not-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    /* identical to box height, or 162% */
+
+    color: #2e2e2e;
+}
+
+.mem-not-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    /* identical to box height, or 162% */
+
+    color: #5b5b5b;
+}
+
+.btn-tbl-myconn {
+    background: #006600;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 0px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #ffffff;
+}
+
+.tbl-myconn-row {
+    height: 110px;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    box-shadow: 0px 3.84857px 9.62142px rgba(0, 0, 0, 0.05);
+    border-radius: 9.62142px;
+}
+
+.tbl-myconn-row:hover {
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    height: 110px;
+    box-shadow: 0px 4px 10px rgba(0, 102, 0, 0.5);
+    border-radius: 9.62142px;
+}
+
+.tbl-myconn-row td {
+    vertical-align: middle;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #8f8f8f;
+}
+
+.gfg-myconn {
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+.tbl-myconn-badge {
+    max-height: 65px;
+    position: absolute;
+    margin-top: -35px;
+}
+.connreq {
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.connreq-datetime label {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #868585;
+}
+
+.connreq-text h6 {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #727171;
+}
+
+.connreq-text p {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #696969;
+}
+
+.connreq-action-acpt {
+    background: #006600;
+    border-radius: 5px;
+    border: 0px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ffffff;
+    padding: 10px;
+}
+
+.connreq-action-ign {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #006600;
+    background: #ffffff;
+    border: 1px solid #006600;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.connreq-action-lnk {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #006600;
+}
+
+.connreq-action-lnk:hover {
+    color: #006600;
+    vertical-align: middle;
+}
+.conn-sublink {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    border-bottom: 3px solid #eeeeee;
+    color: #777777;
+}
+
+.conn-sublink-active {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    border-bottom: 3px solid #006600;
+    color: #006600;
+}
+
+.prompt-div {
+    margin: 0 auto;
+    vertical-align: middle;
+    background: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.deal-starter-head {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #006600;
+}
+
+.deal-starter-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 29px;
+    /* or 162% */
+
+    color: #535353;
+}
+
+.deal-starter-btn {
+    border: 0px;
+    background: #006600;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 29px;
+    /* identical to box height, or 208% */
+
+    color: #ffffff;
+}
+
+.deals-profile-div {
+    background: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding-top: 60px;
+    padding-left: 32px;
+    padding-bottom: 30px;
+}
+
+@media screen and (max-width: 400px) {
+}
+
+.deals-profile-heading {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+    color: #006600;
+}
+
+.deals-profile-control-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    /* identical to box height, or 162% */
+
+    color: #313131;
+}
+
+.deals-profile-control {
+    border: 1px solid #cacaca;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.deals-profile-control-hint {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 26px;
+    /* identical to box height, or 185% */
+
+    color: #6f6f6f;
+}
+
+.deals-profile-control-btn {
+    background: #006600;
+    border-radius: 5px;
+    border: 0px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 29px;
+    /* identical to box height, or 208% */
+
+    color: #ffffff;
+}
+
+.deals-badge-def {
+    text-align: center;
+    padding: 4px;
+    width: 28px;
+    height: 23px;
+
+    background: #f1f1f1;
+    border-radius: 7px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+
+    color: #9d9d9d;
+}
+
+.deals-active-req-div {
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding-top: 20px;
+    padding-left: 12px;
+}
+
+.deals-renew {
+    border: 0px;
+    background-color: transparent;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #006600;
+}
+
+.deals-renew-expired {
+    border: 0px;
+    background-color: transparent;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #d2cccc;
+}
+
+.deals-del {
+    border: 0px;
+    background-color: transparent;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #d60000;
+}
+table.deals-active-tbl thead > tr > th {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    text-transform: uppercase;
+
+    color: #ffffff;
+}
+
+table.deals-active-tbl tbody > tr > td {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #434343;
+}
+
+.act-deals-link {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #006600;
+}
+
+.act-deals-link:hover {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #006600;
+}
+
+.deals-req-div {
+    background: #ffffff;
+    border: 1px solid #006600;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 8px rgba(0, 102, 0, 0.4);
+    border-radius: 10px;
+}
+
+.deals-req-heading-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #8e8e8e;
+}
+
+.deals-req-text-val {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #696969;
+}
+
+.deals-req-link {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #006600;
+}
+
+.deals-req-link:hover {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #006600;
+}
+
+.deals-req-date {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #949393;
+}
+
+.badge-deals {
+    background: #002366;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #ffffff;
+    position: relative;
+    top: -25px;
+}
+
+.phonedivcss {
+    margin-top: 63px;
+}
+
+.main-header-css {
+    margin-top: 63px;
+}
+
+.main-header-css-float-down {
+    margin-top: 63px;
+}
+
+.phonedashboardcss {
+    margin-top: 180px;
+}
+
+@media screen and (min-width: 766px) {
+    .main-header-css-search {
+        margin-top: 63px;
+    }
+    .phonedashboardcssdiv {
+        margin-top: 180px;
+    }
+    .container-responsiveness {
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .main-header-css-search {
+        margin-top: 120px;
+    }
+    .phonedashboardcssdiv {
+        margin-top: 210px;
+    }
+    .container-responsiveness {
+        padding: 10px !important;
+    }
+}
+
+.phone-search-input {
+    background-color: transparent;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    color: #ffffff;
+}
+
+.phone-search-input::placeholder {
+    color: #000000;
+}
+
+a.membership-text1:hover {
+    color: #006600;
+}
+
+.favourite-menu-a {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #777777;
+}
+
+.favourite-menu-active {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #006600;
+}
+
+.favourite-menu-active:hover {
+    color: #006600 !important;
+}
+.favourite-menu-a:hover {
+    color: #006600 !important;
+}
+
+.nofavh6 {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 36px;
+
+    color: #006600;
+}
+
+.nofavlabel {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #6c6c6c;
+    padding-bottom: 15px;
+}
+
+.nofavbutton {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #ffffff;
+    background: #006600;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.nofavbutton:hover {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #ffffff;
+    background: #006600;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.primary-div {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    /* or 162% */
+
+    text-align: center;
+
+    color: #000000;
+}
+
+.primary-div-yes {
+    border: 1px solid #006600;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    margin: 5px;
+    line-height: 26px;
+    padding: 10px 20px;
+    color: #006600;
+}
+
+.primary-div-delete {
+    border: 1px solid #d60000;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    margin: 5px;
+    line-height: 26px;
+    padding: 10px 20px;
+    color: #d60000;
+}
+
+.primary-div-close {
+    margin: 5px;
+    padding: 10px 20px;
+    background: #006600;
+    border-radius: 5px;
+    border: 0px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    color: #ffffff;
+}
+
+.mem-conn-req-details {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+    color: #006600;
+}
+
+.mem-conn-req-details-name {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+    color: #000000;
+}
+
+.mem-conn-req-details-company {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #848080;
+}
+
+.mem-conn-req-details-subtitle {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #4b4b4b;
+}
+
+.mem-conn-req-details-value {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #8c8c8c;
+}
+
+.mark-all-as-read {
+    cursor: pointer;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #909390;
+}
+
+.mark-all-as-read:hover {
+    cursor: pointer;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #006600;
+}
+/***********************************************/
+/***************** Accordion ********************/
+/***********************************************/
+@import url("https://fonts.googleapis.com/css?family=Tajawal");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+#accordion-style-1 h1,
+#accordion-style-1 a {
+    color: #007b5e;
+}
+#accordion-style-1 .btn-link {
+    font-weight: 400;
+    color: #007b5e;
+    background-color: transparent;
+    text-decoration: none !important;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 25px;
+}
+
+#accordion-style-1 .card-body {
+    border-top: 2px solid #007b5e;
+}
+
+#accordion-style-1 .card-header .btn.collapsed .fa.main {
+    display: none;
+}
+
+#accordion-style-1 .card-header .btn .fa.main {
+    background: #007b5e;
+    padding: 13px 11px;
+    color: #ffffff;
+    width: 35px;
+    height: 41px;
+    position: absolute;
+    left: -1px;
+    top: 10px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    display: block;
+}
+
+.na-bg-dark-green {
+    background: #006600;
+}
+
+.member-bg-lemon {
+    background: #f1fff1;
+}
+
+.member-bg-light-grey {
+    background: #f3f3f3;
+}
+
+.na-border-bottom {
+    border-bottom: 1px solid #97989a;
+}
+
+.na-border-left {
+    border-left: 1px solid #97989a;
+}
+
+.na-text-danger {
+    color: #fd7393;
+}
+
+input.input-bg {
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    border: 1px solid #039246;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+input.input-bg:focus,
+textarea.input-bg:focus {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+select.input-bg {
+    border-radius: 8px;
+    border: 1px solid #039246;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+    appearance: none;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAWElEQVQ4jWNgGAVUB08ZGBj+E8BP8BngxcDA8AeP5t8MDAwehFyRgceAVGK90oVFcxuxmhkYGBgYGRgYViJpXgYVIwlwMDAw7GNgYNjFwMDATqrmUUACAAAyuSLu9U5rxAAAAABJRU5ErkJggg==)
+        no-repeat right #f7f7f7;
+    width: 100%;
+}
+select.input-bg:focus {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+textarea.input-bg {
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    border: 1px solid #039246;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    min-height: 130px;
+    width: 100%;
+}
+
+.input-bg::-webkit-input-placeholder {
+    font-weight: 400;
+    font-size: 14px;
+}
+.input-bg::-moz-placeholder {
+    font-weight: 400;
+    font-size: 14px;
+}
+.input-bg:-ms-input-placeholder {
+    font-weight: 400;
+    font-size: 14px;
+}
+.na-border-bottom {
+    border-bottom: solid #bfbfbf 1px;
+}
+.eoy-banner-year {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #ffffff;
+}
+.eoy-banner-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 29px;
+    color: #ffffff;
+}
+.eoy-banner-btn {
+    border: 2px solid #ffffff;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #ffffff;
+    background-color: transparent;
+}
+.eoy-banner-div {
+    background-color: #006600 !important;
+}
+.eoy-banner-div:after {
+    background: linear-gradient(-45deg, #d3d3d3 16px, transparent 0),
+        linear-gradient(45deg, #d3d3d3 16px, transparent 0);
+    background-position: left-bottom;
+    background-repeat: repeat-x;
+    background-size: 32px 32px;
+    content: " ";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 30px;
+}
+
+.member-border-radius1{
+    border-radius: 10px;
+}
+
+.member-btn-green{
+    background: #006600;
+    border: 1px solid #006600;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 16px rgba(0, 102, 0, 0.15);
+    border-radius: 5px;
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    color: #fff;
+}
+
+.member-btn-green:hover{
+    background: #119a11;
+    color: #fff;
+}
+
+.member-btn-white{
+    background: #fff;
+    border: 1px solid #006600;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 16px rgba(0, 102, 0, 0.15);
+    border-radius: 5px;
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #006600;
+}
+
+.member-btn-red{
+    background: #ff2f2f;
+    border: 1px solid #ff2f2f;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 16px rgba(0, 102, 0, 0.15);
+    border-radius: 5px;
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #fff;
+}
+
+.member-text-8{
+    font-size: 8px !important;
+}

@@ -18,7 +18,7 @@ class CreateLearningAssessmentsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('learning_category_id');
             $table->unsignedBigInteger('learning_module_id')->nullable();
-            $table->string('username')->nullable();
+            $table->string('surname')->nullable();
             $table->string('email')->nullable();
             $table->string('first_name')->nullable();
             $table->string('cohort')->nullable();

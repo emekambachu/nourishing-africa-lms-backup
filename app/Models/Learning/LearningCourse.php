@@ -12,6 +12,8 @@ class LearningCourse extends Model
         'learning_category_id',
         'learning_module_id',
         'image',
+        'document_one',
+        'document_two',
         'description',
         'visible',
     ];

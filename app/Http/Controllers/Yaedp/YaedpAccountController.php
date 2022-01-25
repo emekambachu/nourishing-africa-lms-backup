@@ -7,13 +7,23 @@ use Illuminate\Http\Request;
 
 class YaedpAccountController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:yaedp-users');
+    }
+
     public function dashboard(){
 
         return view('yaedp.account.index');
     }
 
+    public function modules(){
+
+        return view('yaedp.account.modules.index');
+    }
+
     public function courses(){
 
-        return view('yaedp.account.course.index');
+        return view('yaedp.account.courses.index');
     }
 }

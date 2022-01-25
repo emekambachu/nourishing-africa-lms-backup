@@ -35,7 +35,7 @@ class YaedpLoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.yaedp.login', ['url' => 'yaedp']);
+        return view('auth.yaedp.login', ['url' => 'yaedp/login']);
     }
 
     public function login(Request $request)
@@ -45,7 +45,7 @@ class YaedpLoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('admin')->attempt([
+        if (Auth::guard('yaedp-users')->attempt([
             'email' => $request->email,
             'password' => $request->password],
             $request->get('remember'))) {
@@ -53,5 +53,16 @@ class YaedpLoginController extends Controller
             return redirect()->intended('/yaedp/account');
         }
         return back()->withInput($request->only('email', 'remember'));
+    }
+
+    //add for logout function to work
+    use AuthenticatesUsers {
+        logout as performLogout;
+    }
+
+    //perform logout
+    public function logout(){
+        Auth::guard('yaedp-users')->logout();
+        return redirect()->route('yeadp.login');
     }
 }

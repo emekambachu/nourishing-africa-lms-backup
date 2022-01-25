@@ -12,7 +12,7 @@ class LearningAssessment extends Model
         'user_id',
         'learning_category_id',
         'learning_module_id',
-        'username',
+        'surname',
         'email',
         'first_name',
         'cohort',
