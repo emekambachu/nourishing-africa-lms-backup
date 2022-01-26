@@ -24,11 +24,16 @@ class YaedpAccountController extends Controller
 
     public function courses(){
 
-        return view('yaedp.account.courses.index');
+        return view('yaedp.account.modules.courses');
+    }
+
+    public function course(){
+
+        return view('yaedp.account.modules.course');
     }
 
     public function assignments(){
 
-        return view('yaedp.account.assignments.index');
+        return view('yaedp.account.modules.assignments');
     }
 }

@@ -19,6 +19,8 @@ class CreateLearningCoursesTable extends Migration
             $table->unsignedBigInteger('learning_category_id');
             $table->string('title');
             $table->binary('image')->nullable();
+            $table->binary('video')->nullable();
+            $table->string('duration')->nullable();
             $table->binary('document_one')->nullable();
             $table->binary('document_two')->nullable();
             $table->text('description')->nullable();

@@ -123,6 +123,9 @@ Route::get('yaedp/account/modules',
 Route::get('yaedp/account/courses',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'courses'])
     ->name('yaedp.account.courses');
+Route::get('yaedp/account/course',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'course'])
+    ->name('yaedp.account.course');
 Route::get('yaedp/account/assignments',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'assignments'])
     ->name('yaedp.account.assignments');

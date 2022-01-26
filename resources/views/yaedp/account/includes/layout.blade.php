@@ -111,7 +111,7 @@
 
             <li class="slide mb-3" style="">
                 <a class="side-menu__item" href="{{ route('yaedp.logout') }}">
-                    <i class="side-menu__icon fa-sign-out-alt"></i>
+                    <i class="side-menu__icon fa fa-sign-out-alt text-danger"></i>
                     <span class="side-menu__label">Logout</span></a>
             </li>
 
@@ -162,7 +162,8 @@
                                  class="rounded-circle mCS_img_loaded"><span></span>
                             <label class="d-sm-none d-none d-md-block"
                                    style="padding-left:5px; padding-top: 5px; font-family: Inter; font-style: normal; font-weight: normal; font-size: 14px; color: #626161;">
-                                {{ Auth::user()->surname .' '.Auth::user()->first_name }}
+                                <span class="light-green">
+                                    {{ Auth::user()->surname .' '.Auth::user()->first_name }}</span>
                                 <i class="fa fa-chevron-down" style="padding-left: 5px; padding-top: 3px;"></i>
                             </label>
                         </a>
@@ -173,22 +174,26 @@
                                     <img class="rounded-circle" style="margin: 0 auto;"
                                          src="{{ asset('images/user.png') }}">
                                 </div>
-                                <div class="col-4">
-                                    {{ Auth::user()->business }}
+                                <div class="col-8">
+                                    <p class="tx-15 light-green mb-0">
+                                        {{ Auth::user()->surname .' '.Auth::user()->first_name }}</p>
+                                    <p class="tx-15 text-grey">
+                                        {{ Auth::user()->business }}</p>
                                 </div>
-                                <div class="col-12 pt-3 pb-3">
+                                <div class="col-12">
                                     <hr style="border: 1px solid #ccc;"/>
                                     <a class="dropdown-item na-text-dark-green na-investor-text1"
                                        style="font-size: 16px;" href="{{ route('yaedp.logout') }}"
                                        onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                                        <i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                        <i class="fas fa-sign-out-alt text-danger"></i> Logout</a>
                                     <form id="logout-form" action="{{ route('yaedp.logout') }}"
                                           method="POST" style="display: none;">@csrf
                                     </form>
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                 </div>

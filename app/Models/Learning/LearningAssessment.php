@@ -12,6 +12,7 @@ class LearningAssessment extends Model
         'user_id',
         'learning_category_id',
         'learning_module_id',
+        'learning_course_id',
         'surname',
         'email',
         'first_name',
@@ -27,5 +28,17 @@ class LearningAssessment extends Model
 
     public function yaedpUser(){
         return $this->belongsTo(YaedpUser::class, 'user_id', 'id');
+    }
+
+    public function learningCategory(){
+        return $this->belongsTo(LearningCategory::class, 'learning_category_id', 'id');
+    }
+
+    public function learningModule(){
+        return $this->belongsTo(LearningModule::class, 'learning_module_id', 'id');
+    }
+
+    public function learningCourse(){
+        return $this->belongsTo(LearningCourse::class, 'learning_course_id', 'id');
     }
 }
