@@ -488,7 +488,7 @@
 
 .module-title{
     background-color: #fff;
-    color:#089803;
+    color: #089803;
     padding: 2px;
     font-size: 16px;
     margin-top: 10px;
@@ -516,4 +516,12 @@
 
 .course-video{
     margin:5px auto;
+}
+
+.border-bottom-light-green{
+    color: #089803;
+}
+
+.course-tabs{
+
 }
