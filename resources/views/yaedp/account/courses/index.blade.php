@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container mb-4">
 
         <p class="bread-crumbs">
             <a href="{{ route('yaedp.account') }}">Dashboard</a> / <a href="{{ route('yaedp.account.modules') }}">Modules</a> / <span class="light-green">Module Name</span>
