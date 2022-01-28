@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class LearningCategory extends Model
 {
     protected $fillable = [
-        'name'
+        'name',
+        'slug',
     ];
 
     public function learningModules(){

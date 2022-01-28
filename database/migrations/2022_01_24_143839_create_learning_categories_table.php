@@ -16,6 +16,7 @@ class CreateLearningCategoriesTable extends Migration
         Schema::create('learning_categories', static function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
