@@ -24,6 +24,8 @@ class CreateLearningCoursesTable extends Migration
             $table->binary('document_one')->nullable();
             $table->binary('document_two')->nullable();
             $table->text('description')->nullable();
+            $table->text('trainers')->nullable();
+            $table->string('teaching_methods')->nullable();
             $table->integer('sort')->nullable();
             $table->boolean('visible')->default(1);
             $table->timestamps();

@@ -13,7 +13,7 @@ class LearningModule extends Model
         'image',
         'description',
         'trainers',
-        'learning_methods',
+        'teaching_methods',
         'start',
         'end',
         'sort',

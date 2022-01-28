@@ -20,7 +20,7 @@ class CreateLearningModulesTable extends Migration
             $table->binary('image');
             $table->text('description');
             $table->text('trainers')->nullable();
-            $table->string('teaching_methods')->nullable();
+            $table->string('learning_methods')->nullable();
             $table->string('start')->nullable();
             $table->string('end')->nullable();
             $table->integer('sort')->nullable();
