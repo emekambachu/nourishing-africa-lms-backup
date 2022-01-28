@@ -19,8 +19,11 @@ class CreateLearningModulesTable extends Migration
             $table->unsignedBigInteger('learning_category_id');
             $table->binary('image');
             $table->text('description');
-            $table->string('start');
-            $table->string('end');
+            $table->text('trainers')->nullable();
+            $table->string('learning_methods')->nullable();
+            $table->string('start')->nullable();
+            $table->string('end')->nullable();
+            $table->integer('sort')->nullable();
             $table->boolean('visible')->default(1);
             $table->timestamps();
         });

@@ -12,8 +12,11 @@ class LearningModule extends Model
         'learning_category_id',
         'image',
         'description',
+        'trainers',
+        'learning_methods',
         'start',
         'end',
+        'sort',
         'visible',
     ];
 
