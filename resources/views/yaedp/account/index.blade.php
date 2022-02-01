@@ -21,11 +21,17 @@
                     <p class="text-inter light-green">Something new to learn today</p>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 text-left">
-                        <img src="{{ asset('images/icons/book-open-circle.png') }}" width="30"/> <span> 6 Modules</span>
+                    <div class="col-md-4 text-left">
+                        <img src="{{ asset('images/icons/book-open-circle.png') }}" width="30"/>
+                        <span> {{ $modules->count() }} Modules</span>
                     </div>
-                    <div class="col-md-6 text-left">
-                        <img src="{{ asset('images/icons/user-circle-brown.png') }}" width="30"/> <span> 10 Instructors</span>
+                    <div class="col-md-4 text-left">
+                        <img src="{{ asset('images/icons/book-open-circle.png') }}" width="30"/>
+                        <span> {{ $courses->count() }} Courses</span>
+                    </div>
+                    <div class="col-md-4 text-left">
+                        <img src="{{ asset('images/icons/user-circle-brown.png') }}" width="30"/>
+                        <span> 10 Instructors</span>
                     </div>
                 </div>
             </div>

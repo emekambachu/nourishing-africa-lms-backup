@@ -2,7 +2,6 @@
 
 namespace App\Models\Learning;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class LearningCourse extends Model
@@ -13,7 +12,7 @@ class LearningCourse extends Model
         'learning_module_id',
         'image',
         'video',
-        'duration',
+        'study_timer',
         'document_one',
         'document_two',
         'description',

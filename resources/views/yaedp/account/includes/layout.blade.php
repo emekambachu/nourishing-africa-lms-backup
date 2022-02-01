@@ -97,16 +97,25 @@
                     <span class="side-menu__label">Dashboard</span></a>
             </li>
 
-            <li class="slide mb-3" style="">
-                <a class="side-menu__item" href="{{ route('yaedp.account.modules') }}">
+            <li class="slide mb-3">
+                <a class="side-menu__item" data-toggle="slide" href="{{ route('yaedp.account.modules') }}">
                     <i class="side-menu__icon fa fa-graduation-cap"></i>
-                    <span class="side-menu__label">Modules</span></a>
+                    <span class="side-menu__label">Modules</span>
+                    <i class="angle fe fe-chevron-down"></i>
+                </a>
+                <x-learning.yaedpMenu/>
             </li>
 
-            <li class="slide mb-3" style="">
-                <a class="side-menu__item" href="{{ route('yaedp.account.assignments') }}">
+            <li class="slide mb-3">
+                <a class="side-menu__item" href="">
                     <i class="side-menu__icon fa fa-book"></i>
                     <span class="side-menu__label">Assignments</span></a>
+            </li>
+
+            <li class="slide mb-3">
+                <a class="side-menu__item" href="{{ route('yaedp.account.faq') }}">
+                    <i class="side-menu__icon fa fa-question"></i>
+                    <span class="side-menu__label">FAQ</span></a>
             </li>
 
             <li class="slide mb-3" style="">
@@ -208,7 +217,7 @@
     </div>
 
     <!-- container -->
-    <div class="container-fluid container-responsiveness" style="margin-top: 100px;">
+    <div class="container-fluid container-responsiveness" style="margin: 100px 0;">
         @yield('content')
     </div>
     <!-- /container -->

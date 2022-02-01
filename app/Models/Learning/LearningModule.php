@@ -2,7 +2,6 @@
 
 namespace App\Models\Learning;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class LearningModule extends Model
@@ -28,5 +27,12 @@ class LearningModule extends Model
     }
     public function learningCategory(){
         return $this->belongsTo(LearningCategory::class, 'learning_category_id', 'id');
+    }
+
+    public function nextModule(){
+        return self::where('id', '>', $this->id)->orderBy('id','asc')->first();
+    }
+    public function previousModule(){
+        return self::where('id', '<', $this->id)->orderBy('id','desc')->first();
     }
 }

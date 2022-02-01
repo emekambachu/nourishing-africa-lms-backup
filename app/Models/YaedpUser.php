@@ -3,8 +3,11 @@
 namespace App\Models;
 
 use App\Models\Learning\LearningAssessment;
+use App\Models\Learning\LearningCourseView;
+use App\Models\Learning\LearningModule;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class YaedpUser extends Authenticatable
 {
@@ -56,5 +59,23 @@ class YaedpUser extends Authenticatable
 
     public function learningAssessment(){
         return $this->hasOne(LearningAssessment::class, 'user_id', 'id');
+    }
+
+    public function learningCourseViews(){
+        return $this->hasMany(LearningCourseView::class, 'user_id', 'id');
+    }
+
+    public static function startedModule($moduleId){
+        return LearningCourseView::where([
+            ['user_id', Auth::user()->id],
+            ['learning_module_id', $moduleId],
+        ])->first();
+    }
+
+    public static function startedCourse($courseId){
+        return LearningCourseView::where([
+            ['user_id', Auth::user()->id],
+            ['learning_course_id', $courseId],
+        ])->first();
     }
 }

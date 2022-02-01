@@ -448,6 +448,11 @@
     color: #fff;
 }
 
+.bg-gray{
+    background-color: #898989;
+    color: #fff;
+}
+
 .border-light-green{
     border: 1px solid #089803;
 }
@@ -464,7 +469,7 @@
 .module-grid-container{
     height: 200px;
     position: relative;
-    background: #FFFFFF url('../images/stock/study.jpg');
+    background: #FFFFFF url('../images/stock/dock.jpg');
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
 }
@@ -478,8 +483,6 @@
 
 .module-btn{
     padding: 10px 0;
-    background-color: #CE8000;
-    color: #fff;
     width: 100%;
     border-radius: 5px;
     margin: 10px auto;
@@ -490,9 +493,10 @@
     background-color: #fff;
     color: #089803;
     padding: 2px;
-    font-size: 16px;
-    margin-top: 10px;
-    margin-left: 10px;
+    font-size: 14px;
+    margin-left: 8px;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .bread-crumbs{
@@ -543,3 +547,14 @@
     padding: 12px;
 }
 
+.bg-badge-warning{
+    background: rgba(247, 227, 1, 0.12);
+}
+
+.bg-badge-success{
+    background: rgba(8, 152, 3, 0.08);
+}
+
+.bg-badge-danger{
+    background: rgba(111, 8, 8, 0.06);
+}

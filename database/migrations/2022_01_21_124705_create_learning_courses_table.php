@@ -20,13 +20,13 @@ class CreateLearningCoursesTable extends Migration
             $table->string('title');
             $table->binary('image')->nullable();
             $table->binary('video')->nullable();
-            $table->string('duration')->nullable();
+            $table->string('study_timer')->nullable();
             $table->binary('document_one')->nullable();
             $table->binary('document_two')->nullable();
             $table->text('description')->nullable();
-            $table->text('trainers')->nullable();
             $table->string('teaching_methods')->nullable();
-            $table->integer('sort')->nullable();
+            $table->string('trainers')->nullable();
+            $table->string('sort')->nullable();
             $table->boolean('visible')->default(1);
             $table->timestamps();
         });
