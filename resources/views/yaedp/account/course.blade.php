@@ -14,8 +14,15 @@
             <a href="{{ route('yaedp.account') }}">Dashboard</a> / <a href="{{ route('yaedp.account.modules') }}">Modules</a> / <a href="{{ route('yaedp.account.courses', $course->learningModule->id) }}">Courses</a> / <span class="light-green">{{ $course->title }}</span>
         </p>
 
-        <h1 class="font-large-inter text-light-brown font-weight-bold mb-0">
-            {{ $course->title }}</h1>
+        <div class="mb-3">
+            <h2 class="font-large-inter text-light-brown font-weight-bold d-inline">
+                {{ $course->title }}</h2>
+            <!--View course countdown-->
+            <span class="d-inline d-none" id="courseCountdown"></span>
+        </div>
+
+{{--        <progress class="progress-bar progress-bar-striped bg-success"--}}
+{{--                  value="0" max="100" id="progressBar"></progress>--}}
 
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-12">
@@ -145,22 +152,32 @@
                         </span>
                     </div>
 
-{{--                    <div class="bg-lemon-green p-2">--}}
-{{--                        <span class="text-inter na-text-dark-green tx-16">--}}
-{{--                            Module name <i class="fa fa-check na-text-light-green text-right ml-2"></i></span>--}}
-{{--                        <p class="text-inter text-grey">The export details in agriculture</p>--}}
-{{--                    </div>--}}
-
-{{--                    <div class="p-2">--}}
-{{--                        <span class="text-inter na-text-dark-green tx-16">--}}
-{{--                            Module name <i class="fas fa-lock text-gray text-right ml-2"></i></span>--}}
-{{--                        <p class="text-inter text-grey">The export details in agriculture</p>--}}
-{{--                    </div>--}}
-
                 </div>
             </div>
         </div>
+    </div>
 
+    <!--Timer Warning Modal-->
+    <div class="modal effect-scale hide" id="timerAlert" style="padding-right: 22px;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-demo">
+                <div class="modal-header">
+                    <h5 class="text-inter font-weight-bold text-center">
+                        Your session will be recorded once you resume this course, leaving before the timer ends will not complete the course.
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <h5 class="text-center">Continue ?</h5>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn ripple btn-success startCourse" data-dismiss="modal" type="button"
+                            data-user-id="{{ Auth::user()->id }}" data-module-id="" data-course-id="">Yes</button>
+                    <a href="{{ route('yaedp.account.courses', $course->learning_module_id) }}">
+                        <button class="btn ripple btn-warning" type="button">No, take me back</button>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
@@ -196,4 +213,22 @@
         });
     </script>
 
+    <script src="{{ asset('learning-assets/custom/learning-views.js') }}" type="text/javascript"></script>
+
+    <!--- Internal Modal js --->
+    <script src="{{ asset('learning-assets/js/modal.js') }}"></script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/61fabd5c9bd1f31184da9efe/1fqtn7dcj';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 @endsection

@@ -566,3 +566,14 @@
 .module-grid-contents{
     height: 80px;
 }
+
+#courseCountdown{
+    width: auto;
+    margin-left: 5px;
+    background-color: #089803;
+    color: #fff;
+    font-weight: bold;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 16px;
+}

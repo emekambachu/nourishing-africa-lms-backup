@@ -20,7 +20,8 @@
         <div class="row">
 
             <div class="col-12">
-                <p class="tx-16 text-gray mb-0">{!! $module->description !!}</p>
+                <p class="tx-16 text-gray mb-0">
+                    {!! $module->description !!}</p>
                 <p class="light-green tx-16 text-right">
                     {{ \Carbon\Carbon::parse($module->start)->format('M d, Y').' - '.\Carbon\Carbon::parse($module->start)->format('M d, Y')}}
                 </p>
@@ -47,13 +48,19 @@
                     @endif
 
                     <div class="module-grid-container pt-2">
-                        <span class="module-title">{{ $course->title }}</span>
+                        {{--<span class="module-title">{{ $course->title }}</span>--}}
                     </div>
-                    <div class="module-grid-contents">
-                        <p class="text-grey tx-14 mt-3">
-                            {!! $course->description !!}
-                        </p>
-                    </div>
+
+                        {{--                    <div class="module-grid-contents">--}}
+                        {{--                        <p class="text-grey tx-14 mt-3">--}}
+                        {{--                            {!! $course->description !!}--}}
+                        {{--                        </p>--}}
+                        {{--                    </div>--}}
+
+                    <p class="na-text-dark-green mt-2 font-weight-bold">
+                        {{ $course->title }}
+                    </p>
+
                     <div>
                         <p class="text-grey tx-12 mt-3">
                             30:22
@@ -89,6 +96,7 @@
         </div>
 
     </div>
+
 @endsection
 
 @section('bottom-assets')

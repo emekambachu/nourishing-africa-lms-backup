@@ -38,11 +38,15 @@
                 @endif
 
                     <div class="module-grid-container pt-2">
-                        <span class="module-title">{{ $mod->title }}</span>
+{{--                        <span class="module-title">{{ $mod->title }}</span>--}}
                         <div class="bg-lemon-green p-2 module-grid-content">
-                           {{ $mod->description }}
+                            {{ \Illuminate\Support\Str::limit($mod->description, $limit = 100, $end = '...') }}
                         </div>
                     </div>
+
+                    <p class="na-text-dark-green mt-2 font-weight-bold">
+                        {{ $mod->title }}
+                    </p>
 
                     <!--If this item is not the first module, check if the previous module has been completed-->
                     <!--If the previous module has been completed, make the next module available-->
