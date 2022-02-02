@@ -39,7 +39,7 @@
                 <div class="row">
                     <div class="col-lg-5 col-md-5 col-sm-6 col-sx-6">
                         <div class="module-complete-counter">
-                            <h1>10</h1>
+                            <h1>{{ $countCompletedCourses }}</h1>
                             <p>Completed Courses</p>
                         </div>
                     </div>
@@ -54,9 +54,12 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-12">
-                        <h4 class="text-light-brown text-inter text-left float-left">My Courses</h4>
-                        <a class="float-right na-text-dark-green" href="">See all courses</a>
+                        <h4 class="text-light-brown text-inter text-left float-left">My Progress</h4>
+                        <a class="float-right na-text-dark-green" href="{{ route('yaedp.account.modules') }}">
+                            See all modules</a>
                     </div>
+
+                    @foreach($startedCourses as $course)
                     <div class="col-md-6">
                         <div class="bg-white-radius-shadow mr-2">
                             <div class="row na-border-bottom">
@@ -64,81 +67,46 @@
                                     <img src="{{ asset('images/stock/image-26.png') }}"/>
                                 </div>
                                 <div class="col-9">
-                                    <h4 class="font-large-inter text-dark text-left mb-0">Export Regulations</h4>
+                                    <h4 class="font-large-inter text-dark text-left mb-0">
+                                        {{ $course->learningCourse->title }}</h4>
                                     <p>
                                         <i class="fa fa-user text-light-brown"></i>
-                                        <span class="text-grey">Rotimi Ola</span>
+                                        <span class="text-grey">{{ $course->learningCourse->trainers }}</span>
                                     </p>
                                 </div>
                                 <div class="col-12">
-                                    <p class="text-left text-inter text-dark">Lessons on leveraging on export opportunities to increase your revenue significantly</p>
+                                    <p class="text-left text-inter text-dark bg-gray-radius p-1 mt-2">
+                                        {{ $course->learningCourse->description }}</p>
                                 </div>
                             </div>
                             <div class="row pt-3 pb-3">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="pb-3">
-                                        <img src="{{ asset('images/icons/video.png') }}" width="30"/> <span>5 Modules</span>
+                                        <img src="{{ asset('images/icons/book-open-circle.png') }}" width="30"/>
+                                        <span>{{ $course->learningModule->title }}</span>
                                     </div>
+{{--                                    <div class="pb-3">--}}
+{{--                                        <img src="{{ asset('images/icons/tasks.png') }}" width="30"/>--}}
+{{--                                        <span>1 Assignment</span>--}}
+{{--                                    </div>--}}
                                     <div class="pb-3">
-                                        <img src="{{ asset('images/icons/tasks.png') }}" width="30"/> <span>1 Assignment</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="pb-3">
-                                        <img src="{{ asset('images/icons/timing.png') }}" width="30"/> <span>Period</span>
+                                        <img src="{{ asset('images/icons/timing.png') }}" width="30"/>
+                                        <span>
+                                            {{ $course->learningModule->start.' - '.$course->learningModule->stop }}
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-12 text-center">
-                                    <a class="text-center" href="#">
+                                    <a class="text-center"
+                                       href="{{ route('yaedp.account.course', $course->learningCourse->id) }}">
                                         <button class="btn-light-green-outline" type="button">
-                                            Start Module
-                                        </button>
+                                            Continue</button>
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="bg-white-radius-shadow mr-2">
-                            <div class="row na-border-bottom">
-                                <div class="col-3">
-                                    <img src="{{ asset('images/stock/image-26.png') }}"/>
-                                </div>
-                                <div class="col-9">
-                                    <h4 class="font-large-inter text-dark text-left mb-0">Export Regulations</h4>
-                                    <p>
-                                        <i class="fa fa-user text-light-brown"></i>
-                                        <span class="text-grey">Rotimi Ola</span>
-                                    </p>
-                                </div>
-                                <div class="col-12">
-                                    <p class="text-left text-inter text-dark">Lessons on leveraging on export opportunities to increase your revenue significantly</p>
-                                </div>
-                            </div>
-                            <div class="row pt-3 pb-3">
-                                <div class="col-md-6">
-                                    <div class="pb-3">
-                                        <img src="{{ asset('images/icons/video.png') }}" width="30"/> <span>5 Modules</span>
-                                    </div>
-                                    <div class="pb-3">
-                                        <img src="{{ asset('images/icons/tasks.png') }}" width="30"/> <span>1 Assignment</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="pb-3">
-                                        <img src="{{ asset('images/icons/timing.png') }}" width="30"/> <span>Period</span>
-                                    </div>
-                                </div>
-                                <div class="col-12 text-center">
-                                    <a class="text-center" href="#">
-                                        <button class="btn-light-green-outline" type="button">
-                                            Start Module
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <div class="row" style="margin-top: 30px; margin-bottom: 30px;">

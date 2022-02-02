@@ -17,9 +17,12 @@ class CreateLearningCourseViewsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('learning_module_id')->nullable();
-            $table->unsignedBigInteger('learning_course_id')->nullable();
-            $table->boolean('started')->default(1);
-            $table->boolean('completed')->default(0);
+            $table->unsignedBigInteger('learning_category_id')->nullable();
+            $table->unsignedBigInteger('learning_course_id');
+            $table->boolean('started_module')->default(1);
+            $table->boolean('completed_module')->default(0);
+            $table->boolean('started_course')->default(1);
+            $table->boolean('completed_course')->default(0);
             $table->timestamps();
         });
     }

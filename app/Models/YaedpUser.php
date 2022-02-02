@@ -72,10 +72,11 @@ class YaedpUser extends Authenticatable
         ])->first();
     }
 
-    public static function startedCourse($courseId){
+    public static function startedCourse($courseId, $moduleId){
         return LearningCourseView::where([
             ['user_id', Auth::user()->id],
             ['learning_course_id', $courseId],
+            ['learning_module_id', $moduleId],
         ])->first();
     }
 }

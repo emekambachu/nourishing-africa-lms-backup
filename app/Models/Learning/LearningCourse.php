@@ -29,4 +29,12 @@ class LearningCourse extends Model
     public function learningCategory(){
         return $this->belongsTo(LearningCategory::class, 'learning_category_id', 'id');
     }
+
+    public function nextCourse(){
+        return self::where('id', '>', $this->id)->orderBy('id','asc')->first();
+    }
+
+    public function previousCourse(){
+        return self::where('id', '<', $this->id)->orderBy('id','desc')->first();
+    }
 }

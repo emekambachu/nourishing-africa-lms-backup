@@ -91,7 +91,7 @@
     <div class="main-sidebar-body">
         <ul class="side-menu">
 
-            <li class="slide mb-3" style="">
+            <li class="slide mb-3">
                 <a class="side-menu__item" href="{{ route('yaedp.account') }}">
                     <i class="side-menu__icon fa fa-desktop"></i>
                     <span class="side-menu__label">Dashboard</span></a>
@@ -107,8 +107,8 @@
             </li>
 
             <li class="slide mb-3">
-                <a class="side-menu__item" href="">
-                    <i class="side-menu__icon fa fa-book"></i>
+                <a class="side-menu__item" href="{{ route('yaedp.account.module.assignments') }}">
+                    <i class="side-menu__icon fa fa-book-reader"></i>
                     <span class="side-menu__label">Assignments</span></a>
             </li>
 

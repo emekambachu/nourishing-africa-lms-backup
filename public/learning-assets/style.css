@@ -63,7 +63,7 @@
     font-weight: 500;
 }
 
-.na-bg-orange{
+.bg-orange{
     background-color: rgba(246, 203, 117, 0.76);
 }
 
@@ -206,8 +206,8 @@
     height: 100px;
 }
 
-.na-inv-bg-grey-radius{
-    background-color: #e3e2e2;
+.bg-gray-radius{
+    background-color: #eae9e9;
     border-radius: 5px;
 }
 
@@ -448,6 +448,10 @@
     color: #fff;
 }
 
+.bg-very-light-brown{
+    background-color: #ffd48c;
+}
+
 .bg-gray{
     background-color: #898989;
     color: #fff;
@@ -557,4 +561,8 @@
 
 .bg-badge-danger{
     background: rgba(111, 8, 8, 0.06);
+}
+
+.module-grid-contents{
+    height: 80px;
 }

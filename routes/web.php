@@ -94,7 +94,7 @@ Route::get('member/login', static function (){
     return Redirect::to('http://nourishingafrica.com/login');
 })->name('member.login');
 
-// Login and Authentication
+// Disable default auth
 Auth::routes([
     'register' => false,
     'login' => false,
@@ -126,9 +126,15 @@ Route::get('yaedp/account/{id}/courses',
 Route::get('yaedp/account/{id}/course',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'course'])
     ->name('yaedp.account.course');
-Route::get('yaedp/account/{id}/assignments',
-    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'assignments'])
-    ->name('yaedp.account.assignments');
+Route::get('yaedp/account/course/download-document/{id}/{file_name}',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'downloadCourseDocument'])
+    ->name('yaedp.account.course.download-document');
+Route::get('yaedp/account/module/assignments',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'moduleAssignments'])
+    ->name('yaedp.account.module.assignments');
+Route::get('yaedp/account/module/{id}/assignment',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'moduleAssignment'])
+    ->name('yaedp.account.module.assignment');
 Route::get('yaedp/account/faq',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'faq'])
     ->name('yaedp.account.faq');
