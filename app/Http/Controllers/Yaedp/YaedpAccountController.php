@@ -94,6 +94,32 @@ class YaedpAccountController extends Controller
         return view('yaedp.account.course', compact('course', 'courses'));
     }
 
+    public function courseComplete($id){
+        // Get current course
+        $course = LearningCourse::with('learningModule', 'learningCategory')->where([
+            ['id', $id],
+            ['learning_category_id', $this->yaedpId()],
+        ])->first();
+
+        // Check if course has been viewed
+        $viewedCourse = LearningCourseView::where([
+            ['user_id', Auth::user()->id],
+            ['learning_course_id', $id],
+            ['learning_module_id', $course->learningModule->id],
+            ['learning_category_id', $course->learningCategory->id],
+        ])->first();
+
+        // if course has not been viewed, add it before entering course page
+        if($viewedCourse){
+            $viewedCourse->completed_course = 1;
+            $viewedCourse->save();
+        }
+
+        return response()->json([
+            'success'=>'Success',
+        ]);
+    }
+
     public function downloadCourseDocument($Id, $file_name){
         $file = LearningCourse::where('id', $Id)->firstOrFail();
         $path = public_path(). '/documents/learning/courses/'. $file_name;

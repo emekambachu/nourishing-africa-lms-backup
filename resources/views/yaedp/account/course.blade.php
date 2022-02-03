@@ -15,10 +15,10 @@
         </p>
 
         <div class="mb-3">
-            <h2 class="font-large-inter text-light-brown font-weight-bold d-inline">
+            <h2 class="font-large-inter text-light-brown font-weight-bold">
                 {{ $course->title }}</h2>
             <!--View course countdown-->
-            <span class="d-inline d-none" id="courseCountdown"></span>
+            <div id="courseCountdown"></div>
         </div>
 
 {{--        <progress class="progress-bar progress-bar-striped bg-success"--}}
@@ -35,8 +35,6 @@
                                 <div style='max-width: 853px'>
                                     <div style='position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;'>
                                         <!--Insert Iframe-->
-{{--                                        <iframe width="853" height="480" src="https://web.microsoftstream.com/embed/video/161c45c5-56d4-4dcf-903e-0251679f7f7e?autoplay=false&showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;"></iframe>--}}
-
                                         {!! $course->video !!}
                                     </div>
                                 </div>
@@ -151,14 +149,37 @@
                             <i class="fa fa-list text-right ml-2"></i>
                         </span>
                     </div>
-
                 </div>
+
+                @if($course->nextCourse())
+                    @if(Auth::user()->startedCourse($course->id, $course->learning_module_id))
+                        @if(Auth::user()->startedCourse($course->id, $course->learning_module_id)->completed_course)
+                            <a href="{{ route('yaedp.account.course', $course->nextCourse()->id) }}">
+                                <button class="module-btn bg-light-brown d-flex justify-content-center">
+                                    Next Course</button>
+                            </a>
+                        @else
+                            <a href="{{ route('yaedp.account.course', $course->nextCourse()->id) }}">
+                                <button id="btn-next-course" disabled
+                                        class="module-btn bg-gray d-flex justify-content-center">
+                                    Next Course</button>
+                            </a>
+                        @endif
+                    @endif
+                @else
+                    <a href="{{ route('yaedp.account.assessment.start', $course->learning_module_id) }}">
+                        <button class="module-btn bg-light-brown d-flex justify-content-center">
+                            Start Assessment</button>
+                    </a>
+                @endif
+
             </div>
         </div>
     </div>
 
     <!--Timer Warning Modal-->
-    <div class="modal effect-scale hide" id="timerAlert" style="padding-right: 22px;">
+    <div class="modal effect-scale hide" id="timerAlert" style="padding-right: 22px;"
+         data-completed-course="{{ Auth::user()->startedCourse($course->id, $course->learning_module_id)->completed_course ? 1 : 0 }}">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
@@ -171,7 +192,8 @@
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button class="btn ripple btn-success startCourse" data-dismiss="modal" type="button"
-                            data-user-id="{{ Auth::user()->id }}" data-module-id="" data-course-id="">Yes</button>
+                            data-route="{{ route('yaedp.account.course.complete', $course->id) }}"
+                            data-study-timer="{{ $course->study_timer }}">Yes</button>
                     <a href="{{ route('yaedp.account.courses', $course->learning_module_id) }}">
                         <button class="btn ripple btn-warning" type="button">No, take me back</button>
                     </a>

@@ -126,18 +126,26 @@ Route::get('yaedp/account/{id}/courses',
 Route::get('yaedp/account/{id}/course',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'course'])
     ->name('yaedp.account.course');
+Route::post('yaedp/account/course/{id}/complete',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'courseComplete'])
+    ->name('yaedp.account.course.complete');
 Route::get('yaedp/account/course/download-document/{id}/{file_name}',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'downloadCourseDocument'])
     ->name('yaedp.account.course.download-document');
-Route::get('yaedp/account/module/assignments',
-    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'moduleAssignments'])
-    ->name('yaedp.account.module.assignments');
-Route::get('yaedp/account/module/{id}/assignment',
-    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'moduleAssignment'])
-    ->name('yaedp.account.module.assignment');
 Route::get('yaedp/account/faq',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'faq'])
     ->name('yaedp.account.faq');
+
+// YAEDP Assessment Controller
+Route::get('yaedp/account/assessment/{id}/start',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'start'])
+    ->name('yaedp.account.assessment.start');
+Route::get('yaedp/account/assessments',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'index'])
+    ->name('yaedp.account.assessments');
+Route::get('yaedp/account/{id}/assessment',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'show'])
+    ->name('yaedp.account.assessment.show');
 
 // Password Reset
 Route::get('yaedp/forgot-password',

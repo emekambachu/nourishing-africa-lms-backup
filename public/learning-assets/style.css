@@ -553,10 +553,12 @@
 
 .bg-badge-warning{
     background: rgba(247, 227, 1, 0.12);
+    color: #D4FFD2;
 }
 
 .bg-badge-success{
     background: rgba(8, 152, 3, 0.08);
+    color: #006600;
 }
 
 .bg-badge-danger{
@@ -568,6 +570,7 @@
 }
 
 #courseCountdown{
+    display: inline-block;
     width: auto;
     margin-left: 5px;
     background-color: #089803;
@@ -575,5 +578,5 @@
     font-weight: bold;
     padding: 3px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 15px;
 }

@@ -107,9 +107,9 @@
             </li>
 
             <li class="slide mb-3">
-                <a class="side-menu__item" href="{{ route('yaedp.account.module.assignments') }}">
+                <a class="side-menu__item" href="{{ route('yaedp.account.assessments') }}">
                     <i class="side-menu__icon fa fa-book-reader"></i>
-                    <span class="side-menu__label">Assignments</span></a>
+                    <span class="side-menu__label">Assessments</span></a>
             </li>
 
             <li class="slide mb-3">
