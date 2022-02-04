@@ -448,6 +448,10 @@
     color: #fff;
 }
 
+.bg-light-green{
+    background-color: #089803;
+}
+
 .bg-very-light-brown{
     background-color: #ffd48c;
 }
@@ -553,7 +557,7 @@
 
 .bg-badge-warning{
     background: rgba(247, 227, 1, 0.12);
-    color: #D4FFD2;
+    color: #CE8000;
 }
 
 .bg-badge-success{
@@ -563,6 +567,7 @@
 
 .bg-badge-danger{
     background: rgba(111, 8, 8, 0.06);
+    color: #D94C01;
 }
 
 .module-grid-contents{
@@ -573,7 +578,6 @@
     display: inline-block;
     width: auto;
     margin-left: 5px;
-    background-color: #089803;
     color: #fff;
     font-weight: bold;
     padding: 3px;

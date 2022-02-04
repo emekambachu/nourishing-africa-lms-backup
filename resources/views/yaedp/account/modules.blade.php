@@ -23,12 +23,12 @@
 
                 @if(Auth::user()->startedModule($mod->id))
                     @if(Auth::user()->startedModule($mod->id)->completed_module)
-                        <span class="bg-badge-success badge badge-pill text-light-brown mb-2">
+                        <span class="bg-badge-success badge badge-pill mb-2">
                         Completed
                         </span>
                     @else
-                        <span class="bg-badge-warning badge badge-pill text-light-brown mb-2">
-                        Ongoing
+                        <span class="bg-badge-warning badge badge-pill mb-2">
+                        In progress
                         </span>
                     @endif
                 @else

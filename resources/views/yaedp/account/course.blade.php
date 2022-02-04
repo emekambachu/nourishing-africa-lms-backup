@@ -158,6 +158,11 @@
                                 <button class="module-btn bg-light-brown d-flex justify-content-center">
                                     Next Course</button>
                             </a>
+                        @elseif(Auth::user()->startedCourse($course->id, $course->learning_module_id)->completed_course && !$course->nextCourse())
+                            <a href="{{ route('yaedp.account.assessment.start', $course->learning_module_id) }}">
+                                <button class="module-btn bg-light-brown d-flex justify-content-center">
+                                    Start Assessment</button>
+                            </a>
                         @else
                             <a href="{{ route('yaedp.account.course', $course->nextCourse()->id) }}">
                                 <button id="btn-next-course" disabled

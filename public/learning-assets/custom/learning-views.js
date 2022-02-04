@@ -40,6 +40,7 @@ $(function(){
             // Convert minutes to seconds
             const duration = 60 * minute,
                 display = document.querySelector('#courseCountdown');
+                $("#courseCountdown").addClass('bg-light-green');
             startTimer(duration, display);
 
             function recordCourseCompletion(route){
@@ -59,7 +60,6 @@ $(function(){
                     },
 
                     success:function (response){
-                        console.log('completed');
                         $('#courseCountdown').html("Course session has been recorded, you can start the next course");
                     },
 

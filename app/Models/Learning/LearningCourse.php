@@ -31,10 +31,16 @@ class LearningCourse extends Model
     }
 
     public function nextCourse(){
-        return self::where('id', '>', $this->id)->orderBy('id','asc')->first();
+        return self::where([
+            ['id', '>', $this->id],
+            ['learning_module_id', '=', $this->learning_module_id],
+        ])->orderBy('id','asc')->first();
     }
 
     public function previousCourse(){
-        return self::where('id', '<', $this->id)->orderBy('id','desc')->first();
+        return self::where([
+            ['id', '<', $this->id],
+            ['learning_module_id', '=', $this->learning_module_id],
+        ])->orderBy('id','desc')->first();
     }
 }

@@ -17,10 +17,11 @@
         <div class="row bg-white na-border-radius border-brown p-3 mb-5">
             <div class="col-md-8 col-sm-8 col-xs-8">
                 <div style="margin-bottom: 70px;">
-                    <h4 class="text-inter text-dark mb-0">
+                    <h4 class="text-inter text-dark mb-1">
                         Are you ready to take your agri-food business to the next level?</h4>
-                    <p class="text-inter light-green tx-13">
-                        The Youth in Agri-Food Export Development Program (YAEDP) training covers a robust curriculum that takes participants on a comprehensive learning journey from the conception of the Nigerian export market specific to key export value chains to successful entry to the international market. The six-module program is designed to take you from opportunity identification to quality product launch, growth, and financing. With guidance from top agri-food industry experts and export specialists, you will develop an improved entrepreneurial mindset to build a profitable and sustainable export businesses.</p>
+                    <p class="text-inter light-green tx-12">
+                        The Youth in Agri-Food Export Development Program (YAEDP) training covers a robust curriculum that takes participants on a comprehensive learning journey from the conception of the Nigerian export market specific to key export value chains to successful entry to the international market.<br><br>
+                        The six-module program is designed to take you from opportunity identification to quality product launch, growth, and financing. With guidance from top agri-food industry experts and export specialists, you will develop an improved entrepreneurial mindset to build a profitable and sustainable export businesses.</p>
                 </div>
                 <div class="row">
                     <div class="col-md-4 text-left">

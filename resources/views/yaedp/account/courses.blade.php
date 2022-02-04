@@ -30,15 +30,14 @@
             @foreach($courses as $course)
             <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
                 <div class="bg-white-radius-shadow border-light-green">
-
                     @if(Auth::user()->startedCourse($course->id, $module->id))
                         @if(Auth::user()->startedCourse($course->id, $module->id)->completed_course)
-                            <span class="bg-badge-success badge badge-pill text-light-brown mb-2">
+                            <span class="bg-badge-success badge badge-pill mb-2">
                             Completed
                             </span>
                         @else
-                            <span class="bg-badge-warning badge badge-pill text-light-brown mb-2">
-                            Ongoing
+                            <span class="bg-badge-warning badge badge-pill mb-2">
+                            In progress
                             </span>
                         @endif
                     @else
@@ -47,24 +46,14 @@
                         </span>
                     @endif
 
-                    <div class="module-grid-container pt-2">
-                        {{--<span class="module-title">{{ $course->title }}</span>--}}
-                    </div>
-
-                        {{--                    <div class="module-grid-contents">--}}
-                        {{--                        <p class="text-grey tx-14 mt-3">--}}
-                        {{--                            {!! $course->description !!}--}}
-                        {{--                        </p>--}}
-                        {{--                    </div>--}}
+                    <div class="module-grid-container pt-2"></div>
 
                     <p class="na-text-dark-green mt-2 font-weight-bold">
-                        {{ $course->title }}
-                    </p>
+                        {{ $course->title }}</p>
 
                     <div>
                         <p class="text-grey tx-12 mt-3">
-                            30:22
-                        </p>
+                            30:22</p>
                     </div>
 
                     <!--If this item is not the first module, check if the previous module has been completed-->
