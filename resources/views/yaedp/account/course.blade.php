@@ -21,9 +21,6 @@
             <div id="courseCountdown"></div>
         </div>
 
-{{--        <progress class="progress-bar progress-bar-striped bg-success"--}}
-{{--                  value="0" max="100" id="progressBar"></progress>--}}
-
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-12">
                 <div class="bg-white-radius-shadow border-light-green">
@@ -71,7 +68,7 @@
                             <div class="col-md-10 col-sm-12">
                                 <h4 class="text-inter text-dark mb-0">{{ $course->trainers }}</h4>
                                 <h3 class="text-inter text-grey">Lecturer Position and Company</h3>
-                                <p class="text-inter text-grey tx-14">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+                                <p class="text-inter text-grey tx-14"></p>
                             </div>
                         </div>
                     </div>
@@ -118,7 +115,7 @@
 
                     @foreach($courses as $c)
                         @if(Auth::user()->startedCourse($c->id, $c->learningModule->id))
-                            @if(Auth::user()->startedCourse($c->id, $c->learningModule->id)->completed_course)
+                            @if(Auth::user()->startedCourse($c->id, $c->learningModule->id)->status === 1)
                             <div class="p-2 @if($c->id === $course->id) bg-lemon-green @endif ">
                                 <span class="text-inter na-text-dark-green tx-12">
                                     {{ $c->title }}
@@ -151,31 +148,42 @@
                     </div>
                 </div>
 
-                @if($course->nextCourse())
-                    @if(Auth::user()->startedCourse($course->id, $course->learning_module_id))
-                        @if(Auth::user()->startedCourse($course->id, $course->learning_module_id)->completed_course)
-                            <a href="{{ route('yaedp.account.course', $course->nextCourse()->id) }}">
+                <!--If there is a next course for this module-->
+                @if($course->nextCourse($module->id))
+                    <!--Id this course has started-->
+                    @if(Auth::user()->startedCourse($course->id, $module->id))
+                        <!--If this course has been completed-->
+                        @if(Auth::user()->startedCourse($course->id, $module->id)->status === 1)
+                            <a class="next-course-link" href="{{ route('yaedp.account.course', $course->nextCourse($module->id)->id) }}">
                                 <button class="module-btn bg-light-brown d-flex justify-content-center">
                                     Next Course</button>
                             </a>
-                        @elseif(Auth::user()->startedCourse($course->id, $course->learning_module_id)->completed_course && !$course->nextCourse())
-                            <a href="{{ route('yaedp.account.assessment.start', $course->learning_module_id) }}">
+                        <!--If this course has been completed and there is no next course proceed to assessment, else go to next course-->
+                        @elseif(Auth::user()->startedCourse($course->id, $module->id)->status === 1 && !$course->nextCourse($module->id))
+                            <a class="next-course-link" href="{{ route('yaedp.account.assessment.start', $module->id) }}">
                                 <button class="module-btn bg-light-brown d-flex justify-content-center">
                                     Start Assessment</button>
                             </a>
                         @else
-                            <a href="{{ route('yaedp.account.course', $course->nextCourse()->id) }}">
-                                <button id="btn-next-course" disabled
-                                        class="module-btn bg-gray d-flex justify-content-center">
+                            <!--If none of the 2 conditions are true, show disabled button-->
+                            <a disabled class="next-course-link" href="javascript:void(0);">
+                                <button class="module-btn bg-gray d-flex justify-content-center">
                                     Next Course</button>
                             </a>
                         @endif
                     @endif
                 @else
-                    <a href="{{ route('yaedp.account.assessment.start', $course->learning_module_id) }}">
-                        <button class="module-btn bg-light-brown d-flex justify-content-center">
-                            Start Assessment</button>
-                    </a>
+                    @if(Auth::user()->startedCourse($course->id, $module->id)->status === 1)
+                        <a href="{{ route('yaedp.account.assessment.start', $course->learning_module_id) }}">
+                            <button class="module-btn bg-light-brown d-flex justify-content-center">
+                                Start Assessment</button>
+                        </a>
+                    @else
+                        <a class="next-course-link" disabled href="javascript:void(0)">
+                            <button class="module-btn bg-gray d-flex justify-content-center">
+                                Start Assessment</button>
+                        </a>
+                    @endif
                 @endif
 
             </div>
@@ -184,7 +192,10 @@
 
     <!--Timer Warning Modal-->
     <div class="modal effect-scale hide" id="timerAlert" style="padding-right: 22px;"
-         data-completed-course="{{ Auth::user()->startedCourse($course->id, $course->learning_module_id)->completed_course ? 1 : 0 }}">
+         data-next-route="{{ $course->nextCourse($module->id) ? route('yaedp.account.course', $course->nextCourse($module->id)->id) : null }}"
+         data-assessment-route="{{ route('yaedp.account.assessment.start', $module->id) }}"
+         data-next-course="{{ $course->nextCourse($module->id) ? 'has-next' : 'none' }}"
+         data-completed-course="{{ Auth::user()->startedCourse($course->id, $course->learning_module_id)->status === 1 ? 'completed' : 'incomplete' }}">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">

@@ -3,7 +3,7 @@ $(function(){
 
         // Use the timerAlert ID to get completed-course status
         // If the course has been completed ignore pop-up
-        if($("#timerAlert").data("completed-course") === 0){
+        if($("#timerAlert").data("completed-course") === 'incomplete'){
             // wait 1 second before showing session warning popup
             setTimeout(function(){
                 $("#timerAlert").modal('show');
@@ -11,11 +11,14 @@ $(function(){
         }
 
         // on clicking yes, start timer
-        $('.startCourse').click(function() {
+        $('.startCourse').click(function(){
 
             // get route and minute from modal button in course view page
             let route = $(this).data('route');
             let minute = $(this).data('study-timer');
+            let nextCourseRoute = $("#timerAlert").data('next-route');
+            let assessmentRoute = $("#timerAlert").data('assessment-route');
+            let nextCourse = $("#timerAlert").data("next-course");
 
             function startTimer(duration, display){
                 let timer = duration, minutes, seconds;
@@ -30,8 +33,20 @@ $(function(){
 
                     // When time is up, initiate course completion and clear interval
                     if(--timer < 0){
+                        // initiate course completion
                         recordCourseCompletion(route);
+                        // clear time interval
                         clearInterval(courseInterval);
+                        // if there is a next course, add next course button else add assessment button
+                        if(nextCourse === 'has-next'){
+                            console.log("has next");
+                            $(".module-btn").addClass("bg-light-brown").removeClass("bg-gray");
+                            $(".next-course-link").prop("disabled", false).attr('href', nextCourseRoute);
+                        }else{
+                            console.log("no next");
+                            $(".module-btn").addClass("bg-light-brown").removeClass("bg-gray");
+                            $(".next-course-link").prop("disabled", false).attr('href', assessmentRoute);
+                        }
                         $('#courseCountdown').html("Course session has been recorded, you can start the next course");
                     }
                 }, 1000);
@@ -60,6 +75,7 @@ $(function(){
                     },
 
                     success:function (response){
+                        console.log('worked');
                         $('#courseCountdown').html("Course session has been recorded, you can start the next course");
                     },
 

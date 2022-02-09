@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLearningCourseViewsTable extends Migration
+class CreateLearningModuleViewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateLearningCourseViewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('learning_course_views', static function (Blueprint $table){
+        Schema::create('learning_module_views', static function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('learning_module_id')->nullable();
             $table->unsignedBigInteger('learning_category_id')->nullable();
-            $table->unsignedBigInteger('learning_course_id');
-            $table->unsignedBigInteger('learning_module_view_id')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
         });
@@ -32,6 +30,6 @@ class CreateLearningCourseViewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('learning_course_views');
+        Schema::dropIfExists('learning_module_views');
     }
 }

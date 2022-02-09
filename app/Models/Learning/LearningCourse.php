@@ -30,17 +30,17 @@ class LearningCourse extends Model
         return $this->belongsTo(LearningCategory::class, 'learning_category_id', 'id');
     }
 
-    public function nextCourse(){
+    public function nextCourse($moduleId){
         return self::where([
             ['id', '>', $this->id],
-            ['learning_module_id', '=', $this->learning_module_id],
+            ['learning_module_id', '=', $moduleId],
         ])->orderBy('id','asc')->first();
     }
 
-    public function previousCourse(){
+    public function previousCourse($moduleId){
         return self::where([
             ['id', '<', $this->id],
-            ['learning_module_id', '=', $this->learning_module_id],
+            ['learning_module_id', '=', $moduleId],
         ])->orderBy('id','desc')->first();
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Learning\LearningAssessment;
 use App\Models\Learning\LearningCourseView;
 use App\Models\Learning\LearningModule;
+use App\Models\Learning\LearningModuleView;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
@@ -66,7 +67,7 @@ class YaedpUser extends Authenticatable
     }
 
     public static function startedModule($moduleId){
-        return LearningCourseView::where([
+        return LearningModuleView::where([
             ['user_id', Auth::user()->id],
             ['learning_module_id', $moduleId],
         ])->first();

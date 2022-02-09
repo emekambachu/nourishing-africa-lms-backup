@@ -7,6 +7,7 @@ use App\Models\Learning\LearningCategory;
 use App\Models\Learning\LearningCourse;
 use App\Models\Learning\LearningCourseView;
 use App\Models\Learning\LearningModule;
+use App\Models\Learning\LearningModuleView;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,11 +28,11 @@ class YaedpAccountController extends Controller
         $data['courses'] = LearningCourse::where('learning_category_id', $this->yaedpId())->get();
         $data['countCompletedCourses'] = LearningCourseView::where([
             ['user_id', Auth::user()->id],
-            ['completed_course', 1],
+            ['status', 1],
         ])->count();
         $data['startedCourses'] = LearningCourseView::with('learningCourse')->where([
             ['user_id', Auth::user()->id],
-            ['started_course', 1],
+            ['status', 0],
         ])->orderBy('id', 'asc')->limit(2)->get();
 
         return view('yaedp.account.index', $data);
@@ -53,7 +54,7 @@ class YaedpAccountController extends Controller
         $data['courses'] = $data['getCourses']->where([
             ['learning_module_id', $id],
             ['learning_category_id', $this->yaedpId()],
-        ])->orderBy('sort')->get();
+        ])->orderBy('sort', 'asc')->get();
 
         return view('yaedp.account.courses', $data);
     }
@@ -67,6 +68,8 @@ class YaedpAccountController extends Controller
                                         ['learning_category_id', $this->yaedpId()],
                                     ])->first();
 
+        $module = LearningModule::findOrFail($course->learning_module_id);
+
         // Check if course has been viewed
         $viewedCourse = LearningCourseView::where([
                             ['user_id', Auth::user()->id],
@@ -77,25 +80,36 @@ class YaedpAccountController extends Controller
 
         // if course has not been viewed, add it before entering course page
         if(!$viewedCourse){
+            // save to module view table
+            $viewedModule = new LearningModuleView();
+            $viewedModule->user_id = Auth::user()->id;
+            $viewedModule->learning_module_id = $course->learningModule->id;
+            $viewedModule->learning_category_id = $course->learningCategory->id;
+            $viewedModule->save();
+
+            // Save to course view table
             $viewedCourse = new LearningCourseView();
             $viewedCourse->user_id = Auth::user()->id;
             $viewedCourse->learning_course_id = $course->id;
             $viewedCourse->learning_module_id = $course->learningModule->id;
             $viewedCourse->learning_category_id = $course->learningCategory->id;
+            $viewedCourse->learning_module_view_id = $viewedModule->id;
             $viewedCourse->save();
         }
 
         $courses = $data['getCourses']->with('learningModule')->where([
                 ['learning_module_id', $course->learningModule->id],
                 ['learning_category_id', $this->yaedpId()],
-        ])->orderBy('sort')->get();
+        ])->orderBy('sort', 'asc')->get();
 
-        return view('yaedp.account.course', compact('course', 'courses'));
+        return view('yaedp.account.course', compact('course', 'courses', 'module'));
     }
 
     public function courseComplete($id){
         // Get current course
-        $course = LearningCourse::with('learningModule', 'learningCategory')->where([
+        $getModuleCourses = new LearningCourse();
+
+        $course = $getModuleCourses->with('learningModule', 'learningCategory')->where([
             ['id', $id],
             ['learning_category_id', $this->yaedpId()],
         ])->first();
@@ -107,37 +121,40 @@ class YaedpAccountController extends Controller
             ['user_id', Auth::user()->id],
             ['learning_course_id', $id],
             ['learning_module_id', $course->learning_module_id],
-            ['learning_category_id', $course->learninf_category_id],
+            ['learning_category_id', $course->learning_category_id],
+            ['status', 0],
         ])->first();
 
         // if course has not been viewed, complete the course
         if($viewedCourse){
-            $viewedCourse->completed_course = 1;
+            $viewedCourse->status = 1;
             $viewedCourse->save();
         }
 
-//        // Get user completed courses for the current module
-//        $completedModuleCourses = $getViewedCourses->where([
-//            ['user_id', Auth::user()->id],
-//            ['learning_module_id', $course->learning_module_id],
-//            ['learning_category_id', $course->learning_category_id],
-//            ['completed_course', 1],
-//        ])->get();
-//
-//        // Get user courses for the current module
-//        $moduleCourses = $getViewedCourses->where([
-//            ['user_id', Auth::user()->id],
-//            ['learning_module_id', $course->learning_module_id],
-//            ['learning_category_id', $course->learning_category_id],
-//        ])->get();
-//
-//        // compare the number of completed courses with the number of courses in the module
-//        // if the numbers are equal, update module views to completed
-//        if($completedModuleCourses->count() == $moduleCourses->count()){
-//            $completedModuleCourses->each->update([
-//                'completed_module' => 1,
-//            ]);
-//        }
+//      // Get user completed courses for the current module
+        $completedModuleCourses = $getViewedCourses->where([
+            ['user_id', Auth::user()->id],
+            ['learning_module_id', $course->learning_module_id],
+            ['learning_category_id', $course->learning_category_id],
+            ['status', 1],
+        ])->get();
+
+        // Get user courses for the current module
+        $moduleCourses = $getModuleCourses->where([
+            ['learning_module_id', $course->learning_module_id],
+            ['learning_category_id', $course->learning_category_id],
+        ])->get();
+
+        // compare the number of completed courses with the number of courses in the module
+        // if the numbers are equal, update module views to completed
+        if($completedModuleCourses->count() === $moduleCourses->count()){
+            LearningModuleView::update([
+                'user_id' => Auth::user()->id,
+                'learning_module_id' => $course->learning_module_id,
+                'learning_category_id' => $course->learning_category_id,
+                'status' => 1,
+            ]);
+        }
 
         return response()->json([
             'success'=>'Success'

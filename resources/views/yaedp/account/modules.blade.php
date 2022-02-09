@@ -22,7 +22,7 @@
                 <div class="bg-white-radius-shadow border-light-green">
 
                 @if(Auth::user()->startedModule($mod->id))
-                    @if(Auth::user()->startedModule($mod->id)->completed_module)
+                    @if(Auth::user()->startedModule($mod->id)->status === 1)
                         <span class="bg-badge-success badge badge-pill mb-2">
                         Completed
                         </span>
@@ -52,7 +52,7 @@
                     <!--If the previous module has been completed, make the next module available-->
                     @if(!$loop->first)
                         @if(Auth::user()->startedModule($mod->previousModule()->id))
-                            @if(Auth::user()->startedModule($mod->previousModule()->id)->completed_module)
+                            @if(Auth::user()->startedModule($mod->previousModule()->id)->status === 1)
                                 <a href="{{ route('yaedp.account.courses', $mod->id) }}">
                                     <button class="module-btn bg-light-brown d-flex justify-content-center">
                                         Start</button>
@@ -63,7 +63,7 @@
                             @endif
                         @else
                             <button disabled class="module-btn bg-gray d-flex justify-content-center">
-                                Start previous module to continue </button>
+                                Complete previous module to continue </button>
                         @endif
                     @else
                         <a href="{{ route('yaedp.account.courses', $mod->id) }}">

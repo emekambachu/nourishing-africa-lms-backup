@@ -396,7 +396,7 @@
 }
 
 .text-light-brown{
-    color: #ce8000;
+    color: #ce8000!important;
 }
 
 .na-text-dark-green{
@@ -523,7 +523,7 @@
 }
 
 .text-gray{
-    color: #676767;
+    color: #676767 !important;
 }
 
 .border-bottom-grey{
