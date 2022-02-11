@@ -6,14 +6,14 @@ use App\Models\YaedpUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LearningAssessment extends Model
+class LearningDiscussion extends Model
 {
     protected $fillable = [
         'user_id',
         'learning_category_id',
         'learning_module_id',
-        'score',
-        'percent'
+        'learning_course_id',
+        'message',
     ];
 
     public function yaedpUser(){

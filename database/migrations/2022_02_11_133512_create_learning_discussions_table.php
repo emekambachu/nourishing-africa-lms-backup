@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLearningAssignmentAnswersTable extends Migration
+class CreateLearningDiscussionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateLearningAssignmentAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('learning_assignment_answers', static function (Blueprint $table) {
+        Schema::create('learning_discussions', static function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('learning_module_id');
+            $table->unsignedBigInteger('learning_module_id')->nullable();
             $table->unsignedBigInteger('learning_category_id')->nullable();
-            $table->unsignedBigInteger('learning_assignment_question_id');
-            $table->string('answer')->nullable();
-            $table->boolean('passed')->default(0);
+            $table->unsignedBigInteger('learning_course_id');
+            $table->string('message');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateLearningAssignmentAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('learning_assignment_answers');
+        Schema::dropIfExists('learning_discussions');
     }
 }

@@ -19,17 +19,8 @@ class CreateLearningAssessmentsTable extends Migration
             $table->unsignedBigInteger('learning_category_id');
             $table->unsignedBigInteger('learning_module_id')->nullable();
             $table->unsignedBigInteger('learning_course_id')->nullable();
-            $table->string('surname')->nullable();
-            $table->string('email')->nullable();
-            $table->string('first_name')->nullable();
-            $table->string('cohort')->nullable();
-            $table->string('business')->nullable();
-            $table->string('state_of_origin')->nullable();
-            $table->string('location')->nullable();
-            $table->string('gender')->nullable();
-            $table->string('value_chain')->nullable();
-            $table->string('focus_area')->nullable();
             $table->string('score')->nullable();
+            $table->string('percent')->nullable();
             $table->timestamps();
         });
     }

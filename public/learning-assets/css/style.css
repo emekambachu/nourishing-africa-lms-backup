@@ -1310,14 +1310,18 @@ textarea.form-control {
 .form-check {
   position: relative;
   display: block;
-  padding-left: 1.25rem; }
+  padding-left: 1.25rem;
+}
 
 .form-check-input {
   position: absolute;
   margin-top: 0.3rem;
-  margin-left: -1.25rem; }
+  margin-left: -1.25rem;
+  border: 1px solid #818181;
+}
   .form-check-input:disabled ~ .form-check-label {
-    color: #7987a1; }
+    color: #7987a1;
+  }
 
 .form-check-label {
   margin-bottom: 0; }

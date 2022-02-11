@@ -137,12 +137,21 @@ Route::get('yaedp/account/faq',
     ->name('yaedp.account.faq');
 
 // YAEDP Assessment Controller
-Route::get('yaedp/account/assessment/{id}/start',
-    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'start'])
-    ->name('yaedp.account.assessment.start');
 Route::get('yaedp/account/assessments',
     [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'index'])
     ->name('yaedp.account.assessments');
+Route::get('yaedp/account/assessment/{id}/start',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'start'])
+    ->name('yaedp.account.assessment.start');
+Route::get('yaedp/account/assessment/{id}/questions',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'questions'])
+    ->name('yaedp.account.assessment.questions');
+Route::post('yaedp/account/assessment/{id}/submit',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'submitAssessment'])
+    ->name('yaedp.account.assessment.submit');
+Route::get('yaedp/account/assessment/{id}/score',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'assessmentScore'])
+    ->name('yaedp.account.assessment.score');
 Route::get('yaedp/account/{id}/assessment',
     [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'show'])
     ->name('yaedp.account.assessment.show');

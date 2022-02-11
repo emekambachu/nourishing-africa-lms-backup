@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LearningAssignmentAnswer extends Model
 {
     protected $fillable = [
+        'user_id',
         'learning_module_id',
         'learning_category_id',
         'learning_assignment_question_id',

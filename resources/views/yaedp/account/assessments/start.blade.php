@@ -23,14 +23,14 @@
             <div class="col-lg-9 col-md-9 col-sm-12">
                 <div class="bg-white-radius-shadow border-light-green">
 
-                    <div class="row">
-                        <div class="col-12">
-                            <p>
-                                Congratulations on completing your courses on <strong>{{ $module->title }}</strong>.<br><br>
-                                Proceed to your assessment and take the test in one sitting to complete this module.
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-8 text-center">
+                            <img src="{{ asset('images/icons/e-learning.png') }}" width="150" class="mb-4"/>
+                            <p class="text-center tx-16">
+                                <strong class="na-text-dark-green">Congratulations</strong> on completing all courses on this module. Proceed to the test which will be taken in one sitting to complete this module.
                             </p>
                             <!--If none of the 2 conditions are true, show disabled button-->
-                            <a href="{{ route('') }}">
+                            <a href="{{ route('yaedp.account.assessment.questions', $module->id) }}">
                                 <button class="module-btn bg-light-brown d-flex justify-content-center mt-2">
                                     Begin Test</button>
                             </a>
