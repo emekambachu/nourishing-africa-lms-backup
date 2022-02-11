@@ -16,8 +16,8 @@ class CreateLearningDiscussionsTable extends Migration
         Schema::create('learning_discussions', static function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('learning_module_id')->nullable();
             $table->unsignedBigInteger('learning_category_id')->nullable();
+            $table->unsignedBigInteger('learning_module_id')->nullable();
             $table->unsignedBigInteger('learning_course_id');
             $table->string('message');
             $table->timestamps();
