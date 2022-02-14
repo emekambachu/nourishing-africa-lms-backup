@@ -10,10 +10,13 @@ class LearningAssessment extends Model
 {
     protected $fillable = [
         'user_id',
+        'type',
         'learning_category_id',
         'learning_module_id',
         'score',
-        'percent'
+        'percent',
+        'passed',
+        'retake',
     ];
 
     public function yaedpUser(){

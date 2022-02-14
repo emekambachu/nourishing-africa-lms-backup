@@ -8,6 +8,7 @@ use App\Models\Learning\LearningAssignmentAnswer;
 use App\Models\Learning\LearningAssignmentQuestion;
 use App\Models\Learning\LearningCategory;
 use App\Models\Learning\LearningModule;
+use App\Models\Learning\LearningModuleView;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -95,21 +96,78 @@ class YaedpAssessmentController extends Controller
             ['passed', 1],
         ])->count();
 
-        // Insert into assessment
-        $learningAssessment = LearningAssessment::create([
-            'user_id' => Auth::user()->id,
-            'learning_module_id' => $module->id,
-            'learning_category_id' => $this->yaedpId(),
-            'score' => $countCorrectAnswers,
-            'percent' => ($countCorrectAnswers / $countAssessmentQuestions) * 100,
-        ]);
+        $percentageScore = ($countCorrectAnswers / $countAssessmentQuestions) * 100;
+
+        $getAssessment = new LearningAssessment();
+
+        // Check if user as been assessed
+        $moduleAssessment = $getAssessment->where([
+            ['user_id', Auth::user()->id],
+            ['type', 'module'],
+            ['learning_module_id', $module->id],
+            ['learning_category_id', $this->yaedpId()],
+        ])->first();
+
+        // if user has been assessed, if they have taken 3 retakes
+        // take no action, else update their new scores
+        if($moduleAssessment){
+            if($moduleAssessment->retake === 2){
+                return response()->json([
+                    'no_retakes'=>'No retakes',
+                    'percent'=> $moduleAssessment->percent.'%',
+                    'comment'=> "You've run out of retakes, your score can't be updated. Try to do better in other modules which can boost your score.",
+                ]);
+            }
+
+            $moduleAssessment->score = $countCorrectAnswers;
+            $moduleAssessment->percent = $percentageScore;
+            $moduleAssessment->passed = $percentageScore > 65 ? 1 : 0;
+            $moduleAssessment->retake = $percentageScore < 65 ? $moduleAssessment->retake + 1 : $moduleAssessment->retake;
+            $moduleAssessment->save();
+        }else{
+            // Insert into assessment if user has not been assessed
+            $moduleAssessment = $getAssessment->create([
+                'user_id' => Auth::user()->id,
+                'type' => 'module',
+                'learning_module_id' => $module->id,
+                'learning_category_id' => $this->yaedpId(),
+                'score' => $countCorrectAnswers,
+                'percent' => $percentageScore,
+                'passed' => $percentageScore > 65 ? 1 : 0,
+                'retake' => $percentageScore < 65 ? 1 : 0,
+            ]);
+        }
+
+        // Unlock next module when current module assessment has been passed
+        if($moduleAssessment->percent > 65){
+
+            $moduleView = new LearningModuleView();
+            $moduleViewed = $moduleView->where([
+                ['user_id', Auth::user()->id],
+                ['learning_module_id', $module->id],
+                ['learning_category_id', $this->yaedpId()],
+            ])->first();
+
+            if($moduleViewed){
+                $moduleViewed->status = 1;
+                $moduleViewed->save();
+            }else{
+                $moduleView->create([
+                    'user_id' => Auth::user()->id,
+                    'learning_module_id' => $module->id,
+                    'learning_category_id' => $this->yaedpId(),
+                    'status' => 1
+                ]);
+            }
+        }
 
         return response()->json([
             'success'=>'success',
-            'percent'=>$learningAssessment->percent.'%',
-            'comment'=> $learningAssessment->percent > 80 ? 'Good Job' : 'Sorry, you did not make the cut off mark.',
+            'percent'=> $moduleAssessment->percent.'%',
+            'comment'=> $moduleAssessment->percent > 65 ? 'Good Job' : 'Sorry, you did not make the cut off mark.',
+            'result'=> $moduleAssessment->percent > 65 ? 'passed' : 'failed',
+            'module_id'=> $module->id,
         ]);
 
-//        return redirect()->route('yaedp.account.assessment.score', $module->id);
     }
 }
