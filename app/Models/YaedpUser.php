@@ -80,4 +80,12 @@ class YaedpUser extends Authenticatable
             ['learning_module_id', $moduleId],
         ])->first();
     }
+
+    public static function exhaustedRetakes($moduleId){
+        return LearningAssessment::where([
+            ['user_id', Auth::user()->id],
+            ['learning_module_id', $moduleId],
+            ['retake', 2],
+        ])->first();
+    }
 }

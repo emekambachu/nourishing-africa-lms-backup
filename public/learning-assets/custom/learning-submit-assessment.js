@@ -36,19 +36,20 @@ $(function() {
                 if(response.success){
                     $('#loader').html("<h1 class='na-text-dark-green tx-100 text-center'>" + response.percent + "</h1><br>");
                     $('#loader').append("<p class='text-center tx-18'>" + response.comment + "</p>");
+                    console.log(response.success);
 
                     if(response.result === 'failed'){
-                        let moduleBtn = '<a href="/yaedp/account/assessment/'+ response.module_id +'/questions">\n' +
+                        let moduleBtn = '<a href="/yaedp/account/assessment/'+ response.module_id +'/retake">\n' +
                             '        <button style="width: 200px;" class="module-btn bg-light-brown d-flex justify-content-center mt-2">\n' +
                             '            Retake</button>\n' +
                             '</a>'
-                        $('#leader').after(moduleBtn);
+                        $('#loader').after(moduleBtn);
                     }else{
                         let moduleBtn = '<a href="/yaedp/account/modules">\n' +
                             '        <button style="width: 200px;" class="module-btn bg-light-brown d-flex justify-content-center mt-2">\n' +
                             '            Modules</button>\n' +
                             '</a>'
-                        $('#leader').after(moduleBtn);
+                        $('#loader').after(moduleBtn);
                     }
                 }
 

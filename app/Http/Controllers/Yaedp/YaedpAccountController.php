@@ -42,19 +42,19 @@ class YaedpAccountController extends Controller
         $data['getModules'] = LearningModule::with('learningCourses');
         $data['modules'] = $data['getModules']
             ->where('learning_category_id', $this->yaedpId())
-            ->orderBy('sort', 'asc')->get();
+            ->orderBy('created_at', 'asc')->get();
 
         return view('yaedp.account.modules', $data);
     }
 
     public function courses($id){
-
         $data['module'] = LearningModule::findOrFail($id);
-        $data['getCourses'] = LearningCourse::with('learningModule', 'learningCategory');
+
+        $data['getCourses'] = new LearningCourse();
         $data['courses'] = $data['getCourses']->where([
             ['learning_module_id', $id],
             ['learning_category_id', $this->yaedpId()],
-        ])->orderBy('sort', 'asc')->get();
+        ])->orderBy('created_at', 'asc')->get();
 
         return view('yaedp.account.courses', $data);
     }

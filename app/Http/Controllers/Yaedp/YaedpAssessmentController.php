@@ -44,9 +44,16 @@ class YaedpAssessmentController extends Controller
     public function questions($id){
 
         $data['questions'] = LearningAssignmentQuestion::where('learning_module_id', $id)->get();
+
         $getModules = new LearningModule();
         $data['module'] = $getModules->findOrFail($id);
         $data['modules'] = $getModules->where('learning_category_id', $this->yaedpId())->get();
+
+        $data['exhaustedRetakes'] = LearningAssessment::where([
+            ['user_id', Auth::user()->id],
+            ['learning_module_id', $data['module']->id],
+            ['retake', 3],
+        ])->first();
 
         return view('yaedp.account.assessments.questions', $data);
     }
@@ -111,7 +118,7 @@ class YaedpAssessmentController extends Controller
         // if user has been assessed, if they have taken 3 retakes
         // take no action, else update their new scores
         if($moduleAssessment){
-            if($moduleAssessment->retake === 2){
+            if($moduleAssessment->retake === 3){
                 return response()->json([
                     'no_retakes'=>'No retakes',
                     'percent'=> $moduleAssessment->percent.'%',
@@ -162,12 +169,23 @@ class YaedpAssessmentController extends Controller
         }
 
         return response()->json([
-            'success'=>'success',
+            'success'=>$countCorrectAnswers.' - '.$countAssessmentQuestions,
             'percent'=> $moduleAssessment->percent.'%',
-            'comment'=> $moduleAssessment->percent > 65 ? 'Good Job' : 'Sorry, you did not make the cut off mark.',
+            'comment'=> $moduleAssessment->percent > 65 ? "Good job, proceed to next module." : "Sorry, you did not make the cut off mark. you have ". (3 - $moduleAssessment->retake) . " retake(s)",
             'result'=> $moduleAssessment->percent > 65 ? 'passed' : 'failed',
             'module_id'=> $module->id,
         ]);
 
+    }
+
+    public function retakeAssessment($id){
+
+        $module = LearningModule::findOrFail($id);
+        LearningAssignmentAnswer::where([
+           ['user_id', Auth::user()->id],
+            ['learning_module_id', $module->id],
+        ])->get()->each->delete();
+
+        return redirect()->route('yaedp.account.assessment.questions', $module->id);
     }
 }

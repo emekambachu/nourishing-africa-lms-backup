@@ -33,14 +33,14 @@
                     @include('yaedp.account.includes.alerts')
 
                     @if(Auth::user()->startedModule($module->id)->status === 1)
-                        <h6>Module already passed, go to next available module.</h6>
+                        <h5 class="text-center mb-3">Module already passed, go to next available module.</h5>
                         <a href="{{ route('yaedp.account.modules') }}">
                             <button style="width:100px;"
                                     class="module-btn bg-light-brown d-flex justify-content-center mt-2">
                                 Modules</button>
                         </a>
-                    @elseif($module->learningAssessment->retake === 2)
-                        <h6>Sorry, you've exhausted your retakes. Do better i other modules to get a better chance of success.</h6>
+                    @elseif($exhaustedRetakes)
+                        <h5 class="text-center mb-3">Sorry, you've exhausted your retakes. Do better i other modules to get a better chance of success.</h5>
                         <a href="{{ route('yaedp.account.modules') }}">
                             <button style="width:100px;"
                                     class="module-btn bg-light-brown d-flex justify-content-center mt-2">

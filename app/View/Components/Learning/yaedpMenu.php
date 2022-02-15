@@ -26,7 +26,8 @@ class yaedpMenu extends Component
     public function render(){
 
         $data['categoryId'] = LearningCategory::where('slug', 'yaedp')->first()->id;
-        $data['modules'] = LearningModule::where('learning_category_id', $data['categoryId'])->get();
+        $data['modules'] = LearningModule::where('learning_category_id', $data['categoryId'])
+            ->orderBy('created_at', 'asc')->get();
 
         return view('yaedp.account.components.yaedp-menu', $data);
     }
