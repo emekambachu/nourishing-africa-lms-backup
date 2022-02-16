@@ -34,6 +34,7 @@ $(function() {
             success: function (response){
                 console.log(response);
                 if(response.success){
+
                     $('#loader').html("<h1 class='na-text-dark-green tx-100 text-center'>" + response.percent + "</h1><br>");
                     $('#loader').append("<p class='text-center tx-18'>" + response.comment + "</p>");
                     console.log(response.success);
@@ -48,6 +49,14 @@ $(function() {
                         let moduleBtn = '<a href="/yaedp/account/modules">\n' +
                             '        <button style="width: 200px;" class="module-btn bg-light-brown d-flex justify-content-center mt-2">\n' +
                             '            Modules</button>\n' +
+                            '</a>'
+                        $('#loader').after(moduleBtn);
+                    }
+
+                    if(response.accumulated_passed === 1){
+                        let moduleBtn = '<a href="/yaedp/account/accumulated/'+ response.module_id +'/score">\n' +
+                            '        <button style="width: 200px;" class="module-btn bg-success d-flex justify-content-center mt-3">\n' +
+                            '            Accumulated score</button>\n' +
                             '</a>'
                         $('#loader').after(moduleBtn);
                     }
@@ -71,6 +80,7 @@ $(function() {
                         $('#questions-container').fadeIn(200);
                     });
                 }
+
             },
 
             error: function (Response) {

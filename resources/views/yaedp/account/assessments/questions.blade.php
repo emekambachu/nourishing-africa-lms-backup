@@ -32,7 +32,7 @@
 
                     @include('yaedp.account.includes.alerts')
 
-                    @if(Auth::user()->startedModule($module->id)->status === 1)
+                    @if($modulePassed)
                         <h5 class="text-center mb-3">Module already passed, go to next available module.</h5>
                         <a href="{{ route('yaedp.account.modules') }}">
                             <button style="width:100px;"

@@ -100,7 +100,7 @@ class YaedpAccountController extends Controller
         $courses = $data['getCourses']->with('learningModule')->where([
                 ['learning_module_id', $course->learningModule->id],
                 ['learning_category_id', $this->yaedpId()],
-        ])->orderBy('sort', 'asc')->get();
+        ])->orderBy('created_at', 'asc')->get();
 
         return view('yaedp.account.course', compact('course', 'courses', 'module'));
     }
@@ -132,29 +132,29 @@ class YaedpAccountController extends Controller
         }
 
 //      // Get user completed courses for the current module
-        $completedModuleCourses = $getViewedCourses->where([
-            ['user_id', Auth::user()->id],
-            ['learning_module_id', $course->learning_module_id],
-            ['learning_category_id', $course->learning_category_id],
-            ['status', 1],
-        ])->get();
-
-        // Get user courses for the current module
-        $moduleCourses = $getModuleCourses->where([
-            ['learning_module_id', $course->learning_module_id],
-            ['learning_category_id', $course->learning_category_id],
-        ])->get();
-
-        // compare the number of completed courses with the number of courses in the module
-        // if the numbers are equal, update module views to completed
-        if($completedModuleCourses->count() === $moduleCourses->count()){
-            LearningModuleView::update([
-                'user_id' => Auth::user()->id,
-                'learning_module_id' => $course->learning_module_id,
-                'learning_category_id' => $course->learning_category_id,
-                'status' => 1,
-            ]);
-        }
+//        $completedModuleCourses = $getViewedCourses->where([
+//            ['user_id', Auth::user()->id],
+//            ['learning_module_id', $course->learning_module_id],
+//            ['learning_category_id', $course->learning_category_id],
+//            ['status', 1],
+//        ])->get();
+//
+//        // Get user courses for the current module
+//        $moduleCourses = $getModuleCourses->where([
+//            ['learning_module_id', $course->learning_module_id],
+//            ['learning_category_id', $course->learning_category_id],
+//        ])->get();
+//
+//        // compare the number of completed courses with the number of courses in the module
+//        // if the numbers are equal, update module views to completed
+//        if($completedModuleCourses->count() === $moduleCourses->count()){
+//            LearningModuleView::update([
+//                'user_id' => Auth::user()->id,
+//                'learning_module_id' => $course->learning_module_id,
+//                'learning_category_id' => $course->learning_category_id,
+//                'status' => 1,
+//            ]);
+//        }
 
         return response()->json([
             'success'=>'Success'

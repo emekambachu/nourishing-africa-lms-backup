@@ -152,6 +152,9 @@ Route::post('yaedp/account/assessment/{id}/submit',
 Route::get('yaedp/account/assessment/{id}/retake',
     [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'retakeAssessment'])
     ->name('yaedp.account.assessment.retakeAssessment');
+Route::get('yaedp/account/accumulated/{id}/score',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'accumulatedScore'])
+    ->name('yaedp.account.accumulated.score');
 Route::get('yaedp/account/{id}/assessment',
     [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'show'])
     ->name('yaedp.account.assessment.show');

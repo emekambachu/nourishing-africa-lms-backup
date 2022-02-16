@@ -49,10 +49,16 @@ class YaedpAssessmentController extends Controller
         $data['module'] = $getModules->findOrFail($id);
         $data['modules'] = $getModules->where('learning_category_id', $this->yaedpId())->get();
 
-        $data['exhaustedRetakes'] = LearningAssessment::where([
+        $moduleAssessment = new LearningModuleView();
+        $data['exhaustedRetakes'] = $moduleAssessment->where([
             ['user_id', Auth::user()->id],
             ['learning_module_id', $data['module']->id],
             ['retake', 3],
+        ])->first();
+        $data['modulePassed'] = $moduleAssessment->where([
+            ['user_id', Auth::user()->id],
+            ['learning_module_id', $data['module']->id],
+            ['passed', 1],
         ])->first();
 
         return view('yaedp.account.assessments.questions', $data);
@@ -73,7 +79,8 @@ class YaedpAssessmentController extends Controller
             ]);
         }
 
-        $module = LearningModule::findOrFail($id);
+        $getModules = new LearningModule();
+        $module = $getModules->where('id', $id)->first();
 
         $assessmentAnswers = new learningAssignmentAnswer();
         if(count($request['answers']) > 0){
@@ -104,13 +111,11 @@ class YaedpAssessmentController extends Controller
         ])->count();
 
         $percentageScore = ($countCorrectAnswers / $countAssessmentQuestions) * 100;
+        $getModuleAssessment = new LearningModuleView();
 
-        $getAssessment = new LearningAssessment();
-
-        // Check if user as been assessed
-        $moduleAssessment = $getAssessment->where([
+        // Check if user as been assessed on this module
+        $moduleAssessment = $getModuleAssessment->where([
             ['user_id', Auth::user()->id],
-            ['type', 'module'],
             ['learning_module_id', $module->id],
             ['learning_category_id', $this->yaedpId()],
         ])->first();
@@ -125,47 +130,66 @@ class YaedpAssessmentController extends Controller
                     'comment'=> "You've run out of retakes, your score can't be updated. Try to do better in other modules which can boost your score.",
                 ]);
             }
-
+            $moduleAssessment->status = 1;
             $moduleAssessment->score = $countCorrectAnswers;
-            $moduleAssessment->percent = $percentageScore;
+            $moduleAssessment->percent = round($percentageScore, 2);
             $moduleAssessment->passed = $percentageScore > 65 ? 1 : 0;
             $moduleAssessment->retake = $percentageScore < 65 ? $moduleAssessment->retake + 1 : $moduleAssessment->retake;
             $moduleAssessment->save();
         }else{
             // Insert into assessment if user has not been assessed
-            $moduleAssessment = $getAssessment->create([
+            $moduleAssessment = $getModuleAssessment->create([
                 'user_id' => Auth::user()->id,
-                'type' => 'module',
                 'learning_module_id' => $module->id,
                 'learning_category_id' => $this->yaedpId(),
+                'status' => 1,
                 'score' => $countCorrectAnswers,
-                'percent' => $percentageScore,
+                'percent' => round($percentageScore, 2),
                 'passed' => $percentageScore > 65 ? 1 : 0,
                 'retake' => $percentageScore < 65 ? 1 : 0,
             ]);
         }
 
         // Unlock next module when current module assessment has been passed
-        if($moduleAssessment->percent > 65){
+//        if($moduleAssessment->percent > 65){
+//
+//            $moduleViewed = $getModuleAssessment->where([
+//                ['user_id', Auth::user()->id],
+//                ['learning_module_id', $module->id],
+//                ['learning_category_id', $this->yaedpId()],
+//            ])->first();
+//
+//            if($moduleViewed){
+//                $moduleViewed->status = 1;
+//                $moduleViewed->save();
+//            }else{
+//                $moduleView->create([
+//                    'user_id' => Auth::user()->id,
+//                    'learning_module_id' => $module->id,
+//                    'learning_category_id' => $this->yaedpId(),
+//                    'status' => 1
+//                ]);
+//            }
+//        }
 
-            $moduleView = new LearningModuleView();
-            $moduleViewed = $moduleView->where([
-                ['user_id', Auth::user()->id],
-                ['learning_module_id', $module->id],
-                ['learning_category_id', $this->yaedpId()],
-            ])->first();
+        // Check if this is the last module and include overall assessment
+        $lastModule = $getModules->where('learning_category_id', $this->yaedpId())
+            ->latest()->first();
+        $accumulatedScore = $getModuleAssessment->where('user_id', Auth::user()->id)
+            ->where('learning_category_id', $this->yaedpId())->sum('score');
+        $countTotalQuestions = LearningAssignmentQuestion::where('learning_category_id', $this->yaedpId())->count();
+        $accumulatedPercentage = ($accumulatedScore / $countTotalQuestions) * 100;
 
-            if($moduleViewed){
-                $moduleViewed->status = 1;
-                $moduleViewed->save();
-            }else{
-                $moduleView->create([
-                    'user_id' => Auth::user()->id,
-                    'learning_module_id' => $module->id,
-                    'learning_category_id' => $this->yaedpId(),
-                    'status' => 1
-                ]);
-            }
+        // If this is the last module assessment, add all scores to the total assessment
+        $learningAssessment = '';
+        if($lastModule->id === $module->id){
+            $learningAssessment = LearningAssessment::create([
+                'user_id' => Auth::user()->id,
+                'learning_category_id' => $this->yaedpId(),
+                'score' => $accumulatedScore,
+                'percent' => round($accumulatedPercentage, 2),
+                'passed' => $accumulatedPercentage > 80 ? 1 : 0
+            ]);
         }
 
         return response()->json([
@@ -174,12 +198,15 @@ class YaedpAssessmentController extends Controller
             'comment'=> $moduleAssessment->percent > 65 ? "Good job, proceed to next module." : "Sorry, you did not make the cut off mark. you have ". (3 - $moduleAssessment->retake) . " retake(s)",
             'result'=> $moduleAssessment->percent > 65 ? 'passed' : 'failed',
             'module_id'=> $module->id,
+            'accumulated'=> $learningAssessment !=='',
+            'accumulated_percent'=> $learningAssessment !=='' ? round($learningAssessment->percent, 2) : 0,
+            'accumulated_score'=> $learningAssessment !=='' ? $learningAssessment->score : 0,
+            'accumulated_passed'=> $learningAssessment !=='' ? $learningAssessment->passed : 0,
         ]);
 
     }
 
     public function retakeAssessment($id){
-
         $module = LearningModule::findOrFail($id);
         LearningAssignmentAnswer::where([
            ['user_id', Auth::user()->id],
@@ -187,5 +214,10 @@ class YaedpAssessmentController extends Controller
         ])->get()->each->delete();
 
         return redirect()->route('yaedp.account.assessment.questions', $module->id);
+    }
+
+    public function accumulatedScore($id){
+        $accumulated = LearningAssessment::findOrFail($id);
+        return view('yaedp.account.assessments.accumulated', compact('accumulated'));
     }
 }

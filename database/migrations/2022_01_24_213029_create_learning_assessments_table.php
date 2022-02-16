@@ -18,12 +18,9 @@ class CreateLearningAssessmentsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('type');
             $table->unsignedBigInteger('learning_category_id');
-            $table->unsignedBigInteger('learning_module_id')->nullable();
-            $table->unsignedBigInteger('learning_course_id')->nullable();
             $table->string('score')->nullable();
             $table->string('percent')->nullable();
             $table->boolean('passed')->default(0);
-            $table->tinyInteger('retake')->default(0);
             $table->timestamps();
         });
     }
