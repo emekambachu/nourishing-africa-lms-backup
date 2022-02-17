@@ -693,7 +693,7 @@ input[type="radio"].assessment-radio-input{
 
 .assessment-loader {
     animation: rotation 8s infinite linear;
-    margin-left: 30%;
+    margin-left: 40%;
 }
 
 @keyframes rotation {

@@ -5,9 +5,9 @@
     @foreach($modules as $mod)
         @if(!$loop->first)
             <!--If module has been started, check completion-->
-            @if(Auth::user()->startedModule($mod->previousModule()))
+            @if(Auth::user()->startedModule($mod->previousModule()->id))
                 <!--If module has been completed, show link-->
-                @if(Auth::user()->startedModule($mod->previousModule())->status === 1)
+                @if(Auth::user()->startedModule($mod->previousModule()->id)->status === 1)
                     <li>
                         <a class="slide-item text-light-brown" href="{{ route('yaedp.account.courses', $mod->id) }}">
                             Module {{ $loop->index + 1 }}

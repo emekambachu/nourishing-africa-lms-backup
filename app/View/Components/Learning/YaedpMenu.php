@@ -6,7 +6,7 @@ use App\Models\Learning\LearningCategory;
 use App\Models\Learning\LearningModule;
 use Illuminate\View\Component;
 
-class yaedpMenu extends Component
+class YaedpMenu extends Component
 {
     /**
      * Create a new component instance.
@@ -26,7 +26,8 @@ class yaedpMenu extends Component
     public function render(){
 
         $data['categoryId'] = LearningCategory::where('slug', 'yaedp')->first()->id;
-        $data['modules'] = LearningModule::where('learning_category_id', $data['categoryId'])->get();
+        $data['modules'] = LearningModule::where('learning_category_id', $data['categoryId'])
+            ->orderBy('created_at', 'asc')->get();
 
         return view('yaedp.account.components.yaedp-menu', $data);
     }

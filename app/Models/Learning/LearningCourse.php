@@ -38,9 +38,15 @@ class LearningCourse extends Model
     }
 
     public function previousCourse($moduleId){
-        return self::where([
+        $previous = self::where([
             ['id', '<', $this->id],
             ['learning_module_id', '=', $moduleId],
         ])->orderBy('id','desc')->first();
+
+        if($previous){
+            return $previous;
+        }
+
+        return null;
     }
 }

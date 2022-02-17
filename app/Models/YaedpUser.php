@@ -54,7 +54,6 @@ class YaedpUser extends Authenticatable
         'linkedin',
         'twitter',
         'mark_status',
-        'assignment_total',
         'token'
     ];
 
@@ -84,5 +83,13 @@ class YaedpUser extends Authenticatable
     public static function getUserFullName($id){
         $user = YaedpUser::find($id);
         return $user->first_name." ".$user->surname;
+    }
+    
+    public static function exhaustedRetakes($moduleId){
+        return LearningAssessment::where([
+            ['user_id', Auth::user()->id],
+            ['learning_module_id', $moduleId],
+            ['retake', 2],
+        ])->first();
     }
 }

@@ -19,6 +19,10 @@ class CreateLearningModuleViewsTable extends Migration
             $table->unsignedBigInteger('learning_module_id')->nullable();
             $table->unsignedBigInteger('learning_category_id')->nullable();
             $table->boolean('status')->default(0);
+            $table->tinyInteger('retake')->default(0);
+            $table->tinyInteger('score')->default(0);
+            $table->tinyInteger('percent')->default(0);
+            $table->boolean('passed')->default(0);
             $table->timestamps();
         });
     }

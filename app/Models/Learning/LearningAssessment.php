@@ -10,13 +10,10 @@ class LearningAssessment extends Model
 {
     protected $fillable = [
         'user_id',
-        'type',
         'learning_category_id',
-        'learning_module_id',
         'score',
         'percent',
         'passed',
-        'retake',
     ];
 
     public function yaedpUser(){
@@ -25,10 +22,6 @@ class LearningAssessment extends Model
 
     public function learningCategory(){
         return $this->belongsTo(LearningCategory::class, 'learning_category_id', 'id');
-    }
-
-    public function learningModule(){
-        return $this->belongsTo(LearningModule::class, 'learning_module_id', 'id');
     }
 
     public function learningCourse(){

@@ -103,7 +103,8 @@
                     <span class="side-menu__label">Modules</span>
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
-                <x-learning.yaedpMenu/>
+
+                <x-Learning.YaedpMenu/>
             </li>
 
             <li class="slide mb-3">

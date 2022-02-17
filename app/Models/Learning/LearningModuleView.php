@@ -12,6 +12,10 @@ class LearningModuleView extends Model
         'learning_category_id',
         'learning_module_id',
         'status',
+        'retake',
+        'score',
+        'percent',
+        'passed',
     ];
 
     public function yaedpUser(){
