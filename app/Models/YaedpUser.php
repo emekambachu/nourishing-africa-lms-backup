@@ -80,4 +80,9 @@ class YaedpUser extends Authenticatable
             ['learning_module_id', $moduleId],
         ])->first();
     }
+
+    public static function getUserFullName($id){
+        $user = YaedpUser::find($id);
+        return $user->first_name." ".$user->surname;
+    }
 }

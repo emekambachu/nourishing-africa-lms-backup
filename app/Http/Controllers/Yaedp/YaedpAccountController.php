@@ -8,6 +8,9 @@ use App\Models\Learning\LearningCourse;
 use App\Models\Learning\LearningCourseView;
 use App\Models\Learning\LearningModule;
 use App\Models\Learning\LearningModuleView;
+use App\Models\Learning\LearningDiscussion;
+use App\Models\Learning\LearningDiscussionReply;
+use App\Models\Learning\LearningDiscussionLike;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,6 +70,15 @@ class YaedpAccountController extends Controller
                                         ['id', $id],
                                         ['learning_category_id', $this->yaedpId()],
                                     ])->first();
+        
+        //Get Course Discussions
+        $discussion = LearningDiscussion::with('learningDiscussionReplies')
+                        ->where([
+                            ['learning_course_id', $course->id],
+                            ['learning_module_id', $course->learningModule->id],
+                            ['learning_category_id', $course->learningCategory->id],
+                            ['status', 1],
+                        ])->limit(3)->get();                      
 
         $module = LearningModule::findOrFail($course->learning_module_id);
 
@@ -102,7 +114,7 @@ class YaedpAccountController extends Controller
                 ['learning_category_id', $this->yaedpId()],
         ])->orderBy('sort', 'asc')->get();
 
-        return view('yaedp.account.course', compact('course', 'courses', 'module'));
+        return view('yaedp.account.course', compact('course', 'courses', 'module', 'discussion'));
     }
 
     public function courseComplete($id){
@@ -131,7 +143,7 @@ class YaedpAccountController extends Controller
             $viewedCourse->save();
         }
 
-//      // Get user completed courses for the current module
+        // Get user completed courses for the current module
         $completedModuleCourses = $getViewedCourses->where([
             ['user_id', Auth::user()->id],
             ['learning_module_id', $course->learning_module_id],
@@ -175,5 +187,131 @@ class YaedpAccountController extends Controller
 
     public function moduleAssignment($id){
         return view('yaedp.account.assignments.show');
+    }
+
+    public function discussion(Request $request){
+        $type = $request->type;
+
+        if($type == "comment"){
+            LearningDiscussion::create([
+                'user_id' => Auth::user()->id,
+                'learning_category_id' => $request->learning_category_id,
+                'learning_module_id' => $request->learning_module_id,
+                'learning_course_id' => $request->learning_course_id,
+                'message' => $request->message
+            ]);
+        }else if($type == "reply"){
+            LearningDiscussionReply::create([
+                'user_id' => Auth::user()->id,
+                'learning_discussion_id' => $request->reply_id,
+                'message' => $request->message
+            ]);
+        }
+
+        return response()->json([
+            'response'=>'success'
+        ]);
+    }
+
+    public function likeDiscussion(Request $request){
+        $type = $request->type;
+        $result = "";
+
+        if($type == "comment"){
+            $check = LearningDiscussionLike::where([
+                ['user_id', Auth::user()->id],
+                ['type', $request->type],
+                ['learning_course_id', $request->learning_course_id],
+                ['learning_discussion_id', $request->learning_discussion_id]
+            ]);
+
+            if($check->count() == 1){
+                if($check->first()->status == 1){
+                    LearningDiscussionLike::where([
+                        ['user_id', Auth::user()->id],
+                        ['type', $request->type],
+                        ['learning_course_id', $request->learning_course_id],
+                        ['learning_discussion_id', $request->learning_discussion_id]
+                    ])->update([
+                        'status' => 0
+                    ]);
+
+                    $result = "unlike";
+                }
+                else{
+                    LearningDiscussionLike::where([
+                        ['user_id', Auth::user()->id],
+                        ['type', $request->type],
+                        ['learning_course_id', $request->learning_course_id],
+                        ['learning_discussion_id', $request->learning_discussion_id]
+                    ])->update([
+                        'status' => 1
+                    ]);
+                    $result = "like";
+                }
+            }
+            else if($check->count() == 0){
+                LearningDiscussionLike::create([
+                    'user_id' => Auth::user()->id,
+                    'type' => $request->type,
+                    'learning_course_id' => $request->learning_course_id,
+                    'learning_discussion_id' => $request->learning_discussion_id,
+                    'status' => 1
+                ]);
+                $result = "like";
+            }
+        }
+        else if($type == "reply"){
+            $check = LearningDiscussionLike::where([
+                ['user_id', Auth::user()->id],
+                ['type', $request->type],
+                ['learning_course_id', $request->learning_course_id],
+                ['learning_discussion_id', $request->learning_discussion_id],
+                ['learning_discussion_reply_id', $request->learning_discussion_reply_id]
+            ]);
+
+            if($check->count() == 1){
+                if($check->first()->status == 1){
+                    LearningDiscussionLike::where([
+                        ['user_id', Auth::user()->id],
+                        ['type', $request->type],
+                        ['learning_course_id', $request->learning_course_id],
+                        ['learning_discussion_id', $request->learning_discussion_id],
+                        ['learning_discussion_reply_id', $request->learning_discussion_reply_id]
+                    ])->update([
+                        'status' => 0
+                    ]);
+                    $result = "unlike";
+                }
+                else{
+                    LearningDiscussionLike::where([
+                        ['user_id', Auth::user()->id],
+                        ['type', $request->type],
+                        ['learning_course_id', $request->learning_course_id],
+                        ['learning_discussion_id', $request->learning_discussion_id],
+                        ['learning_discussion_reply_id', $request->learning_discussion_reply_id]
+                    ])->update([
+                        'status' => 1
+                    ]);
+                    $result = "like";
+                }
+            }
+            else if($check->count() == 0){
+                LearningDiscussionLike::create([
+                    'user_id' => Auth::user()->id,
+                    'type' => $request->type,
+                    'learning_course_id' => $request->learning_course_id,
+                    'learning_discussion_id' => $request->learning_discussion_id,
+                    'learning_discussion_reply_id' => $request->learning_discussion_reply_id,
+                    'status' => 1
+                ]);
+                $result = "like";
+            }
+        }
+
+        return response()->json([
+            'response' => 'success',
+            'result' => $result
+        ]);
     }
 }

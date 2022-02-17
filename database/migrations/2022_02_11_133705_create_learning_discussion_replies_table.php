@@ -15,6 +15,10 @@ class CreateLearningDiscussionRepliesTable extends Migration
     {
         Schema::create('learning_discussion_replies', static function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('learning_discussion_id');
+            $table->text('message');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

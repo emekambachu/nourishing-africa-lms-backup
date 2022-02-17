@@ -541,6 +541,107 @@
 .course-tabs span{
     padding: 5px 10px;
     border-bottom: 1px solid #676767;
+    cursor: pointer;
+}
+
+.discussion-comment-text{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration-line: underline;
+    color: #006600;
+    padding-top: 10px;
+}
+
+.discussion-reply-btn{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #006600;
+    border: 1px solid #006600;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #fff;
+}
+
+.discussion-comment-name{
+    position: relative; 
+    top:2px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+    color: #333333;
+}
+
+.discussion-comment-time{
+    position: relative; 
+    top: 5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+}
+
+.discussion-comment-body{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #6B6B6B;
+}
+
+.discussion-comment-like{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #089803;
+    background-color: transparent;
+    border: none;
+}
+
+.discussion-comment-reply{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    color: #089803;
+    background-color: transparent;
+    border: none;
+}
+
+.discussion-comment-reply:active{
+    border: none;
+}
+
+.comment-form-submit {
+    border: 0px;
+    padding: 10px 15px;
+    background: #006600;
+    border-radius: 5px;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    color: #ffffff;
 }
 
 .course-tabs .active{

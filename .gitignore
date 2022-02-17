@@ -21,3 +21,4 @@ yarn-error.log
 /public/videos
 /public/.htaccess
 /public/error_log
+composer.lock

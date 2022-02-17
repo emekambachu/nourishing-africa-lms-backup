@@ -14,6 +14,7 @@ class LearningDiscussion extends Model
         'learning_module_id',
         'learning_course_id',
         'message',
+        'status',
     ];
 
     public function yaedpUser(){
@@ -30,5 +31,9 @@ class LearningDiscussion extends Model
 
     public function learningCourse(){
         return $this->belongsTo(LearningCourse::class, 'learning_course_id', 'id');
+    }
+
+    public function learningDiscussionReplies(){
+        return $this->hasMany(LearningDiscussionReply::class, 'learning_discussion_id', 'id');
     }
 }

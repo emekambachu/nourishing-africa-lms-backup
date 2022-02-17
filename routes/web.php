@@ -135,6 +135,12 @@ Route::get('yaedp/account/course/download-document/{id}/{file_name}',
 Route::get('yaedp/account/faq',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'faq'])
     ->name('yaedp.account.faq');
+Route::post('yaedp/account/dicussion',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'discussion'])
+    ->name('yaedp.account.discussion');
+Route::post('yaedp/account/dicussion/like',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'likeDiscussion'])
+    ->name('yaedp.account.discussion');
 
 // YAEDP Assessment Controller
 Route::get('yaedp/account/assessments',

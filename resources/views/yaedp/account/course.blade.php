@@ -99,9 +99,94 @@
                     </div>
 
                     <div class="col-12 bg-white-radius-shadow tab-bodies d-none" id="discussion-tab-body">
-                        <p class="text-inter tx-14">
-                            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
-                        </p>
+                        <div class="row">
+                            <div class="col-12 pl-3 pr-3 mb-3">
+                                <label for="" class="float-left align-items-center discussion-comment-text">({{ count($discussion) }}) Comment{{ count($discussion) > 1 ? 's':'' }}</label>
+                                <button class="float-right discussion-reply-btn" data-toggle="modal" data-target="#exampleModalCenter" data-type="Comment">Comment</button>
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-body">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: relative; right: 1px;">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <label class="news-update-view-page-form-text comment-title"></label>
+                                                                <input type="hidden" id="ReplyID" value="">
+                                                                <input type="hidden" id="type" value="">
+                                                                <input type="hidden" id="courseId" value="{{ $course->id }}">
+                                                                <input type="hidden" id="LMID" value="{{ $course->learningModule->id }}">
+                                                                <input type="hidden" id="LCID" value="{{ $course->learningCategory->id }}">
+                                                                <textarea row="5" id="comment" class="form-control" placeholder="Comments" required></textarea>
+                                                                <span id="msg"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-sm-12">
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-12">
+                                                            <div class="float-right">
+                                                                <button id="comment-submit-btn" class="comment-form-submit"><img class="pr-1 d-none" id="submit-img" src="{{ asset('images/floading.gif') }}">Submit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 pl-3 pr-3 mt-3" style="height: 300px; overflow:scroll;">
+                                @foreach($discussion as $item)
+                                <div class="row mb-3">
+                                    <div class="col-12">
+                                        <img src="{{ asset('images/icons/profile.png') }}" alt="" class="">
+                                        <label for="" class="pl-3 discussion-comment-name">{{ \App\Models\YaedpUser::getUserFullName($item->user_id) }}</label>
+                                        <label for="" class="float-right discussion-comment-time">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans(null, true).' ago' }}</label>
+                                    </div>
+                                    <div class="col-12 mt-2">
+                                        <p class="discussion-comment-body">{{ $item->message }}</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="discussion-comment-like" data-commentid="{{ $item->id }}" data-type="comment"><img id="commentlike{{ $item->id }}" src="{{ \App\Models\Learning\LearningDiscussionLike::check("comment", $course->id, $item->id) ? asset("images/icons/chkdfav.png") : asset("images/icons/like.png") }}" alt="">&nbsp;&nbsp; Like</button>
+                                        <button class="discussion-comment-reply" data-commentdiv="subcomment{{ $item->id }}">Replies({{ \App\Models\Learning\LearningDiscussionReply::getCount($item->id) }})</button>
+                                        <button class="discussion-comment-reply float-right" data-type="Reply" data-commentid="{{ $item->id }}" data-toggle="modal" data-target="#exampleModalCenter"><img src="{{asset("images/icons/reply.png")}}" alt="">&nbsp;&nbsp; Reply</button>
+                                    </div>
+                                </div>
+                                @if($item->learningDiscussionReplies)
+                                    <div id="subcomment{{ $item->id }}" class="ml-3 mt-3 d-none" style="border-left: 1px solid #ECEAEA;">
+                                    @foreach($item->learningDiscussionReplies as $replies)
+                                    @if($replies->status == 1)
+                                        <div class="row pl-3 mb-3">
+                                            <div class="col-12">
+                                                <img src="{{ asset('images/icons/profile.png') }}" alt="" class="">
+                                                <label for="" class="pl-3 discussion-comment-name">{{ \App\Models\YaedpUser::getUserFullName($replies->user_id) }}</label>
+                                                <label for="" class="float-right discussion-comment-time">{{ Carbon\Carbon::parse($replies->created_at)->diffForHumans(null, true).' ago' }}</label>
+                                            </div>
+                                            <div class="col-12 mt-2">
+                                                <p class="discussion-comment-body">{{ $replies->message }}</p>
+                                            </div>
+                                            <div class="col-12">
+                                                <button class="discussion-comment-like" data-commentid="{{ $item->id }}" data-type="reply" data-replyid="{{ $replies->id }}"><img id="replylike{{ $replies->id }}" src="{{ \App\Models\Learning\LearningDiscussionLike::check("reply", $course->id, $item->id, $replies->id) ? asset("images/icons/chkdfav.png") : asset("images/icons/like.png") }}" alt="">&nbsp;&nbsp; Like</button>
+                                                <button class="discussion-comment-reply float-right" data-type="Reply" data-commentid="{{ $item->id }}" data-toggle="modal" data-target="#exampleModalCenter"><img src="{{asset("images/icons/reply.png")}}" alt="">&nbsp;&nbsp; Reply</button>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @endforeach
+                                    </div>
+                                @endif
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -248,6 +333,155 @@
                 }
             });
 
+            $('#exampleModalCenter').on('show.bs.modal', function (event) {
+                const button = $(event.relatedTarget); // Button that triggered the modal
+                const data_type = button.data('type'); // Extract info from data-* attributes
+                const modal = $(this);
+                modal.find('.comment-title').text(data_type);
+                if(data_type == "Comment"){
+                    modal.find('#ReplyID').val("");
+                    modal.find('#comment').val("");
+                    modal.find('#type').val("comment");
+                }else if(data_type == "Reply"){
+                    const data_id = button.data('commentid');
+                    modal.find('#comment').val("");
+                    modal.find('#type').val("reply");
+                    modal.find('#ReplyID').val(data_id);
+                }
+
+            })
+
+            $("#comment-submit-btn").on('click', function(){
+                const modal = $(this);
+                let type = $('#type').val();
+                let data = {};
+                let message = $('#comment').val();
+
+                if(message == "" || message === ""){
+                    $("#msg").addClass('text-warning');
+                    $("#msg").text('This field is required.');
+                    return false;
+                }else{
+                    $("#msg").removeClass('text-warning');
+                    $("#msg").text('');
+                }
+
+                if(type == "comment"){
+                    data = {
+                        type : type,
+                        message : message,
+                        learning_course_id : $("#courseId").val(),
+                        learning_category_id : $("#LCID").val(),
+                        learning_module_id : $("#LMID").val()
+                    };
+                    //data.push(type, message, courseId, lmID, lcID);
+                }else if(type == "reply"){
+                    data = {
+                        type : type,
+                        message : message,
+                        reply_id : $('#ReplyID').val(),
+                    };
+                    //let reply_id = $('#ReplyID').val();
+                    //data.push(type, message, reply_id);
+                }
+
+                $.ajaxSetup({
+                    headers:{
+                        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url: "/yaedp/account/dicussion",
+                    type: "POST",
+                    data:  data,
+                    timeout: 5000,
+                    beforeSend : function()
+                    {
+                        $("#submit-img").removeClass('d-none');
+                    },
+                    success: function(data)
+                    {
+                        $("#submit-img").addClass('d-none');
+                        $("#msg").addClass('text-success');
+                        $("#msg").text('Comment Submitted.');
+                        $('#comment').val("");
+                    },
+                    error: function(e, textStatus) 
+                    {
+                        $("#submit-img").addClass('d-none');
+                        $("#msg").addClass('text-warning');
+                        $("#msg").text('There was an issue submitting your comment, please check your internet connection and try again.');
+                    }
+                        
+                });
+            });
+
+            $('.discussion-comment-reply').on('click', function (event) {
+                const button = $(event.target); // Button that triggered the modal
+                const subcommentdiv = button.data('commentdiv'); // Extract info from data-* attributes
+                $("#"+subcommentdiv).toggleClass("d-none");
+            });
+
+            $('.discussion-comment-like').on('click', function(event){
+                const button = $(this);
+                const discussionId = button.data('commentid');
+                const type = button.data('type');
+                let replyId;
+                let data = {};
+
+                if(type == "comment"){
+                    data = {
+                        type : type,
+                        learning_course_id : $("#courseId").val(),
+                        learning_discussion_id : discussionId,
+                    };
+                }else if(type == "reply"){
+                    replyId = button.data('replyid');
+                    data = {
+                        type : type,
+                        learning_course_id : $("#courseId").val(),
+                        learning_discussion_id : discussionId,
+                        learning_discussion_reply_id : replyId,
+                    };
+                }
+
+                $.ajax({
+                    url: "/yaedp/account/dicussion/like",
+                    type: "POST",
+                    data:  data,
+                    timeout: 5000,
+                    headers:{
+                        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+                    },
+                    beforeSend : function()
+                    {
+                        //$("#submit-img").removeClass('d-none');
+                    },
+                    success: function(data)
+                    {
+                        if(data.result == "like"){
+                            if(type == "comment"){
+                                $("#commentlike"+discussionId).attr('src', '/images/icons/chkdfav.png');
+                            }else if(type == "reply"){
+                                $("#replylike"+replyId).attr('src', '/images/icons/chkdfav.png');
+                            }
+                        }else{
+                            if(type == "comment"){
+                                $("#commentlike"+discussionId).attr('src', '/images/icons/like.png');
+                            }else if(type == "reply"){
+                                $("#replylike"+replyId).attr('src', '/images/icons/like.png');
+                            }
+                        }
+                        
+                    },
+                    error: function(e, textStatus) 
+                    {
+                       console.log('There was an issue submitting your comment, please check your internet connection and try again.');
+                    }
+                });
+
+            });
         });
     </script>
 
