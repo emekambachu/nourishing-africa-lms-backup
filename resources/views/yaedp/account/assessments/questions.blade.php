@@ -67,7 +67,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio"
                                                    name="answers[{{ $loop->index }}][answer]" id="flexRadioDefault1"
-                                                   value="{{ $quest->option_one }}">
+                                                   value="{{ $quest->option_one }}" required>
                                             <label class="form-check-label text-dark" for="flexRadioDefault1">
                                                 {{ $quest->option_one }}
                                             </label>

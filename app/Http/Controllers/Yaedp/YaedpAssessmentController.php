@@ -33,10 +33,10 @@ class YaedpAssessmentController extends Controller
     }
 
     public function start($id){
-
         $getModules = new LearningModule();
         $data['module'] = $getModules->findOrFail($id);
-        $data['modules'] = $getModules->where('learning_category_id', $this->yaedpId())->get();
+        $data['modules'] = $getModules->where('learning_category_id', $this->yaedpId())
+            ->orderBy('created_at', 'asc')->get();
 
         return view('yaedp.account.assessments.start', $data);
     }

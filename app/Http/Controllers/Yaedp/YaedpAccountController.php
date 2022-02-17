@@ -78,22 +78,29 @@ class YaedpAccountController extends Controller
                             ['learning_category_id', $course->learningCategory->id],
                         ])->first();
 
+        $viewedModule = LearningModuleView::where([
+            ['user_id', Auth::user()->id],
+            ['learning_module_id', $course->learningModule->id],
+            ['learning_category_id', $course->learningCategory->id],
+        ])->first();
+
         // if course has not been viewed, add it before entering course page
         if(!$viewedCourse){
-            // save to module view table
-            $viewedModule = new LearningModuleView();
-            $viewedModule->user_id = Auth::user()->id;
-            $viewedModule->learning_module_id = $course->learningModule->id;
-            $viewedModule->learning_category_id = $course->learningCategory->id;
-            $viewedModule->save();
-
             // Save to course view table
             $viewedCourse = new LearningCourseView();
             $viewedCourse->user_id = Auth::user()->id;
             $viewedCourse->learning_course_id = $course->id;
             $viewedCourse->learning_module_id = $course->learningModule->id;
             $viewedCourse->learning_category_id = $course->learningCategory->id;
-            $viewedCourse->learning_module_view_id = $viewedModule->id;
+            $viewedCourse->save();
+        }
+
+        if(!$viewedModule){
+            // Save to course view table
+            $viewedModule = new LearningModuleView();
+            $viewedModule->user_id = Auth::user()->id;
+            $viewedModule->learning_module_id = $course->learningModule->id;
+            $viewedCourse->learning_category_id = $course->learningCategory->id;
             $viewedCourse->save();
         }
 

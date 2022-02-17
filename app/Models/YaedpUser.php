@@ -54,9 +54,6 @@ class YaedpUser extends Authenticatable
         'linkedin',
         'twitter',
         'mark_status',
-        'assignment_total',
-        'assessment_score',
-        'assessment_percent',
         'token'
     ];
 
