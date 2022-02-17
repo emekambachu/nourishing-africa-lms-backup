@@ -29,6 +29,6 @@ class yaedpMenu extends Component
         $data['modules'] = LearningModule::where('learning_category_id', $data['categoryId'])
             ->orderBy('created_at', 'asc')->get();
 
-        return view('yaedp.account.components.yaedp-menu', $data);
+        return view('components.learning.yaedp-menu', $data);
     }
 }
