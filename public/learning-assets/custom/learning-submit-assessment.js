@@ -53,7 +53,7 @@ $(function() {
                         $('#loader').after(moduleBtn);
                         if(response.retakes < 3){
                             let moduleBtn = '<a href="/yaedp/account/assessment/'+ response.module_id +'/questions">\n' +
-                                '        <button style="width: 200px;" class="module-btn bg-success d-flex justify-content-center mt-2">\n' +
+                                '        <button style="width: 200px;" class="module-btn bg-light-brown d-flex justify-content-center mt-2">\n' +
                                 '            Retake</button>\n' +
                                 '</a>'
                             $('#loader').after(moduleBtn);
@@ -69,9 +69,9 @@ $(function() {
 
                     if(response.accumulated_passed === 1){
                         $('#loader').append("<p class='text-center tx-18'> Congratulations, you've made the cumulative passmark. Access your accumulated scores below. </p>");
-                        $('#loader').after("<img src='/images/icons/badge.png' width='100%' alt=''/>");
+                        $('#loader').after("<img src='/images/icons/medal.png' width='100' alt=''/>");
                         let moduleBtn = '<a href="/yaedp/account/accumulated/'+ response.module_id +'/score">\n' +
-                            '        <button style="width: 200px;" class="module-btn bg-success d-flex justify-content-center mt-3">\n' +
+                            '        <button style="width: 200px;" class="module-btn bg-light-brown d-flex justify-content-center mt-3">\n' +
                             '            Accumulated score</button>\n' +
                             '</a>'
                         $('#loader').after(moduleBtn);
