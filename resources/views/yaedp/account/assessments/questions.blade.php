@@ -24,18 +24,34 @@
             <div class="col-lg-9 col-md-9 col-sm-12">
                 <div class="bg-white-radius-shadow border-light-green">
 
+                    <div class="col-12" id="loader">
+                        <img class="assessment-loader d-none display-block"
+                             src="{{ asset('images/icons/assessment-loader.png') }}"
+                             width="200"/>
+                    </div>
+
                     @include('yaedp.account.includes.alerts')
 
-                    <form id="submit-form" method="post"
+                    @if(Auth::user()->startedModule($module->id)->status === 1)
+                        <h6>Module already passed, go to next available module.</h6>
+                        <a href="{{ route('yaedp.account.modules') }}">
+                            <button style="width:100px;"
+                                    class="module-btn bg-light-brown d-flex justify-content-center mt-2">
+                                Modules</button>
+                        </a>
+                    @elseif($module->learningAssessment->retake === 2)
+                        <h6>Sorry, you've exhausted your retakes. Do better i other modules to get a better chance of success.</h6>
+                        <a href="{{ route('yaedp.account.modules') }}">
+                            <button style="width:100px;"
+                                    class="module-btn bg-light-brown d-flex justify-content-center mt-2">
+                                Modules</button>
+                        </a>
+                    @else
+                        <form id="submit-form" method="post"
                           data-route="{{ route('yaedp.account.assessment.submit', $module->id) }}">
                         @csrf
+
                         <div class="row d-flex justify-content-center">
-
-                            <div class="col-12" id="loader" style="margin: 0 auto;">
-                                <img class="assessment-loader d-none display-block"
-                                     src="{{ asset('images/icons/assessment-loader.png') }}" width="200"/>
-                            </div>
-
                             <div id="questions-container">
                                 @foreach($questions as $quest)
                                     <div class="col-md-12 text-left ml-3 mb-4 mt-4">
@@ -118,6 +134,7 @@
 
                         </div>
                     </form>
+                    @endif
 
                 </div>
 

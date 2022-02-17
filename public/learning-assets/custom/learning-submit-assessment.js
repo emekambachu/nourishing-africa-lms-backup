@@ -28,20 +28,38 @@ $(function() {
                 // Show spinner
                 $('.assessment-loader').fadeIn(200);
                 $('.assessment-loader').removeClass('d-none');
-                // $('#loader').append("<i class='fa fa-spinner fa-spin fa-4x na-text-dark-green text-center'></i>");
-                $('#loader').append("<p class='text-center d-flex'>Getting your score, wait a moment.......</p>");
+                $('#loader').append("<p class='text-center tx-18'>Getting your score, wait a moment.......</p>");
             },
 
             success: function (response){
                 console.log(response);
-                if (response.success) {
+                if(response.success){
                     $('#loader').html("<h1 class='na-text-dark-green tx-100 text-center'>" + response.percent + "</h1><br>");
-                    $('#loader').append("<p class='text-center'>" + response.comment + "</p>");
+                    $('#loader').append("<p class='text-center tx-18'>" + response.comment + "</p>");
+
+                    if(response.result === 'failed'){
+                        let moduleBtn = '<a href="/yaedp/account/assessment/'+ response.module_id +'/questions">\n' +
+                            '        <button style="width: 200px;" class="module-btn bg-light-brown d-flex justify-content-center mt-2">\n' +
+                            '            Retake</button>\n' +
+                            '</a>'
+                        $('#leader').after(moduleBtn);
+                    }else{
+                        let moduleBtn = '<a href="/yaedp/account/modules">\n' +
+                            '        <button style="width: 200px;" class="module-btn bg-light-brown d-flex justify-content-center mt-2">\n' +
+                            '            Modules</button>\n' +
+                            '</a>'
+                        $('#leader').after(moduleBtn);
+                    }
+                }
+
+                if(response.no_retakes) {
+                    $('#loader').html("<h1 class='na-text-dark-green tx-100 text-center'>" + response.percent + "</h1><br>");
+                    $('#loader').append("<p class='text-center tx-18'>" + response.comment + "</p>");
                     let moduleBtn = '<a href="/yaedp/account/modules">\n' +
                         '        <button style="width: 200px;" class="module-btn bg-light-brown d-flex justify-content-center mt-2">\n' +
                         '            Modules</button>\n' +
                         '</a>'
-                    $('#questions-container').after(moduleBtn);
+                    $('#loader').after(moduleBtn);
                 }
 
                 if (response.errors){

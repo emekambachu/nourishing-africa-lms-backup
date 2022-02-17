@@ -28,6 +28,9 @@ class LearningModule extends Model
     public function learningCategory(){
         return $this->belongsTo(LearningCategory::class, 'learning_category_id', 'id');
     }
+    public function learningAssessment(){
+        return $this->hasOne(LearningAssessment::class, 'learning_module_id', 'id');
+    }
 
     public function nextModule(){
         return self::where('id', '>', $this->id)->orderBy('id','asc')->first();
