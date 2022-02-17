@@ -112,8 +112,8 @@ class YaedpAccountController extends Controller
             $viewedModule = new LearningModuleView();
             $viewedModule->user_id = Auth::user()->id;
             $viewedModule->learning_module_id = $course->learningModule->id;
-            $viewedCourse->learning_category_id = $course->learningCategory->id;
-            $viewedCourse->save();
+            $viewedModule->learning_category_id = $course->learningCategory->id;
+            $viewedModule->save();
         }
 
         $courses = $data['getCourses']->with('learningModule')->where([
