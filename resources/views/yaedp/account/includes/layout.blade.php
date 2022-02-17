@@ -104,7 +104,7 @@
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
 
-                <x-Learning.yaedpMenu/>
+                <x-Learning.YaedpMenu/>
             </li>
 
             <li class="slide mb-3">
