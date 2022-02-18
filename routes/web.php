@@ -140,7 +140,7 @@ Route::post('yaedp/account/dicussion',
     ->name('yaedp.account.discussion');
 Route::post('yaedp/account/dicussion/like',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'likeDiscussion'])
-    ->name('yaedp.account.discussion');
+    ->name('yaedp.account.like-discussion');
 
 // YAEDP Assessment Controller
 Route::get('yaedp/account/assessments',
@@ -158,6 +158,12 @@ Route::post('yaedp/account/assessment/{id}/submit',
 Route::get('yaedp/account/assessment/certificate',
     [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'certificate'])
     ->name('yaedp.account.assessment.certificate');
+Route::get('yaedp/account/assessment/certificate',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'certificate'])
+    ->name('yaedp.account.assessment.certificate');
+Route::get('yaedp/account/assessment/certificate/download',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'downloadCertificate'])
+    ->name('yaedp.account.assessment.certificate.download');
 
 // Password Reset
 Route::get('yaedp/forgot-password',

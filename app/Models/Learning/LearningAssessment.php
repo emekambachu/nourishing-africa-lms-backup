@@ -14,6 +14,8 @@ class LearningAssessment extends Model
         'score',
         'percent',
         'passed',
+        'certificate_downloads',
+        'certificate_id',
     ];
 
     public function yaedpUser(){

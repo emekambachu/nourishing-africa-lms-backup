@@ -69,7 +69,7 @@ $(function() {
 
                     if(response.accumulated_passed === 1){
                         $('#loader').append("<p class='text-center tx-18'> Congratulations, you've made the cumulative passmark. Access your accumulated scores below. </p>");
-                        $('#loader').after("<img src='/images/icons/medal.png' width='100' alt=''/>");
+                        $('#loader').after("<img class='text-center' src='/images/icons/medal.png' width='100' alt=''/>");
                         let moduleBtn = '<a href="/yaedp/account/assessments/">\n' +
                             '        <button style="width: 200px;" class="module-btn bg-light-brown d-flex justify-content-center mt-3">\n' +
                             '            Accumulated scores</button>\n' +

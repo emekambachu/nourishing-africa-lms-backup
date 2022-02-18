@@ -573,7 +573,7 @@
 }
 
 .discussion-comment-name{
-    position: relative; 
+    position: relative;
     top:2px;
     font-family: Inter;
     font-style: normal;
@@ -585,7 +585,7 @@
 }
 
 .discussion-comment-time{
-    position: relative; 
+    position: relative;
     top: 5px;
     font-family: Inter;
     font-style: normal;
@@ -693,14 +693,37 @@ input[type="radio"].assessment-radio-input{
 
 .assessment-loader {
     animation: rotation 8s infinite linear;
-    margin-left: 40%;
+    margin-left: 35%;
 }
 
-@keyframes rotation {
+@keyframes rotation{
     from {
         transform: rotate(0deg);
     }
     to {
         transform: rotate(359deg);
     }
+}
+
+.certificate-bg{
+    margin: 0 auto;
+    width: 500px;
+    height: 406px;
+    background-image: url(../images/icons/certificate_yaedp_500.png);
+}
+
+.certificate-name{
+    position: absolute;
+    top: 51%;
+    left: 53%;
+    text-align: center;
+    font-family: Manrope, serif !important;
+}
+
+.certificate-date{
+    position: absolute;
+    top: 67%;
+    left: 45%;
+    font-size: 12px;
+    font-family: Manrope, serif !important;
 }

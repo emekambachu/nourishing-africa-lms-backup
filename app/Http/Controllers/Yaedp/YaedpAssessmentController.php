@@ -9,6 +9,8 @@ use App\Models\Learning\LearningAssignmentQuestion;
 use App\Models\Learning\LearningCategory;
 use App\Models\Learning\LearningModule;
 use App\Models\Learning\LearningModuleView;
+use PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -35,24 +37,23 @@ class YaedpAssessmentController extends Controller
         }
     }
 
-    public function index(){
-
-        $data['assessmentPassed'] = LearningAssessment::where([
+    private function passedAssessment($category){
+        return  LearningAssessment::where([
             ['user_id', Auth::user()->id],
-            ['learning_category_id', $this->yaedpId()],
+            ['learning_category_id', $category],
             ['percent', '>=', 80],
         ])->first();
+    }
 
+    public function index(){
+
+        $data['assessmentPassed'] = $this->passedAssessment($this->yaedpId());
         $data['moduleAssessments'] = LearningModuleView::where([
             ['user_id', Auth::user()->id],
             ['status', 1],
         ])->oldest()->get();
 
         return view('yaedp.account.assessments.index', $data);
-    }
-
-    public function show(){
-
     }
 
     public function start($id){
@@ -232,8 +233,21 @@ class YaedpAssessmentController extends Controller
 
     }
 
-    public function accumulatedScore($id){
-        $accumulated = LearningAssessment::findOrFail($id);
-        return view('yaedp.account.assessments.accumulated', compact('accumulated'));
+    public function certificate(){
+
+        $data['assessmentPassed'] = $this->passedAssessment($this->yaedpId());
+        $data['certificateDate'] = Carbon::now()->format('jS \\of F Y');
+
+        return view('yaedp.account.assessments.certificate', $data);
+    }
+
+    public function DownloadCertificate(){
+        $data = [
+            'name' => Auth::user()->first_name.' '.Auth::user()->surname,
+            'current_date' => Carbon::now()->format('jS \\of F Y'),
+            ];
+
+        return PDF::loadView('yaedp_certificate_pdf', compact('data'))
+            ->download($data['name'].'-'.time().'.pdf');
     }
 }
