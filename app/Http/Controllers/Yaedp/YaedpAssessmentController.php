@@ -37,7 +37,18 @@ class YaedpAssessmentController extends Controller
 
     public function index(){
 
-        return view('yaedp.account.assessments.index');
+        $data['assessmentPassed'] = LearningAssessment::where([
+            ['user_id', Auth::user()->id],
+            ['learning_category_id', $this->yaedpId()],
+            ['percent', '>=', 80],
+        ])->first();
+
+        $data['moduleAssessments'] = LearningModuleView::where([
+            ['user_id', Auth::user()->id],
+            ['status', 1],
+        ])->oldest()->get();
+
+        return view('yaedp.account.assessments.index', $data);
     }
 
     public function show(){

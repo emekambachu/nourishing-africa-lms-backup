@@ -23,8 +23,4 @@ class LearningAssessment extends Model
     public function learningCategory(){
         return $this->belongsTo(LearningCategory::class, 'learning_category_id', 'id');
     }
-
-    public function learningCourse(){
-        return $this->belongsTo(LearningCourse::class, 'learning_course_id', 'id');
-    }
 }

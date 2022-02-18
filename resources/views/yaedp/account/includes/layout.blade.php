@@ -99,7 +99,7 @@
 
             <li class="slide mb-3">
                 <a class="side-menu__item" data-toggle="slide" href="{{ route('yaedp.account.modules') }}">
-                    <i class="side-menu__icon fa fa-graduation-cap"></i>
+                    <i class="side-menu__icon fa fa-book-open"></i>
                     <span class="side-menu__label">Modules</span>
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
@@ -109,7 +109,7 @@
 
             <li class="slide mb-3">
                 <a class="side-menu__item" href="{{ route('yaedp.account.assessments') }}">
-                    <i class="side-menu__icon fa fa-book-reader"></i>
+                    <i class="side-menu__icon fa fa-graduation-cap"></i>
                     <span class="side-menu__label">Assessments</span></a>
             </li>
 
