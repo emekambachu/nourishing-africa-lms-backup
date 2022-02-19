@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\Yaedp\YaedpLoginController;
+use App\Http\Controllers\Auth\Yaedp\YaedpResetPasswordController;
 use App\Http\Controllers\GithubDeploymentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -103,15 +105,22 @@ Auth::routes([
 ]);
 
 // YAEDP Login
-Route::get('yaedp/login',
-    [App\Http\Controllers\Auth\Yaedp\YaedpLoginController::class, 'showLoginForm'])
+Route::get('yaedp/login', [YaedpLoginController::class, 'showLoginForm'])
     ->name('yaedp.login');
-Route::post('yaedp/login/submit',
-    [App\Http\Controllers\Auth\Yaedp\YaedpLoginController::class, 'login'])
+Route::post('yaedp/login/submit', [YaedpLoginController::class, 'login'])
     ->name('yaedp.login.submit');
-Route::post('yaedp/logout',
-    [App\Http\Controllers\Auth\Yaedp\YaedpLoginController::class, 'logout'])
+Route::post('yaedp/logout', [YaedpLoginController::class, 'logout'])
     ->name('yaedp.logout');
+
+// YAEDP Password Reset
+Route::get('yaedp/forgot-password', [YaedpResetPasswordController::class, 'forgotPassword'])
+    ->name('yaedp.forgot-password');
+Route::post('yaedp/forgot-password/send-link', [YaedpResetPasswordController::class, 'sendPasswordResetLink'])
+    ->name('yaedp.forgot-password.send-link');
+Route::get('yaedp/password-reset-token/{token}', [YaedpResetPasswordController::class, 'passwordResetToken'])
+    ->name('yaedp.password-reset-token');
+Route::post('yaedp/password-reset/confirm/{token}', [YaedpResetPasswordController::class, 'passwordResetConfirm'])
+    ->name('yaedp.password-reset-confirm');
 
 // Account
 Route::get('yaedp/account',
@@ -164,20 +173,6 @@ Route::get('yaedp/account/assessment/certificate',
 Route::get('yaedp/account/assessment/certificate/download',
     [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'downloadCertificate'])
     ->name('yaedp.account.assessment.certificate.download');
-
-// Password Reset
-Route::get('yaedp/forgot-password',
-    [App\Http\Controllers\Auth\Yaedp\YaedpResetPasswordController::class, 'forgotPassword'])
-    ->name('yaedp.forgot-password');
-Route::post('yaedp/password-reset/send-link',
-    [App\Http\Controllers\Auth\ResetPasswordController::class, 'sendPasswordResetLink'])
-    ->name('yaedp.password-reset.send-link');
-Route::get('yaedp/password-reset-token/{token}',
-    [App\Http\Controllers\Auth\ResetPasswordController::class, 'passwordResetToken'])
-    ->name('yaedp.password-reset-token');
-Route::post('yaedp/password-reset/confirm/{token}',
-    [App\Http\Controllers\Auth\ResetPasswordController::class, 'passwordResetConfirm'])
-    ->name('yaedp.password-reset-confirm');
 
 //Github Deployment
 Route::post('github/deploy', [GithubDeploymentController::class, 'deploy']);

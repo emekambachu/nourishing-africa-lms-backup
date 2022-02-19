@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class YaedpLoginController extends Controller
 {
@@ -52,6 +53,7 @@ class YaedpLoginController extends Controller
 
             return redirect()->intended('/yaedp/account');
         }
+        Session::flash('warning', 'Incorrect Login Details');
         return back()->withInput($request->only('email', 'remember'));
     }
 

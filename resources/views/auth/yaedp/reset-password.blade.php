@@ -1,7 +1,7 @@
 @extends('includes.layout')
 
 @section('title')
-    YAEDP
+    YAEDP | Reset Password
 @endsection
 
 @section('meta-tags')
@@ -10,13 +10,13 @@
     <link rel="canonical" href="{{ Request::fullUrl() }}" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Nourishing Africa | YAEDP - Login" />
-    <meta property="og:description" content="Nourishing Africa | YAEDP - Login" />
+    <meta property="og:title" content="Nourishing Africa | YAEDP | Reset Password" />
+    <meta property="og:description" content="Nourishing Africa | YAEDP | Reset Password" />
     <meta property="og:url" content="{{ Request::fullUrl() }}" />
     <meta property="og:site_name" content="Nourishing Africa" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:description" content="Nourishing Africa | YAEDP - Login" />
-    <meta name="twitter:title" content="Nourishing Africa | YAEDP - Login" />
+    <meta name="twitter:description" content="Nourishing Africa | YAEDP | Reset Password" />
+    <meta name="twitter:title" content="Nourishing Africa | YAEDP | Reset Password" />
     <meta name="twitter:site" content="@nourish_africa" />
     <meta name="twitter:creator" content="@nourish_africa" />
     <script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>
@@ -33,38 +33,29 @@
     <section class="p-0 wow fadeIn bg-light"
              style="visibility: visible; animation-name: fadeIn; background-image: url(&quot;{{ asset('images/login-intro.jpg') }}&quot;); background-size: cover;">
         <div class="container-fluid">
-            <div class="row">
-
-                <div class="col-12 col-lg-4 wow fadeInRight" style=""></div>
+            <div class="row d-flex justify-content-center">
 
                 <div class="col-12 col-lg-4 wow fadeInLeft margin-20px-tb padding-four-all md-padding-eight-all md-padding-15px-lr sm-padding-50px-tb border-radius-4" style="visibility: visible; animation-name: fadeInLeft; background-color: #fff;">
                     <div class="row m-0">
-                        <div class="col-12 margin-six-bottom lg-margin-six-bottom md-margin-30px-bottom sm-no-margin-bottom">
+                        <div class="col-12 margin-six-bottom lg-margin-six-bottom md-margin-30px-bottom sm-no-margin-bottom text-center">
                             <h4 class="na-text-dark-green learning-intro-header text-center mx-auto mx-lg-0 sm-width-100 mb-0">Welcome to YAEDP</h4>
-                            <p class="text-center font-normal-manrope-black">Login to start learning</p>
+                            <p class="text-center font-normal-manrope-black">
+                                Insert your new password</p>
 
-                            @include('includes.alerts')
+                            <p style="display: none;"
+                               class="fa fa-4x fa-spin fa-spinner brand-text" id="loader"></p>
+                            <div id="validation-alert"></div>
                         </div>
+
+                        <p class="text-center fa fa-4x fa-spin fa-spinner brand-text" id="loader"></p>
+                        <div id="validation-alert"></div>
+
                         <!-- start feature box item -->
                         <div class="col-12 aligncenter margin-six-bottom md-margin-30px-bottom last-paragraph-no-margin">
-
-                            <form method="post" action="{{ route('yaedp.login.submit') }}">
+                            <form method="post" id="password-update-form"
+                                  action="{{ route('yaedp.password-reset-confirm', $verifiedUser->verification_token) }}">
                                 @csrf
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label class="login-form-label">Email</label><br>
-                                            <input type="email" name="email"
-                                                   class="login-form @error('email') is-invalid @enderror"
-                                                   placeholder="email" required="">
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
+                                <div class="row" id="form-fields">
                                     <div class="col-md-12 col-xl-12 col-lg-12">
                                         <div class="form-group">
                                             <label class="login-form-label">Password</label><br>
@@ -73,34 +64,29 @@
                                                    placeholder="Enter Password" required="">
                                             <i class="far fa-eye field-icon" id="toggle_password"></i>
                                             @error('password')
-                                                <span class="invalid-feedback" role="alert">
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="login-form-label">Confirm Password</label><br>
+                                            <input type="password" name="password_confirm" id="password_confirm"
+                                                   class="login-form" placeholder="Confirm password" required="">
+                                            <i class="far fa-eye field-icon" id="toggle_password"></i>
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 col-lg-6 col-xs-6">
-                                        <div class="float-left" style="display: block;">
-                                            <input class="login-form-checkbox"
-                                                   style="display: inline; width: 20px;" type="checkbox"
-                                                   name="remember" id="remember">
-                                            <label class="text-small">Remember me</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 col-lg-6 col-xs-6">
-                                        <div class="float-right" style="display: block;">
-                                            <p class="text-center login-shortcut">
-                                                <a class="na-text-dark-green"
-                                                   href="{{ route('yaedp.forgot-password') }}">
-                                                    Reset Password</a>
-                                            </p>
-                                        </div>
-                                    </div>
-
                                     <div class="col-12">
-                                        <button type="submit" class="login-form-btn">Login</button>
+                                        <button type="submit" id="password-update-btn" class="login-form-btn"
+                                                data-route="{{ route('yaedp.password-reset-confirm', $verifiedUser->verification_token) }}">
+                                            Reset password</button>
                                     </div>
 
                                     <div class="col-12">
@@ -108,8 +94,12 @@
                                             By using this you agree to our <a class="login-link" href="">Terms of Service</a> and <a class="login-link" href="">Privacy Policy</a>
                                         </p>
                                         <p class="text-center login-shortcut margin-10px-bottom">
+                                            Have an account? <a class="na-text-dark-green"
+                                                                href="{{ route('yaedp.login') }}">Login</a>
+                                        </p>
+                                        <p class="text-center login-shortcut margin-10px-bottom">
                                             No account? <a class="na-text-dark-green"
-                                           href="https://nourishingafrica.com/yaedp/application">Sign up</a>
+                                                           href="https://nourishingafrica.com/yaedp/application">Sign up</a>
                                         </p>
                                     </div>
                                 </div>
@@ -120,8 +110,6 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-4 wow fadeInRight" style=""></div>
-
             </div>
         </div>
     </section>
@@ -129,4 +117,5 @@
 
 @section('bottom-assets')
     <script src="{{ asset('learning-assets/custom/js/login-form.js') }}"></script>
+    <script src="{{ asset('learning-assets/custom/js/password-reset.js') }}"></script>
 @endsection
