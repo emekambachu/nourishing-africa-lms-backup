@@ -242,12 +242,24 @@ class YaedpAssessmentController extends Controller
     }
 
     public function DownloadCertificate(){
+
+//        $fontPath = 'fonts/Nunito-Light.ttf';
+//        $fontType = pathinfo($fontPath, PATHINFO_EXTENSION);
+//        $fontData = file_get_contents($fontPath);
+//        $base64Font = 'data:image/' . $fontType . ';base64,' . base64_encode($fontData);
+
+        $path = 'images/icons/certificate_yaedp_700.jpg';
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        $base64_image = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
         $data = [
             'name' => Auth::user()->first_name.' '.Auth::user()->surname,
             'current_date' => Carbon::now()->format('jS \\of F Y'),
+            'certificate_image' => $base64_image,
             ];
 
         return PDF::loadView('yaedp_certificate_pdf', compact('data'))
-            ->download($data['name'].'-'.time().'.pdf');
+            ->download($data['name'].'_'.time().'.pdf');
     }
 }
