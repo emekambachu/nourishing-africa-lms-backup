@@ -135,10 +135,13 @@ Route::get('yaedp/account/course/download-document/{id}/{file_name}',
 Route::get('yaedp/account/faq',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'faq'])
     ->name('yaedp.account.faq');
-Route::post('yaedp/account/dicussion',
+Route::get('yaedp/account/course/{id}/discussions',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'showDiscussions'])
+    ->name('yaedp.account.discussion.all');    
+Route::post('yaedp/account/discussion',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'discussion'])
     ->name('yaedp.account.discussion');
-Route::post('yaedp/account/dicussion/like',
+Route::post('yaedp/account/discussion/like',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'likeDiscussion'])
     ->name('yaedp.account.discussion');
 

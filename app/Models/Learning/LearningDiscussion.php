@@ -36,4 +36,13 @@ class LearningDiscussion extends Model
     public function learningDiscussionReplies(){
         return $this->hasMany(LearningDiscussionReply::class, 'learning_discussion_id', 'id');
     }
+
+    public static function getDiscussionCount($course){
+        return LearningDiscussion::where([
+                    ['learning_course_id', $course->id],
+                    ['learning_module_id', $course->learningModule->id],
+                    ['learning_category_id', $course->learningCategory->id],
+                    ['status', 1],
+                ])->count();
+    }
 }
