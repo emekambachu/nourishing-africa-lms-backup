@@ -90,7 +90,9 @@ $(document).ready(function () {
             success: function (data) {
                 $("#submit-img").addClass("d-none");
                 $("#msg").addClass("text-success");
-                $("#msg").text("Comment Submitted.");
+                $("#msg").text(
+                    "Your comment was successfully submitted and will be reviewed before made public."
+                );
                 $("#comment").val("");
             },
             error: function (e, textStatus) {
