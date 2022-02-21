@@ -33,7 +33,7 @@
                     @include('yaedp.account.includes.alerts')
 
                     @if($modulePassed)
-                        <h5 class="text-center mb-3">Module already passed, go to next available module.</h5>
+                        <h5 class="text-center mb-3">You've passed this module, go to next available module.</h5>
                         <a href="{{ route('yaedp.account.modules') }}">
                             <button style="width:100px;"
                                     class="module-btn bg-light-brown d-flex justify-content-center mt-2">

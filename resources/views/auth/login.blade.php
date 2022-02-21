@@ -88,7 +88,7 @@
                                             <p class="text-center login-shortcut">
                                                 <a class="na-text-dark-green"
                                                    href="{{ route('learning.forgot-password') }}">
-                                                    Forgot Password</a>
+                                                    Reset Password</a>
                                             </p>
                                         </div>
                                     </div>

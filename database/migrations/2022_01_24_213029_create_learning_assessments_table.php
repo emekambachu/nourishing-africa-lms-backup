@@ -21,6 +21,8 @@ class CreateLearningAssessmentsTable extends Migration
             $table->string('score')->nullable();
             $table->string('percent')->nullable();
             $table->boolean('passed')->default(0);
+            $table->tinyInteger('certificate_downloads')->default(0);
+            $table->bigInteger('certificate_id')->nullable();
             $table->timestamps();
         });
     }

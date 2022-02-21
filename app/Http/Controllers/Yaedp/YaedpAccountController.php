@@ -70,7 +70,7 @@ class YaedpAccountController extends Controller
                                         ['id', $id],
                                         ['learning_category_id', $this->yaedpId()],
                                     ])->first();
-        
+
         //Get Course Discussions
         $discussion = LearningDiscussion::with('learningDiscussionReplies')
                         ->where([
@@ -78,11 +78,11 @@ class YaedpAccountController extends Controller
                             ['learning_module_id', $course->learningModule->id],
                             ['learning_category_id', $course->learningCategory->id],
                             ['status', 1],
-                        ])->limit(3)->get();                      
+                        ])->limit(3)->get();
 
         $module = LearningModule::findOrFail($course->learning_module_id);
 
-        // Check if course has been viewed
+        // Check if course has been started by user
         $viewedCourse = LearningCourseView::where([
                             ['user_id', Auth::user()->id],
                             ['learning_course_id', $course->id],
@@ -90,6 +90,7 @@ class YaedpAccountController extends Controller
                             ['learning_category_id', $course->learningCategory->id],
                         ])->first();
 
+        // Check if module has been started by user
         $viewedModule = LearningModuleView::where([
             ['user_id', Auth::user()->id],
             ['learning_module_id', $course->learningModule->id],
@@ -108,14 +109,15 @@ class YaedpAccountController extends Controller
         }
 
         if(!$viewedModule){
-            // Save to course view table
+            // Once course has been viewed, add it to module view as started
             $viewedModule = new LearningModuleView();
             $viewedModule->user_id = Auth::user()->id;
             $viewedModule->learning_module_id = $course->learningModule->id;
-            $viewedCourse->learning_category_id = $course->learningCategory->id;
-            $viewedCourse->save();
+            $viewedModule->learning_category_id = $course->learningCategory->id;
+            $viewedModule->save();
         }
 
+        // Courses trail on sidebar
         $courses = $data['getCourses']->with('learningModule')->where([
                 ['learning_module_id', $course->learningModule->id],
                 ['learning_category_id', $this->yaedpId()],
@@ -150,31 +152,6 @@ class YaedpAccountController extends Controller
             $viewedCourse->save();
         }
 
-//      // Get user completed courses for the current module
-//        $completedModuleCourses = $getViewedCourses->where([
-//            ['user_id', Auth::user()->id],
-//            ['learning_module_id', $course->learning_module_id],
-//            ['learning_category_id', $course->learning_category_id],
-//            ['status', 1],
-//        ])->get();
-//
-//        // Get user courses for the current module
-//        $moduleCourses = $getModuleCourses->where([
-//            ['learning_module_id', $course->learning_module_id],
-//            ['learning_category_id', $course->learning_category_id],
-//        ])->get();
-//
-//        // compare the number of completed courses with the number of courses in the module
-//        // if the numbers are equal, update module views to completed
-//        if($completedModuleCourses->count() === $moduleCourses->count()){
-//            LearningModuleView::update([
-//                'user_id' => Auth::user()->id,
-//                'learning_module_id' => $course->learning_module_id,
-//                'learning_category_id' => $course->learning_category_id,
-//                'status' => 1,
-//            ]);
-//        }
-
         return response()->json([
             'success'=>'Success'
         ]);
@@ -188,12 +165,8 @@ class YaedpAccountController extends Controller
         return response()->file($path, ['Content-Type' => $file->mime]);
     }
 
-    public function moduleAssignments(){
-        return view('yaedp.account.assignments.index');
-    }
-
-    public function moduleAssignment($id){
-        return view('yaedp.account.assignments.show');
+    public function faq(){
+        return view('yaedp.account.faq');
     }
 
     public function showDiscussions($id){

@@ -18,9 +18,9 @@ class LearningDiscussionReply extends Model
 
     public static function getCount($id){
         return count(LearningDiscussionReply::where('learning_discussion_id', $id)->where('status', 1)->get());
-    } 
+    }
 
     public function learningDiscussion(){
-        return $this->hasOne(LearningDiscussion::class, 'learning_discussion_id', 'id');
+        return $this->belongsTo(LearningDiscussion::class, 'learning_discussion_id', 'id');
     }
 }
