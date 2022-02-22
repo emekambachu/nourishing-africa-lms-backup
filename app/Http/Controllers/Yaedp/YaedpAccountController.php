@@ -169,6 +169,68 @@ class YaedpAccountController extends Controller
         return view('yaedp.account.faq');
     }
 
+    public function showDiscussions($id){
+        $data['getCourses'] = new LearningCourse();
+
+        // Get current course
+        $course = $data['getCourses']->with('learningModule')->where([
+                                        ['id', $id],
+                                        ['learning_category_id', $this->yaedpId()],
+                                    ])->first();
+        
+        //Get Course Discussions
+        $discussion = LearningDiscussion::with('learningDiscussionReplies')
+                        ->where([
+                            ['learning_course_id', $course->id],
+                            ['learning_module_id', $course->learningModule->id],
+                            ['learning_category_id', $course->learningCategory->id],
+                            ['status', 1],
+                        ])->get();                      
+
+        $module = LearningModule::findOrFail($course->learning_module_id);
+
+        // Check if course has been viewed
+        $viewedCourse = LearningCourseView::where([
+                            ['user_id', Auth::user()->id],
+                            ['learning_course_id', $course->id],
+                            ['learning_module_id', $course->learningModule->id],
+                            ['learning_category_id', $course->learningCategory->id],
+                        ])->first();
+
+        $viewedModule = LearningModuleView::where([
+            ['user_id', Auth::user()->id],
+            ['learning_module_id', $course->learningModule->id],
+            ['learning_category_id', $course->learningCategory->id],
+        ])->first();
+
+        // if course has not been viewed, add it before entering course page
+        if(!$viewedCourse){
+            // Save to course view table
+            $viewedCourse = new LearningCourseView();
+            $viewedCourse->user_id = Auth::user()->id;
+            $viewedCourse->learning_course_id = $course->id;
+            $viewedCourse->learning_module_id = $course->learningModule->id;
+            $viewedCourse->learning_category_id = $course->learningCategory->id;
+            $viewedCourse->save();
+        }
+
+        if(!$viewedModule){
+            // Save to course view table
+            $viewedModule = new LearningModuleView();
+            $viewedModule->user_id = Auth::user()->id;
+            $viewedModule->learning_module_id = $course->learningModule->id;
+            $viewedCourse->learning_category_id = $course->learningCategory->id;
+            $viewedCourse->save();
+        }
+
+        $courses = $data['getCourses']->with('learningModule')->where([
+                ['learning_module_id', $course->learningModule->id],
+                ['learning_category_id', $this->yaedpId()],
+        ])->orderBy('created_at', 'asc')->get();
+
+        return view('yaedp.account.discussions', compact('course', 'courses', 'module', 'discussion'));
+    }
+
     public function discussion(Request $request){
         $type = $request->type;
 
