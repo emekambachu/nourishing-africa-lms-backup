@@ -157,7 +157,10 @@
                                         <p class="discussion-comment-body">{{ $item->message }}</p>
                                     </div>
                                     <div class="col-12">
-                                        <button class="discussion-comment-like" data-commentid="{{ $item->id }}" data-type="comment"><img id="commentlike{{ $item->id }}" src="{{ \App\Models\Learning\LearningDiscussionLike::check("comment", $course->id, $item->id) ? asset("images/icons/chkdfav.png") : asset("images/icons/like.png") }}" alt="">&nbsp;&nbsp; Like</button>
+                                        <button class="discussion-comment-like" data-commentid="{{ $item->id }}" data-type="comment">
+                                            <img id="commentlike{{ $item->id }}" style="width: 16px; height: 16px;" src="{{ \App\Models\Learning\LearningDiscussionLike::check("comment", $course->id, $item->id) ? asset("images/icons/chkdfav.png") : asset("images/icons/like.png") }}" alt="">
+                                            &nbsp;&nbsp; Like ({{ \App\Models\Learning\LearningDiscussionLike::countLikes("comment", $course->id, $item->id) }})
+                                        </button>
                                         <button class="discussion-comment-reply" data-commentdiv="subcomment{{ $item->id }}">Replies({{ \App\Models\Learning\LearningDiscussionReply::getCount($item->id) }})</button>
                                         <button class="discussion-comment-reply float-right" data-type="Reply" data-commentid="{{ $item->id }}" data-toggle="modal" data-target="#exampleModalCenter"><img src="{{asset("images/icons/reply.png")}}" alt="">&nbsp;&nbsp; Reply</button>
                                     </div>
@@ -176,7 +179,10 @@
                                                 <p class="discussion-comment-body">{{ $replies->message }}</p>
                                             </div>
                                             <div class="col-12">
-                                                <button class="discussion-comment-like" data-commentid="{{ $item->id }}" data-type="reply" data-replyid="{{ $replies->id }}"><img id="replylike{{ $replies->id }}" src="{{ \App\Models\Learning\LearningDiscussionLike::check("reply", $course->id, $item->id, $replies->id) ? asset("images/icons/chkdfav.png") : asset("images/icons/like.png") }}" alt="">&nbsp;&nbsp; Like</button>
+                                                <button class="discussion-comment-like" data-commentid="{{ $item->id }}" data-type="reply" data-replyid="{{ $replies->id }}">
+                                                    <img id="replylike{{ $replies->id }}" style="width: 16px; height: 16px;" src="{{ \App\Models\Learning\LearningDiscussionLike::check("reply", $course->id, $item->id, $replies->id) ? asset("images/icons/chkdfav.png") : asset("images/icons/like.png") }}" alt="">
+                                                    &nbsp;&nbsp; Like ({{ \App\Models\Learning\LearningDiscussionLike::countLikes("reply", $course->id, $item->id, $replies->id) }})
+                                                </button>
                                                 <button class="discussion-comment-reply float-right" data-type="Reply" data-commentid="{{ $item->id }}" data-toggle="modal" data-target="#exampleModalCenter"><img src="{{asset("images/icons/reply.png")}}" alt="">&nbsp;&nbsp; Reply</button>
                                             </div>
                                         </div>
