@@ -38,10 +38,10 @@
                 <div class="col-12 col-lg-4 wow fadeInLeft margin-20px-tb padding-four-all md-padding-eight-all md-padding-15px-lr sm-padding-50px-tb border-radius-4" style="visibility: visible; animation-name: fadeInLeft; background-color: #fff;">
                     <div class="row m-0">
                         <div class="col-12 margin-six-bottom lg-margin-six-bottom md-margin-30px-bottom sm-no-margin-bottom text-center">
-                            <h4 class="na-text-dark-green learning-intro-header text-center mx-auto mx-lg-0 sm-width-100 mb-0">Welcome to YAEDP</h4>
+                            <h4 class="na-text-dark-green learning-intro-header text-center mx-auto mx-lg-0 sm-width-100 mb-0">
+                                Welcome to YAEDP</h4>
                             <p class="text-center font-normal-manrope-black">
                                 Insert your new password</p>
-
                             <p style="display: none;"
                                class="fa fa-4x fa-spin fa-spinner brand-text" id="loader"></p>
                             <div id="validation-alert"></div>
@@ -91,7 +91,8 @@
 
                                     <div class="col-12">
                                         <p class="font-small-manrope-black margin-10px-bottom">
-                                            By using this you agree to our <a class="login-link" href="">Terms of Service</a> and <a class="login-link" href="">Privacy Policy</a>
+                                            By using this you agree to our <a class="login-link" href="">
+                                                Terms of Service</a> and <a class="login-link" href="">Privacy Policy</a>
                                         </p>
                                         <p class="text-center login-shortcut margin-10px-bottom">
                                             Have an account? <a class="na-text-dark-green"

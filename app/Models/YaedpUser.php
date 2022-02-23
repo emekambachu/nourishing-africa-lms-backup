@@ -61,8 +61,8 @@ class YaedpUser extends Authenticatable
         return $this->hasOne(LearningAssessment::class, 'user_id', 'id');
     }
 
-    public function learningCourseViews(){
-        return $this->hasMany(LearningCourseView::class, 'user_id', 'id');
+    public function learningModuleAssessments(){
+        return $this->hasMany(LearningModuleView::class, 'user_id', 'id');
     }
 
     public static function startedModule($moduleId){

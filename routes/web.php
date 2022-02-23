@@ -18,10 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', static function (){
-    return view('auth.yaedp.login');
-});
-
 // Redirect to external NA full url
 Route::get('home', static function (){
     return Redirect::to('http://nourishingafrica.com');
@@ -105,7 +101,12 @@ Auth::routes([
 ]);
 
 // YAEDP Login
+Route::get('/', static function (){
+    return view('auth.yaedp.login');
+});
 Route::get('yaedp/login', [YaedpLoginController::class, 'showLoginForm'])
+    ->name('yaedp.login');
+Route::get('yaedp', [YaedpLoginController::class, 'showLoginForm'])
     ->name('yaedp.login');
 Route::post('yaedp/login/submit', [YaedpLoginController::class, 'login'])
     ->name('yaedp.login.submit');
