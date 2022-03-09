@@ -61,4 +61,27 @@ class LearningDiscussionLike extends Model
             return false;
         }
     }
+
+    public static function countLikes($type, $courseId, $discussionId, $replyId = 0){
+        $check = 0;
+        if($type == "comment"){
+            $check = LearningDiscussionLike::where([
+                ['type', $type],
+                ['learning_course_id', $courseId],
+                ['learning_discussion_id', $discussionId],
+                ['status', 1],
+            ])->count();
+        }
+        else if($type == "reply"){
+            $check = LearningDiscussionLike::where([
+                ['type', $type],
+                ['learning_course_id', $courseId],
+                ['learning_discussion_id', $discussionId],
+                ['learning_discussion_reply_id', $replyId],
+                ['status', 1],
+            ])->count();
+        }
+
+        return $check;
+    }
 }

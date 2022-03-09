@@ -117,7 +117,7 @@ class YaedpAccountController extends Controller
                             ['learning_module_id', $course->learningModule->id],
                             ['learning_category_id', $course->learningCategory->id],
                             ['status', 1],
-                        ])->limit(3)->get();
+                        ])->orderBy('id','desc')->limit(3)->get();
 
         $module = LearningModule::findOrFail($course->learning_module_id);
 
@@ -224,7 +224,7 @@ class YaedpAccountController extends Controller
                             ['learning_module_id', $course->learningModule->id],
                             ['learning_category_id', $course->learningCategory->id],
                             ['status', 1],
-                        ])->get();
+                        ])->orderBy('id','desc')->get();
 
         $module = LearningModule::findOrFail($course->learning_module_id);
 
