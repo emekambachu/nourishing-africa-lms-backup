@@ -429,6 +429,12 @@
     border-radius: 5px;
 }
 
+.bg-white-radius{
+    padding: 10px;
+    background: #FFFFFF;
+    border-radius: 5px;
+}
+
 .btn-light-green-outline{
     font-family: Inter;
     font-style: normal;

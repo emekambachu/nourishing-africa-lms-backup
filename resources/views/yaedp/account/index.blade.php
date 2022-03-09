@@ -64,7 +64,7 @@
 
                     @foreach($startedCourses as $course)
                     <div class="col-md-6">
-                        <div class="bg-white-radius-shadow mr-2">
+                        <div class="bg-white-radius-shadow mr-2 mb-5" style="min-height: 300px;">
                             <div class="row na-border-bottom">
                                 <div class="col-3">
                                     <img src="{{ asset('images/stock/image-26.png') }}"/>
@@ -152,7 +152,7 @@
                 <div class="bg-white-radius-shadow">
 
                     @forelse($moduleAssessments as $module)
-                        <div class="bg-white-radius-shadow border-light-green mb-2">
+                        <div class="bg-white-radius border-light-green mb-2">
                             <div class="row">
                                 <div class="col-md-11 col-sm-11">
                                     <h5 class="text-inter text-dark">{{ $module->learningModule->title }}</h5>
