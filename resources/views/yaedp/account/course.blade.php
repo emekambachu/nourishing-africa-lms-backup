@@ -63,12 +63,11 @@
                          id="instructor-tab-body">
                         <div class="row">
                             <div class="col-md-2 col-sm-12">
-                                <img src="{{ asset('images/stock/lecturer.png') }}"/>
+                                <img src="https://nourishingafrica.com/photos/learning/trainer-image/{{ $course->trainer_image }}"/>
                             </div>
                             <div class="col-md-10 col-sm-12">
-                                <h4 class="text-inter text-dark mb-0">{{ $course->trainers }}</h4>
-                                <h3 class="text-inter text-grey">Lecturer Position and Company</h3>
-                                <p class="text-inter text-grey tx-14"></p>
+                                <h4 class="text-inter text-dark mb-0">{{ $course->trainer }}</h4>
+                                <p class="text-inter text-grey tx-14">{{ $course->trainer_bio }}</p>
                             </div>
                         </div>
                     </div>
@@ -281,7 +280,8 @@
     </div>
 
     <!--Timer Warning Modal-->
-    <div class="modal effect-scale hide" id="timerAlert" style="padding-right: 22px;"
+    <div class="modal effect-scale hide" id="timerAlert"
+         style="padding-right: 22px;"
          data-next-route="{{ $course->nextCourse($module->id) ? route('yaedp.account.course', $course->nextCourse($module->id)->id) : null }}"
          data-assessment-route="{{ route('yaedp.account.assessment.start', $module->id) }}"
          data-next-course="{{ $course->nextCourse($module->id) ? 'has-next' : 'none' }}"
@@ -290,14 +290,15 @@
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
                     <h5 class="text-inter font-weight-bold text-center">
-                        Your session will be recorded once you resume this course, leaving before the timer ends will not complete the course.
+                        This session is timed. Once you resume this session, you have to complete the course. Leaving or closing the page before the timer ends will not complete the course.
                     </h5>
                 </div>
                 <div class="modal-body">
                     <h5 class="text-center">Continue ?</h5>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button class="btn ripple btn-success startCourse" data-dismiss="modal" type="button"
+                    <button class="btn ripple btn-success startCourse"
+                            data-dismiss="modal" type="button"
                             data-route="{{ route('yaedp.account.course.complete', $course->id) }}"
                             data-study-timer="{{ $course->study_timer }}">Yes</button>
                     <a href="{{ route('yaedp.account.courses', $course->learning_module_id) }}">

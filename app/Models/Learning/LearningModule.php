@@ -25,6 +25,9 @@ class LearningModule extends Model
     public function learningCourses(){
         return $this->hasMany(LearningCourse::class, 'learning_module_id', 'id');
     }
+    public function learningCourseViews(){
+        return $this->hasMany(LearningCourseView::class, 'learning_module_id', 'id');
+    }
     public function learningCategory(){
         return $this->belongsTo(LearningCategory::class, 'learning_category_id', 'id');
     }

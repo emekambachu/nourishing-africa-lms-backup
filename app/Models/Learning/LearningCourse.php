@@ -17,7 +17,9 @@ class LearningCourse extends Model
         'document_two',
         'description',
         'teaching_methods',
-        'trainers',
+        'trainer',
+        'trainer_image',
+        'trainer_bio',
         'sort',
         'visible',
     ];

@@ -13,6 +13,7 @@ use App\Models\Learning\LearningDiscussionReply;
 use App\Models\Learning\LearningDiscussionLike;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use stdClass;
 
 class YaedpAccountController extends Controller
 {
@@ -25,18 +26,56 @@ class YaedpAccountController extends Controller
     }
 
     public function dashboard(){
-        $data['getModules'] = LearningModule::with('learningCourses');
-        $data['modules'] = $data['getModules']
-            ->where('learning_category_id', $this->yaedpId())->get();
+        $data['getModules'] = new LearningModule();
+        $data['modules'] = $data['getModules']->with('learningCourses', 'learningCourseViews')
+            ->where('learning_category_id', $this->yaedpId())->oldest()->get();
+
         $data['courses'] = LearningCourse::where('learning_category_id', $this->yaedpId())->get();
-        $data['countCompletedCourses'] = LearningCourseView::where([
+
+        $data['getCourseViews'] = new LearningCourseView();
+        $data['countCompletedCourses'] = $data['getCourseViews']
+            ->with('learningCourse', 'learningModule')->where([
             ['user_id', Auth::user()->id],
             ['status', 1],
         ])->count();
-        $data['startedCourses'] = LearningCourseView::with('learningCourse')->where([
+        $data['startedCourses'] = $data['getCourseViews']->where([
             ['user_id', Auth::user()->id],
-            ['status', 0],
-        ])->orderBy('id', 'asc')->limit(2)->get();
+        ])->orderBy('id', 'desc')->limit(2)->get();
+        $data['completedCourseViews'] = $data['getCourseViews']->where([
+            ['user_id', Auth::user()->id],
+            ['learning_category_id', $this->yaedpId()],
+            ['status', 1]
+        ])->get();
+
+
+        $data['moduleProgress'] = []; // create empty array
+        // $data['moduleProgress'] = new stdClass();
+        // Loop through modules
+        foreach($data['modules'] as $mKey => $mValue){
+            // loop through completed courses and get the number
+            // of courses that has been completed for each module
+            $data['moduleProgress'][$mKey]['count'] = 0; // create count key in loop
+            if(count($data['completedCourseViews']) > 0){
+                foreach($data['completedCourseViews'] as $cKey => $cValue){
+                    if($cValue->learning_module_id === $mValue->id){
+                        $data['moduleProgress'][$mKey]['count']++;
+                    }
+                }
+            }
+
+            // After looping the completedCourseViews
+            // Assign array names to the percentage, id and name
+            // Assign countCourseCompleted variable back to 0
+            $data['moduleProgress'][$mKey]['percent'] = ($data['moduleProgress'][$mKey]['count'] / $mValue->learningCourses->count()) * 100;
+            $data['moduleProgress'][$mKey]['moduleId'] = $mValue->id;
+            $data['moduleProgress'][$mKey]['moduleTitle'] = $mValue->title;
+        }
+
+        $data['moduleAssessments'] = LearningModuleView::where([
+            ['user_id', Auth::user()->id],
+            ['status', 1],
+            ['learning_category_id', $this->yaedpId()]
+        ])->oldest()->get();
 
         return view('yaedp.account.index', $data);
     }
@@ -177,7 +216,7 @@ class YaedpAccountController extends Controller
                                         ['id', $id],
                                         ['learning_category_id', $this->yaedpId()],
                                     ])->first();
-        
+
         //Get Course Discussions
         $discussion = LearningDiscussion::with('learningDiscussionReplies')
                         ->where([
@@ -185,7 +224,7 @@ class YaedpAccountController extends Controller
                             ['learning_module_id', $course->learningModule->id],
                             ['learning_category_id', $course->learningCategory->id],
                             ['status', 1],
-                        ])->get();                      
+                        ])->get();
 
         $module = LearningModule::findOrFail($course->learning_module_id);
 
