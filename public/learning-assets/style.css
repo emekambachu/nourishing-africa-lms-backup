@@ -488,9 +488,9 @@
     border-radius: 5px;
 }
 
-.module-grid-image{
-    position: relative;
+img.module-grid-image{
     border-radius: 10px;
+    position: relative;
 }
 
 .module-grid-image-center-crop{
