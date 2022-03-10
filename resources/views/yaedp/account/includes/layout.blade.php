@@ -151,20 +151,16 @@
             <div class="main-header-right" style="height : 100%">
                 <div class="nav nav-item navbar-nav-right ml-auto" style="height : 100%">
 
-                    <div class="dropdown nav-item main-header-notification mr-4">
-                        <form method="post" action="">
-                            <div class="dashboard-search-form">
-                                <span class="fa fa-search"></span>
-                                <input name="search" class="" value="" placeholder="">
-                            </div>
-                        </form>
-                    </div>
+{{--                    <div class="dropdown nav-item main-header-notification mr-4">--}}
+{{--                        <form method="post" action="">--}}
+{{--                            <div class="dashboard-search-form">--}}
+{{--                                <span class="fa fa-search"></span>--}}
+{{--                                <input name="search" class="" value="" placeholder="">--}}
+{{--                            </div>--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
 
-                    <div class="pr-3 pl-3 m-0 pt-2 mr-4 mt-3 mb-1 pb-0 bg-radius-white">
-                        <a href="">
-                            <i class="fa fa-bell text-dark"></i>
-                        </a>
-                    </div>
+                    <x-Learning.AccountNotificationComponent/>
 
                     <div class="dropdown main-profile-menu nav nav-item nav-link pr-3 pl-3 m-0 pt-3 pb-0">
                         <a class="profile-user d-flex" href="">

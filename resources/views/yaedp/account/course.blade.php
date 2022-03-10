@@ -100,13 +100,19 @@
                     <div class="col-12 bg-white-radius-shadow tab-bodies d-none" id="discussion-tab-body">
                         <div class="row">
                             <div class="col-12 pl-3 pr-3 mb-3">
-                                <label for="" class="float-left align-items-center discussion-comment-text">({{ App\Models\Learning\LearningDiscussion::getDiscussionCount($course) }}) Comment{{ App\Models\Learning\LearningDiscussion::getDiscussionCount($course) > 1 ? 's':'' }}</label>
-                                <button class="float-right discussion-reply-btn" data-toggle="modal" data-target="#exampleModalCenter" data-type="Comment">Comment</button>
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <label for="" class="float-left align-items-center discussion-comment-text">
+                                    ({{ App\Models\Learning\LearningDiscussion::getDiscussionCount($course) }})
+                                    Comment{{ App\Models\Learning\LearningDiscussion::getDiscussionCount($course) > 1 ? 's':'' }}</label>
+                                <button class="float-right discussion-reply-btn" data-toggle="modal"
+                                        data-target="#exampleModalCenter" data-type="Comment">
+                                    Add a comment</button>
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1"
+                                     role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
                                         <div class="modal-body">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: relative; right: 1px;">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close" style="position: relative; right: 1px;">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                             <div class="row">
@@ -132,7 +138,11 @@
                                                         </div>
                                                         <div class="col-md-6 col-sm-12">
                                                             <div class="float-right">
-                                                                <button id="comment-submit-btn" class="comment-form-submit"><img class="pr-1 d-none" id="submit-img" src="{{ asset('images/floading.gif') }}">Submit</button>
+                                                                <button id="comment-submit-btn"
+                                                                        class="comment-form-submit">
+                                                                    <img class="pr-1 d-none" id="submit-img"
+                                                                         src="{{ asset('images/floading.gif') }}">
+                                                                    Submit</button>
                                                             </div>
                                                         </div>
                                                     </div>

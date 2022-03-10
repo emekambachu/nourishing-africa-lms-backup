@@ -37,15 +37,16 @@
                    </span>
                 @endif
 
-                    <div class="module-grid-container pt-2">
-{{--                        <span class="module-title">{{ $mod->title }}</span>--}}
-                        <div class="bg-lemon-green p-2 module-grid-content">
-                            {{ \Illuminate\Support\Str::limit($mod->description, $limit = 100, $end = '...') }}
-                        </div>
+                    <div class="pt-2">
+                        <img class="module-grid-image"
+                             src="https://nourishingafrica.com/photos/learning/modules/{{ $course->mod }}"/>
                     </div>
 
                     <p class="na-text-dark-green mt-2 font-weight-bold">
                         {{ $mod->title }}
+                    </p>
+                    <p>
+                        {{ \Illuminate\Support\Str::limit($mod->description, $limit = 100, $end = '...') }}
                     </p>
 
                     <!--If this item is not the first module, check if the previous module has been completed-->

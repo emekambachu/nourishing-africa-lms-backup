@@ -147,13 +147,16 @@ Route::get('yaedp/account/faq',
     ->name('yaedp.account.faq');
 Route::get('yaedp/account/course/{id}/discussions',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'showDiscussions'])
-    ->name('yaedp.account.discussion.all');    
+    ->name('yaedp.account.discussion.all');
 Route::post('yaedp/account/discussion',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'discussion'])
     ->name('yaedp.account.discussion');
 Route::post('yaedp/account/discussion/like',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'likeDiscussion'])
     ->name('yaedp.account.like-discussion');
+Route::get('yaedp/account/notifications',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountNotifications'])
+    ->name('yaedp.account.notifications');
 
 // YAEDP Assessment Controller
 Route::get('yaedp/account/assessments',

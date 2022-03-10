@@ -16,12 +16,13 @@
         <h1 class="font-large-inter text-light-brown font-weight-bold mb-0">
             {{ $module->title }}
         </h1>
-
         <div class="row">
 
             <div class="col-12">
-                <p class="tx-16 text-gray mb-0">
+                <p class="tx-16 mb-0">
                     {!! $module->description !!}</p>
+                <p class="tx-16 text-gray mb-0">
+                  <strong class="na-text-dark-green">Trainers: </strong>  {!! $module->trainers !!}</p>
                 <p class="light-green tx-16 text-right">
                     {{ \Carbon\Carbon::parse($module->start)->format('M d, Y').' - '.\Carbon\Carbon::parse($module->start)->format('M d, Y')}}
                 </p>
@@ -46,15 +47,18 @@
                         </span>
                     @endif
 
-                    <div class="module-grid-container pt-2"></div>
+                    <div class="pt-2">
+                        <img class="module-grid-image"
+                             src="https://nourishingafrica.com/photos/learning/courses/{{ $course->image }}"/>
+                    </div>
 
                     <p class="na-text-dark-green mt-2 font-weight-bold">
                         {{ $course->title }}</p>
 
-                    <div>
-                        <p class="text-grey tx-12 mt-3">
-                            30:22</p>
-                    </div>
+{{--                    <div>--}}
+{{--                        <p class="text-grey tx-12 mt-3">--}}
+{{--                            30:22</p>--}}
+{{--                    </div>--}}
 
                     <!--If this item is not the first module, check if the previous module has been completed-->
                     <!--If the previous module has been completed, make the next module available-->

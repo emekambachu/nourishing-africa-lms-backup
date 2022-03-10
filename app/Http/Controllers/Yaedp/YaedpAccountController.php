@@ -395,4 +395,9 @@ class YaedpAccountController extends Controller
             'result' => $result
         ]);
     }
+
+    public function accountNotifications(){
+
+        return view('yaedp.account.notifications');
+    }
 }
