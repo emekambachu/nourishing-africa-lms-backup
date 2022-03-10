@@ -66,7 +66,7 @@ class YaedpAccountController extends Controller
             // After looping the completedCourseViews
             // Assign array names to the percentage, id and name
             // Assign countCourseCompleted variable back to 0
-            $data['moduleProgress'][$mKey]['percent'] = ($data['moduleProgress'][$mKey]['count'] / $mValue->learningCourses->count()) * 100;
+            $data['moduleProgress'][$mKey]['percent'] = ($data['moduleProgress'][$mKey]['count'] / $mValue->learningCourses->count() == 0 ? 0 : $mValue->learningCourses->count()) * 100;
             $data['moduleProgress'][$mKey]['moduleId'] = $mValue->id;
             $data['moduleProgress'][$mKey]['moduleTitle'] = $mValue->title;
         }
