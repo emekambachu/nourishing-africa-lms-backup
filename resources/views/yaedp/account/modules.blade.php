@@ -39,7 +39,7 @@
 
                     <div class="pt-2">
                         <img class="module-grid-image"
-                             src="https://nourishingafrica.com/photos/learning/modules/{{ $course->mod }}"/>
+                             src="https://nourishingafrica.com/photos/learning/modules/{{ $mod->image }}"/>
                     </div>
 
                     <p class="na-text-dark-green mt-2 font-weight-bold">
