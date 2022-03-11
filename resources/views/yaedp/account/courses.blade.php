@@ -24,7 +24,7 @@
                 <p class="tx-16 text-gray mb-0">
                   <strong class="na-text-dark-green">Trainers: </strong>  {!! $module->trainers !!}</p>
                 <p class="light-green tx-16 text-right">
-                    {{ \Carbon\Carbon::parse($module->start)->format('M d, Y').' - '.\Carbon\Carbon::parse($module->start)->format('M d, Y')}}
+                    {{ \Carbon\Carbon::parse($module->start)->format('M d, Y').' - '.\Carbon\Carbon::parse($module->end)->format('M d, Y')}}
                 </p>
             </div>
 
