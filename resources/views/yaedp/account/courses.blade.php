@@ -48,7 +48,7 @@
                     @endif
 
                     <div class="pt-2">
-                        <img class="module-grid-image"
+                        <img class="module-grid-image module-grid-img-crop"
                              src="https://nourishingafrica.com/photos/learning/courses/{{ $course->image }}"/>
                     </div>
 

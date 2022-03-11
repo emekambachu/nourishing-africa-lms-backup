@@ -493,7 +493,7 @@ img.module-grid-image{
     position: relative;
 }
 
-.module-grid-image-center-crop{
+.module-grid-img-crop{
     object-fit: none; /* Do not scale the image */
     object-position: center; /* Center the image within the element */
     height: 263px;
