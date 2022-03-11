@@ -79,7 +79,8 @@
                             @if(!empty($course->document_one))
                                 <div class="col-2 course-resources">
                                     <img src="{{ asset('images/icons/document.png') }}" width="40"/>
-                                    <a href="{{ route('yaedp.account.course.download-document', [$course->id, $course->document_one]) }}">
+                                    <a href="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_one }}"
+                                       download="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_one }}">
                                         <span>Download</span>
                                     </a>
                                 </div>
@@ -88,7 +89,8 @@
                             @if(!empty($course->document_two))
                                 <div class="col-2 course-resources">
                                     <img src="{{ asset('images/icons/document.png') }}" width="40"/>
-                                    <a href="{{ route('yaedp.account.course.download-document', [$course->id, $course->document_two]) }}">
+                                    <a href="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_two }}"
+                                       download="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_two }}">
                                         <span>Download</span>
                                     </a>
                                 </div>
