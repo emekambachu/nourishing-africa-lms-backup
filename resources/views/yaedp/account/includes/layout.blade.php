@@ -10,7 +10,7 @@
     <title> @yield('title') - Nourishing Africa</title>
 
     <!--- Favicon --->
-    <link rel="icon" href="{{ asset('images/fav_circle.png') }}" type="image/x-icon"/>
+    <link rel="icon" href="{{ asset('images/favicon.jpg') }}" type="image/x-icon"/>
 
     <!--- Icons css --->
     <link href="{{ asset('learning-assets/css/icons.css') }}" rel="stylesheet">
