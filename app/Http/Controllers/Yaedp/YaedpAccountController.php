@@ -28,6 +28,7 @@ class YaedpAccountController extends Controller
     public function dashboard(){
         $data['getModules'] = new LearningModule();
         $data['modules'] = $data['getModules']->with('learningCourses', 'learningCourseViews')
+            ->has('learningCourses')
             ->where('learning_category_id', $this->yaedpId())->oldest()->get();
 
         $data['courses'] = LearningCourse::where('learning_category_id', $this->yaedpId())->get();
