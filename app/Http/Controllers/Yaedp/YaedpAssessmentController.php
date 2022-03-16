@@ -26,7 +26,6 @@ class YaedpAssessmentController extends Controller
     }
 
     public function deleteModuleAnswers($moduleId){
-
         $moduleAnswers = LearningAssignmentAnswer::where([
             ['user_id', Auth::user()->id],
             ['learning_module_id', $moduleId],

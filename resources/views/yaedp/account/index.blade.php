@@ -19,7 +19,7 @@
                 <div style="margin-bottom: 70px;">
                     <h4 class="text-inter text-dark mb-1">
                         Are you ready to take your agri-food business to the next level?</h4>
-                    <p class="text-inter light-green tx-12">
+                    <p class="text-inter text-gray tx-12">
                         The Youth in Agri-Food Export Development Program (YAEDP) training covers a robust curriculum that takes participants on a comprehensive learning journey from the conception of the Nigerian export market specific to key export value chains to successful entry to the international market.<br><br>
                         The six-module program is designed to take you from opportunity identification to quality product launch, growth, and financing. With guidance from top agri-food industry experts and export specialists, you will develop an improved entrepreneurial mindset to build a profitable and sustainable export businesses.</p>
                 </div>
@@ -64,17 +64,17 @@
 
                     @foreach($startedCourses as $course)
                     <div class="col-md-6">
-                        <div class="bg-white-radius-shadow mr-2">
+                        <div class="bg-white-radius-shadow mr-2 mb-5" style="min-height: 300px;">
                             <div class="row na-border-bottom">
                                 <div class="col-3">
                                     <img src="{{ asset('images/stock/image-26.png') }}"/>
                                 </div>
                                 <div class="col-9">
-                                    <h4 class="font-large-inter text-dark text-left mb-0">
-                                        {{ $course->learningCourse->title }}</h4>
+                                    <h5 class="font-large-inter text-dark text-left mb-0">
+                                        {{ $course->learningCourse->title }}</h5>
                                     <p>
                                         <i class="fa fa-user text-light-brown"></i>
-                                        <span class="text-grey">{{ $course->learningCourse->trainers }}</span>
+                                        <span class="text-grey">{{ $course->learningCourse->trainer }}</span>
                                     </p>
                                 </div>
                                 <div class="col-12">
@@ -92,12 +92,12 @@
 {{--                                        <img src="{{ asset('images/icons/tasks.png') }}" width="30"/>--}}
 {{--                                        <span>1 Assignment</span>--}}
 {{--                                    </div>--}}
-                                    <div class="pb-3">
-                                        <img src="{{ asset('images/icons/timing.png') }}" width="30"/>
-                                        <span>
-                                            {{ $course->learningModule->start.' - '.$course->learningModule->stop }}
-                                        </span>
-                                    </div>
+{{--                                    <div class="pb-3">--}}
+{{--                                        <img src="{{ asset('images/icons/timing.png') }}" width="30"/>--}}
+{{--                                        <span>--}}
+{{--                                            {{ $course->learningModule->start.' - '.$course->learningModule->stop }}--}}
+{{--                                        </span>--}}
+{{--                                    </div>--}}
                                 </div>
                                 <div class="col-12 text-center">
                                     <a class="text-center"
@@ -111,29 +111,24 @@
                     </div>
                     @endforeach
                 </div>
-
-                <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
-                    <div class="col-12">
-                        <h4 class="text-light-brown text-inter">My Assignments</h4>
-                        <div class="bg-white-radius-shadow">
-                            <h4>No Assignment</h4>
-                            <p>You have not started any course, so you can’t access any of the assessments</p>
-                            <a class="text-center mt-30" href="#">
-                                <button class="btn-light-green-outline" type="button">
-                                    Start Module
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <div class="col-md-4">
                 <div class="bg-white-radius-shadow text-center">
                     <h4 class="text-light-brown text-inter text-center">Progress</h4>
-                    <img src="{{ asset('images/icons/social-ideas.png')}}" width="200"/>
-                    <p class="text-inter text-dark mt-3 text-center">You have not started any course</p>
+                    @if(count($moduleProgress) > 0)
+                        @foreach($moduleProgress as $value)
+                        <p class="mb-0 text-left tx-12">{{ $value['moduleTitle'] }}</p>
+                        <div class="progress mb-3 na-border-radius">
+                            <div class="progress-bar bg-success p-2" role="progressbar"
+                                 style="width: {{ $value['percent'] }}%" aria-valuenow="{{ $value['percent'] }}"
+                                 aria-valuemin="0" aria-valuemax="100">{{ $value['percent'] }}%</div>
+                        </div>
+                        @endforeach
+                    @else
+                        <img src="{{ asset('images/icons/social-ideas.png')}}" width="200"/>
+                        <p class="text-inter text-dark mt-3 text-center">You have not started any course</p>
+                    @endif
                     <a href="{{ route('yaedp.account.modules') }}">
                         <button class="bg-light-brown na-border-radius wd-200 pt-2 pb-2" type="button">
                             Go to modules
@@ -149,9 +144,53 @@
                     </a>
                 </div>
             </div>
-
         </div>
 
+        <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
+            <div class="col-12">
+                <h4 class="text-light-brown text-inter">My Assessment</h4>
+                <div class="bg-white-radius-shadow">
+
+                    @forelse($moduleAssessments as $module)
+                        <div class="bg-white-radius border-light-green mb-2">
+                            <div class="row">
+                                <div class="col-md-11 col-sm-11">
+                                    <h5 class="text-inter text-dark">{{ $module->learningModule->title }}</h5>
+                                    @foreach($module->learningModule->learningCourses as $course)
+                                        <h6 class="text-inter text-gray mb-0">{{ $course->title }}</h6>
+                                    @endforeach
+                                </div>
+                                <div class="col-md-1 col-sm-1">
+                                    <h5 class="text-inter na-text-light-green float-right mr-2">
+                                        {{ $module->percent === 0 ? 'None' : $module->percent }}%</h5>
+
+                                    @if($module->retake < 3)
+                                        <a href="{{ route('yaedp.account.assessment.questions', $module->learning_module_id) }}">
+                                            <button class="module-btn bg-danger text-white d-flex justify-content-center">
+                                                Retake ({{ 3 - $module->retake }})</button>
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="bg-white-radius-shadow border-light-green">
+                            <div class="row">
+                                <div class="col-md-10 col-sm-10">
+                                    <h6 class="text-inter text-gray">No assessment taken</h6>
+                                </div>
+                            </div>
+                        </div>
+                    @endforelse
+
+                    <a class="d-flex justify-content-center mt-30" href="{{ route('yaedp.account.assessments') }}">
+                        <button class="btn-light-green-outline" type="button">
+                            See more
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
 
     </div>
 @endsection

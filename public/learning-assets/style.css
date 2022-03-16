@@ -429,6 +429,12 @@
     border-radius: 5px;
 }
 
+.bg-white-radius{
+    padding: 10px;
+    background: #FFFFFF;
+    border-radius: 5px;
+}
+
 .btn-light-green-outline{
     font-family: Inter;
     font-style: normal;
@@ -480,6 +486,18 @@
     background: #FFFFFF url('../images/stock/dock.jpg');
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
+}
+
+img.module-grid-image{
+    border-radius: 10px;
+    position: relative;
+}
+
+.module-grid-img-crop{
+    object-fit: none; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    height: 263px;
+    width: 500px;
 }
 
 .module-grid-content{
@@ -743,4 +761,10 @@ input[type="radio"].assessment-radio-input{
     left: 46%;
     font-size: 11px;
     font-family: Manrope, serif !important;
+}
+
+.icon-shadow{
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 2px;
 }

@@ -63,12 +63,11 @@
                          id="instructor-tab-body">
                         <div class="row">
                             <div class="col-md-2 col-sm-12">
-                                <img src="{{ asset('images/stock/lecturer.png') }}"/>
+                                <img src="https://nourishingafrica.com/photos/learning/trainer-image/{{ $course->trainer_image }}"/>
                             </div>
                             <div class="col-md-10 col-sm-12">
-                                <h4 class="text-inter text-dark mb-0">{{ $course->trainers }}</h4>
-                                <h3 class="text-inter text-grey">Lecturer Position and Company</h3>
-                                <p class="text-inter text-grey tx-14"></p>
+                                <h4 class="text-inter text-dark mb-0">{{ $course->trainer }}</h4>
+                                <p class="text-inter text-grey tx-14">{{ $course->trainer_bio }}</p>
                             </div>
                         </div>
                     </div>
@@ -80,7 +79,8 @@
                             @if(!empty($course->document_one))
                                 <div class="col-2 course-resources">
                                     <img src="{{ asset('images/icons/document.png') }}" width="40"/>
-                                    <a href="{{ route('yaedp.account.course.download-document', [$course->id, $course->document_one]) }}">
+                                    <a href="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_one }}"
+                                       download="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_one }}">
                                         <span>Download</span>
                                     </a>
                                 </div>
@@ -89,7 +89,8 @@
                             @if(!empty($course->document_two))
                                 <div class="col-2 course-resources">
                                     <img src="{{ asset('images/icons/document.png') }}" width="40"/>
-                                    <a href="{{ route('yaedp.account.course.download-document', [$course->id, $course->document_two]) }}">
+                                    <a href="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_two }}"
+                                       download="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_two }}">
                                         <span>Download</span>
                                     </a>
                                 </div>
@@ -101,13 +102,19 @@
                     <div class="col-12 bg-white-radius-shadow tab-bodies d-none" id="discussion-tab-body">
                         <div class="row">
                             <div class="col-12 pl-3 pr-3 mb-3">
-                                <label for="" class="float-left align-items-center discussion-comment-text">({{ App\Models\Learning\LearningDiscussion::getDiscussionCount($course) }}) Comment{{ App\Models\Learning\LearningDiscussion::getDiscussionCount($course) > 1 ? 's':'' }}</label>
-                                <button class="float-right discussion-reply-btn" data-toggle="modal" data-target="#exampleModalCenter" data-type="Comment">Comment</button>
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <label for="" class="float-left align-items-center discussion-comment-text">
+                                    ({{ App\Models\Learning\LearningDiscussion::getDiscussionCount($course) }})
+                                    Comment{{ App\Models\Learning\LearningDiscussion::getDiscussionCount($course) > 1 ? 's':'' }}</label>
+                                <button class="float-right discussion-reply-btn" data-toggle="modal"
+                                        data-target="#exampleModalCenter" data-type="Comment">
+                                    Add a comment</button>
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1"
+                                     role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
                                         <div class="modal-body">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: relative; right: 1px;">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close" style="position: relative; right: 1px;">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                             <div class="row">
@@ -133,7 +140,11 @@
                                                         </div>
                                                         <div class="col-md-6 col-sm-12">
                                                             <div class="float-right">
-                                                                <button id="comment-submit-btn" class="comment-form-submit"><img class="pr-1 d-none" id="submit-img" src="{{ asset('images/floading.gif') }}">Submit</button>
+                                                                <button id="comment-submit-btn"
+                                                                        class="comment-form-submit">
+                                                                    <img class="pr-1 d-none" id="submit-img"
+                                                                         src="{{ asset('images/floading.gif') }}">
+                                                                    Submit</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -287,7 +298,8 @@
     </div>
 
     <!--Timer Warning Modal-->
-    <div class="modal effect-scale hide" id="timerAlert" style="padding-right: 22px;"
+    <div class="modal effect-scale hide" id="timerAlert"
+         style="padding-right: 22px;"
          data-next-route="{{ $course->nextCourse($module->id) ? route('yaedp.account.course', $course->nextCourse($module->id)->id) : null }}"
          data-assessment-route="{{ route('yaedp.account.assessment.start', $module->id) }}"
          data-next-course="{{ $course->nextCourse($module->id) ? 'has-next' : 'none' }}"
@@ -296,14 +308,15 @@
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
                     <h5 class="text-inter font-weight-bold text-center">
-                        Your session will be recorded once you resume this course, leaving before the timer ends will not complete the course.
+                        This session is timed. Once you resume this session, you have to complete the course. Leaving or closing the page before the timer ends will not complete the course.
                     </h5>
                 </div>
                 <div class="modal-body">
                     <h5 class="text-center">Continue ?</h5>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button class="btn ripple btn-success startCourse" data-dismiss="modal" type="button"
+                    <button class="btn ripple btn-success startCourse"
+                            data-dismiss="modal" type="button"
                             data-route="{{ route('yaedp.account.course.complete', $course->id) }}"
                             data-study-timer="{{ $course->study_timer }}">Yes</button>
                     <a href="{{ route('yaedp.account.courses', $course->learning_module_id) }}">
