@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Account settings
+Route::get('yaedp/get-profile',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'getProfile'])
+    ->name('yaedp.get-profile');

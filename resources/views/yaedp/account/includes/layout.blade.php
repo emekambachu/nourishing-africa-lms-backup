@@ -58,6 +58,12 @@
     <link href="{{ asset('learning-assets/custom/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('learning-assets/style.css') }}" rel="stylesheet">
 
+    <!--Vue-->
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Styles -->
+    {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -108,15 +114,30 @@
             </li>
 
             <li class="slide mb-3">
-                <a class="side-menu__item" href="{{ route('yaedp.account.assessments') }}">
+                <a class="side-menu__item" data-toggle="slide"
+                   href="{{ route('yaedp.account.assessments') }}">
                     <i class="side-menu__icon fa fa-graduation-cap"></i>
-                    <span class="side-menu__label">Assessments</span></a>
+                    <span class="side-menu__label">Assessments</span>
+                    <i class="angle fe fe-chevron-down"></i>
+                </a>
+                <ul class="slide-menu">
+                    <li>
+                        <a class="slide-item" href="{{ route('yaedp.account.assessment.certificate') }}">
+                            Certificate</a>
+                    </li>
+                </ul>
             </li>
 
             <li class="slide mb-3">
                 <a class="side-menu__item" href="{{ route('yaedp.account.faq') }}">
                     <i class="side-menu__icon fa fa-question"></i>
                     <span class="side-menu__label">FAQ</span></a>
+            </li>
+
+            <li class="slide mb-3">
+                <a class="side-menu__item" href="{{ route('yaedp.account.settings') }}">
+                    <i class="side-menu__icon fa fa-gear"></i>
+                    <span class="side-menu__label">Account</span></a>
             </li>
 
             <li class="slide mb-3" style="">
@@ -132,7 +153,7 @@
 <!-- /main-sidebar -->
 
 <!-- main-content -->
-<div class="main-content">
+<div id="app" class="main-content">
     <!-- main-header -->
     <div class="main-header side-header">
 
@@ -150,15 +171,6 @@
 
             <div class="main-header-right" style="height : 100%">
                 <div class="nav nav-item navbar-nav-right ml-auto" style="height : 100%">
-
-{{--                    <div class="dropdown nav-item main-header-notification mr-4">--}}
-{{--                        <form method="post" action="">--}}
-{{--                            <div class="dashboard-search-form">--}}
-{{--                                <span class="fa fa-search"></span>--}}
-{{--                                <input name="search" class="" value="" placeholder="">--}}
-{{--                            </div>--}}
-{{--                        </form>--}}
-{{--                    </div>--}}
 
                     <x-Learning.AccountNotificationComponent/>
 
@@ -205,12 +217,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div>
-        <form>
-
-        </form>
     </div>
 
     <!-- container -->

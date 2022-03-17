@@ -8842,10 +8842,12 @@ a.text-dark:hover, a.text-dark:focus {
 .tabs-style-2 .main-nav-line .nav-link {
   padding: 10px 18px 10px 18px;
   background: #efeff5;
-  margin: 0 5px 0px 0; }
+  margin: 0 5px 0px 0;
+}
   .tabs-style-2 .main-nav-line .nav-link.active {
-    background: #3858f9;
-    color: #fff; }
+    background: #006600;
+    color: #fff;
+  }
     .tabs-style-2 .main-nav-line .nav-link.active::before {
       display: none; }
 

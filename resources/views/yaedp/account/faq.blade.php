@@ -22,7 +22,8 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h5 class="na-text-dark-green text-manrope tx-md-bold">Get Help (LMS ON DEMAND HELP FOR STUDENTS)</h5>
+                <h5 class="na-text-dark-green text-manrope tx-md-bold">
+                    Get Help (LMS ON DEMAND HELP FOR PARTICIPANTS)</h5>
                 <p class="text-inter">Many of the frequently asked questions about the YEADP training are answered below. If you would like more information about a specific course or module, direct your questions to our email, <a class="na-text-dark-green" href="mailto:yaedp@nourishingafrica.com">YAEDP@nourishingafrica.com</a></p>
             </div>
         </div>
@@ -34,7 +35,8 @@
                         <h4 class="na-text-dark-green">Help for learners</h4>
                         <p>Watch Helpful how-to videos for students</p>
                         <p>Learn how to navigate the LMS portal</p>
-                        <p>Find out more about the YAEDP program</p>
+                        <p><a href="{{ route('yaedp.account.about-program') }}">
+                                Find out more about the YAEDP program</a></p>
                     </div>
                 </div>
             </div>
@@ -83,7 +85,7 @@
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
                                      id="collapseThree" role="tabpanel">
                                     <div class="card-body">
-                                        Each course assessment is due within the week for each module. Assessments for each course must be completed before proceeding to the next course/module.
+                                        Each course assessment is due within the week for each module. Assessments for each module must be completed before proceeding to the next module.
                                     </div>
                                 </div><!-- collapse -->
                             </div>
@@ -91,12 +93,13 @@
                             <div class="card">
                                 <div class="card-header" id="headingThree" role="tab">
                                     <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
-                                       data-toggle="collapse" href="#collapseFour">How many students are in my program? Will I be able to contact my classmates?</a>
+                                       data-toggle="collapse" href="#collapseFour">
+                                        Will I be able to contact other participants taking this training?</a>
                                 </div>
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
                                      id="collapseFour" role="tabpanel">
                                     <div class="card-body">
-                                        The training will be taken by different cohorts of participants, with up to 5,000 participants per cohort. Participants The learning platform provides a discussion forum which allows you to start/join relevant conversations with other students.
+                                        The e-learning platform provides a discussion forum which allows you to start/join relevant conversations with other students. Navigate to the ‘Discussion Forum’ on each course page to participate.
                                     </div>
                                 </div><!-- collapse -->
                             </div>
@@ -110,7 +113,7 @@
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
                                      id="collapseFive" role="tabpanel">
                                     <div class="card-body">
-                                        You will also have a 30-day read-only access to all the training content after its conclusion to review the course materials at your own leisure.
+                                        After you have completed all aspects of the training, you will have a 30-day read-only access to all the training content to review the course materials at your own leisure.
                                     </div>
                                 </div><!-- collapse -->
                             </div>
@@ -124,7 +127,21 @@
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
                                      id="collapseSix" role="tabpanel">
                                     <div class="card-body">
-                                        For technical assistance, please go to how to for pre-recorded solutions to technical problems. We are always ready to help!
+                                        For technical assistance, please go to how to for pre-recorded solutions to technical problems. We are always ready to help, so please contact us at <strong>YAEDP@nourishingafrica.com</strong> if you have any further technical questions.
+                                    </div>
+                                </div><!-- collapse -->
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" id="headingThree" role="tab">
+                                    <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
+                                       data-toggle="collapse" href="#collapseSeven">
+                                        When are each assessments due? </a>
+                                </div>
+                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
+                                     id="collapseSeven" role="tabpanel">
+                                    <div class="card-body">
+                                        Each course assessment is due within the week for each module. Assessments for each module must be completed before proceeding to the next module.
                                     </div>
                                 </div><!-- collapse -->
                             </div>
@@ -140,8 +157,7 @@
                 <div class="card">
                     <div class="card-body text-inter shadow-2">
                         <h4 class="na-text-dark-green">Questions about your courses</h4>
-                        <p>Please visit the Q&A page to see some already answered questions by the instructors.<br><br>
-                            If you do not find the answer you are looking for, send your questions directly using the ‘Ask the Instructor’ pop-up button that appears at the bottom right corner of each course page. </p>
+                        <p>Please visit the Discussion Forum to see some already answered questions by other students and course instructors.</p>
                     </div>
                 </div>
             </div>

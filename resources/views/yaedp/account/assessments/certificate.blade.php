@@ -31,6 +31,10 @@
                         Download</button>
                 </a>
             </div>
+        @else
+            <div class="certificate-bg-sample">
+
+            </div>
         @endif
         </div>
 

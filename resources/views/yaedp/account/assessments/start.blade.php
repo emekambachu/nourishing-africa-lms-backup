@@ -27,7 +27,16 @@
                         <div class="col-8 text-center">
                             <img src="{{ asset('images/icons/e-learning.png') }}" width="150" class="mb-4"/>
                             <p class="text-center tx-16">
-                                <strong class="na-text-dark-green">Congratulations</strong> on completing all courses on this module. Proceed to the test which will be taken in one sitting to complete this module.
+                                <strong class="na-text-dark-green">Well-done</strong> You have completed this module. You can now take the Assessment to proceed to the next module.
+                            </p>
+                            <p class="text-center tx-16">
+                                <strong class="na-text-dark-green">Well-done</strong><br>
+                                You are to complete this assessment before proceeding to the next module.<br><br>
+
+                                Note that your performance in each assessment counts towards your overall performance; you need an overall grade of 80% or higher to be able to download your certificate on completion of this program.<br><br>
+
+                                Each participant can retake the assessment two times after their initial try.<br>
+                                Click on ‘Begin Assessment’ to proceed.
                             </p>
                             <!--If none of the 2 conditions are true, show disabled button-->
                             <a href="{{ route('yaedp.account.assessment.questions', $module->id) }}">

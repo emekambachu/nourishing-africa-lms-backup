@@ -44,9 +44,6 @@
                     <div class="row">
                         <div class="col-md-11 col-sm-11">
                             <h5 class="text-inter text-dark">{{ $module->learningModule->title }}</h5>
-                            @foreach($module->learningModule->learningCourses as $course)
-                            <h6 class="text-inter text-gray mb-0">{{ $course->title }}</h6>
-                            @endforeach
                         </div>
                         <div class="col-md-1 col-sm-1">
                             <h5 class="text-inter na-text-light-green float-right mr-2">

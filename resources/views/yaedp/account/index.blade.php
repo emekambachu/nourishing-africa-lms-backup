@@ -19,9 +19,9 @@
                 <div style="margin-bottom: 70px;">
                     <h4 class="text-inter text-dark mb-1">
                         Are you ready to take your agri-food business to the next level?</h4>
-                    <p class="text-inter text-gray tx-12">
+                    <p class="text-inter text-gray tx-14">
                         The Youth in Agri-Food Export Development Program (YAEDP) training covers a robust curriculum that takes participants on a comprehensive learning journey from the conception of the Nigerian export market specific to key export value chains to successful entry to the international market.<br><br>
-                        The six-module program is designed to take you from opportunity identification to quality product launch, growth, and financing. With guidance from top agri-food industry experts and export specialists, you will develop an improved entrepreneurial mindset to build a profitable and sustainable export businesses.</p>
+                        The six-module program is designed to take you from opportunity identification to quality product launch, growth, and financing. With guidance from top agri-food industry experts and export specialists, you will develop an improved entrepreneurial mindset to build a profitable and sustainable export businesses. <a class="na-text-dark-green" href="{{ route('yaedp.account.about-program') }}">more</a></p>
                 </div>
                 <div class="row">
                     <div class="col-md-4 text-left">
@@ -39,14 +39,14 @@
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-4">
-                <div class="row">
-                    <div class="col-lg-5 col-md-5 col-sm-6 col-sx-6">
+                <div class="row mt-5">
+                    <div class="col-6">
                         <div class="module-complete-counter">
                             <h1>{{ $countCompletedCourses }}</h1>
                             <p>Completed Courses</p>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-md-7 col-sm-6 col-sx-6">
+                    <div class="col-6">
                         <img src="{{ asset('images/icons/404-bad-request.png') }}" style="width: auto;"/>
                     </div>
                 </div>
@@ -62,9 +62,9 @@
                             See all modules</a>
                     </div>
 
-                    @foreach($startedCourses as $course)
+                    @forelse($startedCourses as $course)
                     <div class="col-md-6">
-                        <div class="bg-white-radius-shadow mr-2 mb-5" style="min-height: 300px;">
+                        <div class="bg-white-radius-shadow mr-2 mb-5">
                             <div class="row na-border-bottom">
                                 <div class="col-3">
                                     <img src="{{ asset('images/stock/image-26.png') }}"/>
@@ -74,30 +74,21 @@
                                         {{ $course->learningCourse->title }}</h5>
                                     <p>
                                         <i class="fa fa-user text-light-brown"></i>
-                                        <span class="text-grey">{{ $course->learningCourse->trainer }}</span>
+                                        <span class="text-grey">
+                                            {{ $course->learningCourse->trainer }}</span>
                                     </p>
                                 </div>
                                 <div class="col-12">
                                     <p class="text-left text-inter text-dark bg-gray-radius p-1 mt-2">
-                                        {{ $course->learningCourse->description }}</p>
+                                    {{ \Illuminate\Support\Str::limit($course->learningCourse->description, 80, $end='...') }}</p>
                                 </div>
                             </div>
-                            <div class="row pt-3 pb-3">
+                            <div class="row pt-3">
                                 <div class="col-md-12">
                                     <div class="pb-3">
                                         <img src="{{ asset('images/icons/book-open-circle.png') }}" width="30"/>
                                         <span>{{ $course->learningModule->title }}</span>
                                     </div>
-{{--                                    <div class="pb-3">--}}
-{{--                                        <img src="{{ asset('images/icons/tasks.png') }}" width="30"/>--}}
-{{--                                        <span>1 Assignment</span>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="pb-3">--}}
-{{--                                        <img src="{{ asset('images/icons/timing.png') }}" width="30"/>--}}
-{{--                                        <span>--}}
-{{--                                            {{ $course->learningModule->start.' - '.$course->learningModule->stop }}--}}
-{{--                                        </span>--}}
-{{--                                    </div>--}}
                                 </div>
                                 <div class="col-12 text-center">
                                     <a class="text-center"
@@ -109,7 +100,18 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    @empty
+                    <div class="col-md-6">
+                        <div class="bg-white-radius-shadow mr-2 mb-5">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="text-dark text-left mb-0">
+                                        You have no ongoing course</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforelse
                 </div>
             </div>
 
@@ -120,7 +122,10 @@
                         @foreach($moduleProgress as $value)
                         <p class="mb-0 text-left tx-12">{{ $value['moduleTitle'] }}</p>
                         <div class="progress mb-3 na-border-radius">
-                            <div class="progress-bar bg-success p-2" role="progressbar"
+                            <div class="progress-bar
+                                @if($value['percent'] === 100) bg-success
+                                @else bg-warning @endif p-2"
+                                 role="progressbar"
                                  style="width: {{ $value['percent'] }}%" aria-valuenow="{{ $value['percent'] }}"
                                  aria-valuemin="0" aria-valuemax="100">{{ $value['percent'] }}%</div>
                         </div>
@@ -156,9 +161,6 @@
                             <div class="row">
                                 <div class="col-md-11 col-sm-11">
                                     <h5 class="text-inter text-dark">{{ $module->learningModule->title }}</h5>
-                                    @foreach($module->learningModule->learningCourses as $course)
-                                        <h6 class="text-inter text-gray mb-0">{{ $course->title }}</h6>
-                                    @endforeach
                                 </div>
                                 <div class="col-md-1 col-sm-1">
                                     <h5 class="text-inter na-text-light-green float-right mr-2">

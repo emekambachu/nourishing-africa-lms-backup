@@ -11,6 +11,7 @@ use App\Models\Learning\LearningModuleView;
 use App\Models\Learning\LearningDiscussion;
 use App\Models\Learning\LearningDiscussionReply;
 use App\Models\Learning\LearningDiscussionLike;
+use App\Models\YaedpUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use stdClass;
@@ -41,7 +42,8 @@ class YaedpAccountController extends Controller
         ])->count();
         $data['startedCourses'] = $data['getCourseViews']->where([
             ['user_id', Auth::user()->id],
-        ])->orderBy('id', 'desc')->limit(2)->get();
+            ['status', 0],
+        ])->orderBy('id', 'desc')->limit(1)->get();
         $data['completedCourseViews'] = $data['getCourseViews']->where([
             ['user_id', Auth::user()->id],
             ['learning_category_id', $this->yaedpId()],
@@ -208,6 +210,10 @@ class YaedpAccountController extends Controller
 
     public function faq(){
         return view('yaedp.account.faq');
+    }
+
+    public function aboutProgram(){
+        return view('yaedp.account.about-program');
     }
 
     public function showDiscussions($id){
@@ -401,5 +407,26 @@ class YaedpAccountController extends Controller
     public function accountNotifications(){
 
         return view('yaedp.account.notifications');
+    }
+
+    public function accountSettings(){
+
+        return view('yaedp.account.settings.index');
+    }
+
+    public function getProfile(){
+
+        $profile = YaedpUser::findOrFail(Auth::user()->id);
+        return response()->json($profile);
+    }
+
+    public function accountProfile(){
+
+        return view('yaedp.account.settings.profile');
+    }
+
+    public function accountSettingsEmail(){
+
+        return view('yaedp.account.settings.email');
     }
 }

@@ -123,7 +123,7 @@ Route::get('yaedp/password-reset-token/{token}', [YaedpResetPasswordController::
 Route::post('yaedp/password-reset/confirm/{token}', [YaedpResetPasswordController::class, 'passwordResetConfirm'])
     ->name('yaedp.password-reset-confirm');
 
-// Account
+//YAEDP Account
 Route::get('yaedp/account',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'dashboard'])
     ->name('yaedp.account');
@@ -157,6 +157,25 @@ Route::post('yaedp/account/discussion/like',
 Route::get('yaedp/account/notifications',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountNotifications'])
     ->name('yaedp.account.notifications');
+Route::get('yaedp/account/about-program',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'aboutProgram'])
+    ->name('yaedp.account.about-program');
+
+// YAEDP Account Settings
+Route::get('yaedp/account/settings',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettings'])
+    ->name('yaedp.account.settings');
+Route::get('yaedp/account/settings/email',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettingsEmail'])
+    ->name('yaedp.account.settings.email');
+Route::get('yaedp/account/settings/password',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettingsPassword'])
+    ->name('yaedp.account.settings.password');
+
+// Account Settings API
+Route::post('yaedp/account/profile',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountProfile'])
+    ->name('yaedp.account.profile');
 
 // YAEDP Assessment Controller
 Route::get('yaedp/account/assessments',
@@ -171,9 +190,6 @@ Route::get('yaedp/account/assessment/{id}/questions',
 Route::post('yaedp/account/assessment/{id}/submit',
     [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'submitAssessment'])
     ->name('yaedp.account.assessment.submit');
-Route::get('yaedp/account/assessment/certificate',
-    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'certificate'])
-    ->name('yaedp.account.assessment.certificate');
 Route::get('yaedp/account/assessment/certificate',
     [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'certificate'])
     ->name('yaedp.account.assessment.certificate');
