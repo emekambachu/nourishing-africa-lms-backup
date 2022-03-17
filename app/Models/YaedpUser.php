@@ -81,8 +81,12 @@ class YaedpUser extends Authenticatable
     }
 
     public static function getUserFullName($id){
+        if($id == 0) return "Admin";
+        
         $user = YaedpUser::find($id);
-        return $user->first_name." ".$user->surname;
+        $firstName = $user->first_name ?? NULL;
+        $lastName = $user->surname ?? "Anonymous";
+        return $firstName." ".$lastName;
     }
 
     public static function exhaustedRetakes($moduleId){
