@@ -481,7 +481,7 @@
 }
 
 .module-grid-container{
-    height: 200px;
+    height: 350px;
     position: relative;
     background: #FFFFFF url('../images/stock/dock.jpg');
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
@@ -491,14 +491,18 @@
 img.module-grid-image{
     border-radius: 10px;
     position: relative;
-}
-
-.module-grid-img-crop{
     object-fit: none; /* Do not scale the image */
     object-position: center; /* Center the image within the element */
     width: 700px;
     height: 350px;
 }
+
+/*.module-grid-img-crop{*/
+/*    object-fit: none; !* Do not scale the image *!*/
+/*    object-position: center; !* Center the image within the element *!*/
+/*    width: 700px;*/
+/*    height: 350px;*/
+/*}*/
 
 .module-grid-content{
     position:absolute;
