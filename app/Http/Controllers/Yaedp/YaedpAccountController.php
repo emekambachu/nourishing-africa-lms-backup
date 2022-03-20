@@ -75,11 +75,12 @@ class YaedpAccountController extends Controller
             $data['moduleProgress'][$mKey]['moduleTitle'] = $mValue->title;
         }
 
+        // Module assessment
         $data['moduleAssessments'] = LearningModuleView::where([
             ['user_id', Auth::user()->id],
             ['status', 1],
             ['learning_category_id', $this->yaedpId()]
-        ])->oldest()->get();
+        ])->latest()->limit(1)->get();
 
         return view('yaedp.account.index', $data);
     }

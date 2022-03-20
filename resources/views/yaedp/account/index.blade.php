@@ -15,13 +15,13 @@
         </h4>
 
         <div class="row bg-white na-border-radius border-brown p-3 mb-5">
-            <div class="col-md-8 col-sm-8 col-xs-8">
+            <div class="col-md-9 col-sm-9">
                 <div style="margin-bottom: 70px;">
                     <h4 class="text-inter text-dark mb-1">
                         Are you ready to take your agri-food business to the next level?</h4>
                     <p class="text-inter text-gray tx-14">
                         The Youth in Agri-Food Export Development Program (YAEDP) training covers a robust curriculum that takes participants on a comprehensive learning journey from the conception of the Nigerian export market specific to key export value chains to successful entry to the international market.<br><br>
-                        The six-module program is designed to take you from opportunity identification to quality product launch, growth, and financing. With guidance from top agri-food industry experts and export specialists, you will develop an improved entrepreneurial mindset to build a profitable and sustainable export businesses. <a class="na-text-dark-green" href="{{ route('yaedp.account.about-program') }}">more</a></p>
+                        The six-module program is designed to take you from opportunity identification to quality product launch, growth, and financing. With guidance from top agri-food industry experts and export specialists, you will develop an improved entrepreneurial mindset to build a profitable and sustainable export businesses. <a class="na-text-dark-green font-weight-bold" href="{{ route('yaedp.account.about-program') }}">Click here to read more</a></p>
                 </div>
                 <div class="row">
                     <div class="col-md-4 text-left">
@@ -38,28 +38,25 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-4">
-                <div class="row mt-5">
-                    <div class="col-6">
-                        <div class="module-complete-counter">
-                            <h1>{{ $countCompletedCourses }}</h1>
-                            <p>Completed Courses</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <img src="{{ asset('images/icons/404-bad-request.png') }}" style="width: auto;"/>
-                    </div>
-                </div>
+            <div class="col-md-3 col-sm-3">
+                <img src="{{ asset('images/icons/404-bad-request.png') }}" style="width: auto;"/>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
+
                     <div class="col-12">
                         <h4 class="text-light-brown text-inter text-left float-left">My Progress</h4>
                         <a class="float-right na-text-dark-green" href="{{ route('yaedp.account.modules') }}">
                             See all modules</a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="module-complete-counter">
+                            <h1>{{ $countCompletedCourses }}</h1>
+                            <p>Completed Courses</p>
+                        </div>
                     </div>
 
                     @forelse($startedCourses as $course)
@@ -140,22 +137,14 @@
                         </button>
                     </a>
                 </div>
-                <div class="mt-4 bg-light-brown na-border-radius p-3 text-center">
-                    <p class="text-inter text-white">
-                        Want to have access to latest news in agriculture?, subscribe to our newsletter</p>
-                    <a href="https://nourishingafrica.com/subscribe" target="_blank">
-                        <button class="bg-white na-border-radius wd-200 pt-2 pb-2">
-                            Subscribe</button>
-                    </a>
-                </div>
+
             </div>
         </div>
 
         <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
             <div class="col-12">
-                <h4 class="text-light-brown text-inter">My Assessment</h4>
+                <h4 class="text-light-brown text-inter">My Assessments</h4>
                 <div class="bg-white-radius-shadow">
-
                     @forelse($moduleAssessments as $module)
                         <div class="bg-white-radius border-light-green mb-2">
                             <div class="row">

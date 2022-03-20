@@ -33,7 +33,7 @@
             <div class="col-10">
                 <div style="margin-bottom: 70px;">
                     <p class="text-inter text-gray tx-14">
-                        <strong>How the training works</strong>
+                        <strong>How the training works</strong><br>
                         The YEADP training consists of a six-module, twenty courses program taught over a six-week interval. The training sessions are delivered by top expert trainers in the export industry and self-paced to give room for flexibility in your schedule. The portal includes discussion groups that allow you to interact directly with other learners on the platform as well as a Q&A feature that allows you to ask direct questions from the instructors.
                     </p>
                 </div>
@@ -47,7 +47,7 @@
             <div class="col-10">
                 <div style="margin-bottom: 70px;">
                     <p class="text-inter text-gray tx-14">
-                        <strong>Hands-on Practical course</strong>
+                        <strong>Hands-on Practical course</strong><br>
                         Every module of the curriculum contains courses. The courses have been carefully curated and come with assessments to ensure that you achieved the learning outcomes. The completion of the assessment unlocks the next level of learning. You will need to finish each of the courses in a module to move on to the next module.
                     </p>
                 </div>
@@ -61,7 +61,7 @@
             <div class="col-10">
                 <div style="margin-bottom: 70px;">
                     <p class="text-inter text-gray tx-14">
-                        <strong>Earn a certificate</strong>
+                        <strong>Earn a certificate</strong><br>
                         When you complete all the courses, modules and assessments, you will earn a certificate of completion that you can share with your professional network.
                     </p>
                 </div>
