@@ -416,7 +416,12 @@ class YaedpAccountController extends Controller
 
     public function getProfile(){
 
-        $profile = YaedpUser::findOrFail(Auth::user()->id);
+        $getProfile = YaedpUser::where('id', Auth::user()->id)->first();
+        $profile = [
+          'id' => $getProfile->id,
+          'surname' => $getProfile->surname,
+            'first_name' => $getProfile->first_name,
+        ];
         return response()->json($profile);
     }
 

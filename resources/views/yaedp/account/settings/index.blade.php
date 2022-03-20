@@ -25,18 +25,12 @@
         </div>
 
         <div>
-            <account-settings-component></account-settings-component>
+            <account-settings-component :profile="{{ Auth::user() }}"></account-settings-component>
         </div>
     </div>
 @endsection
 
 @section('bottom-assets')
-{{--<script>--}}
-{{--    import AccountSettingsComponent from "./account-settings/AccountSettingsComponent";--}}
-{{--    export default {--}}
-
-{{--    }--}}
-{{--</script>--}}
 
 <!--- Internal Inputtags js --->
 <script src="{{ asset('learning-assets/plugins/inputtags/inputtags.js') }}"></script>

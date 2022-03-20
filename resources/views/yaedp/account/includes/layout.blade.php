@@ -122,6 +122,10 @@
                 </a>
                 <ul class="slide-menu">
                     <li>
+                        <a class="slide-item" href="{{ route('yaedp.account.assessments') }}">
+                            Progress</a>
+                    </li>
+                    <li>
                         <a class="slide-item" href="{{ route('yaedp.account.assessment.certificate') }}">
                             Certificate</a>
                     </li>
@@ -136,7 +140,7 @@
 
             <li class="slide mb-3">
                 <a class="side-menu__item" href="{{ route('yaedp.account.settings') }}">
-                    <i class="side-menu__icon fa fa-gear"></i>
+                    <i class="side-menu__icon fa fa-user-alt"></i>
                     <span class="side-menu__label">Account</span></a>
             </li>
 

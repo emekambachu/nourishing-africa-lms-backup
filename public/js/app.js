@@ -5422,16 +5422,22 @@ __webpack_require__.r(__webpack_exports__);
       showEditPassword: false
     };
   },
-  created: function created() {
-    var _this = this;
+  props: ['profile'],
+  methods: {
+    getProfile: function getProfile() {
+      var _this = this;
 
-    this.axios.get('api/yaedp/get-profile').then(function (response) {
-      _this.profile = response.data;
-    })["catch"](function (err) {
-      return console.error(err);
-    });
+      axios.get('/api/yaedp/get-profile').then(function (response) {
+        _this.profile = response.data;
+        console.log(response.data);
+      })["catch"](function (err) {
+        return console.error(err);
+      });
+    }
   },
-  methods: {}
+  created: function created() {
+    this.getProfile();
+  }
 });
 
 /***/ }),
@@ -5455,7 +5461,8 @@ __webpack_require__.r(__webpack_exports__);
 // Default
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]); // Imports
+window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); // Imports
 
 
 /**
@@ -28625,16 +28632,90 @@ var render = function () {
                             _vm._v("Profile details"),
                           ]),
                           _vm._v(" "),
-                          _vm._m(1),
+                          _c(
+                            "form",
+                            {
+                              attrs: {
+                                id: "",
+                                method: "post",
+                                enctype: "multipart/form-data",
+                                action: "",
+                              },
+                            },
+                            [
+                              _c("div", { staticClass: "row" }, [
+                                _c("div", { staticClass: "col-6" }, [
+                                  _vm._m(1),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    staticClass: "form-input",
+                                    attrs: {
+                                      disabled: "",
+                                      type: "text",
+                                      name: "surname",
+                                      required: "",
+                                    },
+                                    domProps: { value: _vm.profile.username },
+                                  }),
+                                  _vm._v(" "),
+                                  _vm._m(2),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    staticClass: "form-input",
+                                    attrs: {
+                                      type: "text",
+                                      name: "first_name",
+                                      required: "",
+                                    },
+                                  }),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "form-label" }, [
+                                    _vm._v("Mobile"),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    staticClass: "form-input",
+                                    attrs: { type: "tel", name: "mobile" },
+                                  }),
+                                  _vm._v(" "),
+                                  _vm._m(3),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    staticClass: "form-input",
+                                    attrs: {
+                                      type: "text",
+                                      name: "state_residence",
+                                      required: "",
+                                    },
+                                  }),
+                                  _vm._v(" "),
+                                  _vm._m(4),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    staticClass: "form-input",
+                                    attrs: {
+                                      type: "text",
+                                      name: "business_address",
+                                      required: "",
+                                    },
+                                  }),
+                                ]),
+                                _vm._v(" "),
+                                _vm._m(5),
+                                _vm._v(" "),
+                                _vm._m(6),
+                              ]),
+                            ]
+                          ),
                         ])
                       : _vm._e(),
                   ]),
                 ]
               ),
               _vm._v(" "),
-              _vm._m(2),
+              _vm._m(7),
               _vm._v(" "),
-              _vm._m(3),
+              _vm._m(8),
             ]),
           ]
         ),
@@ -28692,209 +28773,147 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "form",
-      {
-        attrs: {
-          id: "",
-          method: "post",
-          enctype: "multipart/form-data",
-          action: "",
+    return _c("label", { staticClass: "form-label" }, [
+      _vm._v("Surname\n                                                "),
+      _c("i", { staticClass: "text-danger" }, [_vm._v("*")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "form-label" }, [
+      _vm._v("First Name\n                                                "),
+      _c("i", { staticClass: "text-danger" }, [_vm._v("*")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "form-label" }, [
+      _vm._v(
+        "State Residence\n                                                "
+      ),
+      _c("i", { staticClass: "text-danger" }, [_vm._v("*")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "form-label" }, [
+      _vm._v(
+        "Business Address\n                                                "
+      ),
+      _c("i", { staticClass: "text-danger" }, [_vm._v("*")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6" }, [
+      _c("label", { staticClass: "form-label" }, [
+        _vm._v("Focus Area\n                                                "),
+        _c("i", { staticClass: "na-intern-form-required" }, [_vm._v("*")]),
+      ]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          staticClass: "form-control form-select",
+          attrs: { name: "focus_area" },
         },
-      },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-6" }, [
-            _c("label", { staticClass: "form-label" }, [
-              _vm._v(
-                "Surname\n                                                "
-              ),
-              _c("i", { staticClass: "text-danger" }, [_vm._v("*")]),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-input",
-              attrs: {
-                disabled: "",
-                type: "text",
-                name: "surname",
-                value: "",
-                required: "",
-              },
-            }),
-            _vm._v(" "),
-            _c("label", { staticClass: "form-label" }, [
-              _vm._v(
-                "First Name\n                                                "
-              ),
-              _c("i", { staticClass: "text-danger" }, [_vm._v("*")]),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-input",
-              attrs: { type: "text", name: "first_name", required: "" },
-            }),
-            _vm._v(" "),
-            _c("label", { staticClass: "form-label" }, [_vm._v("Mobile")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-input",
-              attrs: { type: "tel", name: "mobile" },
-            }),
-            _vm._v(" "),
-            _c("label", { staticClass: "form-label" }, [
-              _vm._v(
-                "State Residence\n                                                "
-              ),
-              _c("i", { staticClass: "text-danger" }, [_vm._v("*")]),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-input",
-              attrs: { type: "text", name: "state_residence", required: "" },
-            }),
-            _vm._v(" "),
-            _c("label", { staticClass: "form-label" }, [
-              _vm._v(
-                "Business Address\n                                                "
-              ),
-              _c("i", { staticClass: "text-danger" }, [_vm._v("*")]),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-input",
-              attrs: { type: "text", name: "business_address", required: "" },
-            }),
+        [
+          _c("option", { attrs: { value: "", selected: "" } }, [
+            _vm._v("- Select -"),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6" }, [
-            _c("label", { staticClass: "form-label" }, [
-              _vm._v(
-                "Focus Area\n                                                "
-              ),
-              _c("i", { staticClass: "na-intern-form-required" }, [
-                _vm._v("*"),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-control form-select",
-                attrs: { name: "focus_area" },
-              },
-              [
-                _c("option", { attrs: { value: "", selected: "" } }, [
-                  _vm._v("- Select -"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Farming" } }, [
-                  _vm._v("Farming"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Processing" } }, [
-                  _vm._v("Processing"),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "option",
-                  { attrs: { value: "Aggregation and commodity exchange" } },
-                  [
-                    _vm._v(
-                      "\n                                                    Aggregation and commodity exchange"
-                    ),
-                  ]
-                ),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Sales and exports" } }, [
-                  _vm._v("Sales and exports"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Others" } }, [
-                  _vm._v("Others"),
-                ]),
-              ]
-            ),
-            _vm._v(" "),
-            _c("label", { staticClass: "form-label" }, [
-              _vm._v(
-                "Value Chain\n                                                "
-              ),
-              _c("i", { staticClass: "na-intern-form-required" }, [
-                _vm._v("*"),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-control form-select",
-                attrs: { name: "value_chain" },
-              },
-              [
-                _c("option", { attrs: { value: "", selected: "" } }, [
-                  _vm._v("- Select -"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Cocoa" } }, [_vm._v("Cocoa")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Spices" } }, [
-                  _vm._v("Spices"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Sesame" } }, [
-                  _vm._v("Sesame"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Shea butter" } }, [
-                  _vm._v("Shea butter"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Cashew" } }, [
-                  _vm._v("Cashew"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Cassava" } }, [
-                  _vm._v("Cassava"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Soybean" } }, [
-                  _vm._v("Soybean"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Rubber" } }, [
-                  _vm._v("Rubber"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Ginger" } }, [
-                  _vm._v("Ginger"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Others" } }, [
-                  _vm._v("Others"),
-                ]),
-              ]
-            ),
+          _c("option", { attrs: { value: "Farming" } }, [_vm._v("Farming")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "Processing" } }, [
+            _vm._v("Processing"),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-12" }, [
-            _c(
-              "button",
-              {
-                staticClass:
-                  "module-btn bg-light-brown d-flex justify-content-center",
-                staticStyle: { width: "150px" },
-              },
-              [
-                _vm._v(
-                  "\n                                                Edit Profile"
-                ),
-              ]
-            ),
+          _c(
+            "option",
+            { attrs: { value: "Aggregation and commodity exchange" } },
+            [
+              _vm._v(
+                "\n                                                    Aggregation and commodity exchange"
+              ),
+            ]
+          ),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "Sales and exports" } }, [
+            _vm._v("Sales and exports"),
           ]),
-        ]),
-      ]
-    )
+          _vm._v(" "),
+          _c("option", { attrs: { value: "Others" } }, [_vm._v("Others")]),
+        ]
+      ),
+      _vm._v(" "),
+      _c("label", { staticClass: "form-label" }, [
+        _vm._v("Value Chain\n                                                "),
+        _c("i", { staticClass: "na-intern-form-required" }, [_vm._v("*")]),
+      ]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          staticClass: "form-control form-select",
+          attrs: { name: "value_chain" },
+        },
+        [
+          _c("option", { attrs: { value: "", selected: "" } }, [
+            _vm._v("- Select -"),
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "Cocoa" } }, [_vm._v("Cocoa")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "Spices" } }, [_vm._v("Spices")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "Sesame" } }, [_vm._v("Sesame")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "Shea butter" } }, [
+            _vm._v("Shea butter"),
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "Cashew" } }, [_vm._v("Cashew")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "Cassava" } }, [_vm._v("Cassava")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "Soybean" } }, [_vm._v("Soybean")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "Rubber" } }, [_vm._v("Rubber")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "Ginger" } }, [_vm._v("Ginger")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "Others" } }, [_vm._v("Others")]),
+        ]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12" }, [
+      _c(
+        "button",
+        {
+          staticClass:
+            "module-btn bg-light-brown d-flex justify-content-center",
+          staticStyle: { width: "150px" },
+        },
+        [
+          _vm._v(
+            "\n                                                Edit Profile"
+          ),
+        ]
+      ),
+    ])
   },
   function () {
     var _vm = this

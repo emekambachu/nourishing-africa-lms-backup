@@ -7,6 +7,7 @@
 // Default
 require('./bootstrap');
 window.Vue = require('vue').default;
+window.axios = require("axios");
 
 // Imports
 import axios from 'axios';

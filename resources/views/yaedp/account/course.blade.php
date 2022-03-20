@@ -77,21 +77,25 @@
                         <div class="row p-2">
 
                             @if(!empty($course->document_one))
-                                <div class="col-2 course-resources">
+                                <div class="col-4 course-resources mr-4">
                                     <img src="{{ asset('images/icons/document.png') }}" width="40"/>
-                                    <a href="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_one }}"
+                                    <span>{{ $course->document_one }}</span><br>
+                                    <a class="btn btn-sm btn-rounded btn-success"
+                                       href="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_one }}"
                                        download="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_one }}">
-                                        <span>Download</span>
+                                        Download <i class="fa fa-download"></i>
                                     </a>
                                 </div>
                             @endif
 
                             @if(!empty($course->document_two))
-                                <div class="col-2 course-resources">
+                                <div class="col-4 course-resources">
                                     <img src="{{ asset('images/icons/document.png') }}" width="40"/>
-                                    <a href="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_two }}"
+                                    <span>{{ $course->document_two }}</span><br>
+                                    <a class="btn btn-sm btn-rounded btn-success"
+                                       href="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_two }}"
                                        download="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_two }}">
-                                        <span>Download</span>
+                                        Download <i class="fa fa-download"></i>
                                     </a>
                                 </div>
                             @endif

@@ -25,7 +25,7 @@
                                                 <label class="form-label">Surname
                                                     <i class="text-danger">*</i></label>
                                                 <input disabled type="text" class="form-input" name="surname"
-                                                       value="" required>
+                                                       :value="profile.username" required>
 
                                                 <label class="form-label">First Name
                                                     <i class="text-danger">*</i></label>
@@ -124,16 +124,19 @@
                 showEditPassword: false
             }
         },
-        created() {
-            this.axios
-                .get('api/yaedp/get-profile')
-                .then(response => {
-                    this.profile = response.data;
-                }).catch((err) => console.error(err));
-        },
+        props: ['profile'],
         methods: {
-
-        }
+            getProfile: function(){
+                axios.get('/api/yaedp/get-profile')
+                    .then(response => {
+                        this.profile = response.data;
+                        console.log(response.data);
+                    }).catch((err) => console.error(err));
+            }
+        },
+        created() {
+            this.getProfile();
+        },
     }
 </script>
 

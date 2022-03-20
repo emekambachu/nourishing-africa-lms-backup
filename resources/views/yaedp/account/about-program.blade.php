@@ -11,7 +11,7 @@
     <div class="container-fluid">
 
         <h4 class="font-large-inter text-light-brown">
-            Welcome {{ Auth::user()->first_name }}
+            About YAEDP
         </h4>
 
         <div class="row bg-white na-border-radius border-brown p-3 mb-3">
