@@ -171,11 +171,9 @@ Route::get('yaedp/account/settings/email',
 Route::get('yaedp/account/settings/password',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettingsPassword'])
     ->name('yaedp.account.settings.password');
-
-// Account Settings API
-Route::post('yaedp/account/profile',
-    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountProfile'])
-    ->name('yaedp.account.profile');
+Route::get('yaedp/account/{token}/email-confirmation',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'emailConfirmationToken'])
+    ->name('yaedp.account.email-confirmation.token');
 
 // YAEDP Assessment Controller
 Route::get('yaedp/account/assessments',
