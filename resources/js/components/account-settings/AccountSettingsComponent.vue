@@ -3,6 +3,26 @@
         <div class="col-12">
 
             <div class="panel panel-primary tabs-style-2">
+
+                <div v-if="formLoading" class="text-center">
+                    <i class="fa fa-spin fa-spinner text-light-brown fa-3x text-center"></i><br>
+                    <p class="text-center">Please wait......</p>
+                </div>
+
+                <div v-if="formSuccessful" class="alert alert-success" role="alert">
+                    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong class="text-center">{{ alertMessage }}</strong>
+                </div>
+
+                <div v-if="formError" class="alert alert-danger" role="alert">
+                    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{ alertMessage }}</strong>
+                </div>
+
                 <div class="tab-menu-heading">
                     <div class="tabs-menu1">
                         <!-- Tabs -->
@@ -17,64 +37,116 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
                             <div class="row">
-                                <div v-if="showProfile" class="col-12">
+                                <div class="col-12">
                                     <strong class="mb-3">Profile details</strong>
-                                    <form id="" method="post" enctype="multipart/form-data" action="">
+                                    <form id="" method="post" enctype="multipart/form-data"
+                                    @submit.prevent="updateProfile">
                                         <div class="row">
                                             <div class="col-6">
-                                                <label class="form-label">Surname
-                                                    <i class="text-danger">*</i></label>
-                                                <input disabled type="text" class="form-input" name="surname"
-                                                       :value="profile.username" required>
+                                                <div class="row">
 
-                                                <label class="form-label">First Name
-                                                    <i class="text-danger">*</i></label>
-                                                <input type="text" class="form-input" name="first_name" required>
+                                                    <div class="col-md-12">
+                                                        <label class="form-label">Surname
+                                                            <i class="text-danger">*</i></label>
+                                                        <input type="text" class="form-input" name="surname"
+                                                               required v-model="form.surname">
+                                                        <p class="text-danger font-weight-bold tx-8"
+                                                            v-if="errors.surname">{{ errors.surname }}</p>
 
-                                                <label class="form-label">Mobile</label>
-                                                <input type="tel" class="form-input" name="mobile">
+                                                        <label class="form-label">First Name
+                                                            <i class="text-danger">*</i></label>
+                                                        <input type="text" class="form-input" name="first_name"
+                                                               required v-model="form.first_name">
+                                                        <p class="text-danger font-weight-bold tx-8"
+                                                           v-if="errors.first_name">{{ errors.first_name }}</p>
 
-                                                <label class="form-label">State Residence
-                                                    <i class="text-danger">*</i></label>
-                                                <input type="text" class="form-input" name="state_residence" required>
+                                                        <label class="form-label">Mobile</label>
+                                                        <input type="tel" class="form-input" name="mobile"
+                                                               v-model="form.mobile">
+                                                        <p class="text-danger font-weight-bold tx-8"
+                                                           v-if="errors.mobile">{{ errors.mobile }}</p>
 
-                                                <label class="form-label">Business Address
-                                                    <i class="text-danger">*</i></label>
-                                                <input type="text" class="form-input" name="business_address" required>
+                                                        <label class="form-label">State Residence
+                                                            <i class="text-danger">*</i></label>
+                                                        <input type="text" class="form-input" name="state_residence" required
+                                                               v-model="form.state_residence">
+                                                        <p class="text-danger font-weight-bold tx-8"
+                                                           v-if="errors.state_residence">{{ errors.state_residence }}</p>
+
+                                                        <label class="form-label">Business Address
+                                                            <i class="text-danger">*</i></label>
+                                                        <input type="text" class="form-input" name="business_address" required
+                                                               v-model="form.business_address">
+                                                        <p class="text-danger font-weight-bold tx-8"
+                                                           v-if="errors.business_address">{{ errors.business_address }}</p>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Focus Area
+                                                            <i class="na-intern-form-required">*</i></label>
+                                                        <select name="focus_area" class="form-control form-select" required
+                                                                v-model="form.focus_area">
+                                                            <option v-for="focus in focusAreas"
+                                                                    :key="focus.value"
+                                                                    :value="focus.value"
+                                                                    :selected="focus.value === form.focus_area">
+                                                                {{ focus.name }}
+                                                            </option>
+                                                        </select>
+                                                        <p class="text-danger font-weight-bold tx-8"
+                                                           v-if="errors.focus_area">{{ errors.focus_area }}</p>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Value Chain
+                                                            <i class="na-intern-form-required">*</i></label>
+                                                        <select name="value_chain" class="form-control form-select"
+                                                                v-model="form.value_chain">
+                                                            <option v-for="value in valueChains"
+                                                                    :key="value.value"
+                                                                    :value="value.value"
+                                                                    :selected="value.value === form.value_chain">
+                                                                {{ value.name }}
+                                                            </option>
+                                                        </select>
+                                                        <p class="text-danger font-weight-bold tx-8"
+                                                           v-if="errors.value_chain">{{ errors.value_chain }}</p>
+                                                    </div>
+
+                                                </div>
                                             </div>
 
-                                            <div class="col-6">
-                                                <label class="form-label">Focus Area
-                                                    <i class="na-intern-form-required">*</i></label>
-                                                <select name="focus_area" class="form-control form-select">
-                                                    <option value="" selected>- Select -</option>
-                                                    <option value="Farming">Farming</option>
-                                                    <option value="Processing">Processing</option>
-                                                    <option value="Aggregation and commodity exchange">
-                                                        Aggregation and commodity exchange</option>
-                                                    <option value="Sales and exports">Sales and exports</option>
-                                                    <option value="Others">Others</option>
-                                                </select>
+                                            <div class="col-md-6">
+                                               <div class="row">
+                                                   <div class="col-12">
+                                                       <label class="form-label">Website</label>
+                                                       <input type="text" class="form-input" name="website"
+                                                              v-model="form.website">
 
-                                                <label class="form-label">Value Chain
-                                                    <i class="na-intern-form-required">*</i></label>
-                                                <select name="value_chain" class="form-control form-select">
-                                                    <option value="" selected>- Select -</option>
-                                                    <option value="Cocoa">Cocoa</option>
-                                                    <option value="Spices">Spices</option>
-                                                    <option value="Sesame">Sesame</option>
-                                                    <option value="Shea butter">Shea butter</option>
-                                                    <option value="Cashew">Cashew</option>
-                                                    <option value="Cassava">Cassava</option>
-                                                    <option value="Soybean">Soybean</option>
-                                                    <option value="Rubber">Rubber</option>
-                                                    <option value="Ginger">Ginger</option>
-                                                    <option value="Others">Others</option>
-                                                </select>
+                                                       <label class="form-label">Facebook</label>
+                                                       <input type="text" class="form-input" name="facebook"
+                                                              v-model="form.facebook">
+
+                                                       <label class="form-label">Instagram</label>
+                                                       <input type="text" class="form-input" name="instagram"
+                                                              v-model="form.instagram">
+
+                                                       <label class="form-label">LinkedIn</label>
+                                                       <input type="text" class="form-input" name="linkedin"
+                                                              v-model="form.linkedin">
+
+                                                       <label class="form-label">Twitter</label>
+                                                       <input type="text" class="form-input" name="twitter"
+                                                              v-model="form.twitter">
+                                                   </div>
+                                               </div>
+
                                             </div>
 
                                             <div class="col-12">
-                                                <button style="width:150px;" class="module-btn bg-light-brown d-flex justify-content-center">
+                                                <button style="width:150px;"
+                                                        class="module-btn bg-light-brown d-flex justify-content-center"
+                                                :disabled="disableBtnOnLoad">
                                                     Edit Profile</button>
                                             </div>
 
@@ -84,27 +156,63 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="tab-pane" id="tab2">
-                            <div class="row">
-                                <div class="col-12">
-                                    Email
+                            <form @submit.prevent="updateEmail">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Current Email</label>
+                                        <input readonly type="email" class="form-input" name="old_email"
+                                               v-model="formEmail.old_email">
+                                        <p class="text-danger font-weight-bold tx-8"
+                                           v-if="errors.old_email">{{ errors.old_email }}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">New Email</label>
+                                        <input type="email" class="form-input" name="new_email"
+                                               v-model="formEmail.new_email" required>
+                                        <p class="text-danger font-weight-bold tx-8"
+                                           v-if="errors.new_email">{{ errors.new_email }}</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <button style="width:150px;"
+                                                class="module-btn bg-light-brown d-flex justify-content-center"
+                                                :disabled="disableBtnOnLoad">Update Email</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
+
                         <div class="tab-pane" id="tab3">
-                            <div class="row">
-                                <div class="col-12">
-                                    Password
+                            <form @submit.prevent="updatePassword">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label class="form-label">Old Password</label>
+                                        <input type="text" class="form-input" name="old_password"
+                                               v-model="formPassword.old_password" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">New Password</label>
+                                        <input type="text" class="form-input" name="new_password"
+                                               v-model="formPassword.new_password" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Confirm New Password</label>
+                                        <input type="text" class="form-input" name="new_password_confirmation"
+                                               v-model="formPassword.new_password_confirmation" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <button style="width:150px;"
+                                                class="module-btn bg-light-brown d-flex justify-content-center"
+                                        :disabled="disableBtnOnLoad">
+                                            Update Password</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
+
                     </div>
                 </div>
-            </div>
-
-
-            <div class="col-12">
-
             </div>
 
         </div>
@@ -113,30 +221,108 @@
 
 <script>
     export default {
+        components: {},
+        props: ['profile'],
         data(){
             return {
-                profile: [],
-                showProfile: true,
-                showEmail: true,
-                showPassword: true,
-                showEditProfile: false,
-                showEditEmail: false,
-                showEditPassword: false
+                form: {
+                    surname: '',
+                    first_name: '',
+                    mobile: '',
+                    state_residence: '',
+                    business_address: '',
+                    focus_area: '',
+                    value_chain: '',
+                    website: '',
+                    facebook: '',
+                    instagram: '',
+                    linkedin: '',
+                    twitter: '',
+                },
+                formPassword: {
+                    old_password: '',
+                    new_password: '',
+                    new_password_confirmation: '',
+                },
+                formEmail: {
+                    old_email: '',
+                    new_email: '',
+                },
+                focusAreas: [
+                    { value: 'Farming', name: 'Farming' },
+                    { value: 'Processing', name: 'Processing' },
+                    { value: 'Aggregation and commodity exchange', name: 'Aggregation and commodity exchange' },
+                    { value: 'Sales and export', name: 'Sales and export' },
+                ],
+                valueChains: [
+                    { value: 'Cocoa', name: 'Cocoa' },
+                    { value: 'Sesame', name: 'Sesame' },
+                    { value: 'Shea butter', name: 'Shea butter' },
+                    { value: 'Cashew', name: 'Cashew' },
+                    { value: 'Cassava', name: 'Cassava' },
+                    { value: 'Soybean', name: 'Soybean' },
+                    { value: 'Rubber', name: 'Rubber' },
+                    { value: 'Others', name: 'Others' },
+                ],
+                errors:[],
+                formLoading: false,
+                formSuccessful: false,
+                formError: false,
+                alertMessage: '',
             }
         },
-        props: ['profile'],
         methods: {
-            getProfile: function(){
-                axios.get('/api/yaedp/get-profile')
+            // Install laravel sanctum for axios authentication to work
+            // in config/sanctum.php, add guard to 'guards' array
+            // update env domain and session_domain
+            // go to config/cors.php and allow credentials
+
+            getProfile(){
+                axios.get('/api/yaedp/authenticate').then((response) => {
+                    this.form = response.data;
+                    this.formEmail.old_email = response.data.email;
+                });
+            },
+
+            submitForm: function(url, form){
+                this.formLoading = true;
+                axios.post(url, form)
                     .then(response => {
-                        this.profile = response.data;
                         console.log(response.data);
-                    }).catch((err) => console.error(err));
+                        this.formSuccessful = response.data.success === true;
+                        this.formError = response.data.success === false;
+                        this.alertMessage = response.data.message;
+                        this.formLoading = false;
+                    }).catch((error) => {
+                        console.log(error.response.data.errors);
+                    }).finally(() => {
+
+                    });
+            },
+
+            updateProfile: function(){
+                this.submitForm('/api/yaedp/update-profile', this.form);
+            },
+
+            updateEmail: function(){
+                this.submitForm('/api/yaedp/update-email', this.formEmail);
+            },
+
+            updatePassword(){
+                this.submitForm('/api/yaedp/update-password', this.formPassword);
             }
         },
-        created() {
-            this.getProfile();
+        computed: {
+            disableBtnOnLoad(){
+               return this.formLoading === true;
+            }
         },
+        watch: {
+
+        },
+        created(){
+            this.getProfile();
+        }
     }
 </script>
 
