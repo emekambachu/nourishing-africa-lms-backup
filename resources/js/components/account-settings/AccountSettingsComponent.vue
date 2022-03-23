@@ -293,7 +293,6 @@
                         this.formError = response.data.success === false;
                         this.alertMessage = response.data.message;
                         this.formLoading = false;
-                        this.form = response.data;
                     }).catch((error) => {
                         console.log(error.response.data.errors);
                     }).finally(() => {

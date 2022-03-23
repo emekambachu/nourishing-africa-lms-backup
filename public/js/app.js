@@ -22821,7 +22821,6 @@ __webpack_require__.r(__webpack_exports__);
         _this2.formError = response.data.success === false;
         _this2.alertMessage = response.data.message;
         _this2.formLoading = false;
-        _this2.form = response.data;
       })["catch"](function (error) {
         console.log(error.response.data.errors);
       })["finally"](function () {});
