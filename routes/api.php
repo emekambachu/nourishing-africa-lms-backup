@@ -14,11 +14,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Sanctum middleware group
+Route::middleware('auth:sanctum')->group(function (){
+
+    // Get users with specific guard
+    Route::get('yaedp/authenticate', static function (Request $request) {
+        return $request->user('yaedp-users');
+    });
+
+    // Update profile
+    Route::post('yaedp/update-profile',
+        [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'updateProfile'])
+        ->name('yaedp.update-profile');
+
+    // Update Email
+    Route::post('yaedp/update-email',
+        [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'updateEmail'])
+        ->name('yaedp.update-email');
+
+    // Update Password
+    Route::post('yaedp/update-password',
+        [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'updatePassword'])
+        ->name('yaedp.update-password');
+
 });
 
-// Account settings
-Route::get('yaedp/get-profile',
-    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'getProfile'])
-    ->name('yaedp.get-profile');
+

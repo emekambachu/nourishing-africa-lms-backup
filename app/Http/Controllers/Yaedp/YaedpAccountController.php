@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Yaedp;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEmailValidationJob;
 use App\Models\Learning\LearningCategory;
 use App\Models\Learning\LearningCourse;
 use App\Models\Learning\LearningCourseView;
@@ -14,6 +15,9 @@ use App\Models\Learning\LearningDiscussionLike;
 use App\Models\YaedpUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use stdClass;
 
 class YaedpAccountController extends Controller
@@ -415,24 +419,141 @@ class YaedpAccountController extends Controller
         return view('yaedp.account.settings.index');
     }
 
-    public function getProfile(){
+    public function updateProfile(Request $request){
 
-        $getProfile = YaedpUser::where('id', Auth::user()->id)->first();
-        $profile = [
-          'id' => $getProfile->id,
-          'surname' => $getProfile->surname,
-            'first_name' => $getProfile->first_name,
-        ];
-        return response()->json($profile);
+        // Validate form fields
+        $rules = array(
+            'surname' => ['required', 'string'],
+            'first_name' => ['required', 'string'],
+            'mobile' => ['nullable', 'min:7'],
+            'focus_area' => ['required', 'string'],
+            'website' => ['nullable'],
+            'linkedin' => ['nullable', 'regex:/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i'],
+            'facebook' => ['nullable', 'regex:/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i'],
+            'instagram' => ['nullable'],
+            'twitter' => ['nullable'],
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+            return response()->json([
+                'success' => false,
+                "errors" => $validator->getMessageBag()->toArray()
+            ]);
+        }
+
+        $input = $request->all();
+        $user = YaedpUser::findOrFail(Auth::user()->id);
+        $user->update($input);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Profile Updated'
+        ]);
     }
 
-    public function accountProfile(){
+    public function updateEmail(Request $request){
+        // Validate form fields
+        $rules = array(
+        //  'old_email' => ['required', 'email', 'exists:yedp_users,email'],
+        //  'new_email' => ['required', 'email', 'unique:yedp_users,email'],
+            'old_email' => ['required', 'email'],
+            'new_email' => ['required', 'email'],
+        );
 
-        return view('yaedp.account.settings.profile');
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+            return response()->json([
+                'error' => true,
+                "errors" => $validator->getMessageBag()->toArray()
+            ]);
+        }
+
+        $getUsers = new YaedpUser();
+        $newEmailInUse = $getUsers->where('email', $request->new_email)->first();
+        if($newEmailInUse){
+            return response()->json([
+                'success' => false,
+                'message' => 'New email already in use'
+            ]);
+        }
+
+        // I can include the verification and user token in the jobs too
+        //Generate email verification token
+        function verificationToken($length = 11){
+            $characters = '0123456789ABCDEFG';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[random_int(0, $charactersLength - 1)];
+            }
+            return $randomString;
+        }
+
+        $user = YaedpUser::findOrFail(Auth::user()->id);
+        $user->verification_token = verificationToken();
+        $user->save();
+
+        Session::put('new_email', $request->new_email); // Add new email to session
+        $data['verification_token'] = $user->verification_token;
+        $data['email'] = $request->new_email;
+        $data['name'] = Auth::user()->surname.' '.Auth::user()->first_name;
+        // Access job from App/Jobs
+        dispatch(new SendEmailValidationJob($data));
+
+        return response()->json([
+            'success' => true,
+            'message' => "Email update request has been sent to {$request->new_email}, check email"
+        ]);
     }
 
-    public function accountSettingsEmail(){
+    public function emailConfirmationToken($token){
 
-        return view('yaedp.account.settings.email');
+        $confirmed = YaedpUser::where('verification_token', $token)->first();
+
+        if($confirmed && Session::has('new_email')) {
+            $confirmed->email = Session::get('new_email');
+            $confirmed->save();
+            Session::flash("success", "Email successfully changed, please login");
+        } else{
+            Session::flash('warning', 'Incorrect or expired verification token, try again.');
+        }
+
+        return view('yaedp.email-verification-confirmation');
+    }
+
+    public function updatePassword(Request $request){
+        // Validate form fields
+        $rules = array(
+            'old_password' => ['required'],
+            'new_password' => ['required'],
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+            return response()->json([
+                'success' => false,
+                "errors" => $validator->getMessageBag()->toArray()
+            ]);
+        }
+
+        if(!Hash::check($request->old_password, Auth::user()->password)) {
+            return response()->json([
+                'success' => false,
+                "message" => 'Old password does not match'
+            ]);
+        }
+
+        $user = YaedpUser::findOrFail(Auth::user()->id);
+        $user->password = Hash($request->new_password);
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            "message" => 'Password Updated'
+        ]);
     }
 }
