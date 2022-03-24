@@ -377,7 +377,6 @@
 </script>
 
 <style scoped>
-
     input[type=file]::file-selector-button {
         content: 'Choose file';
         padding: .2em .4em;
@@ -392,6 +391,4 @@
         background-color: #c0f8c0;
         border: 1px solid #979191;
     }
-
-
 </style>
