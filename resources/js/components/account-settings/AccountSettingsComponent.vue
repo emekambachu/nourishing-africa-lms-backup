@@ -212,7 +212,7 @@
                                                v-model="formPassword.new_password_confirmation" required>
                                     </div>
                                     <div class="col-1" style="padding-top: 35px;">
-                                        <i @click="passwordVisibility('new')"
+                                        <i @click="passwordVisibility('new-confirm')"
                                            :class="[typeNewPassword === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye']"></i>
                                     </div>
 
@@ -362,7 +362,6 @@
 </script>
 
 <style scoped>
-
     input[type=file]::file-selector-button {
         content: 'Choose file';
         padding: .2em .4em;
@@ -377,6 +376,4 @@
         background-color: #c0f8c0;
         border: 1px solid #979191;
     }
-
-
 </style>
