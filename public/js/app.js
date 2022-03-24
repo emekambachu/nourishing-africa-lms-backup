@@ -22795,7 +22795,10 @@ __webpack_require__.r(__webpack_exports__);
       formLoading: false,
       formSuccessful: false,
       formError: false,
-      alertMessage: ''
+      alertMessage: '',
+      typeOldPassword: 'password',
+      typeNewPassword: 'password',
+      typeNewPasswordConfirm: 'password'
     };
   },
   methods: {
@@ -22832,7 +22835,26 @@ __webpack_require__.r(__webpack_exports__);
       this.submitForm('/api/yaedp/update-email', this.formEmail);
     },
     updatePassword: function updatePassword() {
+      if (this.formPassword.new_password !== this.formPassword.new_password_confirmation) {
+        this.formError = true;
+        this.alertMessage = 'password and password confirmation are not the same';
+        return false;
+      }
+
       this.submitForm('/api/yaedp/update-password', this.formPassword);
+    },
+    passwordVisibility: function passwordVisibility(input) {
+      if (input === 'old') {
+        this.typeOldPassword === 'password' ? this.typeOldPassword = 'text' : this.typeOldPassword = 'password';
+      }
+
+      if (input === 'new') {
+        this.typeNewPassword === 'password' ? this.typeNewPassword = 'text' : this.typeNewPassword = 'password';
+      }
+
+      if (input === 'new-confirm') {
+        this.typeNewPasswordConfirm === 'password' ? this.typeNewPasswordConfirm = 'text' : this.typeNewPasswordConfirm = 'password';
+      }
     }
   },
   computed: {
@@ -23199,7 +23221,7 @@ var _hoisted_64 = {
   "class": "row"
 };
 var _hoisted_65 = {
-  "class": "col-12"
+  "class": "col-11"
 };
 
 var _hoisted_66 = /*#__PURE__*/_withScopeId(function () {
@@ -23210,11 +23232,18 @@ var _hoisted_66 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_67 = {
-  "class": "col-md-6"
+var _hoisted_67 = ["type"];
+var _hoisted_68 = {
+  "class": "col-1",
+  style: {
+    "padding-top": "35px"
+  }
+};
+var _hoisted_69 = {
+  "class": "col-md-5"
 };
 
-var _hoisted_68 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_70 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "form-label"
   }, "New Password", -1
@@ -23222,11 +23251,18 @@ var _hoisted_68 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_69 = {
-  "class": "col-md-6"
+var _hoisted_71 = ["type"];
+var _hoisted_72 = {
+  "class": "col-1",
+  style: {
+    "padding-top": "35px"
+  }
+};
+var _hoisted_73 = {
+  "class": "col-md-5"
 };
 
-var _hoisted_70 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_74 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "form-label"
   }, "Confirm New Password", -1
@@ -23234,10 +23270,17 @@ var _hoisted_70 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_71 = {
+var _hoisted_75 = ["type"];
+var _hoisted_76 = {
+  "class": "col-1",
+  style: {
+    "padding-top": "35px"
+  }
+};
+var _hoisted_77 = {
   "class": "col-12"
 };
-var _hoisted_72 = ["disabled"];
+var _hoisted_78 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [$data.formLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, _hoisted_8)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.formSuccessful ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.alertMessage), 1
   /* TEXT */
@@ -23444,40 +23487,61 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , _hoisted_62)])])], 32
   /* HYDRATE_EVENTS */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[19] || (_cache[19] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    onSubmit: _cache[22] || (_cache[22] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.updatePassword && $options.updatePassword.apply($options, arguments);
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_64, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_65, [_hoisted_66, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
+    type: $data.typeOldPassword,
     "class": "form-input",
     name: "old_password",
     "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
       return $data.formPassword.old_password = $event;
     }),
     required: ""
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formPassword.old_password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_67, [_hoisted_68, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
+  }, null, 8
+  /* PROPS */
+  , _hoisted_67), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, $data.formPassword.old_password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_68, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+    onClick: _cache[17] || (_cache[17] = function ($event) {
+      return $options.passwordVisibility('old');
+    }),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.typeOldPassword === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye'])
+  }, null, 2
+  /* CLASS */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_69, [_hoisted_70, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: $data.typeNewPassword,
     "class": "form-input",
     name: "new_password",
-    "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
+    "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
       return $data.formPassword.new_password = $event;
     }),
     required: ""
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formPassword.new_password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_69, [_hoisted_70, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
+  }, null, 8
+  /* PROPS */
+  , _hoisted_71), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, $data.formPassword.new_password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_72, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+    onClick: _cache[19] || (_cache[19] = function ($event) {
+      return $options.passwordVisibility('new');
+    }),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.typeNewPassword === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye'])
+  }, null, 2
+  /* CLASS */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_73, [_hoisted_74, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: $data.typeNewPasswordConfirm,
     "class": "form-input",
     name: "new_password_confirmation",
-    "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
+    "onUpdate:modelValue": _cache[20] || (_cache[20] = function ($event) {
       return $data.formPassword.new_password_confirmation = $event;
     }),
     required: ""
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formPassword.new_password_confirmation]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 8
+  /* PROPS */
+  , _hoisted_75), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, $data.formPassword.new_password_confirmation]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_76, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+    onClick: _cache[21] || (_cache[21] = function ($event) {
+      return $options.passwordVisibility('new');
+    }),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.typeNewPassword === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye'])
+  }, null, 2
+  /* CLASS */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_77, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     style: {
       "width": "150px"
     },
@@ -23485,7 +23549,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     disabled: $options.disableBtnOnLoad
   }, " Update Password", 8
   /* PROPS */
-  , _hoisted_72)])])], 32
+  , _hoisted_78)])])], 32
   /* HYDRATE_EVENTS */
   )])])])])])]);
 }

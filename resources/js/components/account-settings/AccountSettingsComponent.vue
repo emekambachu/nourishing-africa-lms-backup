@@ -186,21 +186,36 @@
                         <div class="tab-pane" id="tab3">
                             <form @submit.prevent="updatePassword">
                                 <div class="row">
-                                    <div class="col-12">
+                                    <div class="col-11">
                                         <label class="form-label">Old Password</label>
-                                        <input type="text" class="form-input" name="old_password"
+                                        <input :type="typeOldPassword" class="form-input" name="old_password"
                                                v-model="formPassword.old_password" required>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-1" style="padding-top: 35px;">
+                                        <i @click="passwordVisibility('old')"
+                                           :class="[typeOldPassword === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye']"></i>
+                                    </div>
+
+                                    <div class="col-md-5">
                                         <label class="form-label">New Password</label>
-                                        <input type="text" class="form-input" name="new_password"
+                                        <input :type="typeNewPassword" class="form-input" name="new_password"
                                                v-model="formPassword.new_password" required>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-1" style="padding-top: 35px;">
+                                        <i @click="passwordVisibility('new')"
+                                           :class="[typeNewPassword === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye']"></i>
+                                    </div>
+
+                                    <div class="col-md-5">
                                         <label class="form-label">Confirm New Password</label>
-                                        <input type="text" class="form-input" name="new_password_confirmation"
+                                        <input :type="typeNewPasswordConfirm" class="form-input" name="new_password_confirmation"
                                                v-model="formPassword.new_password_confirmation" required>
                                     </div>
+                                    <div class="col-1" style="padding-top: 35px;">
+                                        <i @click="passwordVisibility('new')"
+                                           :class="[typeNewPassword === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye']"></i>
+                                    </div>
+
                                     <div class="col-12">
                                         <button style="width:150px;"
                                                 class="module-btn bg-light-brown d-flex justify-content-center"
@@ -269,6 +284,9 @@
                 formSuccessful: false,
                 formError: false,
                 alertMessage: '',
+                typeOldPassword: 'password',
+                typeNewPassword: 'password',
+                typeNewPasswordConfirm: 'password',
             }
         },
         methods: {
@@ -309,7 +327,24 @@
             },
 
             updatePassword(){
+                if(this.formPassword.new_password !== this.formPassword.new_password_confirmation){
+                    this.formError = true;
+                    this.alertMessage = 'password and password confirmation are not the same';
+                    return false;
+                }
                 this.submitForm('/api/yaedp/update-password', this.formPassword);
+            },
+
+            passwordVisibility(input){
+                if(input === 'old'){
+                    this.typeOldPassword === 'password' ? this.typeOldPassword = 'text' : this.typeOldPassword = 'password';
+                }
+                if(input === 'new'){
+                    this.typeNewPassword === 'password' ? this.typeNewPassword = 'text' : this.typeNewPassword = 'password';
+                }
+                if(input === 'new-confirm'){
+                    this.typeNewPasswordConfirm === 'password' ? this.typeNewPasswordConfirm = 'text' : this.typeNewPasswordConfirm = 'password';
+                }
             }
         },
         computed: {

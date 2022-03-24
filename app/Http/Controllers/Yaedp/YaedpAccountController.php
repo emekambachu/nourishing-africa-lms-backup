@@ -529,6 +529,7 @@ class YaedpAccountController extends Controller
         $rules = array(
             'old_password' => ['required'],
             'new_password' => ['required'],
+            'new_password_confirmation' => ['required'],
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -547,8 +548,15 @@ class YaedpAccountController extends Controller
             ]);
         }
 
+        if($request->new_password !== $request->new_password_confirmation) {
+            return response()->json([
+                'success' => false,
+                "message" => 'Password and password confirmation does not match'
+            ]);
+        }
+
         $user = YaedpUser::findOrFail(Auth::user()->id);
-        $user->password = Hash($request->new_password);
+        $user->password = Hash::make($request->new_password);
         $user->save();
 
         return response()->json([
