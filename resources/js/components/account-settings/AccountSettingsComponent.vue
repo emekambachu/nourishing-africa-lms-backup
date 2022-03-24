@@ -208,12 +208,13 @@
 
                                     <div class="col-md-5">
                                         <label class="form-label">Confirm New Password</label>
-                                        <input :type="typeNewPasswordConfirm" class="form-input" name="new_password_confirmation"
+                                        <input :type="typeNewPasswordConfirm" class="form-input"
+                                               name="new_password_confirmation"
                                                v-model="formPassword.new_password_confirmation" required>
                                     </div>
                                     <div class="col-1" style="padding-top: 35px;">
                                         <i @click="passwordVisibility('new-confirm')"
-                                           :class="[typeNewPassword === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye']"></i>
+                                           :class="[typeNewPasswordConfirm === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye']"></i>
                                     </div>
 
                                     <div class="col-12">
