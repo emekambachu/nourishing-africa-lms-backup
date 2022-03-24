@@ -229,7 +229,7 @@
                                     </div>
                                     <div class="col-1" style="padding-top: 35px;">
                                         <i @click="passwordVisibility('new-confirm')"
-                                           :class="[typeNewPassword === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye']"></i>
+                                           :class="[typeNewPasswordConfirm === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye']"></i>
                                     </div>
                                     <div class="col-12">
                                         <button style="width:150px;"
