@@ -186,7 +186,6 @@
                         <div class="tab-pane" id="tab3">
                             <form @submit.prevent="updatePassword">
                                 <div class="row">
-<<<<<<< HEAD
                                     <div class="col-12">
                                         <label class="form-label">Old Password</label>
                                         <input type="text" class="form-input" name="old_password"
@@ -202,7 +201,6 @@
                                         <input type="text" class="form-input" name="new_password_confirmation"
                                                v-model="formPassword.new_password_confirmation" required>
                                     </div>
-=======
                                     <div class="col-11">
                                         <label class="form-label">Old Password</label>
                                         <input :type="typeOldPassword" class="form-input" name="old_password"
@@ -225,15 +223,14 @@
 
                                     <div class="col-md-5">
                                         <label class="form-label">Confirm New Password</label>
-                                        <input :type="typeNewPasswordConfirm" class="form-input" name="new_password_confirmation"
+                                        <input :type="typeNewPasswordConfirm" class="form-input"
+                                               name="new_password_confirmation"
                                                v-model="formPassword.new_password_confirmation" required>
                                     </div>
                                     <div class="col-1" style="padding-top: 35px;">
-                                        <i @click="passwordVisibility('new')"
+                                        <i @click="passwordVisibility('new-confirm')"
                                            :class="[typeNewPassword === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye']"></i>
                                     </div>
-
->>>>>>> test
                                     <div class="col-12">
                                         <button style="width:150px;"
                                                 class="module-btn bg-light-brown d-flex justify-content-center"
@@ -302,12 +299,9 @@
                 formSuccessful: false,
                 formError: false,
                 alertMessage: '',
-<<<<<<< HEAD
-=======
                 typeOldPassword: 'password',
                 typeNewPassword: 'password',
                 typeNewPasswordConfirm: 'password',
->>>>>>> test
             }
         },
         methods: {
@@ -348,9 +342,6 @@
             },
 
             updatePassword(){
-<<<<<<< HEAD
-                this.submitForm('/api/yaedp/update-password', this.formPassword);
-=======
                 if(this.formPassword.new_password !== this.formPassword.new_password_confirmation){
                     this.formError = true;
                     this.alertMessage = 'password and password confirmation are not the same';
@@ -369,7 +360,6 @@
                 if(input === 'new-confirm'){
                     this.typeNewPasswordConfirm === 'password' ? this.typeNewPasswordConfirm = 'text' : this.typeNewPasswordConfirm = 'password';
                 }
->>>>>>> test
             }
         },
         computed: {
