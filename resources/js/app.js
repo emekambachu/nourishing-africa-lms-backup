@@ -6,11 +6,10 @@
 
 // Default
 require('./bootstrap');
-window.Vue = require('vue').default;
-window.axios = require("axios");
-
-// Imports
+import { createApp } from 'vue';
+import router from './routes';
 import axios from 'axios';
+import VueAxios from 'vue-axios';
 
 /**
  * The following block of code may be used to automatically register your
@@ -23,9 +22,6 @@ import axios from 'axios';
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Global Components
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
 // Local Components
 import AccountSettingsComponent from './components/account-settings/AccountSettingsComponent';
 
@@ -36,9 +32,8 @@ import AccountSettingsComponent from './components/account-settings/AccountSetti
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
+createApp({
     components: {
         AccountSettingsComponent,
     }
-});
+}).use(router, axios, VueAxios).mount('#app');

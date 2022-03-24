@@ -65,7 +65,7 @@
     {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script>window.Laravel = {csrfToken: '{{ csrf_token() }}'}</script>
 
 @yield('top-assets')
 
@@ -201,6 +201,12 @@
                                         {{ Auth::user()->surname .' '.Auth::user()->first_name }}</p>
                                     <p class="tx-15 text-grey">
                                         {{ Auth::user()->business }}</p>
+                                </div>
+                                <div class="col-12">
+                                    <hr style="border: 1px solid #ccc;"/>
+                                    <a class="text-dark" href="{{ route('yaedp.account.settings') }}">
+                                        <i class="fas fa-user pl-1"></i>  Account Settings
+                                    </a>
                                 </div>
                                 <div class="col-12">
                                     <hr style="border: 1px solid #ccc;"/>
