@@ -110,7 +110,7 @@ Route::get('yaedp', [YaedpLoginController::class, 'showLoginForm'])
     ->name('yaedp.login');
 Route::post('yaedp/login/submit', [YaedpLoginController::class, 'login'])
     ->name('yaedp.login.submit');
-Route::post('yaedp/logout', [YaedpLoginController::class, 'logout'])
+Route::get('yaedp/logout', [YaedpLoginController::class, 'logout'])
     ->name('yaedp.logout');
 
 // YAEDP Password Reset
