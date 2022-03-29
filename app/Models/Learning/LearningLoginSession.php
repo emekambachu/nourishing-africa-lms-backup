@@ -15,6 +15,7 @@ class LearningLoginSession extends Model
 
     protected $fillable = [
         'user_id',
+		'learning_category_id',
         'email',
         'ip',
         'user_agent',
@@ -23,28 +24,6 @@ class LearningLoginSession extends Model
 
     public function yaedpUser(){
         $this->belongsTo(YaedpUser::class, 'email', 'email');
-    }
-
-    public static function getSession(Request $request){
-        // Get User Agent (Browser and device)
-        $user_agent = (new \Illuminate\Http\Request)->server('HTTP_USER_AGENT');
-        $ip = self::getIp($request);
-
-        $loginSession = new self();
-        $hasSession = $loginSession->where('user_id', Auth::user()->id)->first();
-
-        if($hasSession){
-            $hasSession->update([
-                'ip' => $ip,
-                'user_agent' => $user_agent,
-            ]);
-        }else{
-            $loginSession->create([
-                'user_id' => $loginSession->id,
-                'ip' => $ip,
-                'user_agent' => $user_agent,
-            ]);
-        }
     }
 
 }

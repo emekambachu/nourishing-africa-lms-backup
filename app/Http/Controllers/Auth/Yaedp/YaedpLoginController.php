@@ -80,6 +80,7 @@ class YaedpLoginController extends Controller
             ]);
         }else{
             $loginSession->create([
+                'learning_category_id' => 3,
                 'email' => $request->email,
                 'ip' => $ip,
                 'user_agent' => $user_agent,
