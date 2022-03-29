@@ -202,22 +202,17 @@
                                     <p class="tx-15 text-grey">
                                         {{ Auth::user()->business }}</p>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 text-center">
                                     <hr style="border: 1px solid #ccc;"/>
                                     <a class="text-dark" href="{{ route('yaedp.account.settings') }}">
-                                        <i class="fas fa-user pl-1"></i>  Account Settings
+                                        <i class="fas fa-user mr-2"></i>  Account Settings
                                     </a>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 text-center">
                                     <hr style="border: 1px solid #ccc;"/>
                                     <a class="dropdown-item na-text-dark-green na-investor-text1"
-                                       style="font-size: 16px;" href="{{ route('yaedp.logout') }}"
-                                       onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
+                                       style="font-size: 16px;" href="{{ route('yaedp.logout') }}">
                                         <i class="fas fa-sign-out-alt text-danger"></i> Logout</a>
-                                    <form id="logout-form" action="{{ route('yaedp.logout') }}"
-                                          method="POST" style="display: none;">@csrf
-                                    </form>
                                 </div>
                             </div>
                         </div>
