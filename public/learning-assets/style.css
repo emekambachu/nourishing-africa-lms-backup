@@ -491,8 +491,8 @@
 img.module-grid-image{
     border-radius: 10px;
     position: relative;
+    object-position: center; /* Center the image within the element */
     width: 700px;
-    height: 350px;
 }
 
 /*.module-grid-img-crop{*/
