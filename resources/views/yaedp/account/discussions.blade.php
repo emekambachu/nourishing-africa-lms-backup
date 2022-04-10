@@ -18,7 +18,7 @@
             <div class="col-lg-9 col-md-9 col-sm-12">
                 <div class="card h-100 w-100">
                     <div class="card-header border-bottom">
-                        <label class="learning-discussion-header-title" for=""><span style="color: #CE8000;"> Discussion - </span>({{ $course->title }})</label>
+                        <label class="learning-discussion-header-title" for=""><span style="color: #D75C03;"> Discussion - </span>({{ $course->title }})</label>
                         <br/>
                         <label class="learning-discussion-header-comment-fig mb-0 mt-3" for="">{{ count($discussion) }} Comment{{ count($discussion) > 1 ? 's':'' }}</label>
                         <button class="float-right discussion-reply-btn" data-toggle="modal" data-target="#exampleModalCenter" data-type="Comment">Comment</button>

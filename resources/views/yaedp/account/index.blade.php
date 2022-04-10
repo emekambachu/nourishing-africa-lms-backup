@@ -20,21 +20,37 @@
                     <h4 class="text-inter text-dark mb-1">
                         Are you ready to take your agri-food business to the next level?</h4>
                     <p class="text-inter text-gray tx-14">
-                        The Youth in Agri-Food Export Development Program (YAEDP) training covers a robust curriculum that takes participants on a comprehensive learning journey from the conception of the Nigerian export market specific to key export value chains to successful entry to the international market.<br><br>
-                        The six-module program is designed to take you from opportunity identification to quality product launch, growth, and financing. With guidance from top agri-food industry experts and export specialists, you will develop an improved entrepreneurial mindset to build a profitable and sustainable export businesses. <a class="na-text-dark-green font-weight-bold" href="{{ route('yaedp.account.about-program') }}">Click here to read more</a></p>
+                        The Youth in Agri-Food Export Development Program (YAEDP) training covers a robust curriculum that takes participants on a comprehensive learning journey from the conception of the Nigerian export market specific to key export value chains to successful entry to the international market....
+                        <a class="na-text-dark-green font-weight-bold" href="{{ route('yaedp.account.about-program') }}">Click here to read more</a>
+                    </p>
                 </div>
                 <div class="row">
                     <div class="col-md-4 text-left">
-                        <img src="{{ asset('images/icons/book-open-circle.png') }}" width="30"/>
-                        <span> {{ $modules->count() }} Modules</span>
+                        <div class="member-bg-lemon d-inline d-flex p-3 border-radius-8">
+                            <img src="{{ asset('images/icons/modules.png') }}" width="70"/>
+                            <span class="ml-2">
+                                <h2>{{ $modules->count() }}</h2>
+                                <p>Modules</p>
+                            </span>
+                        </div>
                     </div>
                     <div class="col-md-4 text-left">
-                        <img src="{{ asset('images/icons/book-open-circle.png') }}" width="30"/>
-                        <span> {{ $courses->count() }} Courses</span>
+                        <div class="bg-lighter-brown d-inline d-flex p-3 border-radius-8">
+                            <img src="{{ asset('images/icons/online-course.png') }}" width="70"/>
+                            <span class="ml-2">
+                                <h2>{{ $courses->count() }}</h2>
+                                <p>Courses</p>
+                            </span>
+                        </div>
                     </div>
                     <div class="col-md-4 text-left">
-                        <img src="{{ asset('images/icons/user-circle-brown.png') }}" width="30"/>
-                        <span> 10 Instructors</span>
+                        <div class="bg-light-purple d-inline d-flex p-3 border-radius-8">
+                            <img src="{{ asset('images/icons/instructors.png') }}" width="70"/>
+                            <span class="ml-2">
+                                <h2>10</h2>
+                                <p>Instructors</p>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -90,7 +106,7 @@
                                 <div class="col-12 text-center">
                                     <a class="text-center"
                                        href="{{ route('yaedp.account.course', $course->learningCourse->id) }}">
-                                        <button class="btn-light-green-outline" type="button">
+                                        <button class="module-btn na-bg-dark-green text-white" type="button">
                                             Continue</button>
                                     </a>
                                 </div>
@@ -117,14 +133,14 @@
                     <h4 class="text-light-brown text-inter text-center">Progress</h4>
                     @if(count($moduleProgress) > 0)
                         @foreach($moduleProgress as $value)
-                        <p class="mb-0 text-left tx-12">{{ $value['moduleTitle'] }}</p>
+                        <p class="mb-0 text-left tx-12">{{ $value['moduleTitle'] }} ({{ $value['percent'] }}%)</p>
                         <div class="progress mb-3 na-border-radius">
                             <div class="progress-bar
                                 @if($value['percent'] === 100) bg-success
-                                @else bg-warning @endif p-2"
+                                @else bg-warning @endif"
                                  role="progressbar"
                                  style="width: {{ $value['percent'] }}%" aria-valuenow="{{ $value['percent'] }}"
-                                 aria-valuemin="0" aria-valuemax="100">{{ $value['percent'] }}%</div>
+                                 aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         @endforeach
                     @else
@@ -132,7 +148,7 @@
                         <p class="text-inter text-dark mt-3 text-center">You have not started any course</p>
                     @endif
                     <a href="{{ route('yaedp.account.modules') }}">
-                        <button class="bg-light-brown na-border-radius wd-200 pt-2 pb-2" type="button">
+                        <button class="na-investor-bg-dark-green text-white na-border-radius wd-200 pt-2 pb-2" type="button">
                             Go to modules
                         </button>
                     </a>
@@ -146,21 +162,20 @@
                 <h4 class="text-light-brown text-inter">My Assessments</h4>
                 <div class="bg-white-radius-shadow">
                     @forelse($moduleAssessments as $module)
-                        <div class="bg-white-radius border-light-green mb-2">
+                        <div class="bg-lemon-green mb-2 p-2 border-radius-8">
                             <div class="row">
-                                <div class="col-md-11 col-sm-11">
-                                    <h5 class="text-inter text-dark">{{ $module->learningModule->title }}</h5>
+                                <div class="col-md-10">
+                                    <h5 class="text-inter text-dark">
+                                        {{ $module->learningModule->title }}
+                                    </h5>
                                 </div>
-                                <div class="col-md-1 col-sm-1">
-                                    <h5 class="text-inter na-text-light-green float-right mr-2">
-                                        {{ $module->percent === 0 ? 'None' : $module->percent }}%</h5>
-
+                                <div class="col-md-2 d-inline d-flex">
                                     @if($module->retake < 3)
-                                        <a href="{{ route('yaedp.account.assessment.questions', $module->learning_module_id) }}">
-                                            <button class="module-btn bg-danger text-white d-flex justify-content-center">
-                                                Retake ({{ 3 - $module->retake }})</button>
+                                        <a class="text-danger tx-15 mr-1 pr-1 border-right-2" href="{{ route('yaedp.account.assessment.questions', $module->learning_module_id) }}">Retake ({{ 3 - $module->retake }})
                                         </a>
                                     @endif
+                                    <h5 class="text-inter na-text-light-green mr-2">
+                                        {{ $module->percent === 0 ? 'None' : $module->percent }}%</h5>
                                 </div>
                             </div>
                         </div>

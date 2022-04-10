@@ -54,32 +54,26 @@
 
                     <p class="na-text-dark-green mt-2 font-weight-bold">
                         {{ $course->title }}</p>
-
-{{--                    <div>--}}
-{{--                        <p class="text-grey tx-12 mt-3">--}}
-{{--                            30:22</p>--}}
-{{--                    </div>--}}
-
                     <!--If this item is not the first module, check if the previous module has been completed-->
                     <!--If the previous module has been completed, make the next module available-->
                     @if(!$loop->first)
                         @if(Auth::user()->startedCourse($course->previousCourse($module->id)->id, $module->id))
                             @if(Auth::user()->startedCourse($course->previousCourse($module->id)->id, $module->id)->status === 1)
                                 <a href="{{ route('yaedp.account.course', $course->id) }}">
-                                    <button class="module-btn bg-light-brown d-flex justify-content-center">
+                                    <button class="module-btn na-bg-dark-green text-white d-flex justify-content-center">
                                         Start</button>
                                 </a>
                             @else
                                 <button disabled class="module-btn bg-gray d-flex justify-content-center">
-                                    Complete previous course to continue </button>
+                                    Start </button>
                             @endif
                         @else
                             <button disabled class="module-btn bg-gray d-flex justify-content-center">
-                                Complete previous course to continue </button>
+                                Start </button>
                         @endif
                     @else
                         <a href="{{ route('yaedp.account.course', $course->id) }}">
-                            <button class="module-btn bg-light-brown d-flex justify-content-center">
+                            <button class="module-btn na-bg-dark-green text-white d-flex justify-content-center">
                                 Start</button>
                         </a>
                     @endif
