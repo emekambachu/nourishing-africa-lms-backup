@@ -1522,7 +1522,7 @@
   .side-menu__item.active, .side-menu__item:hover, .side-menu__item:focus {
     text-decoration: none;
     color: #fff;
-    background: #CE8000;
+    background: #D75C03;
   }
 
 .side-menu__item.active .angle, .side-menu__item:hover .angle, .side-menu__item:focus .angle {
@@ -1597,7 +1597,7 @@
 }
 
 .slide.is-expanded .side-menu__item {
-  background: #ce8000;
+  background: #D75C03;
     /*border-left: solid 3px #006600;*/
 }
 
@@ -2223,7 +2223,7 @@ color: #fff;
   color: #fff;
   font-weight: 500;
   /*background: linear-gradient(45deg, #209f84, #046b60);*/
-    background: #CE8000;
+    background: #D75C03;
     /*box-shadow: 0 6px 14px 2px rgba(0, 0, 0, 0.1);*/
   /*border-radius: 0 100px 100px 0; */
 }
@@ -2467,20 +2467,20 @@ color: #fff;
 
   .sidebar-mini.sidenav-toggled.sidenav-toggled1 .slide-item.active {
     text-decoration: none;
-    color: #ce8000 !important;
+    color: #D75C03 !important;
   }
 
   .slide-item:hover, .slide-item:focus {
     text-decoration: none;
-    color: #ce8000 !important;
+    color: #D75C03 !important;
   }
 
   .sidebar-mini.sidenav-toggled.sidenav-toggled1 .slide-item.active:before {
-    color: #ce8000 !important;
+    color: #D75C03 !important;
   }
 
   .slide-item:hover:before, .slide-item:focus:before {
-    color: #ce8000 !important;
+    color: #D75C03 !important;
   }
 
     .sidebar-mini.sidenav-toggled.sidenav-toggled1 .slide-menu {

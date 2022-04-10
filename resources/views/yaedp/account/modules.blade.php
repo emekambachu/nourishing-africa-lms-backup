@@ -55,20 +55,20 @@
                         @if(Auth::user()->startedModule($mod->previousModule()->id))
                             @if(Auth::user()->startedModule($mod->previousModule()->id)->status === 1)
                                 <a href="{{ route('yaedp.account.courses', $mod->id) }}">
-                                    <button class="module-btn bg-light-brown d-flex justify-content-center">
+                                    <button class="module-btn na-bg-dark-green text-white d-flex justify-content-center">
                                         Start</button>
                                 </a>
                             @else
                                 <button disabled class="module-btn bg-gray d-flex justify-content-center">
-                                    Complete previous module to continue </button>
+                                    Start </button>
                             @endif
                         @else
                             <button disabled class="module-btn bg-gray d-flex justify-content-center">
-                                Complete previous module to continue </button>
+                                Start </button>
                         @endif
                     @else
                         <a href="{{ route('yaedp.account.courses', $mod->id) }}">
-                            <button class="module-btn bg-light-brown d-flex justify-content-center">
+                            <button class="module-btn na-bg-dark-green text-white d-flex justify-content-center">
                                 Start</button>
                         </a>
                     @endif

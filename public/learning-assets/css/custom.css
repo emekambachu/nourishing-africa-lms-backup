@@ -2459,7 +2459,7 @@ a.membership-text1:hover {
 }
 
 .member-bg-lemon {
-    background: #f1fff1;
+    background: #f7fff7;
 }
 
 .member-bg-light-grey {
@@ -2633,4 +2633,12 @@ textarea.input-bg {
 
 .member-text-8{
     font-size: 8px !important;
+}
+
+.bg-lighter-brown{
+    background-color: #FFF5ED;
+}
+
+.bg-light-purple{
+    background: #EDEEFF;
 }
