@@ -230,14 +230,14 @@
                             <div class="p-2 @if($c->id === $course->id) bg-lemon-green @endif ">
                                 <span class="text-inter na-text-dark-green tx-12">
                                     {{ $c->title }}
-                                    <i class="fa fa-check na-text-light-green text-right ml-2"></i>
+                                    <i class="fa fa-check na-text-light-green text-right ml-2 float-right"></i>
                                 </span>
                             </div>
                             @else
                             <div class="p-2 @if($c->id === $course->id) bg-lemon-green @endif ">
                                 <span class="text-inter na-text-dark-green tx-12">
                                     {{ $c->title }}
-                                    <i class="fa fa-play na-text-light-green text-right ml-2"></i>
+                                    <i class="fa fa-play na-text-light-green text-right ml-2 float-right"></i>
                                 </span>
                             </div>
                             @endif
@@ -245,7 +245,7 @@
                             <div class="p-2">
                                 <span class="text-inter na-text-dark-green tx-12">
                                     {{ $c->title }}
-                                    <i class="fa fa-lock na-text-light-green text-right ml-2"></i>
+                                    <i class="fa fa-lock na-text-light-green text-right ml-2 float-right"></i>
                                 </span>
                             </div>
                         @endif
@@ -254,7 +254,7 @@
                     <div class="p-2 bg-very-light-brown">
                         <span class="text-inter na-text-dark-green tx-12">
                             Assessment
-                            <i class="fa fa-list text-right ml-2"></i>
+                            <i class="fa fa-list text-right ml-2 float-right"></i>
                         </span>
                     </div>
                 </div>
