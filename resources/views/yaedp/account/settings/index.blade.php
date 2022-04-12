@@ -5,6 +5,10 @@
 @endsection
 
 @section('top-assets')
+    <!--Vue-->
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!--- Internal Prism css --->
     <link href="{{ asset('learning-assets/plugins/prism/prism.css') }}" rel="stylesheet">
 
@@ -13,7 +17,7 @@
 @endsection
 
 @section('content')
-    <div class="container mb-4">
+    <div id="app" class="container mb-4">
 
         <p class="bread-crumbs">
             <a href="{{ route('yaedp.account') }}">Dashboard</a> / <span class="light-green">Account settings</span>

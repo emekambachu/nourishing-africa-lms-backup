@@ -58,13 +58,8 @@
     <link href="{{ asset('learning-assets/custom/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('learning-assets/style.css') }}" rel="stylesheet">
 
-    <!--Vue-->
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <!-- Styles -->
-    {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
-
     <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>window.Laravel = {csrfToken: '{{ csrf_token() }}'}</script>
 
 @yield('top-assets')
@@ -157,7 +152,7 @@
 <!-- /main-sidebar -->
 
 <!-- main-content -->
-<div id="app" class="main-content">
+<div class="main-content">
     <!-- main-header -->
     <div class="main-header side-header">
 

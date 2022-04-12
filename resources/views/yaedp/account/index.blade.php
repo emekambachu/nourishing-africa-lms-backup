@@ -60,15 +60,14 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="row">
 
                     <div class="col-12">
                         <h4 class="text-light-brown text-inter text-left float-left">My Progress</h4>
-                        <a class="float-right na-text-dark-green" href="{{ route('yaedp.account.modules') }}">
-                            See all modules</a>
                     </div>
-                    <div class="col-md-6">
+
+                    <div class="col-md-4">
                         <div class="module-complete-counter">
                             <h1>{{ $countCompletedCourses }}</h1>
                             <p>Completed Courses</p>
@@ -76,7 +75,7 @@
                     </div>
 
                     @forelse($startedCourses as $course)
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="bg-white-radius-shadow mr-2 mb-5">
                             <div class="row na-border-bottom">
                                 <div class="col-3">
@@ -114,7 +113,7 @@
                         </div>
                     </div>
                     @empty
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="bg-white-radius-shadow mr-2 mb-5">
                             <div class="row">
                                 <div class="col-12">
@@ -125,35 +124,35 @@
                         </div>
                     </div>
                     @endforelse
-                </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="bg-white-radius-shadow text-center">
-                    <h4 class="text-light-brown text-inter text-center">Progress</h4>
-                    @if(count($moduleProgress) > 0)
-                        @foreach($moduleProgress as $value)
-                        <p class="mb-0 text-left tx-12">{{ $value['moduleTitle'] }} ({{ $value['percent'] }}%)</p>
-                        <div class="progress mb-3 na-border-radius">
-                            <div class="progress-bar
+                    <div class="col-md-4">
+                        <div class="bg-white-radius-shadow text-center">
+                            @if(count($moduleProgress) > 0)
+                                @foreach($moduleProgress as $value)
+                                    <p class="mb-0 text-left tx-12">{{ $value['moduleTitle'] }} ({{ $value['percent'] }}%)</p>
+                                    <div class="progress mb-3 na-border-radius">
+                                        <div class="progress-bar
                                 @if($value['percent'] === 100) bg-success
                                 @else bg-warning @endif"
-                                 role="progressbar"
-                                 style="width: {{ $value['percent'] }}%" aria-valuenow="{{ $value['percent'] }}"
-                                 aria-valuemin="0" aria-valuemax="100"></div>
+                                             role="progressbar"
+                                             style="width: {{ $value['percent'] }}%" aria-valuenow="{{ $value['percent'] }}"
+                                             aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                @endforeach
+                            @else
+                                <img src="{{ asset('images/icons/social-ideas.png')}}" width="200"/>
+                                <p class="text-inter text-dark mt-3 text-center">You have not started any course</p>
+                            @endif
+                            <a href="{{ route('yaedp.account.modules') }}">
+                                <button class="na-investor-bg-dark-green text-white na-border-radius wd-200 pt-2 pb-2" type="button">
+                                    Go to modules
+                                </button>
+                            </a>
                         </div>
-                        @endforeach
-                    @else
-                        <img src="{{ asset('images/icons/social-ideas.png')}}" width="200"/>
-                        <p class="text-inter text-dark mt-3 text-center">You have not started any course</p>
-                    @endif
-                    <a href="{{ route('yaedp.account.modules') }}">
-                        <button class="na-investor-bg-dark-green text-white na-border-radius wd-200 pt-2 pb-2" type="button">
-                            Go to modules
-                        </button>
-                    </a>
-                </div>
 
+                    </div>
+
+                </div>
             </div>
         </div>
 
