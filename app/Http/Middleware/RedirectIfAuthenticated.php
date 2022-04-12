@@ -22,10 +22,10 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                // For now there is no user.account
-                return redirect()->route('user.account');
-            }
+//            if (Auth::guard($guard)->check()) {
+//                // For now there is no user.account
+//                return redirect()->route('user.account');
+//            }
 
             // redirect to dashboard or account if logged in
             if ($guard === "yaedp-users" && Auth::guard($guard)->check()) {
