@@ -45,8 +45,8 @@
                     <p class="na-text-dark-green mt-2 font-weight-bold">
                         {{ $mod->title }}
                     </p>
-                    <p>
-                        {{ \Illuminate\Support\Str::limit($mod->description, $limit = 100, $end = '...') }}
+                    <p class="tx-14">
+                        <i class="fa fa-book-open text-light-brown"></i> {{ $mod->learningCourses->count() }} Courses
                     </p>
 
                     <!--If this item is not the first module, check if the previous module has been completed-->

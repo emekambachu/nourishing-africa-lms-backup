@@ -188,15 +188,20 @@
                                         <div class="row pl-3 mb-3">
                                             <div class="col-12">
                                                 <img src="{{ asset('images/icons/profile.png') }}" alt="" class="">
-                                                <label for="" class="pl-3 discussion-comment-name">{{ \App\Models\YaedpUser::getUserFullName($replies->user_id) }}</label>
-                                                <label for="" class="float-right discussion-comment-time">{{ Carbon\Carbon::parse($replies->created_at)->diffForHumans(null, true).' ago' }}</label>
+                                                <label for="" class="pl-3 discussion-comment-name">
+                                                    {{ \App\Models\YaedpUser::getUserFullName($replies->user_id) }}</label>
+                                                <label for="" class="float-right discussion-comment-time">
+                                                    {{ Carbon\Carbon::parse($replies->created_at)->diffForHumans(null, true).' ago' }}</label>
                                             </div>
                                             <div class="col-12 mt-2">
                                                 <p class="discussion-comment-body">{{ $replies->message }}</p>
                                             </div>
                                             <div class="col-12">
-                                                <button class="discussion-comment-like" data-commentid="{{ $item->id }}" data-type="reply" data-replyid="{{ $replies->id }}">
-                                                    <img id="replylike{{ $replies->id }}" style="width: 16px; height: 16px;" src="{{ \App\Models\Learning\LearningDiscussionLike::check("reply", $course->id, $item->id, $replies->id) ? asset("images/icons/chkdfav.png") : asset("images/icons/like.png") }}" alt="">
+                                                <button class="discussion-comment-like"
+                                                        data-commentid="{{ $item->id }}" data-type="reply" data-replyid="{{ $replies->id }}">
+                                                    <img id="replylike{{ $replies->id }}"
+                                                         style="width: 16px; height: 16px;"
+                                                         src="{{ \App\Models\Learning\LearningDiscussionLike::check("reply", $course->id, $item->id, $replies->id) ? asset("images/icons/chkdfav.png") : asset("images/icons/like.png") }}" alt="">
                                                     &nbsp;&nbsp; Like ({{ \App\Models\Learning\LearningDiscussionLike::countLikes("reply", $course->id, $item->id, $replies->id) }})
                                                 </button>
                                                 <button class="discussion-comment-reply float-right" data-type="Reply" data-directreplyid="{{ $replies->id }}" data-commentid="{{ $item->id }}" data-toggle="modal" data-target="#exampleModalCenter"><img src="{{asset("images/icons/reply.png")}}" alt="">&nbsp;&nbsp; Reply</button>
@@ -229,10 +234,12 @@
                         @if(Auth::user()->startedCourse($c->id, $c->learningModule->id))
                             @if(Auth::user()->startedCourse($c->id, $c->learningModule->id)->status === 1)
                             <div class="p-2 @if($c->id === $course->id) bg-lemon-green @endif ">
-                                <span class="text-inter na-text-dark-green tx-12">
-                                    {{ $c->title }}
-                                    <i class="fa fa-check na-text-light-green text-right ml-2 float-right"></i>
-                                </span>
+                                <a href="{{ route('yaedp.account.course', $c->id) }}">
+                                    <span class="text-inter na-text-dark-green tx-12">
+                                        {{ $c->title }}
+                                        <i class="fa fa-check na-text-light-green text-right ml-2 float-right"></i>
+                                    </span>
+                                </a>
                             </div>
                             @else
                             <div class="p-2 @if($c->id === $course->id) bg-lemon-green @endif ">

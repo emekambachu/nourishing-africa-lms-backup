@@ -34,20 +34,23 @@ class YaedpAccountController extends Controller
         $data['getModules'] = new LearningModule();
         $data['modules'] = $data['getModules']->with('learningCourses', 'learningCourseViews')
             ->has('learningCourses')
-            ->where('learning_category_id', $this->yaedpId())->oldest()->get();
+            ->where('learning_category_id', $this->yaedpId())
+            ->latest()->limit(3)->get();
 
         $data['courses'] = LearningCourse::where('learning_category_id', $this->yaedpId())->get();
 
         $data['getCourseViews'] = new LearningCourseView();
+
         $data['countCompletedCourses'] = $data['getCourseViews']
             ->with('learningCourse', 'learningModule')->where([
             ['user_id', Auth::user()->id],
             ['status', 1],
         ])->count();
+
         $data['startedCourses'] = $data['getCourseViews']->where([
             ['user_id', Auth::user()->id],
-            ['status', 0],
-        ])->orderBy('id', 'desc')->limit(1)->get();
+        ])->orderBy('id', 'desc')->limit(2)->get();
+
         $data['completedCourseViews'] = $data['getCourseViews']->where([
             ['user_id', Auth::user()->id],
             ['learning_category_id', $this->yaedpId()],
@@ -56,7 +59,6 @@ class YaedpAccountController extends Controller
 
 
         $data['moduleProgress'] = []; // create empty array
-        // $data['moduleProgress'] = new stdClass();
         // Loop through modules
         foreach($data['modules'] as $mKey => $mValue){
             // loop through completed courses and get the number
@@ -74,7 +76,6 @@ class YaedpAccountController extends Controller
             // Assign array names to the percentage, id and name
             // Assign countCourseCompleted variable back to 0
             $data['moduleProgress'][$mKey]['percent'] = ($data['moduleProgress'][$mKey]['count'] / $mValue->learningCourses->count()) * 100;
-        //  $data['moduleProgress'][$mKey]['percent'] = ($data['moduleProgress'][$mKey]['count'] / 3) * 100;
             $data['moduleProgress'][$mKey]['moduleId'] = $mValue->id;
             $data['moduleProgress'][$mKey]['moduleTitle'] = $mValue->title;
         }
