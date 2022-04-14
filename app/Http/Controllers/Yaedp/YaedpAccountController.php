@@ -74,7 +74,7 @@ class YaedpAccountController extends Controller
             // Assign array names to the percentage, id and name
             // Assign countCourseCompleted variable back to 0
             $data['moduleProgress'][$mKey]['percent'] = ($data['moduleProgress'][$mKey]['count'] / $mValue->learningCourses->count()) * 100;
-//            $data['moduleProgress'][$mKey]['percent'] = ($data['moduleProgress'][$mKey]['count'] / 3) * 100;
+        //  $data['moduleProgress'][$mKey]['percent'] = ($data['moduleProgress'][$mKey]['count'] / 3) * 100;
             $data['moduleProgress'][$mKey]['moduleId'] = $mValue->id;
             $data['moduleProgress'][$mKey]['moduleTitle'] = $mValue->title;
         }
@@ -294,11 +294,13 @@ class YaedpAccountController extends Controller
                 'learning_course_id' => $request->learning_course_id,
                 'message' => $request->message
             ]);
-        }else if($type == "reply"){
+        }else if($type == "reply" || $type == "direct_comment_reply"){
             LearningDiscussionReply::create([
                 'user_id' => Auth::user()->id,
                 'learning_discussion_id' => $request->reply_id,
-                'message' => $request->message
+                'message' => $request->message,
+                'type' => $type,
+                'reply_id' => $request->direct_reply_id,
             ]);
         }
 

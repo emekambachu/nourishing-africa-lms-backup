@@ -26,17 +26,31 @@ $(document).ready(function () {
         const button = $(event.relatedTarget); // Button that triggered the modal
         const data_type = button.data("type"); // Extract info from data-* attributes
         const modal = $(this);
-        modal.find(".comment-title").text(data_type);
+        modal
+            .find(".comment-title")
+            .text(data_type == "Comment" ? "Comment" : "Reply");
         if (data_type == "Comment") {
             modal.find("#ReplyID").val("");
+            modal.find("#directReplyId").val("");
             modal.find("#comment").val("");
             modal.find("#type").val("comment");
         } else if (data_type == "Reply") {
             const data_id = button.data("commentid");
+            const direct_data_id = button.data("directreplyid");
             modal.find("#comment").val("");
             modal.find("#type").val("reply");
             modal.find("#ReplyID").val(data_id);
+            modal.find("#directReplyId").val(direct_data_id);
+        } else if (data_type == "directCommentReply") {
+            const data_id = button.data("commentid");
+            const direct_data_id = button.data("directreplyid");
+            modal.find("#comment").val("");
+            modal.find("#type").val("direct_comment_reply");
+            modal.find("#ReplyID").val(data_id);
+            modal.find("#directReplyId").val(direct_data_id);
         }
+
+        $("#msg").text("");
     });
 
     $("#comment-submit-btn").on("click", function () {
@@ -63,11 +77,12 @@ $(document).ready(function () {
                 learning_module_id: $("#LMID").val(),
             };
             //data.push(type, message, courseId, lmID, lcID);
-        } else if (type == "reply") {
+        } else if (type == "reply" || type == "direct_comment_reply") {
             data = {
                 type: type,
                 message: message,
                 reply_id: $("#ReplyID").val(),
+                direct_reply_id: $("#directReplyId").val(),
             };
             //let reply_id = $('#ReplyID').val();
             //data.push(type, message, reply_id);
@@ -90,6 +105,7 @@ $(document).ready(function () {
             success: function (data) {
                 $("#submit-img").addClass("d-none");
                 $("#msg").addClass("text-success");
+                $("#comment").val("");
                 $("#msg").text(
                     "Your comment was successfully submitted and will be reviewed before made public."
                 );
