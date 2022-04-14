@@ -21,7 +21,7 @@
                         Are you ready to take your agri-food business to the next level?</h4>
                     <p class="text-inter text-gray tx-15 text-justify">
                         The Youth in Agri-Food Export Development Program (YAEDP) training covers a robust curriculum that takes participants on a comprehensive learning journey from the conception of the Nigerian export market specific to key export value chains to successful entry to the international market....
-                        <a class="na-text-dark-green font-weight-bold" href="{{ route('yaedp.account.about-program') }}">Click here to read more</a>
+                        <a class="na-text-dark-green font-weight-bold" href="{{ route('yaedp.account.about-program') }}">See more</a>
                     </p>
                 </div>
                 <div class="row">

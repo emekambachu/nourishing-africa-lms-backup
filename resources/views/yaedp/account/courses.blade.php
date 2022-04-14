@@ -28,21 +28,28 @@
             @foreach($courses as $course)
             <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
                 <div class="bg-white-radius-shadow border-light-green">
-                    @if(Auth::user()->startedCourse($course->id, $module->id))
-                        @if(Auth::user()->startedCourse($course->id, $module->id)->status === 1)
-                            <span class="bg-badge-success badge badge-pill mb-2">
+
+                    <div>
+                        @if(Auth::user()->startedCourse($course->id, $module->id))
+                            @if(Auth::user()->startedCourse($course->id, $module->id)->status === 1)
+                                <span class="bg-badge-success badge badge-pill mb-2">
                             Completed
                             </span>
-                        @else
-                            <span class="bg-badge-warning badge badge-pill mb-2">
+                            @else
+                                <span class="bg-badge-warning badge badge-pill mb-2">
                             In progress
                             </span>
+                            @endif
+                        @else
+                            <span class="bg-badge-danger badge badge-pill text-light-brown mb-2">
+                                Not Started
+                            </span>
+                            <span class="float-right">
+                                <i class="fa fa-lock"></i>
+                            </span>
                         @endif
-                    @else
-                        <span class="bg-badge-danger badge badge-pill text-light-brown mb-2">
-                        Not Started
-                        </span>
-                    @endif
+
+                    </div>
 
                     <div class="pt-2">
                         <img class="module-grid-image"
