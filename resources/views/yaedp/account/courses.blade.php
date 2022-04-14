@@ -13,16 +13,13 @@
         <p class="bread-crumbs">
             <a href="{{ route('yaedp.account') }}">Dashboard</a> / <a href="{{ route('yaedp.account.modules') }}">Modules</a> / <span class="light-green">{{ $module->title }}</span>
         </p>
-        <h1 class="font-large-inter text-light-brown font-weight-bold mb-0">
+
+        <h1 class="font-large-inter font-weight-bold mb-0">
             {{ $module->title }}
         </h1>
-        <div class="row">
 
+        <div class="row">
             <div class="col-12">
-                <p class="tx-16 mb-0">
-                    {!! $module->description !!}</p>
-                <p class="tx-16 text-gray mb-0">
-                  <strong class="na-text-dark-green">Trainers: </strong>  {!! $module->trainers !!}</p>
                 <p class="light-green tx-16 text-right">
                     {{ \Carbon\Carbon::parse($module->start)->format('M d, Y').' - '.\Carbon\Carbon::parse($module->end)->format('M d, Y')}}
                 </p>
@@ -54,6 +51,15 @@
 
                     <p class="na-text-dark-green mt-2 font-weight-bold">
                         {{ $course->title }}</p>
+
+                    <div>
+                        <span>
+                            <i class="fa fa-user-alt text-light-brown"></i> {{ $course->trainer }}
+                        </span>
+                        <span class="float-right">
+                            <i class="fa fa-clock class text-light-brown"></i> {{ $course->study_timer }}:00 Mins
+                        </span>
+                    </div>
                     <!--If this item is not the first module, check if the previous module has been completed-->
                     <!--If the previous module has been completed, make the next module available-->
                     @if(!$loop->first)

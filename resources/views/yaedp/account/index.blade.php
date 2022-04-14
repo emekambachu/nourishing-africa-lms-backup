@@ -19,7 +19,7 @@
                 <div style="margin-bottom: 70px;">
                     <h4 class="text-inter text-dark mb-1">
                         Are you ready to take your agri-food business to the next level?</h4>
-                    <p class="text-inter text-gray tx-14">
+                    <p class="text-inter text-gray tx-15 text-justify">
                         The Youth in Agri-Food Export Development Program (YAEDP) training covers a robust curriculum that takes participants on a comprehensive learning journey from the conception of the Nigerian export market specific to key export value chains to successful entry to the international market....
                         <a class="na-text-dark-green font-weight-bold" href="{{ route('yaedp.account.about-program') }}">Click here to read more</a>
                     </p>
@@ -55,7 +55,10 @@
                 </div>
             </div>
             <div class="col-md-3 col-sm-3">
-                <img src="{{ asset('images/icons/404-bad-request.png') }}" style="width: auto;"/>
+                <div class="module-complete-counter">
+                    <h1>{{ $countCompletedCourses }}</h1>
+                    <p>Completed Courses</p>
+                </div>
             </div>
         </div>
 
@@ -64,72 +67,83 @@
                 <div class="row">
 
                     <div class="col-12">
-                        <h4 class="text-light-brown text-inter text-left float-left">My Progress</h4>
+                        <h4 class="text-light-brown text-inter text-left float-left">My Courses</h4>
                     </div>
 
-                    <div class="col-md-4">
-                        <div class="module-complete-counter">
-                            <h1>{{ $countCompletedCourses }}</h1>
-                            <p>Completed Courses</p>
-                        </div>
-                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            @forelse($startedCourses as $course)
+                                <div class="col-md-6">
+                                    <div class="bg-white-radius-shadow mr-2 mb-5 height-350">
 
-                    @forelse($startedCourses as $course)
-                    <div class="col-md-4">
-                        <div class="bg-white-radius-shadow mr-2 mb-5">
-                            <div class="row na-border-bottom">
-                                <div class="col-3">
-                                    <img src="{{ asset('images/stock/image-26.png') }}"/>
-                                </div>
-                                <div class="col-9">
-                                    <h5 class="font-large-inter text-dark text-left mb-0">
-                                        {{ $course->learningCourse->title }}</h5>
-                                    <p>
-                                        <i class="fa fa-user text-light-brown"></i>
-                                        <span class="text-grey">
+                                        <div class="row p-2 justify-content-end">
+                                            @if($course->status === 1)
+                                                <span class="bg-badge-success badge badge-pill mb-2 float-right">
+                                            Completed</span>
+                                            @else
+                                                <span class="bg-badge-warning badge badge-pill mb-2 float-right">
+                                            Ongoing</span>
+                                            @endif
+                                        </div>
+
+                                        <div class="row border-bottom-dark-green pb-2">
+                                            <div class="col-3">
+                                                <img class="rounded-5" src="{{ asset('images/stock/image-26.png') }}"/>
+                                            </div>
+                                            <div class="col-9">
+                                                <h5 class="font-large-inter text-dark text-left mb-0 tx-12">
+                                                    {{ $course->learningCourse->title }}</h5>
+                                                <p>
+                                                    <i class="fa fa-user text-light-brown"></i>
+                                                    <span class="text-grey">
                                             {{ $course->learningCourse->trainer }}</span>
-                                    </p>
-                                </div>
-                                <div class="col-12">
-                                    <p class="text-left text-inter text-dark bg-gray-radius p-1 mt-2">
-                                    {{ \Illuminate\Support\Str::limit($course->learningCourse->description, 80, $end='...') }}</p>
-                                </div>
-                            </div>
-                            <div class="row pt-3">
-                                <div class="col-md-12">
-                                    <div class="pb-3">
-                                        <img src="{{ asset('images/icons/book-open-circle.png') }}" width="30"/>
-                                        <span>{{ $course->learningModule->title }}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row pb-2">
+                                            <div class="col-12">
+                                                <p class="text-left text-inter text-dark p-1 mt-2">
+                                                    {{ \Illuminate\Support\Str::limit($course->learningCourse->description, 80, $end='...') }}</p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="pb-1">
+                                                    <img src="{{ asset('images/icons/book-open-circle.png') }}"
+                                                         width="30"/>
+                                                    <span>{{ $course->learningModule->title }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 text-center btn-bottom">
+                                                <a class="text-center"
+                                                   href="{{ route('yaedp.account.course', $course->learningCourse->id) }}">
+                                                    <button class="module-btn na-bg-dark-green text-white"
+                                                            type="button">
+                                                        {{ $course->status === 1 ? 'Retry' : 'Continue' }}</button>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-12 text-center">
-                                    <a class="text-center"
-                                       href="{{ route('yaedp.account.course', $course->learningCourse->id) }}">
-                                        <button class="module-btn na-bg-dark-green text-white" type="button">
-                                            Continue</button>
-                                    </a>
+                            @empty
+                                <div class="col-md-6">
+                                    <div class="bg-white-radius-shadow mr-2 mb-5">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h5 class="text-dark text-left mb-0">
+                                                    You have no ongoing course</h5>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            @endforelse
                         </div>
                     </div>
-                    @empty
-                    <div class="col-md-4">
-                        <div class="bg-white-radius-shadow mr-2 mb-5">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h5 class="text-dark text-left mb-0">
-                                        You have no ongoing course</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforelse
 
                     <div class="col-md-4">
                         <div class="bg-white-radius-shadow text-center">
                             @if(count($moduleProgress) > 0)
                                 @foreach($moduleProgress as $value)
-                                    <p class="mb-0 text-left tx-12">{{ $value['moduleTitle'] }} ({{ $value['percent'] }}%)</p>
+                                    <p class="mb-0 text-left tx-12">
+                                        {{ $value['moduleTitle'] }} ({{ $value['percent'] }}%)</p>
                                     <div class="progress mb-3 na-border-radius">
                                         <div class="progress-bar
                                 @if($value['percent'] === 100) bg-success
@@ -157,23 +171,29 @@
         </div>
 
         <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
-            <div class="col-12">
+            <div class="col-md-6">
                 <h4 class="text-light-brown text-inter">My Assessments</h4>
+            </div>
+            <div class="col-md-6 text-right">
+                <a class="text-success" href="{{ route('yaedp.account.modules') }}">See all courses</a>
+            </div>
+            <div class="col-12">
                 <div class="bg-white-radius-shadow">
                     @forelse($moduleAssessments as $module)
                         <div class="bg-lemon-green mb-2 p-2 border-radius-8">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <h5 class="text-inter text-dark">
+                                    <h5 class="text-inter text-grey">
                                         {{ $module->learningModule->title }}
                                     </h5>
                                 </div>
                                 <div class="col-md-2 d-inline d-flex">
                                     @if($module->retake < 3)
-                                        <a class="text-danger tx-15 mr-1 pr-1 border-right-2" href="{{ route('yaedp.account.assessment.questions', $module->learning_module_id) }}">Retake ({{ 3 - $module->retake }})
+                                        <a class="text-success tx-15 mr-1 pr-1 border-right-2"
+                                           href="{{ route('yaedp.account.assessment.questions', $module->learning_module_id) }}">Retake ({{ 3 - $module->retake }})
                                         </a>
                                     @endif
-                                    <h5 class="text-inter na-text-light-green mr-2">
+                                    <h5 class="text-inter text-grey mr-2">
                                         {{ $module->percent === 0 ? 'None' : $module->percent }}%</h5>
                                 </div>
                             </div>
@@ -187,12 +207,6 @@
                             </div>
                         </div>
                     @endforelse
-
-                    <a class="d-flex justify-content-center mt-30" href="{{ route('yaedp.account.assessments') }}">
-                        <button class="btn-light-green-outline" type="button">
-                            See more
-                        </button>
-                    </a>
                 </div>
             </div>
         </div>
