@@ -28,8 +28,8 @@
                         <!-- Tabs -->
                         <ul class="nav panel-tabs main-nav-line">
                             <li><a href="#tab1" class="nav-link active" data-toggle="tab">Profile</a></li>
-                            <li><a href="#tab2" class="nav-link" data-toggle="tab">Email</a></li>
-                            <li><a href="#tab3" class="nav-link" data-toggle="tab">Password</a></li>
+                            <li><a href="#tab2" class="nav-link" data-toggle="tab">Update your email</a></li>
+                            <li><a href="#tab3" class="nav-link" data-toggle="tab">Reset your password</a></li>
                         </ul>
                     </div>
                 </div>

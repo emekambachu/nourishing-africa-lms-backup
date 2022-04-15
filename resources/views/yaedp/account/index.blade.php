@@ -175,7 +175,7 @@
                 <h4 class="text-light-brown text-inter">My Assessments</h4>
             </div>
             <div class="col-md-6 text-right">
-                <a class="text-success" href="{{ route('yaedp.account.modules') }}">See all courses</a>
+                <a class="text-success" href="{{ route('yaedp.account.assessments') }}">See all assessments</a>
             </div>
             <div class="col-12">
                 <div class="bg-white-radius-shadow">
