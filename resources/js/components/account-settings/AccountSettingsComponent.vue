@@ -186,21 +186,21 @@
                         <div class="tab-pane" id="tab3">
                             <form @submit.prevent="updatePassword">
                                 <div class="row">
-                                    <div class="col-12">
-                                        <label class="form-label">Old Password</label>
-                                        <input type="text" class="form-input" name="old_password"
-                                               v-model="formPassword.old_password" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">New Password</label>
-                                        <input type="text" class="form-input" name="new_password"
-                                               v-model="formPassword.new_password" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Confirm New Password</label>
-                                        <input type="text" class="form-input" name="new_password_confirmation"
-                                               v-model="formPassword.new_password_confirmation" required>
-                                    </div>
+<!--                                    <div class="col-12">-->
+<!--                                        <label class="form-label">Old Password</label>-->
+<!--                                        <input type="text" class="form-input" name="old_password"-->
+<!--                                               v-model="formPassword.old_password" required>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <label class="form-label">New Password</label>-->
+<!--                                        <input type="text" class="form-input" name="new_password"-->
+<!--                                               v-model="formPassword.new_password" required>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <label class="form-label">Confirm New Password</label>-->
+<!--                                        <input type="text" class="form-input" name="new_password_confirmation"-->
+<!--                                               v-model="formPassword.new_password_confirmation" required>-->
+<!--                                    </div>-->
                                     <div class="col-11">
                                         <label class="form-label">Old Password</label>
                                         <input :type="typeOldPassword" class="form-input" name="old_password"
