@@ -295,11 +295,13 @@ class YaedpAccountController extends Controller
                 'learning_course_id' => $request->learning_course_id,
                 'message' => $request->message
             ]);
-        }else if($type == "reply"){
+        }else if($type == "reply" || $type == "direct_comment_reply"){
             LearningDiscussionReply::create([
                 'user_id' => Auth::user()->id,
                 'learning_discussion_id' => $request->reply_id,
-                'message' => $request->message
+                'message' => $request->message,
+                'type' => $type,
+                'reply_id' => $request->direct_reply_id,
             ]);
         }
 

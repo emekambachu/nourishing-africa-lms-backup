@@ -14,6 +14,8 @@ class LearningDiscussionReply extends Model
         'learning_discussion_id',
         'message',
         'status',
+        'reply_id',
+        'type',
     ];
 
     public static function getCount($id){
