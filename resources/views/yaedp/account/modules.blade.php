@@ -19,7 +19,7 @@
         <div class="row">
             @foreach($modules as $mod)
             <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
-                <div class="bg-white-radius-shadow border-light-green" style="height: 400px;">
+                <div class="bg-white-radius-shadow border-light-green" style="height: 380px;">
 
                 @if(Auth::user()->startedModule($mod->id))
                     @if(Auth::user()->startedModule($mod->id)->status === 1)
