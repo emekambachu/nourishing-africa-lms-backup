@@ -27,7 +27,7 @@
 
             @foreach($courses as $course)
             <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
-                <div class="bg-white-radius-shadow border-light-green" style="height: 580px;">
+                <div class="bg-white-radius-shadow border-light-green" style="height: 380px;">
 
                     <div>
                         @if(Auth::user()->startedCourse($course->id, $module->id))
