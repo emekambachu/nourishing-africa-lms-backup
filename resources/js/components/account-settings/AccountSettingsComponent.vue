@@ -147,7 +147,7 @@
                                                 <button style="width:150px;"
                                                         class="module-btn bg-light-brown d-flex justify-content-center"
                                                 :disabled="disableBtnOnLoad">
-                                                    Edit Profile</button>
+                                                    Request to edit Profile</button>
                                             </div>
 
                                         </div>

@@ -86,7 +86,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="row border-bottom-dark-green pb-2">
+                                        <div class="row border-bottom-dark-green pb-2" style="height: 100px;">
                                             <div class="col-3">
                                                 <img class="rounded-5" src="{{ asset('images/stock/image-26.png') }}"/>
                                             </div>
@@ -100,6 +100,7 @@
                                                 </p>
                                             </div>
                                         </div>
+
                                         <div class="row pb-2">
                                             <div class="col-12">
                                                 <p class="text-left text-inter text-dark p-1 mt-2">
@@ -117,7 +118,7 @@
                                                    href="{{ route('yaedp.account.course', $course->learningCourse->id) }}">
                                                     <button class="module-btn na-bg-dark-green text-white"
                                                             type="button">
-                                                        {{ $course->status === 1 ? 'Retry' : 'Continue' }}</button>
+                                                        {{ $course->status === 1 ? 'Retake' : 'Continue' }}</button>
                                                 </a>
                                             </div>
                                         </div>

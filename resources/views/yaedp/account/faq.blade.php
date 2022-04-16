@@ -34,7 +34,6 @@
                     <div class="card-body text-inter shadow-2">
                         <h4 class="na-text-dark-green">Help for learners</h4>
                         <p>Watch Helpful how-to videos for students</p>
-                        <p>Learn how to navigate the LMS portal</p>
                         <p><a href="{{ route('yaedp.account.about-program') }}">
                                 Find out more about the YAEDP program</a></p>
                     </div>
