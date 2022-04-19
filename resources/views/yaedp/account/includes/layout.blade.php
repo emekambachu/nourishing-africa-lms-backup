@@ -48,7 +48,6 @@
     <link rel="stylesheet" href="{{ asset('learning-assets/plugins/telephoneinput/telephoneinput.css') }}">
 
     <!-- font awesome -->
-{{--    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>--}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
     <link href="{{ asset('/users/plugins/bootstrap-select-1.13.14/css/bootstrap-select.min.css') }}" rel="stylesheet">
@@ -175,8 +174,19 @@
 
                     <div class="dropdown main-profile-menu nav nav-item nav-link pr-3 pl-3 m-0 pt-3 pb-0">
                         <a class="profile-user d-flex" href="">
-                            <img src="{{ asset('images/user.png') }}" alt="user-img"
-                                 class="rounded-circle mCS_img_loaded"><span></span>
+
+                            @if(Auth::user()->gender === 'Male')
+                                <img class="rounded-circle mCS_img_loaded" style="margin: 0 auto;"
+                                     src="{{ asset('images/user-male.png') }}">
+                            @elseif(Auth::user()->gender === 'Female')
+                                <img class="rounded-circle mCS_img_loaded" style="margin: 0 auto;"
+                                     src="{{ asset('images/user-female.png') }}">
+                            @else
+                                <img class="rounded-circle mCS_img_loaded" style="margin: 0 auto;"
+                                     src="{{ asset('images/no-image.png') }}">
+                            @endif
+
+                            <span></span>
                             <label class="d-sm-none d-none d-md-block"
                                    style="padding-left:5px; padding-top: 5px; font-family: Inter; font-style: normal; font-weight: normal; font-size: 14px; color: #626161;">
                                 <span class="light-green">
@@ -188,8 +198,16 @@
                         <div class="dropdown-menu">
                             <div class="row p-3">
                                 <div class="col-4">
-                                    <img class="rounded-circle" style="margin: 0 auto;"
-                                         src="{{ asset('images/user.png') }}">
+                                    @if(Auth::user()->gender === 'Male')
+                                        <img class="rounded-circle" style="margin: 0 auto;"
+                                             src="{{ asset('images/user-male.png') }}">
+                                    @elseif(Auth::user()->gender === 'Female')
+                                        <img class="rounded-circle" style="margin: 0 auto;"
+                                             src="{{ asset('images/user-female.png') }}">
+                                    @else
+                                        <img class="rounded-circle" style="margin: 0 auto;"
+                                             src="{{ asset('images/no-image.png') }}">
+                                    @endif
                                 </div>
                                 <div class="col-8">
                                     <p class="tx-15 light-green mb-0">

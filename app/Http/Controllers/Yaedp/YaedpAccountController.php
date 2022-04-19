@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Yaedp;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\GeneralEmailJob;
 use App\Jobs\SendEmailValidationJob;
 use App\Models\Learning\LearningCategory;
 use App\Models\Learning\LearningCourse;
@@ -12,8 +13,10 @@ use App\Models\Learning\LearningModuleView;
 use App\Models\Learning\LearningDiscussion;
 use App\Models\Learning\LearningDiscussionReply;
 use App\Models\Learning\LearningDiscussionLike;
+use App\Models\Learning\LearningProfileUpdateRequest;
 use App\Models\YaedpUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -420,6 +423,48 @@ class YaedpAccountController extends Controller
     public function accountSettings(){
 
         return view('yaedp.account.settings.index');
+    }
+
+    public function getUpdateRequest(){
+
+        $updateRequest = LearningProfileUpdateRequest::with('yaedp_user')->where([
+            ['user_id', Auth::user()->id],
+        ])->first();
+
+        if($updateRequest && $updateRequest->approved === 0){
+            return response()->json([
+                'success' => true,
+                'message' => 'pending'
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+        ]);
+    }
+
+    public function submitUpdateProfileRequest(Request $request){
+
+        $input = $request->all();
+        $input['user_id'] = Auth::user()->id;
+        LearningProfileUpdateRequest::create($input);
+
+        // Send email queue to YAEDP admin after submitting update request
+        $data['email_subject'] = 'YAEDP | Update request';
+        $data['email_from'] = 'yaedp@nourishingafrica.com';
+        $data['name_from'] = 'Nourishing Africa | YAEDP';
+        $data['email'] = Auth::user()->email;
+        $data['name'] = Auth::user()->surname.' '.Auth::user()->first_name;
+        $data['email_body'] = "<strong>{$data['name']}</strong> has sent a YAEDP profile update request.<br>
+                                Click <a href=''>here</a> to go to the admin and access it";
+        // Access Email queue job from App/Jobs
+        dispatch((new GeneralEmailJob($data))->onQueue('yaedp_update_request'));
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Update request sent'
+        ]);
+
     }
 
     public function updateProfile(Request $request){

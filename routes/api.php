@@ -23,17 +23,25 @@ Route::middleware('auth:sanctum')->group(function (){
     });
 
     // Update profile
-    Route::post('yaedp/update-profile',
+    Route::post('/yaedp/update-profile',
         [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'updateProfile'])
         ->name('yaedp.update-profile');
 
+    Route::get('/yaedp/get/update-request',
+        [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'getUpdateRequest'])
+        ->name('yaedp.get.update-request');
+
+    Route::post('/yaedp/submit/update-request',
+        [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'submitUpdateProfileRequest'])
+        ->name('yaedp.submit.update-request');
+
     // Update Email
-    Route::post('yaedp/update-email',
+    Route::post('/yaedp/update-email',
         [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'updateEmail'])
         ->name('yaedp.update-email');
 
     // Update Password
-    Route::post('yaedp/update-password',
+    Route::post('/yaedp/update-password',
         [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'updatePassword'])
         ->name('yaedp.update-password');
 
