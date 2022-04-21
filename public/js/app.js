@@ -22733,18 +22733,18 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: {
-        surname: this.profile.surname,
-        first_name: this.profile.first_name,
-        mobile: this.profile.mobile,
-        state_residence: this.profile.state_residence,
-        business_address: this.profile.business_address,
-        focus_area: this.profile.focus_area,
-        value_chain: this.profile.value_chain,
-        website: this.profile.website,
-        facebook: this.profile.facebook,
-        instagram: this.profile.instagram,
-        linkedin: this.profile.linkedin,
-        twitter: this.profile.twitter,
+        surname: '',
+        first_name: '',
+        mobile: '',
+        state_residence: '',
+        business_address: '',
+        focus_area: '',
+        value_chain: '',
+        website: '',
+        facebook: '',
+        instagram: '',
+        linkedin: '',
+        twitter: '',
         reason: ''
       },
       formPassword: {
@@ -22802,7 +22802,8 @@ __webpack_require__.r(__webpack_exports__);
       typeOldPassword: 'password',
       typeNewPassword: 'password',
       typeNewPasswordConfirm: 'password',
-      requestUpdateStatus: null
+      requestUpdateStatus: null,
+      updateRequestError: false
     };
   },
   methods: {
@@ -22843,7 +22844,37 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     submitProfileUpdateRequest: function submitProfileUpdateRequest() {
-      this.submitForm('/api/yaedp/submit/update-request', this.form);
+      var _this4 = this;
+
+      // When submitted, check if the reason field is filled
+      // and any of the other fields are filled
+      var self = this;
+      var i = 0;
+      Object.keys(this.form).forEach(function (key, index) {
+        if (self.form[key] !== '') {
+          i++;
+        }
+      });
+
+      if (i < 2) {
+        alert(i);
+        this.updateRequestError = true;
+        this.alertMessage = "Give a reason and input your new data in the assigned field";
+        return false;
+      }
+
+      this.formLoading = true;
+      this.updateRequestError = false;
+      axios.post('/api/yaedp/submit/update-request', this.form).then(function (response) {
+        console.log(response.data);
+        response.data.success = _this4.profileUpdateSuccess(response);
+      })["catch"](function (error) {
+        console.log(error);
+      })["finally"](function () {
+        _this4.formLoading = false;
+      });
+    },
+    profileUpdateSuccess: function profileUpdateSuccess(request) {
       this.requestUpdateStatus = true;
     },
     updateEmail: function updateEmail() {
@@ -22942,7 +22973,7 @@ var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
 var _hoisted_8 = [_hoisted_5, _hoisted_6, _hoisted_7];
 var _hoisted_9 = {
   key: 1,
-  "class": "alert alert-success",
+  "class": "alert alert-success text-center",
   role: "alert"
 };
 
@@ -22964,7 +22995,7 @@ var _hoisted_11 = {
 };
 var _hoisted_12 = {
   key: 2,
-  "class": "alert alert-danger",
+  "class": "alert alert-danger text-center",
   role: "alert"
 };
 
@@ -23182,15 +23213,34 @@ var _hoisted_57 = /*#__PURE__*/_withScopeId(function () {
 
 var _hoisted_58 = {
   key: 0,
+  "class": "alert alert-danger col-12 text-center",
+  role: "alert"
+};
+
+var _hoisted_59 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "aria-label": "Close",
+    "class": "close",
+    "data-dismiss": "alert",
+    type: "button"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "aria-hidden": "true"
+  }, "×")], -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_60 = {
+  key: 0,
   "class": "d-flex justify-content-center"
 };
-var _hoisted_59 = ["disabled"];
-var _hoisted_60 = {
+var _hoisted_61 = ["disabled"];
+var _hoisted_62 = {
   key: 1,
   "class": "d-flex justify-content-center"
 };
 
-var _hoisted_61 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_63 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     style: {
       "width": "150px"
@@ -23202,19 +23252,19 @@ var _hoisted_61 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_62 = [_hoisted_61];
-var _hoisted_63 = {
+var _hoisted_64 = [_hoisted_63];
+var _hoisted_65 = {
   "class": "tab-pane",
   id: "tab2"
 };
-var _hoisted_64 = {
+var _hoisted_66 = {
   "class": "row"
 };
-var _hoisted_65 = {
+var _hoisted_67 = {
   "class": "col-md-6"
 };
 
-var _hoisted_66 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_68 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "form-label"
   }, "Current Email", -1
@@ -23222,15 +23272,15 @@ var _hoisted_66 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_67 = {
+var _hoisted_69 = {
   key: 0,
   "class": "text-danger font-weight-bold tx-8"
 };
-var _hoisted_68 = {
+var _hoisted_70 = {
   "class": "col-md-6"
 };
 
-var _hoisted_69 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_71 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "form-label"
   }, "New Email", -1
@@ -23238,26 +23288,26 @@ var _hoisted_69 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_70 = {
+var _hoisted_72 = {
   key: 0,
   "class": "text-danger font-weight-bold tx-8"
 };
-var _hoisted_71 = {
+var _hoisted_73 = {
   "class": "col-12"
 };
-var _hoisted_72 = ["disabled"];
-var _hoisted_73 = {
+var _hoisted_74 = ["disabled"];
+var _hoisted_75 = {
   "class": "tab-pane",
   id: "tab3"
 };
-var _hoisted_74 = {
+var _hoisted_76 = {
   "class": "row"
 };
-var _hoisted_75 = {
+var _hoisted_77 = {
   "class": "col-11"
 };
 
-var _hoisted_76 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_78 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "form-label"
   }, "Old Password", -1
@@ -23265,18 +23315,18 @@ var _hoisted_76 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_77 = ["type"];
-var _hoisted_78 = {
+var _hoisted_79 = ["type"];
+var _hoisted_80 = {
   "class": "col-1",
   style: {
     "padding-top": "35px"
   }
 };
-var _hoisted_79 = {
+var _hoisted_81 = {
   "class": "col-md-5"
 };
 
-var _hoisted_80 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_82 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "form-label"
   }, "New Password", -1
@@ -23284,18 +23334,18 @@ var _hoisted_80 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_81 = ["type"];
-var _hoisted_82 = {
+var _hoisted_83 = ["type"];
+var _hoisted_84 = {
   "class": "col-1",
   style: {
     "padding-top": "35px"
   }
 };
-var _hoisted_83 = {
+var _hoisted_85 = {
   "class": "col-md-5"
 };
 
-var _hoisted_84 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_86 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "form-label"
   }, "Confirm New Password", -1
@@ -23303,17 +23353,17 @@ var _hoisted_84 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_85 = ["type"];
-var _hoisted_86 = {
+var _hoisted_87 = ["type"];
+var _hoisted_88 = {
   "class": "col-1",
   style: {
     "padding-top": "35px"
   }
 };
-var _hoisted_87 = {
+var _hoisted_89 = {
   "class": "col-12"
 };
-var _hoisted_88 = ["disabled"];
+var _hoisted_90 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [$data.formLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, _hoisted_8)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.formSuccessful ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.alertMessage), 1
   /* TEXT */
@@ -23330,20 +23380,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "text",
     "class": "form-input mb-2",
     name: "surname",
-    placeholder: $props.profile.surname,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $data.form.surname = $event;
-    })
+    }),
+    placeholder: $props.profile.surname
   }, null, 8
   /* PROPS */
   , _hoisted_28), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.surname]]), _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "class": "form-input mb-2",
     name: "first_name",
-    placeholder: $props.profile.first_name,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.form.first_name = $event;
-    })
+    }),
+    placeholder: $props.profile.first_name
   }, null, 8
   /* PROPS */
   , _hoisted_30), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.first_name]]), _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -23386,7 +23436,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: focus.value,
       value: focus.value,
-      selected: focus.value === $data.form.focus_area
+      selected: focus.value === $props.profile.focus_area
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(focus.name), 9
     /* TEXT, PROPS */
     , _hoisted_39);
@@ -23470,7 +23520,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     required: ""
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.reason]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <div class=\"row\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                            <div class=\"col-6\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                <div class=\"row\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                    <div class=\"col-md-12\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">Surname"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <i class=\"text-danger\">*</i></label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <input type=\"text\" class=\"form-input\" name=\"surname\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                               required v-model=\"form.surname\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            v-if=\"errors.surname\">{{ errors.surname }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">First Name"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <i class=\"text-danger\">*</i></label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <input type=\"text\" class=\"form-input\" name=\"first_name\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                               required v-model=\"form.first_name\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                           v-if=\"errors.first_name\">{{ errors.first_name }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">Mobile</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <input type=\"tel\" class=\"form-input\" name=\"mobile\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                               v-model=\"form.mobile\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                           v-if=\"errors.mobile\">{{ errors.mobile }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">State Residence"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <i class=\"text-danger\">*</i></label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <input type=\"text\" class=\"form-input\" name=\"state_residence\" required"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                               v-model=\"form.state_residence\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                           v-if=\"errors.state_residence\">{{ errors.state_residence }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">Business Address"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <i class=\"text-danger\">*</i></label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <input type=\"text\" class=\"form-input\" name=\"business_address\" required"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                               v-model=\"form.business_address\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                           v-if=\"errors.business_address\">{{ errors.business_address }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                    </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                    <div class=\"col-md-6\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">Focus Area"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <i class=\"na-intern-form-required\">*</i></label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <select name=\"focus_area\" class=\"form-control form-select\" required"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                v-model=\"form.focus_area\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <option v-for=\"focus in focusAreas\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                    :key=\"focus.value\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                    :value=\"focus.value\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                    :selected=\"focus.value === form.focus_area\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                {{ focus.name }}"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            </option>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        </select>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                           v-if=\"errors.focus_area\">{{ errors.focus_area }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                    </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                    <div class=\"col-md-6\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">Value Chain"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <i class=\"na-intern-form-required\">*</i></label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <select name=\"value_chain\" class=\"form-control form-select\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                v-model=\"form.value_chain\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <option v-for=\"value in valueChains\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                    :key=\"value.value\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                    :value=\"value.value\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                    :selected=\"value.value === form.value_chain\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                {{ value.name }}"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            </option>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        </select>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                           v-if=\"errors.value_chain\">{{ errors.value_chain }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                    </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                            </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                            <div class=\"col-md-6\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                               <div class=\"row\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                   <div class=\"col-12\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <label class=\"form-label\">Website</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <input type=\"text\" class=\"form-input\" name=\"website\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                              v-model=\"form.website\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <label class=\"form-label\">Facebook</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <input type=\"text\" class=\"form-input\" name=\"facebook\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                              v-model=\"form.facebook\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <label class=\"form-label\">Instagram</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <input type=\"text\" class=\"form-input\" name=\"instagram\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                              v-model=\"form.instagram\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <label class=\"form-label\">LinkedIn</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <input type=\"text\" class=\"form-input\" name=\"linkedin\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                              v-model=\"form.linkedin\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <label class=\"form-label\">Twitter</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <input type=\"text\" class=\"form-input\" name=\"twitter\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                              v-model=\"form.twitter\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                   </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                               </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                            </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        </div>"), !$data.requestUpdateStatus ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.reason]])]), $data.updateRequestError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_58, [_hoisted_59, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.alertMessage), 1
+  /* TEXT */
+  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <div class=\"row\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                            <div class=\"col-6\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                <div class=\"row\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                    <div class=\"col-md-12\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">Surname"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <i class=\"text-danger\">*</i></label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <input type=\"text\" class=\"form-input\" name=\"surname\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                               required v-model=\"form.surname\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            v-if=\"errors.surname\">{{ errors.surname }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">First Name"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <i class=\"text-danger\">*</i></label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <input type=\"text\" class=\"form-input\" name=\"first_name\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                               required v-model=\"form.first_name\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                           v-if=\"errors.first_name\">{{ errors.first_name }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">Mobile</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <input type=\"tel\" class=\"form-input\" name=\"mobile\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                               v-model=\"form.mobile\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                           v-if=\"errors.mobile\">{{ errors.mobile }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">State Residence"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <i class=\"text-danger\">*</i></label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <input type=\"text\" class=\"form-input\" name=\"state_residence\" required"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                               v-model=\"form.state_residence\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                           v-if=\"errors.state_residence\">{{ errors.state_residence }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">Business Address"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <i class=\"text-danger\">*</i></label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <input type=\"text\" class=\"form-input\" name=\"business_address\" required"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                               v-model=\"form.business_address\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                           v-if=\"errors.business_address\">{{ errors.business_address }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                    </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                    <div class=\"col-md-6\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">Focus Area"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <i class=\"na-intern-form-required\">*</i></label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <select name=\"focus_area\" class=\"form-control form-select\" required"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                v-model=\"form.focus_area\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <option v-for=\"focus in focusAreas\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                    :key=\"focus.value\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                    :value=\"focus.value\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                    :selected=\"focus.value === form.focus_area\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                {{ focus.name }}"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            </option>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        </select>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                           v-if=\"errors.focus_area\">{{ errors.focus_area }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                    </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                    <div class=\"col-md-6\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <label class=\"form-label\">Value Chain"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <i class=\"na-intern-form-required\">*</i></label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <select name=\"value_chain\" class=\"form-control form-select\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                v-model=\"form.value_chain\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            <option v-for=\"value in valueChains\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                    :key=\"value.value\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                    :value=\"value.value\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                    :selected=\"value.value === form.value_chain\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                                {{ value.name }}"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                            </option>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        </select>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                        <p class=\"text-danger font-weight-bold tx-8\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                           v-if=\"errors.value_chain\">{{ errors.value_chain }}</p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                    </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                            </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                            <div class=\"col-md-6\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                               <div class=\"row\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                   <div class=\"col-12\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <label class=\"form-label\">Website</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <input type=\"text\" class=\"form-input\" name=\"website\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                              v-model=\"form.website\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <label class=\"form-label\">Facebook</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <input type=\"text\" class=\"form-input\" name=\"facebook\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                              v-model=\"form.facebook\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <label class=\"form-label\">Instagram</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <input type=\"text\" class=\"form-input\" name=\"instagram\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                              v-model=\"form.instagram\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <label class=\"form-label\">LinkedIn</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <input type=\"text\" class=\"form-input\" name=\"linkedin\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                              v-model=\"form.linkedin\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <label class=\"form-label\">Twitter</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                       <input type=\"text\" class=\"form-input\" name=\"twitter\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                              v-model=\"form.twitter\" disabled>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                   </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                               </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                            </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        </div>"), !$data.requestUpdateStatus ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     style: {
       "width": "150px"
     },
@@ -23478,13 +23530,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     disabled: $options.disableBtnOnLoad
   }, " Request to edit Profile", 8
   /* PROPS */
-  , _hoisted_59)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_60, _hoisted_62))], 32
+  , _hoisted_61)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_62, _hoisted_64))], 32
   /* HYDRATE_EVENTS */
-  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_65, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[16] || (_cache[16] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.updateEmail && $options.updateEmail.apply($options, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_64, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_65, [_hoisted_66, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_66, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_67, [_hoisted_68, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     readonly: "",
     type: "email",
     "class": "form-input",
@@ -23494,9 +23546,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formEmail.old_email]]), $data.errors.old_email ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_67, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.old_email), 1
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formEmail.old_email]]), $data.errors.old_email ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_69, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.old_email), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_68, [_hoisted_69, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_70, [_hoisted_71, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "email",
     "class": "form-input",
     name: "new_email",
@@ -23506,9 +23558,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     required: ""
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formEmail.new_email]]), $data.errors.new_email ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_70, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.new_email), 1
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formEmail.new_email]]), $data.errors.new_email ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_72, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.new_email), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_73, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     style: {
       "width": "150px"
     },
@@ -23516,13 +23568,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     disabled: $options.disableBtnOnLoad
   }, "Update Email", 8
   /* PROPS */
-  , _hoisted_72)])])], 32
+  , _hoisted_74)])])], 32
   /* HYDRATE_EVENTS */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_73, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_75, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[23] || (_cache[23] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.updatePassword && $options.updatePassword.apply($options, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_74, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <div class=\"col-12\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <label class=\"form-label\">Old Password</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <input type=\"text\" class=\"form-input\" name=\"old_password\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                               v-model=\"formPassword.old_password\" required>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <div class=\"col-md-6\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <label class=\"form-label\">New Password</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <input type=\"text\" class=\"form-input\" name=\"new_password\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                               v-model=\"formPassword.new_password\" required>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <div class=\"col-md-6\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <label class=\"form-label\">Confirm New Password</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <input type=\"text\" class=\"form-input\" name=\"new_password_confirmation\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                               v-model=\"formPassword.new_password_confirmation\" required>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_75, [_hoisted_76, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_76, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <div class=\"col-12\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <label class=\"form-label\">Old Password</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <input type=\"text\" class=\"form-input\" name=\"old_password\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                               v-model=\"formPassword.old_password\" required>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <div class=\"col-md-6\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <label class=\"form-label\">New Password</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <input type=\"text\" class=\"form-input\" name=\"new_password\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                               v-model=\"formPassword.new_password\" required>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <div class=\"col-md-6\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <label class=\"form-label\">Confirm New Password</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                        <input type=\"text\" class=\"form-input\" name=\"new_password_confirmation\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                               v-model=\"formPassword.new_password_confirmation\" required>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_77, [_hoisted_78, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: $data.typeOldPassword,
     "class": "form-input",
     name: "old_password",
@@ -23532,14 +23584,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     required: ""
   }, null, 8
   /* PROPS */
-  , _hoisted_77), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, $data.formPassword.old_password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_78, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  , _hoisted_79), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, $data.formPassword.old_password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_80, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     onClick: _cache[18] || (_cache[18] = function ($event) {
       return $options.passwordVisibility('old');
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.typeOldPassword === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye'])
   }, null, 2
   /* CLASS */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_79, [_hoisted_80, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_81, [_hoisted_82, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: $data.typeNewPassword,
     "class": "form-input",
     name: "new_password",
@@ -23549,14 +23601,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     required: ""
   }, null, 8
   /* PROPS */
-  , _hoisted_81), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, $data.formPassword.new_password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_82, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  , _hoisted_83), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, $data.formPassword.new_password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_84, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     onClick: _cache[20] || (_cache[20] = function ($event) {
       return $options.passwordVisibility('new');
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.typeNewPassword === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye'])
   }, null, 2
   /* CLASS */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_83, [_hoisted_84, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_85, [_hoisted_86, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: $data.typeNewPasswordConfirm,
     "class": "form-input",
     name: "new_password_confirmation",
@@ -23566,14 +23618,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     required: ""
   }, null, 8
   /* PROPS */
-  , _hoisted_85), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, $data.formPassword.new_password_confirmation]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_86, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  , _hoisted_87), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, $data.formPassword.new_password_confirmation]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_88, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     onClick: _cache[22] || (_cache[22] = function ($event) {
       return $options.passwordVisibility('new-confirm');
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.typeNewPasswordConfirm === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye'])
   }, null, 2
   /* CLASS */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_87, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_89, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     style: {
       "width": "150px"
     },
@@ -23581,7 +23633,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     disabled: $options.disableBtnOnLoad
   }, " Update Password", 8
   /* PROPS */
-  , _hoisted_88)])])], 32
+  , _hoisted_90)])])], 32
   /* HYDRATE_EVENTS */
   )])])])])])]);
 }

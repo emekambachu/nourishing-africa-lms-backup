@@ -9,14 +9,14 @@
                     <p class="text-center">Please wait......</p>
                 </div>
 
-                <div v-if="formSuccessful" class="alert alert-success" role="alert">
+                <div v-if="formSuccessful" class="alert alert-success text-center" role="alert">
                     <button aria-label="Close" class="close" data-dismiss="alert" type="button">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <strong class="text-center">{{ alertMessage }}</strong>
                 </div>
 
-                <div v-if="formError" class="alert alert-danger" role="alert">
+                <div v-if="formError" class="alert alert-danger text-center" role="alert">
                     <button aria-label="Close" class="close" data-dismiss="alert" type="button">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -45,7 +45,6 @@
                                     </div>
                                     <form id="" method="post" enctype="multipart/form-data"
                                     @submit.prevent="submitProfileUpdateRequest">
-
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="row">
@@ -53,11 +52,11 @@
 
                                                         <label class="form-label">Surname</label>
                                                         <input type="text" class="form-input mb-2" name="surname"
-                                                               :placeholder="profile.surname" v-model="form.surname">
+                                                               v-model="form.surname" :placeholder="profile.surname">
 
                                                         <label class="form-label">First Name</label>
                                                         <input type="text" class="form-input mb-2" name="first_name"
-                                                               :placeholder="profile.first_name" v-model="form.first_name">
+                                                               v-model="form.first_name" :placeholder="profile.first_name">
 
                                                         <label class="form-label">Mobile</label>
                                                         <input type="tel" class="form-input mb-2" name="mobile"
@@ -79,7 +78,7 @@
                                                             <option v-for="focus in focusAreas"
                                                                     :key="focus.value"
                                                                     :value="focus.value"
-                                                                    :selected="focus.value === form.focus_area">
+                                                                    :selected="focus.value === profile.focus_area">
                                                                 {{ focus.name }}
                                                             </option>
                                                         </select>
@@ -131,6 +130,14 @@
                                             <div class="col-12">
                                                 <label class="form-label">Update Reason<i class="text-danger">*</i></label>
                                                 <textarea class="form-control" v-model="form.reason" required></textarea>
+                                            </div>
+
+                                            <div v-if="updateRequestError" class="alert alert-danger col-12 text-center"
+                                                 role="alert">
+                                                <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <strong>{{ alertMessage }}</strong>
                                             </div>
                                         </div>
 
@@ -355,18 +362,18 @@
         data(){
             return {
                 form: {
-                    surname: this.profile.surname,
-                    first_name: this.profile.first_name,
-                    mobile: this.profile.mobile,
-                    state_residence: this.profile.state_residence,
-                    business_address: this.profile.business_address,
-                    focus_area: this.profile.focus_area,
-                    value_chain: this.profile.value_chain,
-                    website: this.profile.website,
-                    facebook: this.profile.facebook,
-                    instagram: this.profile.instagram,
-                    linkedin: this.profile.linkedin,
-                    twitter: this.profile.twitter,
+                    surname: '',
+                    first_name: '',
+                    mobile: '',
+                    state_residence: '',
+                    business_address: '',
+                    focus_area: '',
+                    value_chain: '',
+                    website: '',
+                    facebook: '',
+                    instagram: '',
+                    linkedin: '',
+                    twitter: '',
                     reason: '',
                 },
 
@@ -405,6 +412,7 @@
                 typeNewPasswordConfirm: 'password',
 
                 requestUpdateStatus: null,
+                updateRequestError: false,
             }
         },
         methods: {
@@ -447,7 +455,35 @@
             },
 
             submitProfileUpdateRequest: function(){
-                this.submitForm('/api/yaedp/submit/update-request', this.form);
+                // When submitted, check if the reason field is filled
+                // and any of the other fields are filled
+                let self = this;
+                let i = 0;
+                Object.keys(this.form).forEach(function(key,index) {
+                    if(self.form[key] !== ''){
+                        i++;
+                    }
+                });
+                if(i < 2){
+                    alert(i);
+                    this.updateRequestError = true;
+                    this.alertMessage = "Give a reason and input your new data in the assigned field";
+                    return false;
+                }
+                this.formLoading = true;
+                this.updateRequestError = false;
+                axios.post('/api/yaedp/submit/update-request', this.form)
+                    .then(response => {
+                        console.log(response.data);
+                        response.data.success = this.profileUpdateSuccess(response);
+                    }).catch((error) => {
+                        console.log(error);
+                }).finally(() => {
+                    this.formLoading = false;
+                });
+            },
+
+            profileUpdateSuccess: function(request){
                 this.requestUpdateStatus = true;
             },
 
