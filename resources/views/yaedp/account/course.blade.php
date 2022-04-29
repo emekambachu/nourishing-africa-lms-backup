@@ -76,29 +76,39 @@
                          id="resources-tab-body">
                         <div class="row p-2">
 
-                            @if(!empty($course->document_one))
-                                <div class="col-4 course-resources mr-4">
+                            @forelse($course->learning_course_resources as $resource)
+                                <div class="col-4 course-resources mr-4 mb-2">
                                     <img src="{{ asset('images/icons/document.png') }}" width="40"/>
-                                    <span>{{ $course->document_one }}</span><br>
-                                    <a class="btn btn-sm btn-rounded btn-success"
-                                       href="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_one }}"
-                                       download="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_one }}">
-                                        Download <i class="fa fa-download"></i>
-                                    </a>
+                                    <span>{{ $resource->title }}</span><br>
+                                    @if(!empty($resource->document))
+                                        <a class="btn btn-sm btn-rounded btn-success"
+                                           href="https://nourishingafrica.com/documents/learning/courses/{{ $resource->document }}"
+                                           download="https://nourishingafrica.com/documents/learning/courses/{{ $resource->document }}">
+                                            Download <i class="fa fa-download"></i>
+                                        </a>
+                                    @endif
+                                    @if(!empty($resource->url))
+                                        <a class="d-flex"
+                                           href="{{ $resource->url }}" download="{{ $resource->url }}">
+                                            {{ $resource->url }} <i class="fa fa-link"></i>
+                                        </a>
+                                    @endif
                                 </div>
-                            @endif
+                            @empty
+                                No Resources available
+                            @endforelse
 
-                            @if(!empty($course->document_two))
-                                <div class="col-4 course-resources">
-                                    <img src="{{ asset('images/icons/document.png') }}" width="40"/>
-                                    <span>{{ $course->document_two }}</span><br>
-                                    <a class="btn btn-sm btn-rounded btn-success"
-                                       href="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_two }}"
-                                       download="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_two }}">
-                                        Download <i class="fa fa-download"></i>
-                                    </a>
-                                </div>
-                            @endif
+{{--                            @if(!empty($course->document_one))--}}
+{{--                                <div class="col-4 course-resources mr-4">--}}
+{{--                                    <img src="{{ asset('images/icons/document.png') }}" width="40"/>--}}
+{{--                                    <span>{{ $course->document_one }}</span><br>--}}
+{{--                                    <a class="btn btn-sm btn-rounded btn-success"--}}
+{{--                                       href="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_one }}"--}}
+{{--                                       download="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_one }}">--}}
+{{--                                        Download <i class="fa fa-download"></i>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            @endif--}}
 
                         </div>
                     </div>
@@ -348,18 +358,4 @@
 
     <!--- Internal Modal js --->
     <script src="{{ asset('learning-assets/js/modal.js') }}"></script>
-
-    <!--Start of Tawk.to Script-->
-{{--    <script type="text/javascript">--}}
-{{--        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();--}}
-{{--        (function(){--}}
-{{--            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];--}}
-{{--            s1.async=true;--}}
-{{--            s1.src='https://embed.tawk.to/61fabd5c9bd1f31184da9efe/1fqtn7dcj';--}}
-{{--            s1.charset='UTF-8';--}}
-{{--            s1.setAttribute('crossorigin','*');--}}
-{{--            s0.parentNode.insertBefore(s1,s0);--}}
-{{--        })();--}}
-{{--    </script>--}}
-    <!--End of Tawk.to Script-->
 @endsection

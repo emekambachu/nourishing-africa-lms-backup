@@ -32,6 +32,10 @@ class LearningCourse extends Model
         return $this->belongsTo(LearningCategory::class, 'learning_category_id', 'id');
     }
 
+    public function learning_course_resources(){
+        return $this->hasMany(LearningCourseResource::class, 'learning_course_id', 'id');
+    }
+
     public function nextCourse($moduleId){
         return self::where([
             ['id', '>', $this->id],

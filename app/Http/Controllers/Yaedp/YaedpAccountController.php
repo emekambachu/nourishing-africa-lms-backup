@@ -118,7 +118,7 @@ class YaedpAccountController extends Controller
         $data['getCourses'] = new LearningCourse();
 
         // Get current course
-        $course = $data['getCourses']->with('learningModule')->where([
+        $course = $data['getCourses']->with('learningModule', 'learning_course_resources')->where([
                                         ['id', $id],
                                         ['learning_category_id', $this->yaedpId()],
                                     ])->first();

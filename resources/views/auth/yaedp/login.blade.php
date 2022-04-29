@@ -105,7 +105,7 @@
 
                                     <div class="col-12">
                                         <p class="font-small-manrope-black margin-10px-bottom">
-                                            By using this you agree to our <a class="login-link" href="">Terms of Service</a> and <a class="login-link" href="">Privacy Policy</a>
+                                            By using this you agree to our <a class="login-link" href="">Terms of Service</a>
                                         </p>
 {{--                                        <p class="text-center login-shortcut margin-10px-bottom">--}}
 {{--                                            No account? <a class="na-text-dark-green"--}}

@@ -26,9 +26,9 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-8 text-center">
                             <img src="{{ asset('images/icons/e-learning.png') }}" width="150" class="mb-4"/>
-                            <p class="text-center tx-16">
-                                <strong class="na-text-dark-green">Well-done</strong> You have completed this module. You can now take the Assessment to proceed to the next module.
-                            </p>
+{{--                            <p class="text-center tx-16">--}}
+{{--                                <strong class="na-text-dark-green">Well-done</strong> You have completed this module. You can now take the Assessment to proceed to the next module.--}}
+{{--                            </p>--}}
                             <p class="text-center tx-16">
                                 <strong class="na-text-dark-green">Well-done</strong><br>
                                 You are to complete this assessment before proceeding to the next module.<br><br>
