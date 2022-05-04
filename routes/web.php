@@ -114,13 +114,13 @@ Route::get('yaedp/logout', [YaedpLoginController::class, 'logout'])
     ->name('yaedp.logout');
 
 // YAEDP Password Reset
-Route::get('yaedp/forgot-password', [YaedpResetPasswordController::class, 'forgotPassword'])
+Route::get('/yaedp/forgot-password', [YaedpResetPasswordController::class, 'forgotPassword'])
     ->name('yaedp.forgot-password');
-Route::post('yaedp/forgot-password/send-link', [YaedpResetPasswordController::class, 'sendPasswordResetLink'])
+Route::post('/yaedp/forgot-password/send-link', [YaedpResetPasswordController::class, 'sendPasswordResetLink'])
     ->name('yaedp.forgot-password.send-link');
-Route::get('yaedp/password-reset-token/{token}', [YaedpResetPasswordController::class, 'passwordResetToken'])
+Route::get('/yaedp/password-reset-token/{token}', [YaedpResetPasswordController::class, 'passwordResetToken'])
     ->name('yaedp.password-reset-token');
-Route::post('yaedp/password-reset/confirm/{token}', [YaedpResetPasswordController::class, 'passwordResetConfirm'])
+Route::post('/yaedp/password-reset/confirm/{token}', [YaedpResetPasswordController::class, 'passwordResetConfirm'])
     ->name('yaedp.password-reset-confirm');
 
 //YAEDP Account

@@ -38,7 +38,6 @@ class YaedpResetPasswordController extends Controller
         if ($validator->fails()){
             return response()->json([
                 'errors' => $validator->getMessageBag()->toArray()
-
             ], 400); // 400 being the HTTP code for an invalid request.
         }
 
@@ -76,7 +75,7 @@ class YaedpResetPasswordController extends Controller
         Mail::send('emails.yaedp.password-reset-link', $data, static function ($message) use ($data) {
             $message->from('yaedp@nourishingafrica.com', 'YAEDP: Password Reset');
             $message->to($data['email']);
-            $message->replyTo('info@nourishingafrica.com', 'YAEDP: Password Reset');
+            $message->replyTo('yaedp@nourishingafrica.com', 'YAEDP: Password Reset');
             $message->subject('YAEDP Password Reset Link');
         });
 
@@ -91,7 +90,6 @@ class YaedpResetPasswordController extends Controller
         if(!$verifiedUser){
             return view('errors.404');
         }
-
         return view('auth.yaedp.reset-password', compact('verifiedUser'));
     }
 

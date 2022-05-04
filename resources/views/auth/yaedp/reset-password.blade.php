@@ -47,7 +47,7 @@
                             <div id="validation-alert"></div>
                         </div>
 
-                        <p class="text-center fa fa-4x fa-spin fa-spinner brand-text" id="loader"></p>
+{{--                        <p class="text-center fa fa-4x fa-spin fa-spinner brand-text" id="loader"></p>--}}
                         <div id="validation-alert"></div>
 
                         <!-- start feature box item -->
@@ -84,7 +84,8 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <button type="submit" id="password-update-btn" class="login-form-btn"
+                                        <button type="submit" id="password-update-btn"
+                                                class="login-form-btn"
                                                 data-route="{{ route('yaedp.password-reset-confirm', $verifiedUser->verification_token) }}">
                                             Reset password</button>
                                     </div>
