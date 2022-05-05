@@ -61,25 +61,36 @@ class YaedpResetPasswordController extends Controller
             return $randomString;
         }
 
-        $userExists->verification_token = verificationToken();
-        $userExists->save();
+        try {
 
-        // data for email
-        $data = [
-            'name' => $userExists->name,
-            'email' => $userExists->email,
-            'verification_token' => $userExists->verification_token,
-        ];
+            $userExists->verification_token = verificationToken();
+            $userExists->save();
 
-        // Send email to the NA Team
-        Mail::send('emails.yaedp.password-reset-link', $data, static function ($message) use ($data) {
-            $message->from('info@nourishingafrica.com', 'YAEDP: Password Reset');
-            $message->to($data['email']);
-            $message->replyTo('yaedp@nourishingafrica.com', 'YAEDP: Password Reset');
-            $message->subject('YAEDP Password Reset Link');
-        });
+            // data for email
+            $data = [
+                'name' => $userExists->name,
+                'email' => $userExists->email,
+                'verification_token' => $userExists->verification_token,
+            ];
 
-        return response()->json(['success' => 'A password reset link has been sent to '.$data['email'], ', click on the link to proceed'], 200);
+            // Send email to the NA Team
+            Mail::send('emails.yaedp.password-reset-link', $data, static function ($message) use ($data) {
+                $message->from('info@nourishingafrica.com', 'YAEDP: Password Reset');
+                $message->to($data['email']);
+                $message->replyTo('yaedp@nourishingafrica.com', 'YAEDP: Password Reset');
+                $message->subject('YAEDP Password Reset Link');
+            });
+
+            return response()->json([
+                'success' => 'A password reset link has been sent to '.$data['email'], ', click on the link to proceed'
+            ], 200);
+
+        } catch (\Exception $e) {
+
+            return response()->json([
+                'error' => $e->getMessage()
+            ], 200);
+        }
     }
 
     public function passwordResetToken($token){

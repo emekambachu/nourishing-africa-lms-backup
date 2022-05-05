@@ -76,7 +76,7 @@
                     </div>
                     <div class="card-body text-inter shadow-2">
                         <iframe src="https://drive.google.com/file/d/1HQFby-aLDf3e062IFiXSusCaTwdIFthd/preview"
-                                width="640" height="480" allow="autoplay"></iframe>
+                                width="100%" height="480" allow="autoplay"></iframe>
                     </div>
                 </div>
             </div>

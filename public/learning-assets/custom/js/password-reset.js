@@ -50,12 +50,12 @@ $(document).ready(function(){
             error: function (response){
                 $("#loader").fadeOut(1000);
                 $('#validation-alert').html(
-                    '<div class="alert alert-danger alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.responseJSON.errors+'</div>'
+                    '<div class="alert alert-danger alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.error+'</div>'
                 );
                 $('#form-fields').fadeIn('1000');
                 //after submission remove disabled attribute
                 $('#'+buttonId).removeAttr("disabled");
-                console.log(response.responseJSON.errors);
+                console.log(response.error);
             },
 
         });
