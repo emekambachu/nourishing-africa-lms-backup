@@ -99,10 +99,10 @@
                                             Have an account? <a class="na-text-dark-green"
                                                                 href="{{ route('yaedp.login') }}">Login</a>
                                         </p>
-                                        <p class="text-center login-shortcut margin-10px-bottom">
-                                            No account? <a class="na-text-dark-green"
-                                                           href="https://nourishingafrica.com/yaedp/application">Sign up</a>
-                                        </p>
+{{--                                        <p class="text-center login-shortcut margin-10px-bottom">--}}
+{{--                                            No account? <a class="na-text-dark-green"--}}
+{{--                                                           href="https://nourishingafrica.com/yaedp/application">Sign up</a>--}}
+{{--                                        </p>--}}
                                     </div>
                                 </div>
 
