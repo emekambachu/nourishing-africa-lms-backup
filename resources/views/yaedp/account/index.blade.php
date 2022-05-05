@@ -47,7 +47,7 @@
                         <div class="bg-light-purple d-inline d-flex p-3 border-radius-8">
                             <img src="{{ asset('images/icons/instructors.png') }}" width="70"/>
                             <span class="ml-2">
-                                <h2>10</h2>
+                                <h2>16</h2>
                                 <p>Instructors</p>
                             </span>
                         </div>

@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use stdClass;
@@ -457,15 +458,16 @@ class YaedpAccountController extends Controller
         LearningProfileUpdateRequest::create($input);
 
         // Send email queue to YAEDP admin after submitting update request
-        $data['email_subject'] = 'YAEDP | Update request';
-        $data['email_from'] = 'yaedp@nourishingafrica.com';
-        $data['name_from'] = 'Nourishing Africa | YAEDP';
         $data['email'] = Auth::user()->email;
         $data['name'] = Auth::user()->surname.' '.Auth::user()->first_name;
         $data['email_body'] = "<strong>{$data['name']}</strong> has sent a YAEDP profile update request.<br>
                                 Click <a href=''>here</a> to go to the admin and access it";
-        // Access Email queue job from App/Jobs
-        dispatch((new GeneralEmailJob($data))->onQueue('yaedp_update_request'));
+        Mail::send('emails.index', $data, static function ($message) use ($data) {
+            $message->from($data['yaedp@nourishingafrica.com'], 'Nourishing Africa | YAEDP');
+            $message->to($data['email'], $data['name']);
+            $message->replyTo($data['email_from'], $data['name_from']);
+            $message->subject($data['YAEDP | Update request']);
+        });
 
         return response()->json([
             'success' => true,
@@ -555,8 +557,12 @@ class YaedpAccountController extends Controller
         $data['verification_token'] = $user->verification_token;
         $data['email'] = $request->new_email;
         $data['name'] = Auth::user()->surname.' '.Auth::user()->first_name;
-        // Access job from App/Jobs
-        dispatch(new SendEmailValidationJob($data));
+        Mail::send('emails.yaedp.email-verification', $data, static function ($message) use ($data) {
+            $message->from('yaedp@nourishingafrica.com', 'Nourishing Africa | YAEDP');
+            $message->to($data['email'], $data['name']);
+            $message->replyTo('yaedp@nourishingafrica.com', 'Nourishing Africa | YAEDP');
+            $message->subject('Email verification');
+        });
 
         return response()->json([
             'success' => true,
