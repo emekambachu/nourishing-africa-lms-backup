@@ -49,7 +49,7 @@ class YaedpResetPasswordController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Email does not exist',
-            ], 404);
+            ]);
         }
 
         function verificationToken($length = 12){
