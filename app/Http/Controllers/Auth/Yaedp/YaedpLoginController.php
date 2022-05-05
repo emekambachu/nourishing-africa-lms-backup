@@ -32,20 +32,18 @@ class YaedpLoginController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function __construct()
-    {
-        $this->middleware('guest:yaedp-users')->except('logout');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('guest:yaedp-users')->except('logout');
+//    }
 
-    public function showLoginForm()
-    {
+    public function showLoginForm(){
         return view('auth.yaedp.login', ['url' => 'yaedp/login']);
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request){
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
