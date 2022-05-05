@@ -50,9 +50,12 @@ class YaedpAccountController extends Controller
             ['status', 1],
         ])->count();
 
-        $data['startedCourses'] = $data['getCourseViews']->where([
-            ['user_id', Auth::user()->id],
-        ])->orderBy('id', 'desc')->limit(2)->get();
+        $data['startedCourses'] = $data['getCourseViews']
+            ->with('learningCourse')->has('learningCourse')
+            ->where([
+                ['user_id', Auth::user()->id],
+            ])->orderBy('id', 'desc')
+            ->limit(2)->get();
 
         $data['completedCourseViews'] = $data['getCourseViews']->where([
             ['user_id', Auth::user()->id],
