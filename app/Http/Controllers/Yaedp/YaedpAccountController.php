@@ -221,6 +221,10 @@ class YaedpAccountController extends Controller
         return view('yaedp.account.faq');
     }
 
+    public function selfHelp(){
+        return view('yaedp.account.self-help-videos');
+    }
+
     public function aboutProgram(){
         return view('yaedp.account.about-program');
     }

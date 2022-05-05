@@ -78,37 +78,23 @@
 
                             @forelse($course->learning_course_resources as $resource)
                                 <div class="col-4 course-resources mr-4 mb-2">
-                                    <img src="{{ asset('images/icons/document.png') }}" width="40"/>
                                     <span>{{ $resource->title }}</span><br>
                                     @if(!empty($resource->document))
-                                        <a class="btn btn-sm btn-rounded btn-success"
+                                        <a class="btn btn-sm btn-rounded btn-info"
                                            href="https://nourishingafrica.com/documents/learning/courses/{{ $resource->document }}"
                                            download="https://nourishingafrica.com/documents/learning/courses/{{ $resource->document }}">
                                             Download <i class="fa fa-download"></i>
                                         </a>
                                     @endif
                                     @if(!empty($resource->url))
-                                        <a class="d-flex"
-                                           href="{{ $resource->url }}" download="{{ $resource->url }}">
-                                            {{ $resource->url }} <i class="fa fa-link"></i>
+                                        <a class="d-flex btn btn-sm btn-rounded btn-success" href="{{ $resource->url }}">
+                                           Link <i class="fa fa-link"></i>
                                         </a>
                                     @endif
                                 </div>
                             @empty
                                 No Resources available
                             @endforelse
-
-{{--                            @if(!empty($course->document_one))--}}
-{{--                                <div class="col-4 course-resources mr-4">--}}
-{{--                                    <img src="{{ asset('images/icons/document.png') }}" width="40"/>--}}
-{{--                                    <span>{{ $course->document_one }}</span><br>--}}
-{{--                                    <a class="btn btn-sm btn-rounded btn-success"--}}
-{{--                                       href="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_one }}"--}}
-{{--                                       download="https://nourishingafrica.com/documents/learning/courses/{{ $course->document_one }}">--}}
-{{--                                        Download <i class="fa fa-download"></i>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            @endif--}}
 
                         </div>
                     </div>

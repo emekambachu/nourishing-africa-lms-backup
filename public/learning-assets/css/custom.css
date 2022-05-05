@@ -2459,8 +2459,12 @@ a.membership-text1:hover {
     background: #f7fff7;
 }
 
-.height-350 {
-    height: 350px;
+.height-dashboard-courses {
+    height: 360px;
+}
+
+.height-modules-box {
+    height: 380px;
 }
 
 .member-bg-light-grey {

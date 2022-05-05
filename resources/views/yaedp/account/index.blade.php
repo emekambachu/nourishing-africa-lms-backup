@@ -74,7 +74,7 @@
                         <div class="row">
                             @forelse($startedCourses as $course)
                                 <div class="col-md-6">
-                                    <div class="bg-white-radius-shadow mr-2 mb-5 height-350">
+                                    <div class="bg-white-radius-shadow mr-2 mb-5 height-dashboard-courses">
 
                                         <div class="row p-2 justify-content-end">
                                             @if($course->status === 1)
@@ -86,7 +86,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="row border-bottom-dark-green pb-2" style="height: 100px;">
+                                        <div class="row border-bottom-dark-green pb-2" style="height: 130px;">
                                             <div class="col-3">
                                                 <img class="rounded-5" src="{{ asset('images/stock/image-26.png') }}"/>
                                             </div>
@@ -213,7 +213,32 @@
         </div>
 
     </div>
+
+    <!--Timer Warning Modal-->
+    <div class="modal effect-scale hide" id="intro-dialogue"
+         style="padding-right: 22px;">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px;" role="document">
+            <div class="modal-content modal-content-demo">
+                <div class="modal-header">
+                    <h5 class="text-inter font-weight-bold text-center">Welcome</h5>
+                </div>
+                <div class="modal-body">
+                    <iframe id="intro-iframe" src="https://drive.google.com/file/d/1d3XhpLx_9o2qIk52o7u1cmXgMR_Sr6Ni/preview"
+                            width="100%" height="480" allow="autoplay"></iframe>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button id="intro-close-forever" class="btn ripple btn-danger btn-rounded startCourse"
+                            data-dismiss="modal" type="button">Close forever</button>
+                    <button id="intro-close-once" class="btn ripple btn-rounded bg-light-green text-white"
+                            type="button" data-dismiss="modal">Close once</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('bottom-assets')
+    <!--- Internal Modal js --->
+    <script src="{{ asset('learning-assets/js/modal.js') }}"></script>
+    <script src="{{ asset('learning-assets/custom/intro-popup.js') }}"></script>
 @endsection

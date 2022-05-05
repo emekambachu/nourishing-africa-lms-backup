@@ -145,6 +145,9 @@ Route::get('yaedp/account/course/download-document/{id}/{file_name}',
 Route::get('yaedp/account/faq',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'faq'])
     ->name('yaedp.account.faq');
+Route::get('yaedp/account/self-help',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'selfHelp'])
+    ->name('yaedp.account.self-help');
 Route::get('yaedp/account/course/{id}/discussions',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'showDiscussions'])
     ->name('yaedp.account.discussion.all');
