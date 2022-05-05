@@ -73,7 +73,7 @@ class YaedpResetPasswordController extends Controller
 
         // Send email to the NA Team
         Mail::send('emails.yaedp.password-reset-link', $data, static function ($message) use ($data) {
-            $message->from('yaedp@nourishingafrica.com', 'YAEDP: Password Reset');
+            $message->from('info@nourishingafrica.com', 'YAEDP: Password Reset');
             $message->to($data['email']);
             $message->replyTo('yaedp@nourishingafrica.com', 'YAEDP: Password Reset');
             $message->subject('YAEDP Password Reset Link');
