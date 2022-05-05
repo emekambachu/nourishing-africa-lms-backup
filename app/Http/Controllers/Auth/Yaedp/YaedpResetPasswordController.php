@@ -47,7 +47,8 @@ class YaedpResetPasswordController extends Controller
 
         if(!$userExists){
             return response()->json([
-                'errors' => 'This email does not exist'
+                'success' => false,
+                'message' => 'Email does not exist',
             ], 404);
         }
 
