@@ -31,15 +31,26 @@ $(document).ready(function(){
                 $('#loader').fadeIn(1000);
             },
 
-            success: function (Response) {
-                console.log(Response);
-                if (Response.success) {
+            success: function (response) {
+                console.log(response);
+                if (response.success) {
                     $('#validation-alert').html(
-                        '<div class="alert alert-success alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+Response.success+'</div>'
+                        '<div class="alert alert-success alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.success+'</div>'
                     );
                     $('#form-fields').fadeIn(1000);
                     //clear all fields after submission
                     // $("#password-reset-form")[0].reset();
+                    // Show image container
+                    $('#loader').fadeOut(1000);
+                    //after submission remove disabled attribute
+                    $('#'+buttonId).removeAttr("disabled");
+                }
+
+                if (response.success === false) {
+                    $('#validation-alert').html(
+                        '<div class="alert alert-success alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.message+'</div>'
+                    );
+                    $('#form-fields').fadeIn(1000);
                     // Show image container
                     $('#loader').fadeOut(1000);
                     //after submission remove disabled attribute

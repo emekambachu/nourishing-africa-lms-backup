@@ -62,7 +62,6 @@ class YaedpResetPasswordController extends Controller
         }
 
         try {
-
             $userExists->verification_token = verificationToken();
             $userExists->save();
 
@@ -80,6 +79,14 @@ class YaedpResetPasswordController extends Controller
                 $message->replyTo('yaedp@nourishingafrica.com', 'YAEDP: Password Reset');
                 $message->subject('YAEDP Password Reset Link');
             });
+
+            // check for failures
+            if(Mail::failures()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Unable to send email',
+                ], 200);
+            }
 
             return response()->json([
                 'success' => 'A password reset link has been sent to '.$data['email'], ', click on the link to proceed'
