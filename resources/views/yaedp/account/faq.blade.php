@@ -22,8 +22,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h5 class="na-text-dark-green text-manrope tx-md-bold">
-                    Get Help (LMS ON DEMAND HELP FOR PARTICIPANTS)</h5>
+                <h5 class="na-text-dark-green text-manrope tx-md-bold">Get Help</h5>
                 <p class="text-inter">Many of the frequently asked questions about the YEADP training are answered below. If you would like more information about a specific course or module, direct your questions to our email, <a class="na-text-dark-green" href="mailto:yaedp@nourishingafrica.com">YAEDP@nourishingafrica.com</a></p>
             </div>
         </div>
@@ -34,7 +33,7 @@
                     <div class="card-body text-inter shadow-2">
                         <h4 class="na-text-dark-green">Help for learners</h4>
                         <p><a href="{{ route('yaedp.account.self-help') }}">
-                                Watch Helpful how-to videos for students</a></p>
+                                Watch self-help videos for students</a></p>
                         <p><a href="{{ route('yaedp.account.about-program') }}">
                                 Find out more about the YAEDP program</a></p>
                     </div>
@@ -132,20 +131,6 @@
                                 </div><!-- collapse -->
                             </div>
 
-                            <div class="card">
-                                <div class="card-header" id="headingThree" role="tab">
-                                    <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
-                                       data-toggle="collapse" href="#collapseSeven">
-                                        When are each assessments due? </a>
-                                </div>
-                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
-                                     id="collapseSeven" role="tabpanel">
-                                    <div class="card-body">
-                                        Each course assessment is due within the week for each module. Assessments for each module must be completed before proceeding to the next module.
-                                    </div>
-                                </div><!-- collapse -->
-                            </div>
-
                         </div><!-- accordion -->
                     </div>
                 </div>
@@ -157,7 +142,7 @@
                 <div class="card">
                     <div class="card-body text-inter shadow-2">
                         <h4 class="na-text-dark-green">Questions about your courses</h4>
-                        <p>Please visit the Discussion Forum to see some already answered questions by other students and course instructors.</p>
+                        <p>Please visit the discussion Forum to see some already answered questions by other students and course instructors.</p>
                     </div>
                 </div>
             </div>

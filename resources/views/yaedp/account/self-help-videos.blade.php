@@ -24,7 +24,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="na-text-dark-green">Update your profile</h5>
+                        <h5 class="na-text-dark-green">Updating your profile</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
                         <iframe src="https://drive.google.com/file/d/1zC1LiiTtPwQ-zT5CVJffUvE4YZsIeFex/preview"

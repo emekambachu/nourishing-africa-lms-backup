@@ -574,11 +574,11 @@ class YaedpAccountController extends Controller
 
         $confirmed = YaedpUser::where('verification_token', $token)->first();
 
-        if($confirmed && Session::has('new_email')) {
+        if($confirmed && Session::has('new_email')){
             $confirmed->email = Session::get('new_email');
             $confirmed->save();
             Session::flash("success", "Email successfully changed, please login");
-        } else{
+        }else{
             Session::flash('warning', 'Incorrect or expired verification token, try again.');
         }
 
