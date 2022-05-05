@@ -29,7 +29,7 @@ class RedirectIfAuthenticated
 
             // redirect to dashboard or account if logged in
             if ($guard === "yaedp-users" && Auth::guard($guard)->check()) {
-                return redirect()->route('yaedp.account');
+                return redirect('/yaedp/account');
             }
         }
 
