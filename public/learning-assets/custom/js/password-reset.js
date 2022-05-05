@@ -33,9 +33,9 @@ $(document).ready(function(){
 
             success: function (response) {
                 console.log(response);
-                if (response.success) {
+                if (response.success === true) {
                     $('#validation-alert').html(
-                        '<div class="alert alert-success alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.success+'</div>'
+                        '<div class="alert alert-success alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.message+'</div>'
                     );
                     $('#form-fields').fadeIn(1000);
                     //clear all fields after submission
@@ -48,7 +48,7 @@ $(document).ready(function(){
 
                 if (response.success === false) {
                     $('#validation-alert').html(
-                        '<div class="alert alert-success alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.message+'</div>'
+                        '<div class="alert alert-danger alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.message+'</div>'
                     );
                     $('#form-fields').fadeIn(1000);
                     // Show image container
@@ -58,16 +58,16 @@ $(document).ready(function(){
                 }
             },
 
-            error: function (response){
-                $("#loader").fadeOut(1000);
-                $('#validation-alert').html(
-                    '<div class="alert alert-danger alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.error+'</div>'
-                );
-                $('#form-fields').fadeIn('1000');
-                //after submission remove disabled attribute
-                $('#'+buttonId).removeAttr("disabled");
-                console.log(response.error);
-            },
+            // error: function (response){
+            //     $("#loader").fadeOut(1000);
+            //     $('#validation-alert').html(
+            //         '<div class="alert alert-danger alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.error+'</div>'
+            //     );
+            //     $('#form-fields').fadeIn('1000');
+            //     //after submission remove disabled attribute
+            //     $('#'+buttonId).removeAttr("disabled");
+            //     console.log(response.error);
+            // },
 
         });
     }

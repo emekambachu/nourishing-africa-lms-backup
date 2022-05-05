@@ -62,43 +62,36 @@ class YaedpResetPasswordController extends Controller
             return $randomString;
         }
 
-        try {
-            $userExists->verification_token = verificationToken();
-            $userExists->save();
+        $userExists->verification_token = verificationToken();
+        $userExists->save();
 
-            // data for email
-            $data = [
-                'name' => $userExists->name,
-                'email' => $userExists->email,
-                'verification_token' => $userExists->verification_token,
-            ];
+        // data for email
+        $data = [
+            'name' => $userExists->name,
+            'email' => $userExists->email,
+            'verification_token' => $userExists->verification_token,
+        ];
 
-            // Send email to the NA Team
-            Mail::send('emails.yaedp.password-reset-link', $data, static function ($message) use ($data) {
-                $message->from('info@nourishingafrica.com', 'YAEDP: Password Reset');
-                $message->to($data['email']);
-                $message->replyTo('yaedp@nourishingafrica.com', 'YAEDP: Password Reset');
-                $message->subject('YAEDP Password Reset Link');
-            });
+        // Send email to the NA Team
+        Mail::send('emails.yaedp.password-reset-link', $data, static function ($message) use ($data) {
+            $message->from('info@nourishingafrica.com', 'YAEDP: Password Reset');
+            $message->to($data['email']);
+            $message->replyTo('yaedp@nourishingafrica.com', 'YAEDP: Password Reset');
+            $message->subject('YAEDP Password Reset Link');
+        });
 
-            // check for failures
-            if(Mail::failures()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Unable to send email',
-                ], 200);
-            }
-
+        // check for failures
+        if(Mail::failures()) {
             return response()->json([
-                'success' => 'A password reset link has been sent to '.$data['email'], ', click on the link to proceed'
-            ], 200);
-
-        } catch (\Exception $e) {
-
-            return response()->json([
-                'error' => $e->getMessage()
+                'success' => false,
+                'message' => 'Unable to send email',
             ], 200);
         }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'A password reset link has been sent to '.$data['email'], ', click on the link to proceed'
+        ], 200);
     }
 
     public function passwordResetToken($token){
