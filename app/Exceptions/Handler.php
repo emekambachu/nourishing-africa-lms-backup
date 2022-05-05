@@ -51,11 +51,6 @@ class Handler extends ExceptionHandler
             app('sentry')->captureException($exception);
         }
 
-        // Send email on error report
-        //  if ($this->shouldReport($exception)) {
-        //      $this->sendEmail($exception); // sends an email
-        //   }
-
         parent::report($exception);
     }
 
@@ -91,8 +86,8 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
         if ($request->is('yaedp') || $request->is('yaedp/*')) {
-            return redirect()->guest('yaedp/login');
+            return redirect()->guest('/yaedp/login');
         }
-        return redirect()->guest(route('login'));
+        return redirect()->guest(route('yaedp.login'));
     }
 }
