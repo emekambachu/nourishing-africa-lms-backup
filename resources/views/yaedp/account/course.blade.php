@@ -87,7 +87,8 @@
                                         </a>
                                     @endif
                                     @if(!empty($resource->url))
-                                        <a class="d-flex btn btn-sm btn-rounded btn-success" href="{{ $resource->url }}">
+                                        <a class="btn btn-sm btn-rounded btn-success"
+                                           href="{{ $resource->url }}">
                                            Link <i class="fa fa-link"></i>
                                         </a>
                                     @endif

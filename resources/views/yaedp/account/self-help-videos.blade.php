@@ -24,6 +24,18 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
+                        <h5 class="na-text-dark-green">Re-watch introduction video</h5>
+                    </div>
+                    <div class="card-body text-inter shadow-2">
+                        <iframe id="intro-iframe" src="https://drive.google.com/file/d/1d3XhpLx_9o2qIk52o7u1cmXgMR_Sr6Ni/preview"
+                                width="100%" height="480" allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
                         <h5 class="na-text-dark-green">Updating your profile</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
