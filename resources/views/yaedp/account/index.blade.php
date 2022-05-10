@@ -217,9 +217,9 @@
 
     </div>
 
-    <!--Timer Warning Modal-->
+    <!--Welcome Modal-->
     <div class="modal effect-scale hide" id="intro-dialogue"
-         style="padding-right: 22px;">
+         data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 700px;" role="document">
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
