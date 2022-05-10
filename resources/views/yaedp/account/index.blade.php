@@ -142,8 +142,8 @@
                     <div class="col-md-4">
                         <div class="bg-white-radius-shadow text-center">
                             @if(count($moduleProgress) > 0)
-                                @foreach($moduleProgress->slice(0, 3) as $key => $value)
-                                    <!--Slice means stop the array after the 3rd loop-->
+                                @foreach(array_slice($moduleProgress, 0, 3) as $key => $value)
+                                    <!--array_slice will stop the array after the 3rd loop-->
                                     <p class="mb-0 text-left tx-12">
                                         {{ $value['moduleTitle'] }} ({{ $value['percent'] }}%)</p>
                                     <div class="progress mb-3 na-border-radius">
