@@ -142,17 +142,21 @@
                     <div class="col-md-4">
                         <div class="bg-white-radius-shadow text-center">
                             @if(count($moduleProgress) > 0)
-                                @foreach($moduleProgress as $value)
-                                    <p class="mb-0 text-left tx-12">
-                                        {{ $value['moduleTitle'] }} ({{ $value['percent'] }}%)</p>
-                                    <div class="progress mb-3 na-border-radius">
-                                        <div class="progress-bar
-                                @if($value['percent'] === 100) bg-success
-                                @else bg-warning @endif"
-                                             role="progressbar"
-                                             style="width: {{ $value['percent'] }}%" aria-valuenow="{{ $value['percent'] }}"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
+                                @foreach($moduleProgress as $key => $value)
+                                    @if($key <= 3) <!--Limit to 3 loops-->
+                                        <p class="mb-0 text-left tx-12">
+                                            {{ $value['moduleTitle'] }} ({{ $value['percent'] }}%)</p>
+                                        <div class="progress mb-3 na-border-radius">
+                                            <div class="progress-bar
+                                        @if($value['percent'] === 100) bg-success
+                                        @else bg-warning @endif"
+                                                 role="progressbar"
+                                                 style="width: {{ $value['percent'] }}%"
+                                                 aria-valuenow="{{ $value['percent'] }}"
+                                                 aria-valuemin="0" aria-valuemax="100">
+                                            </div>
+                                        </div>
+                                    @endif
                                 @endforeach
                             @else
                                 <img src="{{ asset('images/icons/social-ideas.png')}}" width="200"/>
