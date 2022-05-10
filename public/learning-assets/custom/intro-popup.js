@@ -1,7 +1,7 @@
 $(function(){
     $(document).ready(function(){
 
-        localStorage.removeItem('intro-shown');
+        // localStorage.removeItem('intro-shown');
         let introShown = localStorage.getItem('intro-shown')
         if (!introShown) {
             setTimeout(function(){
