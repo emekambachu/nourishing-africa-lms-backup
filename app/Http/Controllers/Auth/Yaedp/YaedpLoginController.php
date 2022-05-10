@@ -54,7 +54,7 @@ class YaedpLoginController extends Controller
             'password' => $request->password],
             $request->get('remember'))) {
 
-            $this->authenticated($request);
+//            $this->authenticated($request);
             return redirect()->intended('/yaedp/account');
         }
         Session::flash('warning', 'Incorrect Login Details');
