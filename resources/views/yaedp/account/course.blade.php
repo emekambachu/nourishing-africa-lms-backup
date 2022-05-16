@@ -42,8 +42,6 @@
 
                 @if(!empty($course->trainer))
                 <div class="row">
-                @endif
-
                     <div class="col-12 mt-3 mb-3 course-tabs">
                         <span id="description" class="d-inline text-dark active course-tab">
                             Description</span>
@@ -69,7 +67,7 @@
                             </div>
                             <div class="col-md-10 col-sm-12">
                                 <h4 class="text-inter text-dark mb-0">{{ $course->trainer }}</h4>
-                                <p class="text-inter text-grey tx-14">{{ $course->trainer_bio }}</p>
+                                <p class="text-inter text-grey tx-14">{!! $course->trainer_bio !!}</p>
                             </div>
                         </div>
                     </div>
@@ -129,10 +127,14 @@
                                                                 <input type="hidden" id="ReplyID" value="">
                                                                 <input type="hidden" id="type" value="">
                                                                 <input type="hidden" id="directReplyId" value="">
-                                                                <input type="hidden" id="courseId" value="{{ $course->id }}">
-                                                                <input type="hidden" id="LMID" value="{{ $course->learningModule->id }}">
-                                                                <input type="hidden" id="LCID" value="{{ $course->learningCategory->id }}">
-                                                                <textarea row="5" id="comment" class="form-control" placeholder="Comments" required></textarea>
+                                                                <input type="hidden" id="courseId"
+                                                                       value="{{ $course->id }}">
+                                                                <input type="hidden" id="LMID"
+                                                                       value="{{ $course->learningModule->id }}">
+                                                                <input type="hidden" id="LCID"
+                                                                       value="{{ $course->learningCategory->id }}">
+                                                                <textarea row="5" id="comment" class="form-control"
+                                                                          placeholder="Comments" required></textarea>
                                                                 <span id="msg"></span>
                                                             </div>
                                                         </div>
@@ -164,26 +166,36 @@
                                 @foreach($discussion as $item)
                                 <div class="row mb-3">
                                     <div class="col-12">
-                                        <img src="{{ asset('images/icons/profile.png') }}" alt="" class="">
-                                        <label for="" class="pl-3 discussion-comment-name">{{ \App\Models\YaedpUser::getUserFullName($item->user_id) }}</label>
-                                        <label for="" class="float-right discussion-comment-time">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans(null, true).' ago' }}</label>
+                                        <img src="{{ asset('images/icons/profile.png') }}">
+                                        <label for="" class="pl-3 discussion-comment-name">
+                                            {{ \App\Models\YaedpUser::getUserFullName($item->user_id) }}</label>
+                                        <label for="" class="float-right discussion-comment-time">
+                                            {{ Carbon\Carbon::parse($item->created_at)->diffForHumans(null, true).' ago' }}</label>
                                     </div>
                                     <div class="col-12 mt-2">
                                         <p class="discussion-comment-body">{{ $item->message }}</p>
                                     </div>
                                     <div class="col-12">
-                                        <button class="discussion-comment-like" data-commentid="{{ $item->id }}" data-type="comment">
+                                        <button class="discussion-comment-like"
+                                                data-commentid="{{ $item->id }}" data-type="comment">
                                             <img id="commentlike{{ $item->id }}" style="width: 16px; height: 16px;" src="{{ \App\Models\Learning\LearningDiscussionLike::check("comment", $course->id, $item->id) ? asset("images/icons/chkdfav.png") : asset("images/icons/like.png") }}" alt="">
                                             &nbsp;&nbsp; Like ({{ \App\Models\Learning\LearningDiscussionLike::countLikes("comment", $course->id, $item->id) }})
                                         </button>
-                                        <button class="discussion-comment-reply" data-commentdiv="subcomment{{ $item->id }}">Replies({{ \App\Models\Learning\LearningDiscussionReply::getCount($item->id) }})</button>
-                                        <button class="discussion-comment-reply float-right" data-type="directCommentReply" data-directreplyid="{{ $item->id }}" data-commentid="{{ $item->id }}" data-toggle="modal" data-target="#exampleModalCenter"><img src="{{asset("images/icons/reply.png")}}" alt="">&nbsp;&nbsp; Reply</button>
+                                        <button class="discussion-comment-reply"
+                                                data-commentdiv="subcomment{{ $item->id }}">
+                                            Replies({{ \App\Models\Learning\LearningDiscussionReply::getCount($item->id) }})</button>
+                                        <button class="discussion-comment-reply float-right"
+                                                data-type="directCommentReply" data-directreplyid="{{ $item->id }}"
+                                                data-commentid="{{ $item->id }}" data-toggle="modal"
+                                                data-target="#exampleModalCenter">
+                                            <img src="{{asset("images/icons/reply.png")}}" alt="">&nbsp;&nbsp; Reply</button>
                                     </div>
                                 </div>
                                 @if($item->learningDiscussionReplies)
-                                    <div id="subcomment{{ $item->id }}" class="ml-3 mt-3 d-none" style="border-left: 1px solid #ECEAEA;">
+                                    <div id="subcomment{{ $item->id }}" class="ml-3 mt-3 d-none"
+                                         style="border-left: 1px solid #ECEAEA;">
                                     @foreach($item->learningDiscussionReplies as $replies)
-                                    @if($replies->status == 1)
+                                    @if($replies->status === 1)
                                         <div class="row pl-3 mb-3">
                                             <div class="col-12">
                                                 <img src="{{ asset('images/icons/profile.png') }}" alt="" class="">
@@ -221,6 +233,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
 
             </div>
 

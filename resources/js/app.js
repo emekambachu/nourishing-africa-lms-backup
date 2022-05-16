@@ -6,10 +6,16 @@
 
 // Default
 require('./bootstrap');
-import { createApp } from 'vue';
+import {
+    createApp
+} from 'vue';
 import router from './routes';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+
+// Sweet Alert
+import Swal from 'sweetalert2';
+window.Swal = Swal;
 
 /**
  * The following block of code may be used to automatically register your

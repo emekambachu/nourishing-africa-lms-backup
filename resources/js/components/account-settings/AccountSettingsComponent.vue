@@ -43,8 +43,8 @@
                                     <div v-if="requestUpdateStatus" class="bg-badge-warning p-2 text-center w-auto">
                                         Your update request is being reviewed
                                     </div>
-                                    <form id="" method="post" enctype="multipart/form-data"
-                                    @submit.prevent="submitProfileUpdateRequest">
+                                    <form enctype="multipart/form-data"
+                                          @submit.prevent="submitProfileUpdateRequest">
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="row">
@@ -140,108 +140,6 @@
                                                 <strong>{{ alertMessage }}</strong>
                                             </div>
                                         </div>
-
-<!--                                        <div class="row">-->
-<!--                                            <div class="col-6">-->
-<!--                                                <div class="row">-->
-<!--                                                    <div class="col-md-12">-->
-<!--                                                        <label class="form-label">Surname-->
-<!--                                                            <i class="text-danger">*</i></label>-->
-<!--                                                        <input type="text" class="form-input" name="surname"-->
-<!--                                                               required v-model="form.surname" disabled>-->
-<!--                                                        <p class="text-danger font-weight-bold tx-8"-->
-<!--                                                            v-if="errors.surname">{{ errors.surname }}</p>-->
-
-<!--                                                        <label class="form-label">First Name-->
-<!--                                                            <i class="text-danger">*</i></label>-->
-<!--                                                        <input type="text" class="form-input" name="first_name"-->
-<!--                                                               required v-model="form.first_name" disabled>-->
-<!--                                                        <p class="text-danger font-weight-bold tx-8"-->
-<!--                                                           v-if="errors.first_name">{{ errors.first_name }}</p>-->
-
-<!--                                                        <label class="form-label">Mobile</label>-->
-<!--                                                        <input type="tel" class="form-input" name="mobile"-->
-<!--                                                               v-model="form.mobile" disabled>-->
-<!--                                                        <p class="text-danger font-weight-bold tx-8"-->
-<!--                                                           v-if="errors.mobile">{{ errors.mobile }}</p>-->
-
-<!--                                                        <label class="form-label">State Residence-->
-<!--                                                            <i class="text-danger">*</i></label>-->
-<!--                                                        <input type="text" class="form-input" name="state_residence" required-->
-<!--                                                               v-model="form.state_residence" disabled>-->
-<!--                                                        <p class="text-danger font-weight-bold tx-8"-->
-<!--                                                           v-if="errors.state_residence">{{ errors.state_residence }}</p>-->
-
-<!--                                                        <label class="form-label">Business Address-->
-<!--                                                            <i class="text-danger">*</i></label>-->
-<!--                                                        <input type="text" class="form-input" name="business_address" required-->
-<!--                                                               v-model="form.business_address" disabled>-->
-<!--                                                        <p class="text-danger font-weight-bold tx-8"-->
-<!--                                                           v-if="errors.business_address">{{ errors.business_address }}</p>-->
-<!--                                                    </div>-->
-
-<!--                                                    <div class="col-md-6">-->
-<!--                                                        <label class="form-label">Focus Area-->
-<!--                                                            <i class="na-intern-form-required">*</i></label>-->
-<!--                                                        <select name="focus_area" class="form-control form-select" required-->
-<!--                                                                v-model="form.focus_area" disabled>-->
-<!--                                                            <option v-for="focus in focusAreas"-->
-<!--                                                                    :key="focus.value"-->
-<!--                                                                    :value="focus.value"-->
-<!--                                                                    :selected="focus.value === form.focus_area">-->
-<!--                                                                {{ focus.name }}-->
-<!--                                                            </option>-->
-<!--                                                        </select>-->
-<!--                                                        <p class="text-danger font-weight-bold tx-8"-->
-<!--                                                           v-if="errors.focus_area">{{ errors.focus_area }}</p>-->
-<!--                                                    </div>-->
-
-<!--                                                    <div class="col-md-6">-->
-<!--                                                        <label class="form-label">Value Chain-->
-<!--                                                            <i class="na-intern-form-required">*</i></label>-->
-<!--                                                        <select name="value_chain" class="form-control form-select"-->
-<!--                                                                v-model="form.value_chain" disabled>-->
-<!--                                                            <option v-for="value in valueChains"-->
-<!--                                                                    :key="value.value"-->
-<!--                                                                    :value="value.value"-->
-<!--                                                                    :selected="value.value === form.value_chain">-->
-<!--                                                                {{ value.name }}-->
-<!--                                                            </option>-->
-<!--                                                        </select>-->
-<!--                                                        <p class="text-danger font-weight-bold tx-8"-->
-<!--                                                           v-if="errors.value_chain">{{ errors.value_chain }}</p>-->
-<!--                                                    </div>-->
-
-<!--                                                </div>-->
-<!--                                            </div>-->
-
-<!--                                            <div class="col-md-6">-->
-<!--                                               <div class="row">-->
-<!--                                                   <div class="col-12">-->
-<!--                                                       <label class="form-label">Website</label>-->
-<!--                                                       <input type="text" class="form-input" name="website"-->
-<!--                                                              v-model="form.website" disabled>-->
-
-<!--                                                       <label class="form-label">Facebook</label>-->
-<!--                                                       <input type="text" class="form-input" name="facebook"-->
-<!--                                                              v-model="form.facebook" disabled>-->
-
-<!--                                                       <label class="form-label">Instagram</label>-->
-<!--                                                       <input type="text" class="form-input" name="instagram"-->
-<!--                                                              v-model="form.instagram" disabled>-->
-
-<!--                                                       <label class="form-label">LinkedIn</label>-->
-<!--                                                       <input type="text" class="form-input" name="linkedin"-->
-<!--                                                              v-model="form.linkedin" disabled>-->
-
-<!--                                                       <label class="form-label">Twitter</label>-->
-<!--                                                       <input type="text" class="form-input" name="twitter"-->
-<!--                                                              v-model="form.twitter" disabled>-->
-<!--                                                   </div>-->
-<!--                                               </div>-->
-
-<!--                                            </div>-->
-<!--                                        </div>-->
 
                                         <div v-if="!requestUpdateStatus" class="d-flex justify-content-center">
                                             <button style="width:150px;"
@@ -470,7 +368,18 @@
                     this.alertMessage = "Give a reason and input your new data in the assigned field";
                     return false;
                 }
-                this.formLoading = true;
+                // Install sweetalert2 to use
+                // Loading
+                Swal.fire({
+                    title: 'Please Wait !',
+                    html: 'Submitting',// add html attribute if you want or remove
+                    allowOutsideClick: false,
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    },
+                });
                 this.updateRequestError = false;
                 axios.post('/api/yaedp/submit/update-request', this.form)
                     .then(response => {
@@ -478,12 +387,16 @@
                         response.data.success = this.profileUpdateSuccess(response);
                     }).catch((error) => {
                         console.log(error);
-                }).finally(() => {
-                    this.formLoading = false;
                 });
             },
 
             profileUpdateSuccess: function(request){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Submitted',
+                    showConfirmButton: true,
+                    timer: 10000
+                }),
                 this.requestUpdateStatus = true;
             },
 
