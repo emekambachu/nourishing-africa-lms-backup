@@ -133,7 +133,7 @@
             for (let c = 0; c < cookies.length; c++) {
                 let d = window.location.hostname.split(".");
                 while (d.length > 0){
-                    let cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d[1]+'.'+d[2] + ' ;path=';
+                    let cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + 'nourishingafrica.com' + ' ;path=';
                     console.log(d[1]+'.'+d[2]);
                     let p = location.pathname.split('/');
                     document.cookie = cookieBase + '/';
