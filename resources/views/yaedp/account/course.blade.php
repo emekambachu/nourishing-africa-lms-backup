@@ -40,7 +40,9 @@
                     </div>
                 </div>
 
+                @if(!empty($course->trainer))
                 <div class="row">
+                @endif
 
                     <div class="col-12 mt-3 mb-3 course-tabs">
                         <span id="description" class="d-inline text-dark active course-tab">
@@ -219,6 +221,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="col-lg-3 col-md-3 col-sm-12">
@@ -309,6 +312,7 @@
     <!--Timer Warning Modal-->
     <div class="modal effect-scale hide" id="timerAlert"
          style="padding-right: 22px;"
+         data-backdrop="static" data-keyboard="false"
          data-next-route="{{ $course->nextCourse($module->id) ? route('yaedp.account.course', $course->nextCourse($module->id)->id) : null }}"
          data-assessment-route="{{ route('yaedp.account.assessment.start', $module->id) }}"
          data-next-course="{{ $course->nextCourse($module->id) ? 'has-next' : 'none' }}"

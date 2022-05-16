@@ -30,14 +30,13 @@
 @endsection
 
 @section('content')
-    <section class="p-0 wow fadeIn bg-light"
+    <section class="p-0 bg-light"
              style="visibility: visible; animation-name: fadeIn; background-image: url(&quot;{{ asset('images/login-intro.jpg') }}&quot;); background-size: cover;">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row justify-content-center">
 
-                <div class="col-12 col-lg-4 wow fadeInRight" style=""></div>
-
-                <div class="col-12 col-lg-4 wow fadeInLeft margin-20px-tb padding-four-all md-padding-eight-all md-padding-15px-lr sm-padding-50px-tb border-radius-4" style="visibility: visible; animation-name: fadeInLeft; background-color: #fff;">
+                <div class="col-11 col-md-4 margin-50px-tb padding-four-all md-padding-eight-all md-padding-15px-lr sm-padding-50px-tb border-radius-4 card"
+                     style="visibility: visible; animation-name: fadeInLeft; background-color: #fff;">
                     <div class="row m-0">
                         <div class="col-12 margin-six-bottom lg-margin-six-bottom md-margin-30px-bottom sm-no-margin-bottom">
                             <h4 class="na-text-dark-green learning-intro-header text-center mx-auto mx-lg-0 sm-width-100 mb-0">Welcome to YAEDP</h4>
@@ -119,8 +118,6 @@
                         <!-- end feature box item -->
                     </div>
                 </div>
-
-                <div class="col-12 col-lg-4 wow fadeInRight" style=""></div>
 
             </div>
         </div>

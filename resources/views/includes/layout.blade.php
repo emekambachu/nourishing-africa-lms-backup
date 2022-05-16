@@ -221,20 +221,20 @@
                         </li>
                         <li class="dropdown simple-dropdown">
                             <a href="#" style="color: #267c26">Programs</a>
-                            <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                            <i class="fas fa-angle-down dropdown-toggle"
+                               data-toggle="dropdown" aria-hidden="true"></i>
                             <!-- start sub menu -->
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ route('esp.page') }}">Entrepreneur Support Program</a></li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ route('esp.login') }}">ESP Login</a></li>
+                                       href="https://nourishingafrica.com/yaedp/application">
+                                        YAEDP</a></li>
                             </ul>
                         </li>
                         <li class="dropdown simple-dropdown">
                             <a href="javascript:void(0)" style="color: #267c26">Resources</a>
-                            <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                            <i class="fas fa-angle-down dropdown-toggle"
+                               data-toggle="dropdown" aria-hidden="true"></i>
                             <!-- start sub menu -->
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown">
@@ -247,10 +247,12 @@
                                     <ul class="dropdown-menu" role="menu" style="background-color: rgb(255, 255, 255);">
                                         <li class="dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown"
-                                               href="{{ route('funding') }}" style="color: #006600" >Financial Support</a></li>
+                                               href="{{ route('funding') }}"
+                                               style="color: #006600" >Financial Support</a></li>
                                         <li class="dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown"
-                                               href="{{ route('capacity-building') }}" style="color: #006600">Capacity Building</a></li>
+                                               href="{{ route('capacity-building') }}"
+                                               style="color: #006600">Capacity Building</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
@@ -390,16 +392,13 @@
 
                 <!-- start contact information -->
                 <div class="col-lg-3 col-md-6 widget padding-45px-left md-padding-15px-left md-clear-both md-no-border-right sm-margin-30px-bottom text-center text-md-left">
-                    <div class="widget-title add-link margin-10px-bottom font-weight-300" style="color:#FFF">Contact Info</div>
+                    <div class="widget-title add-link margin-10px-bottom font-weight-300"
+                         style="color:#FFF">Contact Info</div>
 
 
                     <div class="text-small add-link-sub" style="color:#FFF">
                         <i class="far fa-envelope fa-2x p-2"></i> <a href="mailto:info@nourishingafrica.com">
-                            <span class="add-link-sub"> info@nourishingafrica.com</span></a>
-                    </div>
-                    <div class="text-small add-link-sub" style="color:#FFF">
-                        <i class="fa fa-phone fa-2x p-2" aria-hidden="true"></i>
-                        <span class="add-link-sub"> +234 802 988 8231</span>
+                            <span class="add-link-sub"> yaedp@nourishingafrica.com</span></a>
                     </div>
 
                     <div class="social-icon-style-8 d-inline-block vertical-align-middle p-2">
@@ -477,9 +476,6 @@
 <!-- end scroll to top -->
 <!-- javascript libraries -->
 
-{{--<script src="https://code.jquery.com/jquery-3.5.1.min.js"--}}
-{{--            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>--}}
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <!--<script type="text/javascript" src="js/modernizr.js"></script>-->
@@ -535,71 +531,6 @@
 <script src="{{ asset('js/owl.carousel.js') }}"></script>
 <script src="{{ asset('custom/js/libs/jquery-ui-1.12.1/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('custom/js/smart-search.js') }}"></script>
-{{--<script type="text/javascript">
-    @if(App\CustomTracker::getVisitorsInMemoryData("video-guide")->count() == 0)
-        $(document).ready(function () {
-            setTimeout(() => {
-                $("#customToast").removeClass("d-none");
-            }, 5000);
-        });
-    @endif
-    function watchVideo(){
-        $("#tutorialVideo").removeClass("d-none");
-    }
-    function hideWatchVideo(){
-        $("#tutorialVideo").addClass("d-none");
-    }
-
-    function notInterested(){
-        $('#customToast').addClass('d-none');
-
-        $.ajax({
-            type: 'POST',
-            url: '{{ route('homepage.customtracker') }}',
-            data: { action : 'video-guide' },
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-            },
-            beforeSend: function () {
-               console.log("sending ...");
-            },
-            success: function (Response) {
-                console.log(Response);
-
-            },
-            error: function (Response) {
-                console.log(Response);
-            },
-            complete: function (Response) {
-                console.log(Response);
-            }
-        });
-    }
-</script>
-<div id="customToast" class="d-none card" style="position: fixed; top: 80px; right: 0px; z-index: 999;">
-    <div class="toast-header">
-      <strong class="mr-auto">Welcome Tutorial</strong>
-      <button type="button" class="ml-2 mb-1 close" onclick="$('#customToast').addClass('d-none');">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="toast-body">
-      Hello, we have made a tutorial for you to get you started!
-      <div class="row">
-          <div class="col-6"><button class="btn btn-sm btn-primary" onclick="watchVideo()">Watch Tutorial</button></div>
-          <div class="col-6"><button class="btn btn-sm btn-info" onclick="notInterested()">Not Interested</button></div>
-      </div>
-    </div>
-</div>
-<div id="tutorialVideo" class="w-100 h-100 d-none" style="position: fixed; z-index: 999; top: 0px; bottom: 0px; left: 0px; right: 0px;">
-    <div class="opacity-medium bg-extra-dark-gray" style="z-index: 999;"></div>
-    <div class="row h-100">
-        <button class="btn btn-sm btn-warning" style="position: absolute; top:10px; right: 10px; z-index: 99999;" onclick="hideWatchVideo()">x close</button>
-        <div class="d-flex justify-content-center align-items-center w-100 h-100" style="z-index: 9999;">
-            <iframe src="https://www.youtube.com/watch?v=rNdqfOxPz30" frameborder="0"></iframe>
-        </div>
-    </div>
-</div> --}}
 
 @yield('bottom-assets')
 

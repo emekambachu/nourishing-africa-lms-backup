@@ -21,7 +21,8 @@
                         Are you ready to take your agri-food business to the next level?</h4>
                     <p class="text-inter text-gray tx-15 text-justify">
                         The Youth in Agri-Food Export Development Program (YAEDP) training covers a robust curriculum that takes participants on a comprehensive learning journey from the conception of the Nigerian export market specific to key export value chains to successful entry to the international market....
-                        <a class="na-text-dark-green font-weight-bold" href="{{ route('yaedp.account.about-program') }}">See more</a>
+                        <a class="na-text-dark-green font-weight-bold"
+                           href="{{ route('yaedp.account.about-program') }}">See more</a>
                     </p>
                 </div>
                 <div class="row">
@@ -144,8 +145,7 @@
                             @if(count($moduleProgress) > 0)
                                 @foreach(array_slice($moduleProgress, 0, 3) as $key => $value)
                                     <!--array_slice will stop the array after the 3rd loop-->
-                                    <p class="mb-0 text-left tx-12">
-                                        {{ $value['moduleTitle'] }} ({{ $value['percent'] }}%)</p>
+                                    <p class="mb-0 text-left tx-12">{{ $value['moduleTitle'] }}</p>
                                     <div class="progress mb-3 na-border-radius">
                                         <div class="progress-bar
                                     @if($value['percent'] === 100) bg-success
@@ -226,7 +226,8 @@
                     <h5 class="text-inter font-weight-bold text-center">Welcome</h5>
                 </div>
                 <div class="modal-body">
-                    <iframe id="intro-iframe" src="https://drive.google.com/file/d/1d3XhpLx_9o2qIk52o7u1cmXgMR_Sr6Ni/preview"
+                    <iframe id="intro-iframe"
+                            src="https://drive.google.com/file/d/1d3XhpLx_9o2qIk52o7u1cmXgMR_Sr6Ni/preview"
                             width="100%" height="480" allow="autoplay"></iframe>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
