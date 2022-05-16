@@ -23,6 +23,7 @@
 
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-12">
+
                 <div class="bg-white-radius-shadow border-light-green">
 
                     <div class="row">
@@ -40,17 +41,17 @@
                     </div>
                 </div>
 
-                @if(!empty($course->trainer))
                 <div class="row">
+                    @if(!empty($course->trainer))
                     <div class="col-12 mt-3 mb-3 course-tabs">
-                        <span id="description" class="d-inline text-dark active course-tab">
-                            Description</span>
+                    <span id="description" class="d-inline text-dark active course-tab">
+                        Description</span>
                         <span id="instructor" class="d-inline text-dark course-tab">
-                            Instructor</span>
+                        Instructor</span>
                         <span id="resources" class="d-inline text-dark course-tab">
-                            Resources</span>
+                        Resources</span>
                         <span id="discussion" class="d-inline text-dark course-tab">
-                            Discussion</span>
+                        Discussion</span>
                     </div>
 
                     <div class="col-12 bg-white-radius-shadow tab-bodies" id="description-tab-body">
@@ -89,7 +90,7 @@
                                     @if(!empty($resource->url))
                                         <a class="btn btn-sm btn-rounded btn-success"
                                            href="{{ $resource->url }}">
-                                           Link <i class="fa fa-link"></i>
+                                            Link <i class="fa fa-link"></i>
                                         </a>
                                     @endif
                                 </div>
@@ -112,116 +113,116 @@
                                 <div class="modal fade" id="exampleModalCenter" tabindex="-1"
                                      role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-body">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close" style="position: relative; right: 1px;">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <label class="news-update-view-page-form-text comment-title"></label>
-                                                                <input type="hidden" id="ReplyID" value="">
-                                                                <input type="hidden" id="type" value="">
-                                                                <input type="hidden" id="directReplyId" value="">
-                                                                <input type="hidden" id="courseId"
-                                                                       value="{{ $course->id }}">
-                                                                <input type="hidden" id="LMID"
-                                                                       value="{{ $course->learningModule->id }}">
-                                                                <input type="hidden" id="LCID"
-                                                                       value="{{ $course->learningCategory->id }}">
-                                                                <textarea row="5" id="comment" class="form-control"
-                                                                          placeholder="Comments" required></textarea>
-                                                                <span id="msg"></span>
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close" style="position: relative; right: 1px;">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <label class="news-update-view-page-form-text comment-title"></label>
+                                                                    <input type="hidden" id="ReplyID" value="">
+                                                                    <input type="hidden" id="type" value="">
+                                                                    <input type="hidden" id="directReplyId" value="">
+                                                                    <input type="hidden" id="courseId"
+                                                                           value="{{ $course->id }}">
+                                                                    <input type="hidden" id="LMID"
+                                                                           value="{{ $course->learningModule->id }}">
+                                                                    <input type="hidden" id="LCID"
+                                                                           value="{{ $course->learningCategory->id }}">
+                                                                    <textarea row="5" id="comment" class="form-control"
+                                                                              placeholder="Comments" required></textarea>
+                                                                    <span id="msg"></span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-sm-12">
-                                                        </div>
-                                                        <div class="col-md-6 col-sm-12">
-                                                            <div class="float-right">
-                                                                <button id="comment-submit-btn"
-                                                                        class="comment-form-submit">
-                                                                    <img class="pr-1 d-none" id="submit-img"
-                                                                         src="{{ asset('images/floading.gif') }}">
-                                                                    Submit</button>
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-sm-12">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <div class="float-right">
+                                                                    <button id="comment-submit-btn"
+                                                                            class="comment-form-submit">
+                                                                        <img class="pr-1 d-none" id="submit-img"
+                                                                             src="{{ asset('images/floading.gif') }}">
+                                                                        Submit</button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                      </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-12 pl-3 pr-3 mt-3" style="height: 300px; overflow:scroll;">
                                 @foreach($discussion as $item)
-                                <div class="row mb-3">
-                                    <div class="col-12">
-                                        <img src="{{ asset('images/icons/profile.png') }}">
-                                        <label for="" class="pl-3 discussion-comment-name">
-                                            {{ \App\Models\YaedpUser::getUserFullName($item->user_id) }}</label>
-                                        <label for="" class="float-right discussion-comment-time">
-                                            {{ Carbon\Carbon::parse($item->created_at)->diffForHumans(null, true).' ago' }}</label>
+                                    <div class="row mb-3">
+                                        <div class="col-12">
+                                            <img src="{{ asset('images/icons/profile.png') }}">
+                                            <label for="" class="pl-3 discussion-comment-name">
+                                                {{ \App\Models\YaedpUser::getUserFullName($item->user_id) }}</label>
+                                            <label for="" class="float-right discussion-comment-time">
+                                                {{ Carbon\Carbon::parse($item->created_at)->diffForHumans(null, true).' ago' }}</label>
+                                        </div>
+                                        <div class="col-12 mt-2">
+                                            <p class="discussion-comment-body">{{ $item->message }}</p>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="discussion-comment-like"
+                                                    data-commentid="{{ $item->id }}" data-type="comment">
+                                                <img id="commentlike{{ $item->id }}" style="width: 16px; height: 16px;" src="{{ \App\Models\Learning\LearningDiscussionLike::check("comment", $course->id, $item->id) ? asset("images/icons/chkdfav.png") : asset("images/icons/like.png") }}" alt="">
+                                                &nbsp;&nbsp; Like ({{ \App\Models\Learning\LearningDiscussionLike::countLikes("comment", $course->id, $item->id) }})
+                                            </button>
+                                            <button class="discussion-comment-reply"
+                                                    data-commentdiv="subcomment{{ $item->id }}">
+                                                Replies({{ \App\Models\Learning\LearningDiscussionReply::getCount($item->id) }})</button>
+                                            <button class="discussion-comment-reply float-right"
+                                                    data-type="directCommentReply" data-directreplyid="{{ $item->id }}"
+                                                    data-commentid="{{ $item->id }}" data-toggle="modal"
+                                                    data-target="#exampleModalCenter">
+                                                <img src="{{asset("images/icons/reply.png")}}" alt="">&nbsp;&nbsp; Reply</button>
+                                        </div>
                                     </div>
-                                    <div class="col-12 mt-2">
-                                        <p class="discussion-comment-body">{{ $item->message }}</p>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="discussion-comment-like"
-                                                data-commentid="{{ $item->id }}" data-type="comment">
-                                            <img id="commentlike{{ $item->id }}" style="width: 16px; height: 16px;" src="{{ \App\Models\Learning\LearningDiscussionLike::check("comment", $course->id, $item->id) ? asset("images/icons/chkdfav.png") : asset("images/icons/like.png") }}" alt="">
-                                            &nbsp;&nbsp; Like ({{ \App\Models\Learning\LearningDiscussionLike::countLikes("comment", $course->id, $item->id) }})
-                                        </button>
-                                        <button class="discussion-comment-reply"
-                                                data-commentdiv="subcomment{{ $item->id }}">
-                                            Replies({{ \App\Models\Learning\LearningDiscussionReply::getCount($item->id) }})</button>
-                                        <button class="discussion-comment-reply float-right"
-                                                data-type="directCommentReply" data-directreplyid="{{ $item->id }}"
-                                                data-commentid="{{ $item->id }}" data-toggle="modal"
-                                                data-target="#exampleModalCenter">
-                                            <img src="{{asset("images/icons/reply.png")}}" alt="">&nbsp;&nbsp; Reply</button>
-                                    </div>
-                                </div>
-                                @if($item->learningDiscussionReplies)
-                                    <div id="subcomment{{ $item->id }}" class="ml-3 mt-3 d-none"
-                                         style="border-left: 1px solid #ECEAEA;">
-                                    @foreach($item->learningDiscussionReplies as $replies)
-                                    @if($replies->status === 1)
-                                        <div class="row pl-3 mb-3">
-                                            <div class="col-12">
-                                                <img src="{{ asset('images/icons/profile.png') }}" alt="" class="">
-                                                <label for="" class="pl-3 discussion-comment-name">
-                                                    {{ \App\Models\YaedpUser::getUserFullName($replies->user_id) }}</label>
-                                                <label for="" class="float-right discussion-comment-time">
-                                                    {{ Carbon\Carbon::parse($replies->created_at)->diffForHumans(null, true).' ago' }}</label>
-                                            </div>
-                                            <div class="col-12 mt-2">
-                                                <p class="discussion-comment-body">{{ $replies->message }}</p>
-                                            </div>
-                                            <div class="col-12">
-                                                <button class="discussion-comment-like"
-                                                        data-commentid="{{ $item->id }}" data-type="reply" data-replyid="{{ $replies->id }}">
-                                                    <img id="replylike{{ $replies->id }}"
-                                                         style="width: 16px; height: 16px;"
-                                                         src="{{ \App\Models\Learning\LearningDiscussionLike::check("reply", $course->id, $item->id, $replies->id) ? asset("images/icons/chkdfav.png") : asset("images/icons/like.png") }}" alt="">
-                                                    &nbsp;&nbsp; Like ({{ \App\Models\Learning\LearningDiscussionLike::countLikes("reply", $course->id, $item->id, $replies->id) }})
-                                                </button>
-                                                <button class="discussion-comment-reply float-right" data-type="Reply" data-directreplyid="{{ $replies->id }}" data-commentid="{{ $item->id }}" data-toggle="modal" data-target="#exampleModalCenter"><img src="{{asset("images/icons/reply.png")}}" alt="">&nbsp;&nbsp; Reply</button>
-                                            </div>
+                                    @if($item->learningDiscussionReplies)
+                                        <div id="subcomment{{ $item->id }}" class="ml-3 mt-3 d-none"
+                                             style="border-left: 1px solid #ECEAEA;">
+                                            @foreach($item->learningDiscussionReplies as $replies)
+                                                @if($replies->status === 1)
+                                                    <div class="row pl-3 mb-3">
+                                                        <div class="col-12">
+                                                            <img src="{{ asset('images/icons/profile.png') }}" alt="" class="">
+                                                            <label for="" class="pl-3 discussion-comment-name">
+                                                                {{ \App\Models\YaedpUser::getUserFullName($replies->user_id) }}</label>
+                                                            <label for="" class="float-right discussion-comment-time">
+                                                                {{ Carbon\Carbon::parse($replies->created_at)->diffForHumans(null, true).' ago' }}</label>
+                                                        </div>
+                                                        <div class="col-12 mt-2">
+                                                            <p class="discussion-comment-body">{{ $replies->message }}</p>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button class="discussion-comment-like"
+                                                                    data-commentid="{{ $item->id }}" data-type="reply" data-replyid="{{ $replies->id }}">
+                                                                <img id="replylike{{ $replies->id }}"
+                                                                     style="width: 16px; height: 16px;"
+                                                                     src="{{ \App\Models\Learning\LearningDiscussionLike::check("reply", $course->id, $item->id, $replies->id) ? asset("images/icons/chkdfav.png") : asset("images/icons/like.png") }}" alt="">
+                                                                &nbsp;&nbsp; Like ({{ \App\Models\Learning\LearningDiscussionLike::countLikes("reply", $course->id, $item->id, $replies->id) }})
+                                                            </button>
+                                                            <button class="discussion-comment-reply float-right" data-type="Reply" data-directreplyid="{{ $replies->id }}" data-commentid="{{ $item->id }}" data-toggle="modal" data-target="#exampleModalCenter"><img src="{{asset("images/icons/reply.png")}}" alt="">&nbsp;&nbsp; Reply</button>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     @endif
-                                    @endforeach
-                                    </div>
-                                @endif
                                 @endforeach
                             </div>
 
@@ -232,8 +233,8 @@
                             @endif
                         </div>
                     </div>
+                    @endif
                 </div>
-                @endif
 
             </div>
 

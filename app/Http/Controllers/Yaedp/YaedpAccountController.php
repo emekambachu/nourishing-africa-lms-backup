@@ -513,8 +513,6 @@ class YaedpAccountController extends Controller
     public function updateEmail(Request $request){
         // Validate form fields
         $rules = array(
-        //  'old_email' => ['required', 'email', 'exists:yedp_users,email'],
-        //  'new_email' => ['required', 'email', 'unique:yedp_users,email'],
             'old_email' => ['required', 'email'],
             'new_email' => ['required', 'email'],
         );
@@ -523,7 +521,7 @@ class YaedpAccountController extends Controller
 
         if($validator->fails()){
             return response()->json([
-                'error' => true,
+                'success' => false,
                 "errors" => $validator->getMessageBag()->toArray()
             ]);
         }
@@ -555,18 +553,18 @@ class YaedpAccountController extends Controller
 
         Session::put('new_email', $request->new_email); // Add new email to session
         $data['verification_token'] = $user->verification_token;
-        $data['email'] = $request->new_email;
+        $data['email'] = $request->old_email;
         $data['name'] = Auth::user()->surname.' '.Auth::user()->first_name;
         Mail::send('emails.yaedp.email-verification', $data, static function ($message) use ($data) {
             $message->from('yaedp@nourishingafrica.com', 'Nourishing Africa | YAEDP');
             $message->to($data['email'], $data['name']);
             $message->replyTo('yaedp@nourishingafrica.com', 'Nourishing Africa | YAEDP');
-            $message->subject('Email verification');
+            $message->subject('YAEDP | Email verification');
         });
 
         return response()->json([
             'success' => true,
-            'message' => "Email update request has been sent to {$request->new_email}, check email"
+            'message' => "Email update request has been sent to {$request->old_email}, check email"
         ]);
     }
 

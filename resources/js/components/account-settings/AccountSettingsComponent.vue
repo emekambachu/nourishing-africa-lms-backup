@@ -4,18 +4,6 @@
 
             <div class="panel panel-primary tabs-style-2">
 
-                <div v-if="formLoading" class="text-center">
-                    <i class="fa fa-spin fa-spinner text-light-brown fa-3x text-center"></i><br>
-                    <p class="text-center">Please wait......</p>
-                </div>
-
-                <div v-if="formSuccessful" class="alert alert-success text-center" role="alert">
-                    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <strong class="text-center">{{ alertMessage }}</strong>
-                </div>
-
                 <div v-if="formError" class="alert alert-danger text-center" role="alert">
                     <button aria-label="Close" class="close" data-dismiss="alert" type="button">
                         <span aria-hidden="true">&times;</span>
@@ -327,18 +315,35 @@
             },
 
             submitForm: function(url, form){
-                this.formLoading = true;
+                // Install sweetalert2 to use
+                // Loading
+                Swal.fire({
+                    title: 'Please Wait !',
+                    html: 'Submitting',// add html attribute if you want or remove
+                    allowOutsideClick: false,
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    },
+                });
                 axios.post(url, form)
                     .then(response => {
                         console.log(response.data);
-                        this.formSuccessful = response.data.success === true;
-                        this.formError = response.data.success === false;
-                        this.alertMessage = response.data.message;
-                        this.formLoading = false;
+                        response.data.success === true ? [
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Submitted',
+                                showConfirmButton: true,
+                                timer: 10000
+                            }),
+                            this.formSuccessful = true,
+                        ] : [
+                            this.formError = response.data.success === false,
+                            this.alertMessage = response.data.message
+                        ]
                     }).catch((error) => {
                         console.log(error.response.data.errors);
-                    }).finally(() => {
-
                     });
             },
 
