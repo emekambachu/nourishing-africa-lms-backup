@@ -226,9 +226,8 @@
                     <h5 class="text-inter font-weight-bold text-center">Welcome</h5>
                 </div>
                 <div class="modal-body">
-                    <iframe id="intro-iframe"
-                            src="https://drive.google.com/file/d/1d3XhpLx_9o2qIk52o7u1cmXgMR_Sr6Ni/preview"
-                            width="100%" height="480" allow="autoplay"></iframe>
+                    <iframe src="https://drive.google.com/file/d/1BlA0tNUEWJ8L_OgZ4C-NAdqearf8Pm_T/preview"
+                            width="100%" height="460" allow="autoplay"></iframe>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button id="intro-close-forever" class="btn ripple btn-danger btn-rounded startCourse"
