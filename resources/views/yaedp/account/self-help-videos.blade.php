@@ -24,7 +24,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="na-text-dark-green">Re-watch introduction video</h5>
+                        <h5 class="na-text-dark-green">Re-watch the welcome video</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
                         <iframe id="intro-iframe" src="https://drive.google.com/file/d/1d3XhpLx_9o2qIk52o7u1cmXgMR_Sr6Ni/preview"
@@ -48,7 +48,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="na-text-dark-green">starting or joining a discussion</h5>
+                        <h5 class="na-text-dark-green">Starting or joining a discussion</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
                         <iframe src="https://drive.google.com/file/d/1wykcNaz8pU3hnoadHi4Pv3oDnDnt2cSo/preview"
@@ -100,7 +100,7 @@
                 <div class="card">
                     <div class="card-body text-inter shadow-2">
                         <h4 class="na-text-dark-green">Questions about your courses</h4>
-                        <p>Please visit the Discussion thread under each course to see some already answered questions by other students and course instructors.</p>
+                        <p>Please visit the discussion forum under each course to see some already answered questions by other students and course instructors.</p>
                     </div>
                 </div>
             </div>

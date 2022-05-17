@@ -33,7 +33,7 @@
             </div>
         @else
             <div class="certificate-bg-sample">
-                <img src="{{ asset }}"/>
+                <img src="{{ asset('images/icons/certificate_yaedp_500_sample.png') }}"/>
             </div>
         @endif
         </div>

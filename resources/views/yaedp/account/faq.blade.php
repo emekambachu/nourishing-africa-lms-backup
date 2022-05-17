@@ -33,7 +33,7 @@
                     <div class="card-body text-inter shadow-2">
                         <h4 class="na-text-dark-green">Help for learners</h4>
                         <p><a href="{{ route('yaedp.account.self-help') }}">
-                                Watch self-help videos for students</a></p>
+                                Watch self-help videos</a></p>
                         <p><a href="{{ route('yaedp.account.about-program') }}">
                                 Find out more about the YAEDP program</a></p>
                     </div>
