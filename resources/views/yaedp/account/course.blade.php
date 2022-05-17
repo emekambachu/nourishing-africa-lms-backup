@@ -68,7 +68,7 @@
                             </div>
                             <div class="col-md-10 col-sm-12">
                                 <h4 class="text-inter text-dark mb-0">{{ $course->trainer }}</h4>
-                                <p class="text-inter text-grey tx-14">{!! $course->trainer_bio !!}</p>
+                                <p class="text-inter text-grey tx-14 text-justify">{!! $course->trainer_bio !!}</p>
                             </div>
                         </div>
                     </div>
