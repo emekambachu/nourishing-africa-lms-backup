@@ -48,7 +48,7 @@
                         <div class="bg-light-purple d-inline d-flex p-3 border-radius-8">
                             <img src="{{ asset('images/icons/instructors.png') }}" width="70"/>
                             <span class="ml-2">
-                                <h2>16</h2>
+                                <h2>12</h2>
                                 <p>Instructors</p>
                             </span>
                         </div>
@@ -223,7 +223,8 @@
         <div class="modal-dialog modal-dialog-centered" style="max-width: 700px;" role="document">
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
-                    <h5 class="text-inter font-weight-bold text-center">Welcome to the YAEDP</h5>
+                    <h5 class="text-inter font-weight-bold text-center">
+                        Welcome to the Youth in Agri-Food Export Development Program (YAEDP)</h5>
                 </div>
                 <div class="modal-body">
                     <iframe src="https://drive.google.com/file/d/1BlA0tNUEWJ8L_OgZ4C-NAdqearf8Pm_T/preview"
