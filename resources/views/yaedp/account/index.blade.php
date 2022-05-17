@@ -223,7 +223,7 @@
         <div class="modal-dialog modal-dialog-centered" style="max-width: 700px;" role="document">
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
-                    <h5 class="text-inter font-weight-bold text-center">Welcome</h5>
+                    <h5 class="text-inter font-weight-bold text-center">Welcome to the YAEDP</h5>
                 </div>
                 <div class="modal-body">
                     <iframe src="https://drive.google.com/file/d/1BlA0tNUEWJ8L_OgZ4C-NAdqearf8Pm_T/preview"
