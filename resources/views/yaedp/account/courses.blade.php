@@ -97,7 +97,54 @@
 
     </div>
 
+    <!--Welcome Modal-->
+    <div class="modal effect-scale hide" id="intro-dialogue{{ $module->id }}"
+         data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px;" role="document">
+            <div class="modal-content modal-content-demo">
+                <div class="modal-header">
+                    <h5 class="text-inter font-weight-bold text-center">
+                        Welcome to module {{ $module->number }}</h5>
+                </div>
+                <div id="intro-iframe{{ $module->id }}" class="modal-body">
+                    {{ $module->introduction_video }}
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button id="intro-close-forever" class="btn ripple btn-danger btn-rounded startCourse"
+                            data-dismiss="modal" type="button">Close forever</button>
+                    <button id="intro-close-once" class="btn ripple btn-rounded bg-light-green text-white"
+                            type="button" data-dismiss="modal">Close once</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('bottom-assets')
+    <script>
+        $(function(){
+            $(document).ready(function(){
+                // localStorage.removeItem('intro-shown');
+                let introShown = localStorage.getItem('intro-shown'+{{ $module->id }})
+                if (!introShown) {
+                    setTimeout(function(){
+                        $("#intro-dialogue"+{{ $module->id }}).modal('show');
+                    }, 1000);
+                    // on click intro close forever, store in local storage to show once
+                    // also remove the video iframe
+                    $('#intro-close-forever').click(function(){
+                        localStorage.setItem('intro-shown'+{{ $module->id }}, 1);
+                        $('#intro-iframe'+{{ $module->id }}).remove();
+                    });
+                    // on clicked intro close once, only remove video iframe
+                    $('#intro-close-once').click(function(){
+                        $('#intro-iframe'+{{ $module->id }}).remove();
+                    });
+                }
+
+            });
+
+        });
+    </script>
 @endsection

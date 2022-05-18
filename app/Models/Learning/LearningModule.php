@@ -8,6 +8,7 @@ class LearningModule extends Model
 {
     protected $fillable = [
         'title',
+        'number',
         'learning_category_id',
         'image',
         'description',
@@ -15,6 +16,8 @@ class LearningModule extends Model
         'teaching_methods',
         'start',
         'end',
+        'introduction_video',
+        'total_courses',
         'sort',
         'visible',
     ];
