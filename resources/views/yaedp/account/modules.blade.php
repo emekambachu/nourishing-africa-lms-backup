@@ -46,7 +46,7 @@
                         {{ $mod->title }}
                     </p>
                     <p class="tx-14">
-                        <i class="fa fa-book-open text-light-brown"></i> {{ $mod->learningCourses->count() }} Courses
+                        <i class="fa fa-book-open text-light-brown"></i> {{ $mod->total_courses }} Courses
                     </p>
 
                     <!--If this item is not the first module, check if the previous module has been completed-->
