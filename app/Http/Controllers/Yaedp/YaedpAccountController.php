@@ -42,7 +42,7 @@ class YaedpAccountController extends Controller
             ->latest()->get();
 
 //        $data['courses'] = LearningCourse::where('learning_category_id', $this->yaedpId())->get();
-        $data['sumCourses'] = LearningCourse::where('learning_category_id', $this->yaedpId())
+        $data['sumCourses'] = LearningModule::where('learning_category_id', $this->yaedpId())
             ->sum('total_courses');
 
         $data['getCourseViews'] = new LearningCourseView();
