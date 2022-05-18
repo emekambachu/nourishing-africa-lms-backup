@@ -69,60 +69,58 @@
                                                    name="answers[{{ $loop->index }}][answer]" id="flexRadioDefault1"
                                                    value="{{ $quest->option_one }}" required>
                                             <label class="form-check-label text-dark" for="flexRadioDefault1">
-                                                {{ $quest->option_one }}
-                                            </label>
+                                                {{ $quest->option_one }}</label>
                                         </div>
 
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio"
                                                    name="answers[{{ $loop->index }}][answer]" id="flexRadioDefault1"
                                                    value="{{ $quest->option_two }}">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                {{ $quest->option_two }}
-                                            </label>
+                                            <label class="form-check-label text-dark" for="flexRadioDefault1">
+                                                {{ $quest->option_two }}</label>
                                         </div>
 
                                         @if(!empty($quest->option_three))
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio"
-                                                       name="answers[{{ $loop->index }}][answer]" id="flexRadioDefault1"
+                                                       name="answers[{{ $loop->index }}][answer]"
+                                                       id="flexRadioDefault1"
                                                        value="{{ $quest->option_three }}">
-                                                <label class="form-check-label" for="flexRadioDefault1">
-                                                    {{ $quest->option_three }}
-                                                </label>
+                                                <label class="form-check-label text-dark" for="flexRadioDefault1">
+                                                    {{ $quest->option_three }}</label>
                                             </div>
                                         @endif
 
                                         @if(!empty($quest->option_four))
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio"
-                                                       name="answers[{{ $loop->index }}][answer]" id="flexRadioDefault1"
+                                                       name="answers[{{ $loop->index }}][answer]"
+                                                       id="flexRadioDefault1"
                                                        value="{{ $quest->option_four }}">
-                                                <label class="form-check-label" for="flexRadioDefault1">
-                                                    {{ $quest->option_four }}
-                                                </label>
+                                                <label class="form-check-label text-dark" for="flexRadioDefault1">
+                                                    {{ $quest->option_four }}</label>
                                             </div>
                                         @endif
 
                                         @if(!empty($quest->option_five))
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio"
-                                                       name="answers[{{ $loop->index }}][answer]" id="flexRadioDefault1"
+                                                       name="answers[{{ $loop->index }}][answer]"
+                                                       id="flexRadioDefault1"
                                                        value="{{ $quest->option_five }}">
-                                                <label class="form-check-label" for="flexRadioDefault1">
-                                                    {{ $quest->option_five }}
-                                                </label>
+                                                <label class="form-check-label text-dark" for="flexRadioDefault1">
+                                                    {{ $quest->option_five }}</label>
                                             </div>
                                         @endif
 
                                         @if(!empty($quest->option_six))
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio"
-                                                       name="answers[{{ $loop->index }}][answer]" id="flexRadioDefault1"
+                                                       name="answers[{{ $loop->index }}][answer]"
+                                                       id="flexRadioDefault1"
                                                        value="{{ $quest->option_six }}">
-                                                <label class="form-check-label" for="flexRadioDefault1">
-                                                    {{ $quest->option_six }}
-                                                </label>
+                                                <label class="form-check-label text-dark" for="flexRadioDefault1">
+                                                    {{ $quest->option_six }}</label>
                                             </div>
                                         @endif
                                     </div>
