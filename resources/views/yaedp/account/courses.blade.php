@@ -107,7 +107,7 @@
                         Welcome to module {{ $module->number }}</h5>
                 </div>
                 <div id="intro-iframe{{ $module->id }}" class="modal-body">
-                    {{ $module->introduction_video }}
+                    {!! $module->introduction_video !!}
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button id="intro-close-forever" class="btn ripple btn-danger btn-rounded startCourse"
