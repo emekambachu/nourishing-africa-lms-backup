@@ -39,7 +39,7 @@
                         <div class="bg-lighter-brown d-inline d-flex p-3 border-radius-8">
                             <img src="{{ asset('images/icons/online-course.png') }}" width="70"/>
                             <span class="ml-2">
-                                <h2>{{ $courses->count() }}</h2>
+                                <h2>{{ $sumCourses }}</h2>
                                 <p>Courses</p>
                             </span>
                         </div>
