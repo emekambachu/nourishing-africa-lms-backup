@@ -126,30 +126,30 @@
 
 @section('bottom-assets')
     <script src="{{ asset('learning-assets/custom/js/login-form.js') }}"></script>
-    <script>
-    $(function() {
-        $(document).ready(function () {
-            document.cookie = 'my_cookie=; path=/; domain=.nourishingafrica.com; expires=' + new Date(0).toUTCString();
-            (function () {
-                let cookies = document.cookie.split("; ");
-                for (let c = 0; c < cookies.length; c++) {
-                    let d = window.location.hostname.split(".");
-                    while (d.length > 0) {
-                        let cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + 'nourishingafrica.com' + ' ;path=';
-                        console.log(d[1] + '.' + d[2]);
-                        let p = location.pathname.split('/');
-                        document.cookie = cookieBase + '/';
-                        while (p.length > 0) {
-                            document.cookie = cookieBase + p.join('/');
-                            p.pop();
-                        }
-                        d.shift();
-                    }
-                }
-                console.log('cookie deleted');
-                console.log(window.location.hostname);
-            })();
-        });
-    });
-    </script>
+{{--    <script>--}}
+{{--    $(function() {--}}
+{{--        $(document).ready(function () {--}}
+{{--            document.cookie = 'my_cookie=; path=/; domain=.nourishingafrica.com; expires=' + new Date(0).toUTCString();--}}
+{{--            (function () {--}}
+{{--                let cookies = document.cookie.split("; ");--}}
+{{--                for (let c = 0; c < cookies.length; c++) {--}}
+{{--                    let d = window.location.hostname.split(".");--}}
+{{--                    while (d.length > 0) {--}}
+{{--                        let cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + 'nourishingafrica.com' + ' ;path=';--}}
+{{--                        console.log(d[1] + '.' + d[2]);--}}
+{{--                        let p = location.pathname.split('/');--}}
+{{--                        document.cookie = cookieBase + '/';--}}
+{{--                        while (p.length > 0) {--}}
+{{--                            document.cookie = cookieBase + p.join('/');--}}
+{{--                            p.pop();--}}
+{{--                        }--}}
+{{--                        d.shift();--}}
+{{--                    }--}}
+{{--                }--}}
+{{--                console.log('cookie deleted');--}}
+{{--                console.log(window.location.hostname);--}}
+{{--            })();--}}
+{{--        });--}}
+{{--    });--}}
+{{--    </script>--}}
 @endsection
