@@ -226,8 +226,8 @@
                     <h5 class="text-inter font-weight-bold text-center">
                         Welcome to the Youth in Agri-Food Export Development Program (YAEDP)</h5>
                 </div>
-                <div id="intro-iframe" class="modal-body">
-                    <iframe src="https://drive.google.com/file/d/1BlA0tNUEWJ8L_OgZ4C-NAdqearf8Pm_T/preview"
+                <div class="modal-body">
+                    <iframe id="intro-iframe" src="https://drive.google.com/file/d/1BlA0tNUEWJ8L_OgZ4C-NAdqearf8Pm_T/preview"
                             width="100%" height="460" allow="autoplay"></iframe>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
