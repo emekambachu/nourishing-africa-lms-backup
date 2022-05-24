@@ -463,7 +463,7 @@ class YaedpAccountController extends Controller
         $data['name'] = Auth::user()->surname.' '.Auth::user()->first_name;
         $data['email_body'] = "<strong>{$data['name']}</strong> has sent a YAEDP profile update request.<br>
                                 Click <a href=''>here</a> to go to the admin and access it";
-        $adminEmails = ['embachu@nourishingafrica.com', 'reyinfunjowo@nourishingafrica.com', 'tkareem@nourishingafrica.com'];
+        $adminEmails = ['embachu@nourishingafrica.com', 'reyinfunjowo@nourishingafrica.com', 'tkareem@nourishingafrica.com', 'sokonkwo@nourishingafrica.com'];
         Mail::send('emails.index', $data, static function ($message) use ($data, $adminEmails) {
             $message->from('yaedp@nourishingafrica.com', 'Nourishing Africa | YAEDP');
             $message->to($adminEmails);
