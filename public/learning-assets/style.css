@@ -746,7 +746,10 @@ input[type="radio"].assessment-radio-input{
     margin: 0 auto;
     width: 700px;
     height: 722px;
-    background-image: url(../images/icons/certificate_yaedp_700.png) no-repeat;
+    background-image: url(../images/icons/certificate_yaedp_700.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .certificate-bg-sample{
