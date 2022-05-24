@@ -199,7 +199,7 @@ class YaedpAssessmentController extends Controller
             if($hasAssessment){
                 $hasAssessment->score = $score;
                 $hasAssessment->percent = round($percent, 2);
-                $hasAssessment->passed = $percent > 80 ? 1 : 0;
+                $hasAssessment->passed = $percent > 75 ? 1 : 0;
                 $hasAssessment->save();
             }else{
                 $hasAssessment = new LearningAssessment();
@@ -207,7 +207,7 @@ class YaedpAssessmentController extends Controller
                 $hasAssessment->learning_category_id = $category;
                 $hasAssessment->score = $score;
                 $hasAssessment->percent = round($percent, 2);
-                $hasAssessment->passed = $percent > 80 ? 1 : 0;
+                $hasAssessment->passed = $percent > 75 ? 1 : 0;
                 $hasAssessment->save();
             }
             return $hasAssessment;

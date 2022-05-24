@@ -101,14 +101,14 @@ Auth::routes([
 ]);
 
 // YAEDP Login
-Route::get('/', static function (){
+Route::get('/test', static function (){
     return view('auth.yaedp.login');
 });
-Route::get('/yaedp/login', [YaedpLoginController::class, 'showLoginForm'])
+Route::get('/yaedp/login/test', [YaedpLoginController::class, 'showLoginForm'])
     ->name('yaedp.login');
-Route::get('/yaedp', [YaedpLoginController::class, 'showLoginForm'])
+Route::get('/yaedp/test', [YaedpLoginController::class, 'showLoginForm'])
     ->name('yaedp.login');
-Route::post('/yaedp/login/submit', [YaedpLoginController::class, 'login'])
+Route::post('/yaedp/login/submit/test', [YaedpLoginController::class, 'login'])
     ->name('yaedp.login.submit');
 Route::get('/yaedp/logout', [YaedpLoginController::class, 'logout'])
     ->name('yaedp.logout');
@@ -124,16 +124,16 @@ Route::post('/yaedp/password-reset/confirm/{token}', [YaedpResetPasswordControll
     ->name('yaedp.password-reset-confirm');
 
 //YAEDP Account
-Route::get('/yaedp/account',
+Route::get('/yaedp/account/test',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'dashboard'])
     ->name('yaedp.account');
-Route::get('/yaedp/account/modules',
+Route::get('/yaedp/account/modules/test',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'modules'])
     ->name('yaedp.account.modules');
-Route::get('/yaedp/account/{id}/courses',
+Route::get('/yaedp/account/{id}/courses/test',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'courses'])
     ->name('yaedp.account.courses');
-Route::get('/yaedp/account/{id}/course',
+Route::get('/yaedp/account/{id}/course/test',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'course'])
     ->name('yaedp.account.course');
 Route::post('/yaedp/account/course/{id}/complete',
@@ -165,7 +165,7 @@ Route::get('yaedp/account/about-program',
     ->name('yaedp.account.about-program');
 
 // YAEDP Account Settings
-Route::get('/yaedp/account/settings',
+Route::get('/yaedp/account/settings/test',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettings'])
     ->name('yaedp.account.settings');
 Route::get('/yaedp/account/settings/email',
