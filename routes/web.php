@@ -104,6 +104,10 @@ Auth::routes([
 Route::get('/', static function (){
     return view('auth.yaedp.login');
 });
+Route::get('/yaedp/terms', static function (){
+    return view('terms');
+})->name('yaedp.terms');
+
 Route::get('/yaedp/login', [YaedpLoginController::class, 'showLoginForm'])
     ->name('yaedp.login');
 Route::get('/yaedp', [YaedpLoginController::class, 'showLoginForm'])
@@ -165,7 +169,7 @@ Route::get('yaedp/account/about-program',
     ->name('yaedp.account.about-program');
 
 // YAEDP Account Settings
-Route::get('/yaedp/account/settings/test',
+Route::get('/yaedp/account/settings',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettings'])
     ->name('yaedp.account.settings');
 Route::get('/yaedp/account/settings/email',

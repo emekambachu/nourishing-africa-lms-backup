@@ -58,7 +58,7 @@
                                 <div aria-labelledby="headingOne" class="collapse" data-parent="#accordion"
                                      id="collapseOne" role="tabpanel" style="">
                                     <div class="card-body">
-                                        The training runs for six weeks in different cohorts. All assessments must be completed within this period to enable you download your e-certificate.
+                                        The training runs for six weeks. All assessments must be completed within this period to enable you download your e-certificate.
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +198,7 @@
                 <div class="card">
                     <div class="card-body text-inter shadow-2">
                         <h4 class="na-text-dark-green">Questions about your courses</h4>
-                        <p>Please visit the discussion Forum to see some already answered questions by other students and course instructors.</p>
+                        <p>Please visit the discussion forum to see some already answered questions by other students and course instructors.</p>
                     </div>
                 </div>
             </div>

@@ -56,9 +56,10 @@
                                 @foreach($questions as $quest)
                                     <div class="col-md-12 text-left ml-3 mb-4 mt-4">
 
-                                        <h5 class="na-text-light-green text-inter mb-0">
-                                            Question {{ $loop->iteration }}</h5>
-                                        <p class="text-inter text-dark">{{ $quest->question }}</p>
+                                        <p class="text-inter text-dark">
+                                            <span class="na-text-dark-green font-weight-bolder">
+                                                {{ $loop->iteration }}.</span>
+                                            {{ $quest->question }}</p>
                                         <input type="hidden" name="answers[{{ $loop->index }}][question_id]"
                                                value="{{ $quest->id }}">
                                         <input type="hidden" name="answers[{{ $loop->index }}][correct_answer]"
@@ -133,9 +134,7 @@
                         </div>
                     </form>
                     @endif
-
                 </div>
-
             </div>
 
             <div class="col-lg-3 col-md-3 col-sm-12">
@@ -150,14 +149,14 @@
                                 <div class="p-2 @if($m->id === $module->id) bg-lemon-green @endif ">
                                 <span class="text-inter na-text-dark-green tx-12">
                                     {{ $m->title }}
-                                    <i class="fa fa-check na-text-light-green text-right ml-2"></i>
+                                    <i class="fa fa-check na-text-light-green float-right ml-2"></i>
                                 </span>
                                 </div>
                             @else
                                 <div class="p-2 @if($m->id === $module->id) bg-lemon-green @endif ">
                                 <span class="text-inter na-text-dark-green tx-12">
                                     {{ $m->title }}
-                                    <i class="fa fa-play na-text-light-green text-right ml-2"></i>
+                                    <i class="fa fa-play na-text-light-green float-right ml-2"></i>
                                 </span>
                                 </div>
                             @endif
@@ -165,7 +164,7 @@
                             <div class="p-2">
                                 <span class="text-inter na-text-dark-green tx-12">
                                     {{ $m->title }}
-                                    <i class="fa fa-lock na-text-light-green text-right ml-2"></i>
+                                    <i class="fa fa-lock na-text-light-green float-right ml-2"></i>
                                 </span>
                             </div>
                         @endif

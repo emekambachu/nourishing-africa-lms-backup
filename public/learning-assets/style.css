@@ -350,6 +350,7 @@
 
 .login-link:any-link{
     color: #006600;
+    font-weight: bold;
 }
 
 .dashboard-search-form{

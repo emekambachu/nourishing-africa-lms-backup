@@ -14,10 +14,10 @@
 @yield('meta')
 
 <!-- favicon -->
-    <link rel="shortcut icon" href="{{ asset('images/fav_circle.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/fav_circle.png') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('images/fav_circle.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('images/fav_circle.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/favicon.jpg') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('images/favicon.jpg') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('images/favicon.jpg') }}">
 
     <!-- animation -->
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}" />
@@ -133,20 +133,9 @@
         eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('6 7(a,b){n{4(2.9){3 c=2.9("o");c.p(b,f,f);a.q(c)}g{3 c=2.r();a.s(\'t\'+b,c)}}u(e){}}6 h(a){4(a.8)a=a.8;4(a==\'\')v;3 b=a.w(\'|\')[1];3 c;3 d=2.x(\'y\');z(3 i=0;i<d.5;i++)4(d[i].A==\'B-C-D\')c=d[i];4(2.j(\'k\')==E||2.j(\'k\').l.5==0||c.5==0||c.l.5==0){F(6(){h(a)},G)}g{c.8=b;7(c,\'m\');7(c,\'m\')}}',43,43,'||document|var|if|length|function|GTranslateFireEvent|value|createEvent||||||true|else|doGTranslate||getElementById|google_translate_element2|innerHTML|change|try|HTMLEvents|initEvent|dispatchEvent|createEventObject|fireEvent|on|catch|return|split|getElementsByTagName|select|for|className|goog|te|combo|null|setTimeout|500'.split('|'),0,{}))
         /* ]]> */
     </script>
-
-
 </head>
 
 <body>
-
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG4ZJ6Q"
-            height="0" width="0"
-            style="display:none;visibility:hidden;">
-    </iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 <header class="m-0">
     <!-- start navigation -->
@@ -178,7 +167,8 @@
             </div>
 
             <div class="col accordion-menu pr-0 pr-md-3">
-                <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar-collapse-toggle-1">
+                <button type="button" class="navbar-toggler collapsed"
+                        data-toggle="collapse" data-target="#navbar-collapse-toggle-1">
                     <span class="sr-only">toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -313,39 +303,7 @@
                             <a href="{{ route('news-and-updates') }}" style="color: #267c26">News & Updates</a>
                         </li>
 
-                        <li class="dropdown simple-dropdown d-sm-block d-md-none">
-                            <a href="javascript:void(0)" style="color: #267c26">Login</a>
-                            <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                            <!-- start sub menu -->
-                            <ul class="dropdown-menu" role="menu" style="margin-top: 15px; margin-left: -25px;">
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('member.login') }}">Membership Login</a></li>
-                            </ul>
-                        </li>
                     </ul>
-                </div>
-            </div>
-
-            <div class="col-auto pr-lg-0">
-                <div class="pr-md-5">
-                    <ul id="accordion-mobile"
-                        class="nav navbar-nav no-margin alt-font text-normal d-none d-sm-none d-md-block"
-                            data-in="fadeIn" data-out="fadeOut"
-                            style="background-color: transparent !important;">
-                            <li class="dropdown simple-dropdown"
-                                style="background-color: #efb443 !important; border-radius: 5px;">
-                                <a href="javascript:void(0)" class="m-0 text-white"
-                                   style="background-color: #efb443 !important; padding: 8px; border-radius: 5px; font-family: inter; font-size: 14px;">
-                                    Login
-                                    <i class="dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                </a>
-                                <!-- start sub menu -->
-                                <ul class="dropdown-menu" role="menu" style="margin-top: 15px; margin-left: -25px;">
-                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                            href="{{ route('member.login') }}">Membership Login</a></li>
-                                </ul>
-                            </li>
-                        </ul>
                 </div>
             </div>
         </div>

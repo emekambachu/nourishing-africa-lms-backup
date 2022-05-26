@@ -139,7 +139,7 @@
             </li>
 
             <li class="slide mb-3" style="">
-                <a class="side-menu__item" href="{{ route('yaedp.logout') }}">
+                <a class="side-menu__item" data-toggle="modal" href="#logout">
                     <i class="side-menu__icon fa fa-sign-out-alt text-danger"></i>
                     <span class="side-menu__label">Logout</span></a>
             </li>
@@ -224,7 +224,7 @@
                                 <div class="col-12 text-center">
                                     <hr style="border: 1px solid #ccc;"/>
                                     <a class="dropdown-item na-text-dark-green na-investor-text1"
-                                       style="font-size: 16px;" href="{{ route('yaedp.logout') }}">
+                                       style="font-size: 16px;" data-toggle="modal" href="#logout">
                                         <i class="fas fa-sign-out-alt text-danger"></i> Logout</a>
                                 </div>
                             </div>
@@ -240,6 +240,28 @@
     <!-- container -->
     <div class="container-fluid container-responsiveness" style="margin: 100px 0;">
         @yield('content')
+
+        <!--Welcome Modal-->
+            <div class="modal effect-scale hide" id="logout"
+                 data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-dialog-centered" style="max-width: 200px;" role="document">
+                    <div class="modal-content modal-content-demo">
+                        <div class="modal-header justify-content-center">
+                            <h5 class="text-inter font-weight-bold">
+                                Logout?</h5>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <a href="{{ route('yaedp.logout') }}">
+                                <button class="btn ripple btn-danger btn-rounded startCourse"
+                                        type="button">Yes</button>
+                            </a>
+                            <button class="btn ripple btn-rounded bg-light-green text-white"
+                                    type="button" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
     </div>
     <!-- /container -->
 </div>

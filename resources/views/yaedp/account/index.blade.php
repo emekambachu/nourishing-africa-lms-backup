@@ -11,8 +11,7 @@
     <div class="container-fluid">
 
         <h4 class="font-large-inter text-light-brown">
-            Welcome {{ Auth::user()->first_name }}
-        </h4>
+            Welcome {{ Auth::user()->first_name }}</h4>
 
         <div class="row bg-white na-border-radius border-brown p-3 mb-5">
             <div class="col-md-9 col-sm-9">
@@ -224,7 +223,7 @@
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
                     <h5 class="text-inter font-weight-bold text-center">
-                        Welcome to the Youth in Agri-Food Export Development Program (YAEDP)</h5>
+                        Welcome to the Youth in Agri-Food Export Development Program (YAEDP!)</h5>
                 </div>
                 <div id="intro-iframe" class="modal-body">
                     <iframe src="https://drive.google.com/file/d/1BlA0tNUEWJ8L_OgZ4C-NAdqearf8Pm_T/preview"
@@ -243,6 +242,5 @@
 
 @section('bottom-assets')
     <!--- Internal Modal js --->
-    <script src="{{ asset('learning-assets/js/modal.js') }}"></script>
     <script src="{{ asset('learning-assets/custom/intro-popup.js') }}"></script>
 @endsection

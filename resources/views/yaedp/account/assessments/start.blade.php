@@ -43,7 +43,7 @@
                             <!--If none of the 2 conditions are true, show disabled button-->
                             <a href="{{ route('yaedp.account.assessment.questions', $module->id) }}">
                                 <button class="module-btn bg-light-brown d-flex justify-content-center mt-2">
-                                    Begin Test</button>
+                                    Begin</button>
                             </a>
                         </div>
                     </div>
@@ -61,25 +61,25 @@
                         @if(Auth::user()->startedModule($m->id))
                             @if(Auth::user()->startedModule($m->id)->status === 1)
                                 <div class="p-2 @if($m->id === $module->id) bg-lemon-green @endif ">
-                                <span class="text-inter na-text-dark-green tx-12">
-                                    {{ $m->title }}
-                                    <i class="fa fa-check na-text-light-green text-right ml-2"></i>
-                                </span>
+                                    <span class="text-inter na-text-dark-green tx-12">
+                                        {{ $m->title }}
+                                    </span>
+                                    <i class="fa fa-check na-text-light-green float-right ml-2"></i>
                                 </div>
                             @else
                                 <div class="p-2 @if($m->id === $module->id) bg-lemon-green @endif ">
-                                <span class="text-inter na-text-dark-green tx-12">
-                                    {{ $m->title }}
-                                    <i class="fa fa-play na-text-light-green text-right ml-2"></i>
-                                </span>
+                                    <span class="text-inter na-text-dark-green tx-12">
+                                        {{ $m->title }}
+                                    </span>
+                                    <i class="fa fa-play na-text-light-green float-right ml-2"></i>
                                 </div>
                             @endif
                         @else
                             <div class="p-2">
                                 <span class="text-inter na-text-dark-green tx-12">
                                     {{ $m->title }}
-                                    <i class="fa fa-lock na-text-light-green text-right ml-2"></i>
                                 </span>
+                                <i class="fa fa-lock na-text-light-green float-right ml-2"></i>
                             </div>
                         @endif
                     @endforeach
@@ -87,7 +87,7 @@
                     <div class="p-2 bg-very-light-brown">
                         <span class="text-inter na-text-dark-green tx-12">
                             Assessment
-                            <i class="fa fa-list text-right ml-2"></i>
+                            <i class="fa fa-list float-right ml-2"></i>
                         </span>
                     </div>
                 </div>
