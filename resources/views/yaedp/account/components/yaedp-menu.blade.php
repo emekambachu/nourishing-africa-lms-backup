@@ -24,7 +24,7 @@
             <li>
                 <a disabled class="slide-item text-gray" href="javascript:void(0);"
                    data-placement="right" data-toggle="tooltip" title="{{ $mod->title }}">
-                    Module {{ $loop->index + 1 }} <i class="fa fa-lock"></i></a>
+                    Module {{ $loop->index + 1 }} <i class="fa fa-lock ml-1"></i></a>
             </li>
             @endif
         @else
