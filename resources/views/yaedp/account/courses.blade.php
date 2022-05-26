@@ -104,7 +104,7 @@
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
                     <h5 class="text-inter font-weight-bold text-center">
-                        Welcome to module {{ $module->number }}</h5>
+                        Welcome to Module {{ $module->number }}</h5>
                 </div>
                 <div id="intro-iframe{{ $module->id }}" class="modal-body">
                     {!! $module->introduction_video !!}

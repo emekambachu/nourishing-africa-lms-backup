@@ -223,7 +223,7 @@
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
                     <h5 class="text-inter font-weight-bold text-center">
-                        Welcome to the Youth in Agri-Food Export Development Program (YAEDP!)</h5>
+                        Welcome to the Youth in Agri-Food Export Development Program! (YAEDP)</h5>
                 </div>
                 <div id="intro-iframe" class="modal-body">
                     <iframe src="https://drive.google.com/file/d/1BlA0tNUEWJ8L_OgZ4C-NAdqearf8Pm_T/preview"
