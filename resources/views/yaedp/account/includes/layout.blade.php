@@ -190,7 +190,7 @@
                             <label class="d-sm-none d-none d-md-block"
                                    style="padding-left:5px; padding-top: 5px; font-family: Inter; font-style: normal; font-weight: normal; font-size: 14px; color: #626161;">
                                 <span class="light-green">
-                                    {{ Auth::user()->surname .' '.Auth::user()->first_name }}</span>
+                                    {{ Auth::user()->first_name .' '.Auth::user()->surname }}</span>
                                 <i class="fa fa-chevron-down" style="padding-left: 5px; padding-top: 3px;"></i>
                             </label>
                         </a>
