@@ -162,11 +162,11 @@
                             <div class="card">
                                 <div class="card-header" id="headingThree" role="tab">
                                     <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
-                                       data-toggle="collapse" href="#collapseEight">
+                                       data-toggle="collapse" href="#collapseNine">
                                         Can i fast-forward my videos?</a>
                                 </div>
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
-                                     id="collapseEight" role="tabpanel">
+                                     id="collapseNine" role="tabpanel">
                                     <div class="card-body">
                                         Yes, you can fast-forward the videos when you watch them. Note that there’s a timer that would prevent you from moving on to the next course until you complete the videos.
                                     </div>
@@ -176,11 +176,11 @@
                             <div class="card">
                                 <div class="card-header" id="headingThree" role="tab">
                                     <a aria-controls="collapseNine" aria-expanded="false" class="collapsed"
-                                       data-toggle="collapse" href="#collapseEight">
+                                       data-toggle="collapse" href="#collapseTen">
                                         Can i re-watch previous modules?</a>
                                 </div>
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
-                                     id="collapseNine" role="tabpanel">
+                                     id="collapseTen" role="tabpanel">
                                     <div class="card-body">
                                         Yes, you can. You can re-watch completed modules or courses by simply going back to the selected module/ course and replaying it.
                                     </div>
