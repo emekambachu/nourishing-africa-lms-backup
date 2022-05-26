@@ -35,7 +35,9 @@
 
                                 Note that your performance in each assessment counts towards your overall performance; you need an overall grade of 80% or higher to be able to download your certificate on completion of this program.<br><br>
 
-                                Each participant can retake the assessment two times after their initial try.<br>
+                                Each participant can retake the assessment two times after their initial try. We recommend that you retake the assessment only if you are confident in your ability to score a higher mark.<br>
+                                <strong>Note that your most recent score will be regarded as your final score for the module and will count towards your overall grade for the training</strong>.<br><br>
+
                                 Click on ‘Begin Assessment’ to proceed.
                             </p>
                             <!--If none of the 2 conditions are true, show disabled button-->

@@ -6,14 +6,14 @@
             .certificate-bg{
                 margin: 0 auto;
                 width: 700px;
-                height: 569px;
+                height: 722px;
                 background-image:  url({{ $data['certificate_image'] }});
             }
 
             .certificate-name{
                 position: absolute;
-                top: 23%;
-                left: 38%;
+                top: 33%;
+                left: 36%;
                 text-align: center;
                 font-family: sans-serif;
                 font-weight: normal;
@@ -22,8 +22,8 @@
 
             .certificate-date{
                 position: absolute;
-                top: 42%;
-                left: 11%;
+                top: 54%;
+                left: 14%;
                 font-size: 14px;
                 font-family: monospace, sans-serif;
             }

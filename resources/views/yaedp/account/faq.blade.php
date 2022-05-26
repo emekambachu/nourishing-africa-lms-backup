@@ -131,6 +131,62 @@
                                 </div><!-- collapse -->
                             </div>
 
+                            <div class="card">
+                                <div class="card-header" id="headingThree" role="tab">
+                                    <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
+                                       data-toggle="collapse" href="#collapseSeven">
+                                        Which of my scores would be counted for the assessments?</a>
+                                </div>
+                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
+                                     id="collapseSeven" role="tabpanel">
+                                    <div class="card-body">
+                                        Note that your most recent score for each assessment would be regarded as your final score for that module and would count towards your overall score for the training.
+                                    </div>
+                                </div><!-- collapse -->
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" id="headingThree" role="tab">
+                                    <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
+                                       data-toggle="collapse" href="#collapseEight">
+                                        Are the assessments timed?</a>
+                                </div>
+                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
+                                     id="collapseEight" role="tabpanel">
+                                    <div class="card-body">
+                                        No, assessments are not timed. You can complete the assessments at your pace. However, participants must complete the previous module assessments before they can proceed to the next module.
+                                    </div>
+                                </div><!-- collapse -->
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" id="headingThree" role="tab">
+                                    <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
+                                       data-toggle="collapse" href="#collapseEight">
+                                        Can i fast-forward my videos?</a>
+                                </div>
+                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
+                                     id="collapseEight" role="tabpanel">
+                                    <div class="card-body">
+                                        Yes, you can fast-forward the videos when you watch them. Note that there’s a timer that would prevent you from moving on to the next course until you complete the videos.
+                                    </div>
+                                </div><!-- collapse -->
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" id="headingThree" role="tab">
+                                    <a aria-controls="collapseNine" aria-expanded="false" class="collapsed"
+                                       data-toggle="collapse" href="#collapseEight">
+                                        Can i re-watch previous modules?</a>
+                                </div>
+                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
+                                     id="collapseNine" role="tabpanel">
+                                    <div class="card-body">
+                                        Yes, you can. You can re-watch completed modules or courses by simply going back to the selected module/ course and replaying it.
+                                    </div>
+                                </div><!-- collapse -->
+                            </div>
+
                         </div><!-- accordion -->
                     </div>
                 </div>

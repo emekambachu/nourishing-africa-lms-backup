@@ -101,14 +101,14 @@ Auth::routes([
 ]);
 
 // YAEDP Login
-Route::get('/test', static function (){
+Route::get('/', static function (){
     return view('auth.yaedp.login');
 });
-Route::get('/yaedp/login/test', [YaedpLoginController::class, 'showLoginForm'])
+Route::get('/yaedp/login', [YaedpLoginController::class, 'showLoginForm'])
     ->name('yaedp.login');
-Route::get('/yaedp/test', [YaedpLoginController::class, 'showLoginForm'])
+Route::get('/yaedp', [YaedpLoginController::class, 'showLoginForm'])
     ->name('yaedp.login');
-Route::post('/yaedp/login/submit/test', [YaedpLoginController::class, 'login'])
+Route::post('/yaedp/login/submit', [YaedpLoginController::class, 'login'])
     ->name('yaedp.login.submit');
 Route::get('/yaedp/logout', [YaedpLoginController::class, 'logout'])
     ->name('yaedp.logout');
@@ -124,16 +124,16 @@ Route::post('/yaedp/password-reset/confirm/{token}', [YaedpResetPasswordControll
     ->name('yaedp.password-reset-confirm');
 
 //YAEDP Account
-Route::get('/yaedp/account/test',
+Route::get('/yaedp/account',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'dashboard'])
     ->name('yaedp.account');
-Route::get('/yaedp/account/modules/test',
+Route::get('/yaedp/account/modules',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'modules'])
     ->name('yaedp.account.modules');
-Route::get('/yaedp/account/{id}/courses/test',
+Route::get('/yaedp/account/{id}/courses',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'courses'])
     ->name('yaedp.account.courses');
-Route::get('/yaedp/account/{id}/course/test',
+Route::get('/yaedp/account/{id}/course',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'course'])
     ->name('yaedp.account.course');
 Route::post('/yaedp/account/course/{id}/complete',

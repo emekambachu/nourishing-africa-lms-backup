@@ -157,9 +157,12 @@ class YaedpAssessmentController extends Controller
                 ]);
             }
             $moduleAssessment->status = 1;
-            $moduleAssessment->score = $countCorrectAnswers > $moduleAssessment->score ? $countCorrectAnswers : $moduleAssessment->score;
-            $moduleAssessment->percent = round($percentageScore, 2) > $moduleAssessment->percent ? round($percentageScore, 2) : $moduleAssessment->percent;
-            $moduleAssessment->passed = (round($percentageScore, 2) || $moduleAssessment->percent) > 65  ? 1 : 0;
+//            $moduleAssessment->score = $countCorrectAnswers > $moduleAssessment->score ? $countCorrectAnswers : $moduleAssessment->score;
+//            $moduleAssessment->percent = round($percentageScore, 2) > $moduleAssessment->percent ? round($percentageScore, 2) : $moduleAssessment->percent;
+
+            $moduleAssessment->score = $countCorrectAnswers;
+            $moduleAssessment->percent = round($percentageScore, 2);
+            $moduleAssessment->passed = round($percentageScore, 2) > 80  ? 1 : 0;
             ++$moduleAssessment->retake;
             $moduleAssessment->save();
         }else{
@@ -171,7 +174,7 @@ class YaedpAssessmentController extends Controller
                 'status' => 1,
                 'score' => $countCorrectAnswers,
                 'percent' => round($percentageScore, 2),
-                'passed' => $percentageScore > 65 ? 1 : 0,
+                'passed' => $percentageScore > 80 ? 1 : 0,
                 'retake' => 1,
             ]);
         }
@@ -199,7 +202,7 @@ class YaedpAssessmentController extends Controller
             if($hasAssessment){
                 $hasAssessment->score = $score;
                 $hasAssessment->percent = round($percent, 2);
-                $hasAssessment->passed = $percent > 75 ? 1 : 0;
+                $hasAssessment->passed = $percent > 80 ? 1 : 0;
                 $hasAssessment->save();
             }else{
                 $hasAssessment = new LearningAssessment();
@@ -207,7 +210,7 @@ class YaedpAssessmentController extends Controller
                 $hasAssessment->learning_category_id = $category;
                 $hasAssessment->score = $score;
                 $hasAssessment->percent = round($percent, 2);
-                $hasAssessment->passed = $percent > 75 ? 1 : 0;
+                $hasAssessment->passed = $percent > 80 ? 1 : 0;
                 $hasAssessment->save();
             }
             return $hasAssessment;
@@ -222,9 +225,9 @@ class YaedpAssessmentController extends Controller
         return response()->json([
             'success' => $countCorrectAnswers.' - '.$countAssessmentQuestions,
             'percent' => round($percentageScore, 2).'%',
-            'comment' => $percentageScore > 65 ? "Passed, Good job." : "Sorry, you did not make the cut off mark. you have ". (3 - $moduleAssessment->retake) . " retake(s).",
+            'comment' => $percentageScore > 80 ? "Passed, Good job." : "Sorry, you did not make the cut off mark. you have ". (3 - $moduleAssessment->retake) . " retake(s).",
             'retakes' => $moduleAssessment->retake,
-            'result' => $percentageScore > 65 ? 'passed' : 'failed',
+            'result' => $percentageScore > 80 ? 'passed' : 'failed',
             'module_id' => $module->id,
             'accumulated' => $learningAssessment !=='',
             'accumulated_passed' => $learningAssessment !=='' ? $learningAssessment->passed : 0,
