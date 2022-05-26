@@ -344,6 +344,8 @@
                                href="https://nourishingafrica.com/privacy-policy">Privacy Policy</a></li>
                         <li><a class="text-small text-white"
                                href="https://nourishingafrica.com/faq">FAQs</a></li>
+                        <li><a class="text-small text-white"
+                               href="https://www.nourishingafrica.com/whistleblowing">Whistle-Blowing</a></li>
                     </ul>
                 </div>
                 <!-- end additional links -->
