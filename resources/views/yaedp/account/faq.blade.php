@@ -187,6 +187,37 @@
                                 </div><!-- collapse -->
                             </div>
 
+                            <div class="card">
+                                <div class="card-header" id="headingThree" role="tab">
+                                    <a aria-controls="collapseNine" aria-expanded="false" class="collapsed"
+                                       data-toggle="collapse" href="#collapseEleven">
+                                        I’m having trouble watching my videos</a>
+                                </div>
+                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
+                                     id="collapseEleven" role="tabpanel">
+                                    <div class="card-body">
+                                        Please check your internet connection and try again.
+                                    </div>
+                                </div><!-- collapse -->
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" id="headingThree" role="tab">
+                                    <a aria-controls="collapseTwelve" aria-expanded="false" class="collapsed"
+                                       data-toggle="collapse" href="#collapseTwelve">
+                                        I keep getting a server error code while I’m trying to login</a>
+                                </div>
+                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
+                                     id="collapseTwelve" role="tabpanel">
+                                    <div class="card-body">
+                                        Please try clearing your browser cookies and login again.<br>
+                                        For an optimal learning experience please use Mozilla Firefox and Chrome browsers.<br>
+
+                                        We are always ready to help, so please contact us at <strong>YAEDP@nourishingafrica.com</strong> if you have any further technical questions.
+                                    </div>
+                                </div><!-- collapse -->
+                            </div>
+
                         </div><!-- accordion -->
                     </div>
                 </div>

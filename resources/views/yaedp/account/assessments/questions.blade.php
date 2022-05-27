@@ -29,17 +29,11 @@
                              src="{{ asset('images/icons/assessment-loader.png') }}"
                              width="200"/>
                     </div>
+                    <div class="col-12" id="accumulated"></div>
 
                     @include('yaedp.account.includes.alerts')
 
-                    @if($modulePassed)
-                        <h5 class="text-center mb-3">You've passed this module, go to next available module.</h5>
-                        <a href="{{ route('yaedp.account.modules') }}">
-                            <button style="width:100px;"
-                                    class="module-btn bg-light-brown d-flex justify-content-center mt-2">
-                                Modules</button>
-                        </a>
-                    @elseif($exhaustedRetakes)
+                    @if($exhaustedRetakes)
                         <h5 class="text-center mb-3">Sorry, you've exhausted your retakes. Do better i other modules to get a better chance of success.</h5>
                         <a href="{{ route('yaedp.account.modules') }}">
                             <button style="width:100px;"

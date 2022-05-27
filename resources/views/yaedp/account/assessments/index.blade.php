@@ -21,20 +21,29 @@
         </div>
 
         <div class="row">
-            @if($assessmentPassed)
-            <div class="col-12 d-flex justify-content-center">
-                <img src="{{ asset('images/icons/medal2.png') }}" width="150"/>
-            </div>
-            <div class="col-12 d-flex justify-content-center">
-                <h1 class="text-center na-text-dark-green text-manrope tx-100">
-                    {{ $assessmentPassed->percent }}%</h1>
-            </div>
-            <div class="col-12 d-flex justify-content-center">
-                <a href="{{ route('yaedp.account.assessment.certificate') }}">
-                    <button style="width:150px;" class="module-btn bg-light-brown d-flex justify-content-center">
-                        Get Certificate</button>
-                </a>
-            </div>
+            @if($completedAssessment)
+                @if($completedAssessment->percent > 80)
+                    <div class="col-12 d-flex justify-content-center">
+                        <img src="{{ asset('images/icons/medal2.png') }}" width="150"/>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                        <p class="text-center na-text-dark-green text-manrope tx-30 mb-0">Overall Score</p>
+                        <h1 class="text-center na-text-dark-green text-manrope tx-100">
+                            {{ $completedAssessment->percent }}%</h1>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                        <a href="{{ route('yaedp.account.assessment.certificate') }}">
+                            <button style="width:150px;" class="module-btn bg-light-brown d-flex justify-content-center">
+                                Get Certificate</button>
+                        </a>
+                    </div>
+                @else
+                    <div class="col-12 justify-content-center">
+                        <p class="text-center na-text-dark-green text-manrope tx-30 mb-0">Overall Score</p>
+                        <h1 class="text-center na-text-dark-green text-manrope tx-100">
+                            {{ $completedAssessment->percent }}%</h1>
+                    </div>
+                @endif
             @endif
 
             <div class="col-lg-12 col-md-12 col-sm-12">

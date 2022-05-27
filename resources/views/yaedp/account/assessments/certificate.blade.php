@@ -20,7 +20,7 @@
         </div>
 
         <div class="row">
-        @if($assessmentPassed)
+        @if($completedAssessment && $completedAssessment->percent > 80)
             <div class="certificate-bg">
                 <h4 class="certificate-name">{{ Auth::user()->first_name.' '.Auth::user()->surname }}</h4>
                 <h4 class="certificate-date">{{ $certificateDate }}</h4>

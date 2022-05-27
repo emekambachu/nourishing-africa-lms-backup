@@ -36,17 +36,16 @@ class YaedpAssessmentController extends Controller
         }
     }
 
-    private function passedAssessment($category){
+    private function completedAssessment($category){
         return  LearningAssessment::where([
             ['user_id', Auth::user()->id],
             ['learning_category_id', $category],
-            ['percent', '>=', 80],
         ])->first();
     }
 
     public function index(){
 
-        $data['assessmentPassed'] = $this->passedAssessment($this->yaedpId());
+        $data['completedAssessment'] = $this->completedAssessment($this->yaedpId());
         $data['moduleAssessments'] = LearningModuleView::where([
             ['user_id', Auth::user()->id],
             ['status', 1],
@@ -162,7 +161,7 @@ class YaedpAssessmentController extends Controller
 
             $moduleAssessment->score = $countCorrectAnswers;
             $moduleAssessment->percent = round($percentageScore, 2);
-            $moduleAssessment->passed = round($percentageScore, 2) > 80  ? 1 : 0;
+            $moduleAssessment->passed = round($percentageScore, 2) > 65  ? 1 : 0;
             ++$moduleAssessment->retake;
             $moduleAssessment->save();
         }else{
@@ -174,15 +173,19 @@ class YaedpAssessmentController extends Controller
                 'status' => 1,
                 'score' => $countCorrectAnswers,
                 'percent' => round($percentageScore, 2),
-                'passed' => $percentageScore > 80 ? 1 : 0,
+                'passed' => $percentageScore > 65 ? 1 : 0,
                 'retake' => 1,
             ]);
         }
 
+        // get completed modules
+        $countAllModules = $getModules->count();
+        $countCompletedModules = $getModuleAssessment->where([
+            ['user_id', Auth::user()->id],
+            ['learning_category_id', $this->yaedpId()],
+            ['status', 1],
+        ])->count();
 
-        // Check if this is the last module and include overall assessment
-        $lastModule = $getModules->where('learning_category_id', $this->yaedpId())
-            ->latest()->first();
         $accumulatedScore = $getModuleAssessment->where('user_id', Auth::user()->id)
             ->where('learning_category_id', $this->yaedpId())->sum('score');
         $countTotalAnswers = LearningAssignmentAnswer::where([
@@ -218,26 +221,48 @@ class YaedpAssessmentController extends Controller
 
         // if this is the final module in all modules proceed with cumulative assessment
         $learningAssessment = '';
-        if($lastModule->id === $module->id){
+        if($countAllModules === $countCompletedModules){
             $learningAssessment = learningAssessment($accumulatedScore, $accumulatedPercentage, $this->yaedpId());
+        }
+
+        function resultComment($percent, $retake){
+            $comment = '';
+            if($percent > 65){
+                $comment = "Good job, If you are confident in your ability to score a higher mark, you can retry the assessment. You have ". (3 - $retake) . " retake(s).";
+            }else{
+                $comment = "Oops that didn’t work well, you can retry the assessment to get a better score. you have ". (3 - $retake) . " retake(s).";
+            }
+            return $comment;
+        }
+
+        function accumulatedComment($percent){
+            $comment = '';
+            if($percent > 80){
+                $comment = "Congratulations!, you have passed the overall assessment, you can now download your certificate";
+            }else{
+                $comment = "Oops, you haven't reached the cut-off mark to. You can re-take some assessments to get a better score";
+            }
+            return $comment;
         }
 
         return response()->json([
             'success' => $countCorrectAnswers.' - '.$countAssessmentQuestions,
             'percent' => round($percentageScore, 2).'%',
-            'comment' => $percentageScore > 80 ? "Passed, Good job." : "Sorry, you did not make the cut off mark. you have ". (3 - $moduleAssessment->retake) . " retake(s).",
+            'comment' => resultComment($percentageScore, $moduleAssessment->retake),
             'retakes' => $moduleAssessment->retake,
-            'result' => $percentageScore > 80 ? 'passed' : 'failed',
+            'result' => $percentageScore > 65 ? 'passed' : 'failed',
             'module_id' => $module->id,
             'accumulated' => $learningAssessment !=='',
-            'accumulated_passed' => $learningAssessment !=='' ? $learningAssessment->passed : 0,
+            'accumulated_passed' => $learningAssessment !=='' ? $learningAssessment->passed : false,
+            'accumulated_percent' => $learningAssessment !=='' ? $learningAssessment->percent : false,
+            'accumulated_comment' => $learningAssessment !=='' ? accumulatedComment($learningAssessment->percent) : false,
         ]);
 
     }
 
     public function certificate(){
 
-        $data['assessmentPassed'] = $this->passedAssessment($this->yaedpId());
+        $data['completedAssessment'] = $this->completedAssessment($this->yaedpId());
         $data['certificateDate'] = Carbon::now()->format('jS \\of F Y');
 
         return view('yaedp.account.assessments.certificate', $data);

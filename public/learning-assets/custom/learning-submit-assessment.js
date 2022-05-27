@@ -35,16 +35,22 @@ $(function() {
                 console.log(response);
 
                 if(response.success){
-                    $('#loader').html("<h1 class='na-text-dark-green tx-100 text-center'>" + response.percent + "</h1><br>");
+                    $('#loader').html("<p class='na-text-dark-green tx-30 text-center'>Module Score</p>");
+                    $('#loader').append("<h3 class='na-text-dark-green tx-80 text-center'>" + response.percent + "</h3>");
                     $('#loader').append("<p class='text-center tx-18'>" + response.comment + "</p>");
                     console.log(response.success);
 
                     if(response.result === 'failed'){
-                        let moduleBtn = '<a href="/yaedp/account/assessment/'+ response.module_id +'/questions">\n' +
-                            '        <button style="width: 200px;" class="module-btn bg-danger text-white d-flex justify-content-center mt-2">\n' +
-                            '            Retake</button>\n' +
-                            '</a>'
-                        $('#loader').after(moduleBtn);
+                        if(response.retakes < 3){
+                            let moduleBtn = '<a href="/yaedp/account/assessment/'+ response.module_id +'/questions">\n' +
+                                '        <button style="width: 200px;" class="module-btn bg-danger text-white d-flex justify-content-center mt-2">\n' +
+                                '            Retake</button>\n' +
+                                '</a>'
+                            $('#loader').after(moduleBtn);
+                        }else{
+                            $('#loader').after("<p class='na-text-dark-green tx-50 text-center'>" +
+                                "Sorry, you have no re-takes left</p>");
+                        }
                     }else{
                         let moduleBtn = '<a href="/yaedp/account/modules">\n' +
                             '        <button style="width: 200px;" class="module-btn bg-light-brown d-flex justify-content-center mt-2">\n' +
@@ -62,23 +68,23 @@ $(function() {
                 }
 
                 if(response.accumulated){
-                    $('#loader').html("<h1 class='na-text-dark-green tx-100 text-center'>" + response.percent + "</h1><br>");
-                    $('#loader').append("<p class='text-center tx-18'>" + response.comment + "</p>");
-
+                    $('#accumulated').html("<p class='na-text-dark-green tx-30 text-center'>" +
+                        "Overall Score</p>");
+                    $('#accumulated').append("<h3 class='na-text-dark-green tx-80 text-center'>" +
+                         response.accumulated_percent + "%</h3>");
+                    $('#accumulated').append("<p class='text-center tx-18'>" + response.accumulated_comment + "</p>");
                     console.log(response.accumulated);
-
                     if(response.accumulated_passed === 1){
-                        $('#loader').append("<p class='text-center tx-18'> Congratulations, you've made the cumulative passmark. Access your accumulated scores below. </p>");
-                        $('#loader').after("<img class='d-flex justify-content-center' src='/images/icons/medal.png' width='100' alt=''/>");
+                        $('#accumulated').after("<img class='d-flex justify-content-center' src='/images/icons/medal.png' width='100' alt=''/>");
                         let moduleBtn = '<a href="/yaedp/account/assessments/">\n' +
                             '        <button style="width: 200px;" class="module-btn bg-light-brown d-flex justify-content-center mt-3">\n' +
                             '            Accumulated scores</button>\n' +
                             '</a>'
-                        $('#loader').after(moduleBtn);
+                        $('#accumulated').after(moduleBtn);
                     }
                 }
 
-                if(response.no_retakes) {
+                if(response.no_retakes){
                     $('#loader').html("<h1 class='na-text-dark-green tx-100 text-center'>" + response.percent + "</h1><br>");
                     $('#loader').append("<p class='text-center tx-18'>" + response.comment + "</p>");
                     let moduleBtn = '<a href="/yaedp/account/modules">\n' +

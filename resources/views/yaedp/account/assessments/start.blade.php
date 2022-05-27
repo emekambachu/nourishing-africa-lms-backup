@@ -26,19 +26,16 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-8 text-center">
                             <img src="{{ asset('images/icons/e-learning.png') }}" width="150" class="mb-4"/>
-{{--                            <p class="text-center tx-16">--}}
-{{--                                <strong class="na-text-dark-green">Well-done</strong> You have completed this module. You can now take the Assessment to proceed to the next module.--}}
-{{--                            </p>--}}
                             <p class="text-center tx-16">
                                 <strong class="na-text-dark-green">Well-done</strong><br>
-                                You are to complete this assessment before proceeding to the next module.<br><br>
+                                You are to complete this assessment before proceeding to the next module.<br>
 
                                 Note that your performance in each assessment counts towards your overall performance; you need an overall grade of 80% or higher to be able to download your certificate on completion of this program.<br><br>
 
-                                Each participant can retake the assessment two times after their initial try. We recommend that you retake the assessment only if you are confident in your ability to score a higher mark.<br>
-                                <strong>Note that your most recent score will be regarded as your final score for the module and will count towards your overall grade for the training</strong>.<br><br>
+                                <strong>Each participant can retake the assessment two times after their initial try.</strong><br>
+                                We recommend that you retake the assessment only if you are confident in your ability to score a higher mark. Note that your most recent score will be regarded as your final score for the module and will count towards your overall grade for the training.<br><br>
 
-                                Click on ‘Begin Assessment’ to proceed.
+                                Click on ‘Begin’ to proceed.
                             </p>
                             <!--If none of the 2 conditions are true, show disabled button-->
                             <a href="{{ route('yaedp.account.assessment.questions', $module->id) }}">

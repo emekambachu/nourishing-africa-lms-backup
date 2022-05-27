@@ -384,27 +384,9 @@
 
                 <!-- Start Social -->
                 <div class="col-lg-3 col-md-6 widget padding-5px-left md-padding-15px-left text-center text-md-left">
-                    <div class="widget-title subscribe-text text-medium-gray margin-20px-bottom font-weight-300" style="color:#FFF">Get early access to information on agriculture</div>
+                    <div class="widget-title subscribe-text text-medium-gray margin-20px-bottom font-weight-300" style="color:#FFF">To report illegal/unethical behavior on this program</div>
                     <div class="input-group justify-content-center">
-                        <form action="https://nourishingafrica.us4.list-manage.com/subscribe/post?u=8d6c3d892f4444def72b2173a&amp;id=612875e9df"
-                              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-                              class="validate" target="_blank" novalidate>
-                            <div class="row">
-                                <div class="col-md-9 col-sm-9 no-padding">
-                                    <input type="email" class="footer-subscribe"
-                                           name="EMAIL" id="mce-FNAME"
-                                           placeholder="Enter your email">
-                                </div>
-                                <div class="col-md-3 col-sm-3 no-padding">
-                                    <span class="input-group-btn">
-                                        <button class="btn md-float-left" type="submit">
-                                            subscribe
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>
-
-                        </form>
+                        <p class="text-white">Please reach out at: <a class="brand-text-yellow" href="https://www.nourishingafrica.com/whistleblowing">https://www.nourishingafrica.com/whistleblowing</a></p>
                     </div>
 
                     <div class="float-left margin-five-top">
