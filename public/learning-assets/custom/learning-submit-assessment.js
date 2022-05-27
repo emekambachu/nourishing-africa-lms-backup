@@ -44,7 +44,7 @@ $(function() {
                         if(response.retakes < 3){
                             let moduleBtn = '<a href="/yaedp/account/assessment/'+ response.module_id +'/questions">\n' +
                                 '        <button style="width: 200px;" class="module-btn bg-danger text-white d-flex justify-content-center mt-2">\n' +
-                                '            Retake</button>\n' +
+                                '            Try again</button>\n' +
                                 '</a>'
                             $('#loader').after(moduleBtn);
                         }else{
@@ -60,7 +60,7 @@ $(function() {
                         if(response.retakes < 3){
                             let moduleBtn = '<a href="/yaedp/account/assessment/'+ response.module_id +'/questions">\n' +
                                 '        <button style="width: 200px;" class="module-btn bg-danger text-white d-flex justify-content-center mt-2">\n' +
-                                '            Retake</button>\n' +
+                                '            Try again</button>\n' +
                                 '</a>'
                             $('#loader').after(moduleBtn);
                         }
