@@ -23,8 +23,10 @@
         <div class="row">
             @if($completedAssessment)
                 @if($completedAssessment->percent > 80)
-                    <div class="col-12 justify-content-center">
+                    <div class="col-12 d-flex justify-content-center">
                         <img src="{{ asset('images/icons/medal2.png') }}" width="150"/>
+                    </div>
+                    <div class="col-12 justify-content-center">
                         <p class="text-center na-text-dark-green text-manrope tx-30 mb-0">Overall Score</p>
                         <h1 class="text-center na-text-dark-green text-manrope tx-100">
                             {{ $completedAssessment->percent }}%</h1>
