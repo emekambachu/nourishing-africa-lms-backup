@@ -227,8 +227,10 @@ class YaedpAssessmentController extends Controller
 
         function resultComment($percent, $retake){
             $comment = '';
-            if($percent > 65){
-                $comment = "Good job, If you are confident in your ability to score a higher mark, you can retry the assessment. You have ". (3 - $retake) . " retake(s).";
+            if($percent > 65 && $percent < 80) {
+                $comment = "Good job, If you are confident in your ability to score a higher mark, you can retry the assessment. You have " . (3 - $retake) . " retake(s).";
+            }else if($percent > 80){
+                $comment = "Good job";
             }else{
                 $comment = "Oops that didn’t work well, you can retry the assessment to get a better score. you have ". (3 - $retake) . " retake(s).";
             }

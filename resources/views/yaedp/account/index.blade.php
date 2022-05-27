@@ -141,20 +141,22 @@
 
                     <div class="col-md-4">
                         <div class="bg-white-radius-shadow text-center">
-                            @if(count($moduleProgress) > 0)
+                            @if(count($completedCourseViews) > 0)
                                 @foreach(array_slice($moduleProgress, 0, 3) as $key => $value)
-                                    <!--array_slice will stop the array after the 3rd loop-->
-                                    <p class="mb-0 text-left tx-12">{{ $value['moduleTitle'] }}</p>
-                                    <div class="progress mb-3 na-border-radius">
-                                        <div class="progress-bar
-                                    @if($value['percent'] === 100) bg-success
-                                    @else bg-warning @endif"
-                                             role="progressbar"
-                                             style="width: {{ $value['percent'] }}%"
-                                             aria-valuenow="{{ $value['percent'] }}"
-                                             aria-valuemin="0" aria-valuemax="100">
+                                    @if($value['percent'] > 0)
+                                        <!--array_slice will stop the array after the 3rd loop-->
+                                        <p class="mb-0 text-left tx-12">{{ $value['moduleTitle'] }}</p>
+                                        <div class="progress mb-3 na-border-radius">
+                                            <div class="progress-bar
+                                            @if($value['percent'] === 100) bg-success
+                                            @else bg-warning @endif"
+                                                 role="progressbar"
+                                                 style="width: {{ $value['percent'] }}%"
+                                                 aria-valuenow="{{ $value['percent'] }}"
+                                                 aria-valuemin="0" aria-valuemax="100">
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 @endforeach
                             @else
                                 <img src="{{ asset('images/icons/social-ideas.png')}}" width="200"/>

@@ -64,52 +64,27 @@ class YaedpAccountController extends Controller
             ['status', 1]
         ])->get();
 
-        function countModuleCourses($moduleId){
-            return LearningCourse::where('learning_module_id', $moduleId)->count();
-        }
-
         $data['moduleProgress'] = []; // create empty array
-        // iterate completed courses
-        if(count($data['completedCourseViews']) > 0){
-            foreach($data['completedCourseViews'] as $cKey => $cValue){
-                // create count item in module progress array
-                $data['moduleProgress'][$cKey]['count'] = 0;
-                // Iterate modules and compare module id with course module id
-                // increase count if they match
-                foreach($data['modules'] as $mKey => $mValue){
-                    if($mValue->id === $cValue->learning_module_id){
-                        $data['moduleProgress'][$cKey]['count']++;
-                    }
-                }
-
-                // get counted course views and divide by total courses from that view using relationships
-                $data['moduleProgress'][$cKey]['percent'] = ($data['moduleProgress'][$cKey]['count'] / countModuleCourses($cValue->learning_module_id)) * 100;
-                $data['moduleProgress'][$cKey]['moduleId'] = $cValue->learning_module_id;
-                $data['moduleProgress'][$cKey]['moduleTitle'] = $cValue->learningModule->title;
-
-            }
-        }
 
         // Loop through modules
-//        foreach($data['modules'] as $mKey => $mValue){
-//            // loop through completed courses and get the number
-//            // of courses that has been completed for each module
-//            $data['moduleProgress'][$mKey]['count'] = 0; // create count key in loop
-//            if(count($data['completedCourseViews']) > 0){
-//                foreach($data['completedCourseViews'] as $cKey => $cValue){
-//                    if($cValue->learning_module_id === $mValue->id){
-//                        $data['moduleProgress'][$mKey]['count']++;
-//                    }
-//                }
-//            }
-//
-//            // After looping the completedCourseViews
-//            // Assign array names to the percentage, id and name
-//            // Assign countCourseCompleted variable back to 0
-//            $data['moduleProgress'][$mKey]['percent'] = ($data['moduleProgress'][$mKey]['count'] / $mValue->learningCourses->count()) * 100;
-//            $data['moduleProgress'][$mKey]['moduleId'] = $mValue->id;
-//            $data['moduleProgress'][$mKey]['moduleTitle'] = $mValue->title;
-//        }
+        foreach($data['modules'] as $mKey => $mValue){
+            // loop through completed courses and get the number
+            // of courses that has been completed for each module
+            $data['moduleProgress'][$mKey]['count'] = 0; // create count key in loop
+            if(count($data['completedCourseViews']) > 0){
+                foreach($data['completedCourseViews'] as $cKey => $cValue){
+                    if($cValue->learning_module_id === $mValue->id){
+                        $data['moduleProgress'][$mKey]['count']++;
+                    }
+                }
+                // After looping the completedCourseViews
+                // Assign array names to the percentage, id and name
+                // Assign countCourseCompleted variable back to 0
+                $data['moduleProgress'][$mKey]['percent'] = ($data['moduleProgress'][$mKey]['count'] / $mValue->learningCourses->count()) * 100;
+                $data['moduleProgress'][$mKey]['moduleId'] = $mValue->id;
+                $data['moduleProgress'][$mKey]['moduleTitle'] = $mValue->title;
+            }
+        }
 
         // Module assessment
         $data['moduleAssessments'] = LearningModuleView::where([
