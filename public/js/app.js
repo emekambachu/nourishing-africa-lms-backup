@@ -23183,7 +23183,7 @@ var _hoisted_48 = {
 var _hoisted_49 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "form-label"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Update Reason"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Provide a reason for this update request"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "text-danger"
   }, "*")], -1
   /* HOISTED */
@@ -28826,7 +28826,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ninput[type=file][data-v-7e03801e]::-webkit-file-upload-button {\r\n        content: 'Choose file';\r\n        padding: .2em .4em;\r\n        background: #E9FEE9;\r\n        border: 1px solid #979191;\r\n        box-sizing: border-box;\r\n        border-radius: 5px;\r\n        -webkit-transition: 1s;\r\n        transition: 1s;\n}\ninput[type=file][data-v-7e03801e]::file-selector-button {\r\n        content: 'Choose file';\r\n        padding: .2em .4em;\r\n        background: #E9FEE9;\r\n        border: 1px solid #979191;\r\n        box-sizing: border-box;\r\n        border-radius: 5px;\r\n        transition: 1s;\n}\ninput[type=file][data-v-7e03801e]::-webkit-file-upload-button:hover {\r\n        background-color: #c0f8c0;\r\n        border: 1px solid #979191;\n}\ninput[type=file][data-v-7e03801e]::file-selector-button:hover {\r\n        background-color: #c0f8c0;\r\n        border: 1px solid #979191;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ninput[type=file][data-v-7e03801e]::-webkit-file-upload-button {\n        content: 'Choose file';\n        padding: .2em .4em;\n        background: #E9FEE9;\n        border: 1px solid #979191;\n        box-sizing: border-box;\n        border-radius: 5px;\n        -webkit-transition: 1s;\n        transition: 1s;\n}\ninput[type=file][data-v-7e03801e]::file-selector-button {\n        content: 'Choose file';\n        padding: .2em .4em;\n        background: #E9FEE9;\n        border: 1px solid #979191;\n        box-sizing: border-box;\n        border-radius: 5px;\n        transition: 1s;\n}\ninput[type=file][data-v-7e03801e]::-webkit-file-upload-button:hover {\n        background-color: #c0f8c0;\n        border: 1px solid #979191;\n}\ninput[type=file][data-v-7e03801e]::file-selector-button:hover {\n        background-color: #c0f8c0;\n        border: 1px solid #979191;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

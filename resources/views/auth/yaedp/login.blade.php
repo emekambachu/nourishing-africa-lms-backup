@@ -105,7 +105,7 @@
                                     <div class="col-12">
                                         <p class="font-small-manrope-black margin-10px-bottom">
                                             By using this you agree to our <a class="login-link"
-                                                  href="{{ route('yaedp.terms') }}">Terms of use</a>
+                                                  href="{{ route('yaedp.terms') }}">Terms of Use</a>
                                         </p>
                                     </div>
                                 </div>

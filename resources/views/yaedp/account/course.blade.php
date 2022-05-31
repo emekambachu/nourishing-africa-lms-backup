@@ -29,13 +29,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="course-video">
-                                <!--For responsiveness-->
-                                <div style='max-width: 853px'>
-                                    <div style='position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;'>
-                                        <!--Insert Iframe-->
-                                        {!! $course->video !!}
-                                    </div>
-                                </div>
+                                <video width="100%" controls>
+                                    <source src="{{ $course->video }}"
+                                            type="video/mp4">
+                                    Your browser does not support HTML video.
+                                </video>
                             </div>
                         </div>
                     </div>

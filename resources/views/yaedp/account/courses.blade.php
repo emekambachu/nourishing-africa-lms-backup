@@ -107,7 +107,11 @@
                         Welcome to Module {{ $module->number }}</h5>
                 </div>
                 <div id="intro-iframe{{ $module->id }}" class="modal-body">
-                    {!! $module->introduction_video !!}
+                    <video width="100%" controls>
+                        <source src="{{ $module->introduction_video }}"
+                                type="video/mp4">
+                        Your browser does not support HTML video.
+                    </video>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button id="intro-close-forever" class="btn ripple btn-danger btn-rounded startCourse"

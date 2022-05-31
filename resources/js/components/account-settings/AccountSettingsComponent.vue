@@ -116,7 +116,7 @@
                                             </div>
 
                                             <div class="col-12">
-                                                <label class="form-label">Update Reason<i class="text-danger">*</i></label>
+                                                <label class="form-label">Provide a reason for this update request<i class="text-danger">*</i></label>
                                                 <textarea class="form-control" v-model="form.reason" required></textarea>
                                             </div>
 
