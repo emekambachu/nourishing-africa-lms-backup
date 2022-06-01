@@ -228,7 +228,7 @@
                         Welcome to the Youth in Agri-Food Export Development Program (YAEDP)!</h5>
                 </div>
                 <div id="intro-iframe" class="modal-body">
-                    <video width="100%" controls preload="auto">
+                    <video width="100%" controls preload="auto" controlsList="nodownload">
                         <source src="" type="video/mp4">
 {{--                        <source src="mov_bbb.ogg" type="video/ogg">--}}
                         Your browser does not support HTML video.

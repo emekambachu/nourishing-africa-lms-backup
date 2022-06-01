@@ -107,7 +107,7 @@
                         Welcome to Module {{ $module->number }}</h5>
                 </div>
                 <div id="intro-iframe{{ $module->id }}" class="modal-body">
-                    <video width="100%" controls preload="auto">
+                    <video width="100%" controls preload="auto" controlsList="nodownload">
                         <source src="{{ $module->introduction_video }}"
                                 type="video/mp4">
                         Your browser does not support HTML video.

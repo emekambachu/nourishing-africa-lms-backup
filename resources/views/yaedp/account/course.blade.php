@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="course-video">
-                                <video width="100%" controls preload="auto">
+                                <video width="100%" controls preload="auto" controlsList="nodownload">
                                     <source src="{{ $course->video }}"
                                             type="video/mp4">
                                     Your browser does not support HTML video.
