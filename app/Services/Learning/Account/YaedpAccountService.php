@@ -56,7 +56,7 @@ class YaedpAccountService
         return self::getCourseViews()
             ->with('learningCourse')->has('learningCourse')->where([
                 ['user_id', Auth::user()->id],
-            ])->orderBy('id', 'desc')->limit($num)->get();
+            ])->orderBy('id', 'desc')->limit($num);
     }
 
     public static function getModuleAssessmentsWithLimit($num = null){
@@ -64,18 +64,18 @@ class YaedpAccountService
             ['user_id', Auth::user()->id],
             ['status', 1],
             ['learning_category_id', self::yaedpId()]
-        ])->latest()->limit($num)->get();
+        ])->latest()->limit($num);
     }
 
     public static function getModuleProgress(){
         $moduleProgress = []; // create empty array
         // Loop through modules
-        foreach(self::getCategoryModules() as $mKey => $mValue){
+        foreach(self::getCategoryModules()->get() as $mKey => $mValue){
             // loop through completed courses and get the number
             // of courses that has been completed for each module
             $moduleProgress[$mKey]['count'] = 0; // create count key in loop
-            if(count(self::getCompletedCourses()) > 0){
-                foreach(self::getCompletedCourses() as $cKey => $cValue){
+            if(count(self::getCompletedCourses()->get()) > 0){
+                foreach(self::getCompletedCourses()->get() as $cKey => $cValue){
                     if($cValue->learning_module_id === $mValue->id){
                         $moduleProgress[$mKey]['count']++;
                     }

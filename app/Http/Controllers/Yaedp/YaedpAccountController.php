@@ -40,66 +40,10 @@ class YaedpAccountController extends Controller
         $data['modules'] = YaedpAccountService::getCategoryModules()->get();
         $data['sumCourses'] = YaedpAccountService::getCategoryModules()->sum('total_courses');
         $data['countCompletedCourses'] = YaedpAccountService::getCompletedCourses()->count();
-        $data['startedCourses'] = YaedpAccountService::getStartedCoursesWithLimit(2);
+        $data['startedCourses'] = YaedpAccountService::getStartedCoursesWithLimit(2)->get();
         $data['completedCourseViews'] = YaedpAccountService::getCompletedCourses()->get();
         $data['moduleProgress'] = YaedpAccountService::getModuleProgress();
-        $data['moduleAssessments'] = YaedpAccountService::getModuleAssessmentsWithLimit(2);
-
-//        $data['getModules'] = new LearningModule();
-//        $data['modules'] = $data['getModules']->with('learningCourses', 'learningCourseViews')
-//            ->has('learningCourses')
-//            ->where('learning_category_id', $this->yaedpId())
-//            ->latest()->get();
-
-//        $data['getCourseViews'] = new LearningCourseView();
-//
-//        $data['countCompletedCourses'] = $data['getCourseViews']
-//            ->with('learningCourse', 'learningModule')->where([
-//            ['user_id', Auth::user()->id],
-//            ['status', 1],
-//        ])->count();
-
-//        $data['startedCourses'] = $data['getCourseViews']
-//            ->with('learningCourse')->has('learningCourse')
-//            ->where([
-//                ['user_id', Auth::user()->id],
-//            ])->orderBy('id', 'desc')
-//            ->limit(2)->get();
-
-//        $data['completedCourseViews'] = $data['getCourseViews']->where([
-//            ['user_id', Auth::user()->id],
-//            ['learning_category_id', $this->yaedpId()],
-//            ['status', 1]
-//        ])->get();
-
-        // Loop through modules
-//        foreach($data['modules'] as $mKey => $mValue){
-//            // loop through completed courses and get the number
-//            // of courses that has been completed for each module
-//            $data['moduleProgress'][$mKey]['count'] = 0; // create count key in loop
-//            if(count($data['completedCourseViews']) > 0){
-//                foreach($data['completedCourseViews'] as $cKey => $cValue){
-//                    if($cValue->learning_module_id === $mValue->id){
-//                        $data['moduleProgress'][$mKey]['count']++;
-//                    }
-//                }
-//                // After looping the completedCourseViews
-//                // Assign array names to the percentage, id and name
-//                // Assign countCourseCompleted variable back to 0
-//                $data['moduleProgress'][$mKey]['percent'] = ($data['moduleProgress'][$mKey]['count'] / $mValue->learningCourses->count()) * 100;
-//                $data['moduleProgress'][$mKey]['moduleId'] = $mValue->id;
-//                $data['moduleProgress'][$mKey]['moduleTitle'] = $mValue->title;
-//            }
-//        }
-
-        // Module assessment
-//        $data['moduleAssessments'] = LearningModuleView::where([
-//            ['user_id', Auth::user()->id],
-//            ['status', 1],
-//            ['learning_category_id', $this->yaedpId()]
-//        ])->latest()->limit(1)->get();
-
-
+        $data['moduleAssessments'] = YaedpAccountService::getModuleAssessmentsWithLimit(2)->get();
 
         return view('yaedp.account.index', $data);
     }
