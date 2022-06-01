@@ -228,11 +228,11 @@
                         Welcome to the Youth in Agri-Food Export Development Program (YAEDP)!</h5>
                 </div>
                 <div id="intro-iframe" class="modal-body">
-{{--                    <video width="100%" controls>--}}
-{{--                        <source src="/videos/YAEDP Welcome Video.mp4" type="video/mp4">--}}
+                    <video width="100%" controls preload="auto">
+                        <source src="" type="video/mp4">
 {{--                        <source src="mov_bbb.ogg" type="video/ogg">--}}
-{{--                        Your browser does not support HTML video.--}}
-{{--                    </video>--}}
+                        Your browser does not support HTML video.
+                    </video>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button id="intro-close-forever" class="btn ripple btn-danger btn-rounded startCourse"

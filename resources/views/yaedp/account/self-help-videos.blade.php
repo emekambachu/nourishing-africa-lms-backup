@@ -27,8 +27,11 @@
                         <h5 class="na-text-dark-green">Re-watch the welcome video</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
-                        <iframe id="intro-iframe" src="https://drive.google.com/file/d/1d3XhpLx_9o2qIk52o7u1cmXgMR_Sr6Ni/preview"
-                                width="100%" height="480" allow="autoplay"></iframe>
+                        <video width="100%" controls preload="auto">
+                            <source src=""
+                                    type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
                     </div>
                 </div>
             </div>
@@ -39,8 +42,11 @@
                         <h5 class="na-text-dark-green">Updating your profile</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
-                        <iframe src="https://drive.google.com/file/d/1zC1LiiTtPwQ-zT5CVJffUvE4YZsIeFex/preview"
-                                width="100%" height="480" allow="autoplay"></iframe>
+                        <video width="100%" controls preload="auto">
+                            <source src="https://learning.nourishingafrica.com/videos/yaedp/self-help/Update Profile.mp4"
+                                    type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
                     </div>
                 </div>
             </div>
@@ -51,8 +57,11 @@
                         <h5 class="na-text-dark-green">Starting or joining a discussion</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
-                        <iframe src="https://drive.google.com/file/d/1wykcNaz8pU3hnoadHi4Pv3oDnDnt2cSo/preview"
-                                width="100%" height="480" allow="autoplay"></iframe>
+                        <video width="100%" controls preload="auto">
+                            <source src="https://learning.nourishingafrica.com/videos/yaedp/self-help/Starting or Joining a Discussion.mp4"
+                                    type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
                     </div>
                 </div>
             </div>
@@ -63,8 +72,11 @@
                         <h5 class="na-text-dark-green">Taking an assessment</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
-                        <iframe src="https://drive.google.com/file/d/1uRHNYP0jZyIcSsyzuiyAlxf8lCPYtJay/preview"
-                                width="100%" height="480" allow="autoplay"></iframe>
+                        <video width="100%" controls preload="auto">
+                            <source src="https://learning.nourishingafrica.com/videos/yaedp/self-help/Taking an Assessment.mp4"
+                                    type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
                     </div>
                 </div>
             </div>
@@ -75,8 +87,11 @@
                         <h5 class="na-text-dark-green">Viewing your assessment</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
-                        <iframe src="https://drive.google.com/file/d/1WzPgWPbKmFoTZN8TXvvnTOzPDUQsGPr-/preview"
-                                width="100%" height="480" allow="autoplay"></iframe>
+                        <video width="100%" controls preload="auto">
+                            <source src="https://learning.nourishingafrica.com/videos/yaedp/self-help/Viewing Your Assessments.mp4"
+                                    type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
                     </div>
                 </div>
             </div>
@@ -87,8 +102,11 @@
                         <h5 class="na-text-dark-green">Downloading your certificate</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
-                        <iframe src="https://drive.google.com/file/d/1HQFby-aLDf3e062IFiXSusCaTwdIFthd/preview"
-                                width="100%" height="480" allow="autoplay"></iframe>
+                        <video width="100%" controls preload="auto">
+                            <source src="https://learning.nourishingafrica.com/videos/yaedp/self-help/Downloading Your Certificate.mp4"
+                                    type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
                     </div>
                 </div>
             </div>

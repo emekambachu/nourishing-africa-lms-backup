@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="course-video">
-                                <video width="100%" controls>
+                                <video width="100%" controls preload="auto">
                                     <source src="{{ $course->video }}"
                                             type="video/mp4">
                                     Your browser does not support HTML video.
@@ -42,23 +42,23 @@
                 <div class="row">
                     @if(!empty($course->trainer))
                     <div class="col-12 mt-3 mb-3 course-tabs">
-                    <span id="description" class="d-inline text-dark active course-tab">
+                    <span id="description" class="d-inline text-dark active course-tab mb-2">
                         Description</span>
-                        <span id="instructor" class="d-inline text-dark course-tab">
+                        <span id="instructor" class="d-inline text-dark course-tab mb-2">
                         Instructor</span>
-                        <span id="resources" class="d-inline text-dark course-tab">
+                        <span id="resources" class="d-inline text-dark course-tab mb-2">
                         Resources</span>
-                        <span id="discussion" class="d-inline text-dark course-tab">
+                        <span id="discussion" class="d-inline text-dark course-tab mb-2">
                         Discussion</span>
                     </div>
 
-                    <div class="col-12 bg-white-radius-shadow tab-bodies" id="description-tab-body">
+                    <div class="col-12 bg-white-radius-shadow tab-bodies" id="description-tab-body mb-2">
                         <p class="text-inter tx-14 text-justify">
                             {!! $course->description !!}
                         </p>
                     </div>
 
-                    <div class="col-12 bg-white-radius-shadow tab-bodies d-none"
+                    <div class="col-12 bg-white-radius-shadow tab-bodies d-none mb-2"
                          id="instructor-tab-body">
                         <div class="row">
                             <div class="col-md-2 col-sm-12">
@@ -72,7 +72,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12 bg-white-radius-shadow tab-bodies d-none"
+                    <div class="col-12 bg-white-radius-shadow tab-bodies d-none mb-2"
                          id="resources-tab-body">
                         <div class="row p-2">
 
@@ -100,7 +100,8 @@
                         </div>
                     </div>
 
-                    <div class="col-12 bg-white-radius-shadow tab-bodies d-none" id="discussion-tab-body">
+                    <div class="col-12 bg-white-radius-shadow tab-bodies d-none mb-2"
+                         id="discussion-tab-body">
                         <div class="row">
                             <div class="col-12 pl-3 pr-3 mb-3">
                                 <label for="" class="float-left align-items-center discussion-comment-text">
