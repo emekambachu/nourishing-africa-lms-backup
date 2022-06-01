@@ -15,6 +15,7 @@ use App\Models\Learning\LearningDiscussionReply;
 use App\Models\Learning\LearningDiscussionLike;
 use App\Models\Learning\LearningProfileUpdateRequest;
 use App\Models\YaedpUser;
+use App\Services\Learning\Account\YaedpAccountService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -35,63 +36,70 @@ class YaedpAccountController extends Controller
     }
 
     public function dashboard(){
-        $data['getModules'] = new LearningModule();
-        $data['modules'] = $data['getModules']->with('learningCourses', 'learningCourseViews')
-            ->has('learningCourses')
-            ->where('learning_category_id', $this->yaedpId())
-            ->latest()->get();
-//        $data['courses'] = LearningCourse::where('learning_category_id', $this->yaedpId())->get();
-        $data['sumCourses'] = LearningModule::where('learning_category_id', $this->yaedpId())->sum('total_courses');
 
-        $data['getCourseViews'] = new LearningCourseView();
+        $data['modules'] = YaedpAccountService::getCategoryModules()->get();
+        $data['sumCourses'] = YaedpAccountService::getCategoryModules()->sum('total_courses');
+        $data['countCompletedCourses'] = YaedpAccountService::getCompletedCourses()->count();
+        $data['startedCourses'] = YaedpAccountService::getStartedCoursesWithLimit(2);
+        $data['completedCourseViews'] = YaedpAccountService::getCompletedCourses()->get();
+        $data['moduleProgress'] = YaedpAccountService::getModuleProgress();
+        $data['moduleAssessments'] = YaedpAccountService::getModuleAssessmentsWithLimit(2);
 
-        $data['countCompletedCourses'] = $data['getCourseViews']
-            ->with('learningCourse', 'learningModule')->where([
-            ['user_id', Auth::user()->id],
-            ['status', 1],
-        ])->count();
+//        $data['getModules'] = new LearningModule();
+//        $data['modules'] = $data['getModules']->with('learningCourses', 'learningCourseViews')
+//            ->has('learningCourses')
+//            ->where('learning_category_id', $this->yaedpId())
+//            ->latest()->get();
 
-        $data['startedCourses'] = $data['getCourseViews']
-            ->with('learningCourse')->has('learningCourse')
-            ->where([
-                ['user_id', Auth::user()->id],
-            ])->orderBy('id', 'desc')
-            ->limit(2)->get();
+//        $data['getCourseViews'] = new LearningCourseView();
+//
+//        $data['countCompletedCourses'] = $data['getCourseViews']
+//            ->with('learningCourse', 'learningModule')->where([
+//            ['user_id', Auth::user()->id],
+//            ['status', 1],
+//        ])->count();
 
-        $data['completedCourseViews'] = $data['getCourseViews']->where([
-            ['user_id', Auth::user()->id],
-            ['learning_category_id', $this->yaedpId()],
-            ['status', 1]
-        ])->get();
+//        $data['startedCourses'] = $data['getCourseViews']
+//            ->with('learningCourse')->has('learningCourse')
+//            ->where([
+//                ['user_id', Auth::user()->id],
+//            ])->orderBy('id', 'desc')
+//            ->limit(2)->get();
 
-        $data['moduleProgress'] = []; // create empty array
+//        $data['completedCourseViews'] = $data['getCourseViews']->where([
+//            ['user_id', Auth::user()->id],
+//            ['learning_category_id', $this->yaedpId()],
+//            ['status', 1]
+//        ])->get();
 
         // Loop through modules
-        foreach($data['modules'] as $mKey => $mValue){
-            // loop through completed courses and get the number
-            // of courses that has been completed for each module
-            $data['moduleProgress'][$mKey]['count'] = 0; // create count key in loop
-            if(count($data['completedCourseViews']) > 0){
-                foreach($data['completedCourseViews'] as $cKey => $cValue){
-                    if($cValue->learning_module_id === $mValue->id){
-                        $data['moduleProgress'][$mKey]['count']++;
-                    }
-                }
-                // After looping the completedCourseViews
-                // Assign array names to the percentage, id and name
-                // Assign countCourseCompleted variable back to 0
-                $data['moduleProgress'][$mKey]['percent'] = ($data['moduleProgress'][$mKey]['count'] / $mValue->learningCourses->count()) * 100;
-                $data['moduleProgress'][$mKey]['moduleId'] = $mValue->id;
-                $data['moduleProgress'][$mKey]['moduleTitle'] = $mValue->title;
-            }
-        }
+//        foreach($data['modules'] as $mKey => $mValue){
+//            // loop through completed courses and get the number
+//            // of courses that has been completed for each module
+//            $data['moduleProgress'][$mKey]['count'] = 0; // create count key in loop
+//            if(count($data['completedCourseViews']) > 0){
+//                foreach($data['completedCourseViews'] as $cKey => $cValue){
+//                    if($cValue->learning_module_id === $mValue->id){
+//                        $data['moduleProgress'][$mKey]['count']++;
+//                    }
+//                }
+//                // After looping the completedCourseViews
+//                // Assign array names to the percentage, id and name
+//                // Assign countCourseCompleted variable back to 0
+//                $data['moduleProgress'][$mKey]['percent'] = ($data['moduleProgress'][$mKey]['count'] / $mValue->learningCourses->count()) * 100;
+//                $data['moduleProgress'][$mKey]['moduleId'] = $mValue->id;
+//                $data['moduleProgress'][$mKey]['moduleTitle'] = $mValue->title;
+//            }
+//        }
 
         // Module assessment
-        $data['moduleAssessments'] = LearningModuleView::where([
-            ['user_id', Auth::user()->id],
-            ['status', 1],
-            ['learning_category_id', $this->yaedpId()]
-        ])->latest()->limit(1)->get();
+//        $data['moduleAssessments'] = LearningModuleView::where([
+//            ['user_id', Auth::user()->id],
+//            ['status', 1],
+//            ['learning_category_id', $this->yaedpId()]
+//        ])->latest()->limit(1)->get();
+
+
 
         return view('yaedp.account.index', $data);
     }
@@ -297,7 +305,7 @@ class YaedpAccountController extends Controller
     public function discussion(Request $request){
         $type = $request->type;
 
-        if($type == "comment"){
+        if($type === "comment"){
             LearningDiscussion::create([
                 'user_id' => Auth::user()->id,
                 'learning_category_id' => $request->learning_category_id,
@@ -305,7 +313,7 @@ class YaedpAccountController extends Controller
                 'learning_course_id' => $request->learning_course_id,
                 'message' => $request->message
             ]);
-        }else if($type == "reply" || $type == "direct_comment_reply"){
+        }else if($type === "reply" || $type === "direct_comment_reply"){
             LearningDiscussionReply::create([
                 'user_id' => Auth::user()->id,
                 'learning_discussion_id' => $request->reply_id,
@@ -324,7 +332,7 @@ class YaedpAccountController extends Controller
         $type = $request->type;
         $result = "";
 
-        if($type == "comment"){
+        if($type === "comment"){
             $check = LearningDiscussionLike::where([
                 ['user_id', Auth::user()->id],
                 ['type', $request->type],
@@ -342,10 +350,8 @@ class YaedpAccountController extends Controller
                     ])->update([
                         'status' => 0
                     ]);
-
                     $result = "unlike";
-                }
-                else{
+                }else{
                     LearningDiscussionLike::where([
                         ['user_id', Auth::user()->id],
                         ['type', $request->type],
@@ -368,7 +374,7 @@ class YaedpAccountController extends Controller
                 $result = "like";
             }
         }
-        else if($type == "reply"){
+        else if($type === "reply"){
             $check = LearningDiscussionLike::where([
                 ['user_id', Auth::user()->id],
                 ['type', $request->type],

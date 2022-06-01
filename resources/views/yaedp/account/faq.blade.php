@@ -163,7 +163,7 @@
                                 <div class="card-header" id="headingThree" role="tab">
                                     <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
                                        data-toggle="collapse" href="#collapseNine">
-                                        Can i fast-forward my videos?</a>
+                                        Can I fast-forward my videos?</a>
                                 </div>
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
                                      id="collapseNine" role="tabpanel">
@@ -177,7 +177,7 @@
                                 <div class="card-header" id="headingThree" role="tab">
                                     <a aria-controls="collapseNine" aria-expanded="false" class="collapsed"
                                        data-toggle="collapse" href="#collapseTen">
-                                        Can i re-watch previous modules?</a>
+                                        Can I re-watch previous modules?</a>
                                 </div>
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
                                      id="collapseTen" role="tabpanel">
