@@ -22,6 +22,10 @@ class LearningModule extends Model
         'visible',
     ];
 
+    public function yaedp_Id(){
+        return LearningCategory::where('slug', 'yaedp')->first()->id;
+    }
+
     public function learningAssignments(){
         return $this->hasMany(LearningAssignmentQuestion::class, 'learning_module_id', 'id');
     }

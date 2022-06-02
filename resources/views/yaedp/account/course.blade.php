@@ -273,12 +273,28 @@
                         @endif
                     @endforeach
 
-                    <div class="p-2 bg-very-light-brown">
+                    <!--If this module has been started-->
+                    @if($moduleStartedByUser)
+                        <!--If this module has been completed and there are no retakes, show link to assessment-->
+                        <a href="
+                        @if($moduleStartedByUser->status === 1 && $moduleStartedByUser->retake < 3)
+                        {{ route('yaedp.account.assessment.start', $module->id) }}
+                        @else
+                        javascript:void(0);
+                        @endif">
+                            <div class="p-2 bg-very-light-brown">
+                                <span class="text-inter na-text-dark-green tx-12">
+                                Assessment
+                                    <i class="fa fa-list text-right ml-2 float-right"></i>
+                                </span>
+                            </div>
+                        </a>
+                    @else
                         <span class="text-inter na-text-dark-green tx-12">
-                            Assessment
+                        Assessment
                             <i class="fa fa-list text-right ml-2 float-right"></i>
                         </span>
-                    </div>
+                    @endif
                 </div>
 
                 <!--If there is a next course for this module-->
@@ -287,7 +303,8 @@
                     @if(Auth::user()->startedCourse($course->id, $module->id))
                         <!--If this course has been completed-->
                         @if(Auth::user()->startedCourse($course->id, $module->id)->status === 1)
-                            <a class="next-course-link" href="{{ route('yaedp.account.course', $course->nextCourse($module->id)->id) }}">
+                            <a class="next-course-link"
+                               href="{{ route('yaedp.account.course', $course->nextCourse($module->id)->id) }}">
                                 <button class="module-btn bg-light-brown d-flex justify-content-center">
                                     Next Course</button>
                             </a>
@@ -306,10 +323,16 @@
                         @endif
                     @endif
                 @else
-                    @if(Auth::user()->startedCourse($course->id, $module->id)->status === 1)
+                    @if($moduleStartedByUser)
                         <a href="{{ route('yaedp.account.assessment.start', $course->learning_module_id) }}">
                             <button class="module-btn bg-light-brown d-flex justify-content-center">
                                 Start Assessment</button>
+                        </a>
+                    <!--If module has been completed and retakes have been exhausted-->
+                    @elseif($moduleStartedByUser->status === 1 && $moduleStartedByUser->retake === 3)
+                        <a disabled href="javascript:void(0)">
+                            <button class="module-btn bg-gray d-flex justify-content-center">
+                                Exceeded retakes</button>
                         </a>
                     @else
                         <a class="next-course-link" disabled href="javascript:void(0)">

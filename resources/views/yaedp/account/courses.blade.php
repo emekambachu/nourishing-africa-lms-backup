@@ -70,16 +70,11 @@
                     <!--If this item is not the first module, check if the previous module has been completed-->
                     <!--If the previous module has been completed, make the next module available-->
                     @if(!$loop->first)
-                        @if(Auth::user()->startedCourse($course->previousCourse($module->id)->id, $module->id))
-                            @if(Auth::user()->startedCourse($course->previousCourse($module->id)->id, $module->id)->status === 1)
-                                <a href="{{ route('yaedp.account.course', $course->id) }}">
-                                    <button class="module-btn na-bg-dark-green text-white d-flex justify-content-center">
-                                        Start</button>
-                                </a>
-                            @else
-                                <button disabled class="module-btn bg-gray d-flex justify-content-center">
-                                    Start </button>
-                            @endif
+                        @if(Auth::user()->startedCourse($course->previousCourse($module->id)->id, $module->id) && Auth::user()->startedCourse($course->previousCourse($module->id)->id, $module->id)->status === 1)
+                            <a href="{{ route('yaedp.account.course', $course->id) }}">
+                                <button class="module-btn na-bg-dark-green text-white d-flex justify-content-center">
+                                    Start</button>
+                            </a>
                         @else
                             <button disabled class="module-btn bg-gray d-flex justify-content-center">
                                 Start </button>

@@ -16,14 +16,14 @@ use App\Models\Learning\LearningDiscussionLike;
 use App\Models\Learning\LearningProfileUpdateRequest;
 use App\Models\YaedpUser;
 use App\Services\Learning\Account\YaedpAccountService;
+use App\Services\Learning\Account\YaedpAssessmentService;
+use App\Services\Learning\Account\YaedpDiscussionService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-use stdClass;
 
 class YaedpAccountController extends Controller
 {
@@ -43,94 +43,62 @@ class YaedpAccountController extends Controller
         $data['startedCourses'] = YaedpAccountService::getStartedCoursesWithLimit(2)->get();
         $data['completedCourseViews'] = YaedpAccountService::getCompletedCourses()->get();
         $data['moduleProgress'] = YaedpAccountService::getModuleProgress();
-        $data['moduleAssessments'] = YaedpAccountService::getModuleAssessmentsWithLimit(2)->get();
+        $data['moduleAssessments'] = YaedpAssessmentService::getModuleAssessmentsWithLimit(2)->get();
 
         return view('yaedp.account.index', $data);
     }
 
     public function modules(){
-        $data['getModules'] = LearningModule::with('learningCourses');
-        $data['modules'] = $data['getModules']
-            ->where('learning_category_id', $this->yaedpId())
+        $data['modules'] = YaedpAccountService::getCategoryModules()
             ->orderBy('created_at', 'asc')->get();
 
         return view('yaedp.account.modules', $data);
     }
 
     public function courses($id){
-        $data['module'] = LearningModule::findOrFail($id);
 
-        $data['getCourses'] = new LearningCourse();
-        $data['courses'] = $data['getCourses']->where([
-            ['learning_module_id', $id],
-            ['learning_category_id', $this->yaedpId()],
-        ])->orderBy('created_at', 'asc')->get();
+        $data['module'] = YaedpAccountService::getCategoryModules()
+            ->where('id', $id)->first();
+
+        $data['courses'] = YaedpAccountService::getCoursesFromModuleId($id)
+            ->orderBy('created_at', 'asc')->get();
 
         return view('yaedp.account.courses', $data);
     }
 
     public function course($id){
-        $data['getCourses'] = new LearningCourse();
-
         // Get current course
-        $course = $data['getCourses']->with('learningModule', 'learning_course_resources')->where([
-                                        ['id', $id],
-                                        ['learning_category_id', $this->yaedpId()],
-                                    ])->first();
+        $data['course'] = YaedpAccountService::getCourseById($id);
 
         //Get Course Discussions
-        $discussion = LearningDiscussion::with('learningDiscussionReplies')
-                        ->where([
-                            ['learning_course_id', $course->id],
-                            ['learning_module_id', $course->learningModule->id],
-                            ['learning_category_id', $course->learningCategory->id],
-                            ['status', 1],
-                        ])->orderBy('id','desc')->limit(3)->get();
+        $data['discussion'] = YaedpDiscussionService::getCourseDiscussions($data['course']->id, $data['course']->learning_module_id)
+            ->orderBy('id','desc')->limit(3)->get();
 
-        $module = LearningModule::findOrFail($course->learning_module_id);
+        // Module for this course
+        $data['module'] = LearningModule::findOrFail($data['course']->learning_module_id);
 
-        // Check if course has been started by user
-        $viewedCourse = LearningCourseView::where([
-                            ['user_id', Auth::user()->id],
-                            ['learning_course_id', $course->id],
-                            ['learning_module_id', $course->learningModule->id],
-                            ['learning_category_id', $course->learningCategory->id],
-                        ])->first();
+        // check if course has been viewed by user
+        $viewedCourse = YaedpAccountService::getCourseViewFromUser(Auth::user()->id, $data['course']->id, $data['course']->learning_module_id);
 
-        // Check if module has been started by user
-        $viewedModule = LearningModuleView::where([
-            ['user_id', Auth::user()->id],
-            ['learning_module_id', $course->learningModule->id],
-            ['learning_category_id', $course->learningCategory->id],
-        ])->first();
+        // check if module has been viewed by user
+        $viewedModule = YaedpAccountService::getModuleViewFromUser(Auth::user()->id, $data['course']->learning_module_id);
 
         // if course has not been viewed, add it before entering course page
         if(!$viewedCourse){
-            // Save to course view table
-            $viewedCourse = new LearningCourseView();
-            $viewedCourse->user_id = Auth::user()->id;
-            $viewedCourse->learning_course_id = $course->id;
-            $viewedCourse->learning_module_id = $course->learningModule->id;
-            $viewedCourse->learning_category_id = $course->learningCategory->id;
-            $viewedCourse->save();
+            YaedpAccountService::addCourseViewByUser(Auth::user()->id, $data['course']->id, $data['module']->id);
         }
-
         if(!$viewedModule){
-            // Once course has been viewed, add it to module view as started
-            $viewedModule = new LearningModuleView();
-            $viewedModule->user_id = Auth::user()->id;
-            $viewedModule->learning_module_id = $course->learningModule->id;
-            $viewedModule->learning_category_id = $course->learningCategory->id;
-            $viewedModule->save();
+            YaedpAccountService::addModuleViewByUser(Auth::user()->id, $data['module']->id);
         }
 
         // Courses trail on sidebar
-        $courses = $data['getCourses']->with('learningModule')->where([
-                ['learning_module_id', $course->learningModule->id],
-                ['learning_category_id', $this->yaedpId()],
-        ])->orderBy('created_at', 'asc')->get();
+        $data['courses'] = YaedpAccountService::getCoursesFromModuleId($data['course']->learning_module_id)
+            ->orderBy('created_at', 'asc')->get();
 
-        return view('yaedp.account.course', compact('course', 'courses', 'module', 'discussion'));
+        // If module was started by this user
+        $data['moduleStartedByUser'] = YaedpAccountService::moduleStartedByUser(Auth::user()->id, $data['course']->learning_module_id);
+
+        return view('yaedp.account.course', $data);
     }
 
     public function courseComplete($id){
@@ -143,7 +111,6 @@ class YaedpAccountController extends Controller
         ])->first();
 
         $getViewedCourses = new LearningCourseView();
-
         // Check if course has been viewed
         $viewedCourse = $getViewedCourses->where([
             ['user_id', Auth::user()->id],

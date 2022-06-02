@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
  */
 class YaedpAccountService
 {
+
     public static function yaedpId(){
         return LearningCategory::where('slug', 'yaedp')->first()->id;
     }
@@ -35,6 +36,12 @@ class YaedpAccountService
     }
 
     public static function getCategoryModules(){
+        return self::getModules()->with('learningCourses')
+            ->has('learningCourses')
+            ->where('learning_category_id', self::yaedpId());
+    }
+
+    public static function getModulesWithRelationship(){
         return self::getModules()->with('learningCourses', 'learningCourseViews')
             ->has('learningCourses')
             ->where('learning_category_id', self::yaedpId());
@@ -42,6 +49,12 @@ class YaedpAccountService
 
     public static function getCategoryCourses(){
         return self::getCourses()->where('learning_category_id', self::yaedpId());
+    }
+
+    public static function getCoursesWithRelationship(){
+        return self::getCourses()
+            ->with('learningModule', 'learning_course_resources')
+            ->where('learning_category_id', self::yaedpId());
     }
 
     public static function getCompletedCourses(){
@@ -57,14 +70,6 @@ class YaedpAccountService
             ->with('learningCourse')->has('learningCourse')->where([
                 ['user_id', Auth::user()->id],
             ])->orderBy('id', 'desc')->limit($num);
-    }
-
-    public static function getModuleAssessmentsWithLimit($num = null){
-         return self::getModuleViews()->where([
-            ['user_id', Auth::user()->id],
-            ['status', 1],
-            ['learning_category_id', self::yaedpId()]
-        ])->latest()->limit($num);
     }
 
     public static function getModuleProgress(){
@@ -91,6 +96,59 @@ class YaedpAccountService
 
         return $moduleProgress;
     }
+
+    public static function getCoursesFromModuleId($id){
+        return self::getCategoryCourses()->where([
+                ['learning_module_id', $id],
+                ['learning_category_id', self::yaedpId()],
+            ]);
+    }
+
+    public static function getCourseById($id){
+        return self::getCategoryCourses()->where([
+            ['id', $id],
+        ])->first();
+    }
+
+    public static function getCourseViewFromUser($id, $courseId, $moduleId){
+        return self::getCourseViews()->where([
+            ['user_id', $id],
+            ['learning_course_id', $courseId],
+            ['learning_module_id', $moduleId]
+        ])->first();
+    }
+
+    public static function getModuleViewFromUser($id, $moduleId){
+        return self::getModuleViews()->where([
+            ['user_id', $id],
+            ['learning_module_id', $moduleId]
+        ])->first();
+    }
+
+    public static function addCourseViewByUser($id, $courseId, $moduleId){
+        self::getCourseViews()->create([
+            'user_id' => $id,
+            'learning_course_id' => $courseId,
+            'learning_module_id' => $moduleId,
+            'learning_category_id' => self::yaedpId()
+        ]);
+    }
+
+    public static function addModuleViewByUser($id, $moduleId){
+        self::getModuleViews()->create([
+            'user_id' => $id,
+            'learning_module_id' => $moduleId,
+            'learning_category_id' => self::yaedpId()
+        ]);
+    }
+
+    public static function moduleStartedByUser($userId, $moduleId){
+        return self::getModuleViews()->where([
+            ['user_id', $userId],
+            ['learning_module_id', $moduleId],
+        ])->first();
+    }
+
 
 
 }
