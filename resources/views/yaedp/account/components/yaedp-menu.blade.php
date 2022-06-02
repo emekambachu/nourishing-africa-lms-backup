@@ -4,22 +4,14 @@
     </li>
     @foreach($modules as $mod)
         @if(!$loop->first)
-            <!--If module has been started, check completion-->
-            @if(Auth::user()->startedModule($mod->previousModule()->id))
+            <!--If the previous module has been started and completed, unluck current module-->
+            @if(Auth::user()->startedModule($mod->previousModule()->id) && Auth::user()->startedModule($mod->previousModule()->id)->status === 1)
                 <!--If module has been completed, show link-->
-                @if(Auth::user()->startedModule($mod->previousModule()->id)->status === 1)
                 <li>
                     <a class="slide-item text-light-brown" href="{{ route('yaedp.account.courses', $mod->id) }}"
                        data-placement="right" title="{{ $mod->title }}">
                         Module {{ $loop->index + 1 }}</a>
                 </li>
-                @else
-                <li>
-                    <a class="slide-item text-gray" href="javascript:void(0);"
-                       data-placement="right" title="{{ $mod->title }}">
-                        Module {{ $loop->index + 1 }}</a>
-                </li>
-                @endif
             @else
             <li>
                 <a disabled class="slide-item text-gray" href="javascript:void(0);"

@@ -246,8 +246,8 @@
             <div class="modal effect-scale hide" id="logout"
                  data-backdrop="static" data-keyboard="false">
                 <div class="modal-dialog modal-dialog-centered" style="max-width: 200px;" role="document">
-                    <div class="modal-content modal-content-demo">
-                        <div class="modal-header justify-content-center">
+                    <div class="modal-content modal-content-demo justify-content-center">
+                        <div class="modal-header text-center">
                             <h5 class="text-inter font-weight-bold">
                                 Logout?</h5>
                         </div>
