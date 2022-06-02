@@ -66,8 +66,7 @@
 </head>
 
 <body class="main-body app sidebar-mini"
-      style="background-color: #f9fafd;"
-      oncontextmenu="return false;">
+      style="background-color: #f9fafd;">
 
 <!-- Loader -->
 <div id="global-loader">
