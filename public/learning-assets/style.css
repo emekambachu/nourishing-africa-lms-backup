@@ -763,16 +763,16 @@ input[type="radio"].assessment-radio-input{
 .certificate-name{
     font-size: 26px;
     position: absolute;
-    top: 54%;
-    left: 53%;
+    top: 51%;
+    left: 52%;
     text-align: center;
     font-family: Manrope, serif !important;
 }
 
 .certificate-date{
     position: absolute;
-    top: 71%;
-    left: 42%;
+    top: 73%;
+    left: 53%;
     font-size: 15px;
     font-family: Manrope, serif !important;
 }

@@ -12,7 +12,7 @@
 
             .certificate-name{
                 position: absolute;
-                top: 33%;
+                top: 30%;
                 left: 36%;
                 text-align: center;
                 font-family: sans-serif;
@@ -22,8 +22,8 @@
 
             .certificate-date{
                 position: absolute;
-                top: 54%;
-                left: 14%;
+                top: 56%;
+                left: 39%;
                 font-size: 14px;
                 font-family: monospace, sans-serif;
             }
