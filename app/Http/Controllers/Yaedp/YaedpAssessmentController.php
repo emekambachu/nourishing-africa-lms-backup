@@ -265,6 +265,6 @@ class YaedpAssessmentController extends Controller
         $data = YaedpAssessmentService::generateCertificateForUser(Auth::user()->id, Auth::user()->first_name, Auth::user()->surname);
 
         return PDF::loadView('yaedp_certificate_pdf', compact('data'))
-            ->download($data['name'].'_'.time().'.pdf');
+            ->download($data['name'].'_'.$data['certificate_id'].'.pdf');
     }
 }

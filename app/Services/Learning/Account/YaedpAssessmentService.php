@@ -65,26 +65,25 @@ class YaedpAssessmentService extends YaedpAccountService
         ])->first();
 
         // If certificate has not been downloaded, generate certificate id and create record
-        // If certificate has already been downloaded increase count++ and save
+        // If certificate has already been downloaded increase download count++ and save
         if(!$downloaded){
             function certificateId($length = 11){
-                $characters = '0123456789ABCDEFG';
+                $characters = '0123456789';
                 $charactersLength = strlen($characters);
-                $randomString = '';
+                $randomString = 'YAEDP';
                 for ($i = 0; $i < $length; $i++) {
                     $randomString .= $characters[random_int(0, $charactersLength - 1)];
                 }
                 return $randomString;
             }
 
-            $downloaded = self::getCategoryAssessments()->update([
-                'certificate_downloads' => 1,
-                'certificate_id' => certificateId(),
-            ]);
+            $downloaded = self::getCategoryAssessments()->where('user_id', $userId)->first();
+            $downloaded->certificate_downloads = 1;
+            $downloaded->certificate_id = certificateId();
         }else{
-            $downloaded->certificate_downloads = $downloaded->certificate_downloads + 1;
-            $downloaded->save();
+            ++$downloaded->certificate_downloads;
         }
+        $downloaded->save();
 
         // return certificate data to be downloaded with controller
         return [

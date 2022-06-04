@@ -27,12 +27,21 @@
                 font-size: 14px;
                 font-family: monospace, sans-serif;
             }
+
+            .certificate-id{
+                position: absolute;
+                top: 63%;
+                left: 8%;
+                font-size: 12px;
+                font-family: monospace, sans-serif;
+            }
         </style>
     </head>
     <body>
         <div class="certificate-bg">
             <h4 class="certificate-name">{{ $data['name'] }}</h4>
             <h4 class="certificate-date">{{ $data['current_date'] }}</h4>
+            <p class="certificate-id"><strong>ID:</strong> {{ $data['certificate_id'] }}</p>
         </div>
     </body>
 </html>
