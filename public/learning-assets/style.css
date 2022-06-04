@@ -749,8 +749,7 @@ input[type="radio"].assessment-radio-input{
     height: 722px;
     background-image: url(../images/icons/certificate_yaedp_700.jpg);
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .certificate-bg-sample{
@@ -776,6 +775,61 @@ input[type="radio"].assessment-radio-input{
     font-size: 15px;
     font-family: Manrope, serif !important;
 }
+
+/* 425px and below for mobile devices */
+@media only screen and (max-width: 428px){
+
+    .certificate-bg{
+        margin: 0 auto;
+        width: 500px;
+        background-image: url(../images/icons/certificate_yaedp_700.jpg);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .certificate-bg-sample{
+        margin: 0 auto;
+        width: 500px;
+        background-image: url(../images/icons/certificate_yaedp_500_sample.png);
+    }
+
+    .certificate-name{
+        font-size: 18px;
+        position: absolute;
+        top: 35%;
+        left: 36%;
+        text-align: center;
+        font-family: Manrope, serif !important;
+    }
+
+    .certificate-date{
+        position: absolute;
+        top: 46.5%;
+        left: 41%;
+        font-size: 9px;
+        font-family: Manrope, serif !important;
+    }
+}
+
+/* 425px and above for other devices */
+/*@media only screen and (min-width: 425px){*/
+/*    .certificate-name{*/
+/*        font-size: 26px;*/
+/*        position: absolute;*/
+/*        top: 51%;*/
+/*        left: 52%;*/
+/*        text-align: center;*/
+/*        font-family: Manrope, serif !important;*/
+/*    }*/
+
+/*    .certificate-date{*/
+/*        position: absolute;*/
+/*        top: 73%;*/
+/*        left: 53%;*/
+/*        font-size: 15px;*/
+/*        font-family: Manrope, serif !important;*/
+/*    }*/
+/*}*/
 
 .icon-shadow{
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);

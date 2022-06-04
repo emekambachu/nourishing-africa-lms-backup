@@ -41,6 +41,13 @@ class YaedpAccountService
             ->where('learning_category_id', self::yaedpId());
     }
 
+    public static function findModuleById($id){
+        return self::getModules()->where([
+            ['learning_category_id', self::yaedpId()],
+            ['id', $id]
+        ])->first();
+    }
+
     public static function getModulesWithRelationship(){
         return self::getModules()->with('learningCourses', 'learningCourseViews')
             ->has('learningCourses')
@@ -149,6 +156,21 @@ class YaedpAccountService
         ])->first();
     }
 
+    public static function completeCourseViewForUser($userId, $courseId, $moduleId){
+        // Check if course has been viewed
+        $viewedCourse = self::getCourseViews()->where([
+            ['user_id', $userId],
+            ['learning_course_id', $courseId],
+            ['learning_module_id', $moduleId],
+            ['learning_category_id', self::yaedpId()],
+            ['status', 0],
+        ])->first();
 
+        // if course has not been viewed, complete the course
+        if($viewedCourse){
+            $viewedCourse->status = 1;
+            $viewedCourse->save();
+        }
+    }
 
 }

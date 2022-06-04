@@ -25,4 +25,12 @@ class LearningAssessment extends Model
     public function learningCategory(){
         return $this->belongsTo(LearningCategory::class, 'learning_category_id', 'id');
     }
+
+    public function yaedp_user(){
+        return $this->belongsTo(YaedpUser::class, 'user_id', 'id');
+    }
+
+    public function learning_category(){
+        return $this->belongsTo(LearningCategory::class, 'learning_category_id', 'id');
+    }
 }

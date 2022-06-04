@@ -21,7 +21,7 @@
 
         <div class="row">
         @if($completedAssessment && $completedAssessment->percent > 80)
-            <div class="certificate-bg">
+            <div class="certificate-bg justify-content-center">
                 <h4 class="certificate-name">{{ Auth::user()->first_name.' '.Auth::user()->surname }}</h4>
                 <h4 class="certificate-date">{{ $certificateDate }}</h4>
             </div>

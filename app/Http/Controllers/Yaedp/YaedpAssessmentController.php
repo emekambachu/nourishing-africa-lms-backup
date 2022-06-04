@@ -9,6 +9,8 @@ use App\Models\Learning\LearningAssignmentQuestion;
 use App\Models\Learning\LearningCategory;
 use App\Models\Learning\LearningModule;
 use App\Models\Learning\LearningModuleView;
+use App\Services\Learning\Account\YaedpAccountService;
+use App\Services\Learning\Account\YaedpAssessmentService;
 use PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -65,23 +67,14 @@ class YaedpAssessmentController extends Controller
 
     public function questions($id){
 
+        // get questions for this module
         $data['questions'] = LearningAssignmentQuestion::where('learning_module_id', $id)->get();
 
-        $getModules = new LearningModule();
-        $data['module'] = $getModules->findOrFail($id);
-        $data['modules'] = $getModules->where('learning_category_id', $this->yaedpId())->get();
+        $data['module'] = YaedpAccountService::findModuleById($id);
+        $data['modules'] = YaedpAccountService::getCategoryModules();
 
-        $moduleAssessment = new LearningModuleView();
-        $data['exhaustedRetakes'] = $moduleAssessment->where([
-            ['user_id', Auth::user()->id],
-            ['learning_module_id', $data['module']->id],
-            ['retake', 3],
-        ])->first();
-        $data['modulePassed'] = $moduleAssessment->where([
-            ['user_id', Auth::user()->id],
-            ['learning_module_id', $data['module']->id],
-            ['passed', 1],
-        ])->first();
+        $data['exhaustedRetakes'] = YaedpAssessmentService::exhaustedRetakesByUser(Auth::user()->id, $id, 3);
+        $data['modulePassed'] = YaedpAssessmentService::moduleAssessmentPassedByUser(Auth::user()->id, $id);
 
         return view('yaedp.account.assessments.questions', $data);
     }
@@ -156,9 +149,6 @@ class YaedpAssessmentController extends Controller
                 ]);
             }
             $moduleAssessment->status = 1;
-//            $moduleAssessment->score = $countCorrectAnswers > $moduleAssessment->score ? $countCorrectAnswers : $moduleAssessment->score;
-//            $moduleAssessment->percent = round($percentageScore, 2) > $moduleAssessment->percent ? round($percentageScore, 2) : $moduleAssessment->percent;
-
             $moduleAssessment->score = $countCorrectAnswers;
             $moduleAssessment->percent = round($percentageScore, 2);
             $moduleAssessment->passed = round($percentageScore, 2) > 65  ? 1 : 0;
@@ -272,21 +262,7 @@ class YaedpAssessmentController extends Controller
 
     public function DownloadCertificate(){
 
-//        $fontPath = 'fonts/Nunito-Light.ttf';
-//        $fontType = pathinfo($fontPath, PATHINFO_EXTENSION);
-//        $fontData = file_get_contents($fontPath);
-//        $base64Font = 'data:image/' . $fontType . ';base64,' . base64_encode($fontData);
-
-        $path = 'images/icons/certificate_yaedp_700.jpg';
-        $type = pathinfo($path, PATHINFO_EXTENSION);
-        $data = file_get_contents($path);
-        $base64_image = 'data:image/' . $type . ';base64,' . base64_encode($data);
-
-        $data = [
-            'name' => Auth::user()->first_name.' '.Auth::user()->surname,
-            'current_date' => Carbon::now()->format('jS \\of F Y'),
-            'certificate_image' => $base64_image,
-            ];
+        $data = YaedpAssessmentService::generateCertificateForUser(Auth::user()->id, Auth::user()->first_name, Auth::user()->surname);
 
         return PDF::loadView('yaedp_certificate_pdf', compact('data'))
             ->download($data['name'].'_'.time().'.pdf');

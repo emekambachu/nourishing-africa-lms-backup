@@ -102,33 +102,19 @@ class YaedpAccountController extends Controller
     }
 
     public function courseComplete($id){
-        // Get current course
-        $getModuleCourses = new LearningCourse();
 
-        $course = $getModuleCourses->with('learningModule', 'learningCategory')->where([
-            ['id', $id],
-            ['learning_category_id', $this->yaedpId()],
-        ])->first();
+        try {
+            $course = YaedpAccountService::getCourseById($id);
+            YaedpAccountService::completeCourseViewForUser(Auth::user()->id, $id, $course->learning_module_id);
+            return response()->json([
+                'success'=>'Success'
+            ]);
 
-        $getViewedCourses = new LearningCourseView();
-        // Check if course has been viewed
-        $viewedCourse = $getViewedCourses->where([
-            ['user_id', Auth::user()->id],
-            ['learning_course_id', $id],
-            ['learning_module_id', $course->learning_module_id],
-            ['learning_category_id', $course->learning_category_id],
-            ['status', 0],
-        ])->first();
-
-        // if course has not been viewed, complete the course
-        if($viewedCourse){
-            $viewedCourse->status = 1;
-            $viewedCourse->save();
+        } catch (\Exception $e) {
+            return response()->json([
+                'success'=>$e->getMessage()
+            ]);
         }
-
-        return response()->json([
-            'success'=>'Success'
-        ]);
     }
 
     public function downloadCourseDocument($Id, $file_name){
