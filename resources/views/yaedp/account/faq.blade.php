@@ -120,20 +120,6 @@
                             <div class="card">
                                 <div class="card-header" id="headingThree" role="tab">
                                     <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
-                                       data-toggle="collapse" href="#collapseSeven">
-                                        Which of my scores would be counted for the assessments?</a>
-                                </div>
-                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
-                                     id="collapseSeven" role="tabpanel">
-                                    <div class="card-body">
-                                        Note that your most recent score for each assessment would be regarded as your final score for that module and would count towards your overall score for the training.
-                                    </div>
-                                </div><!-- collapse -->
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header" id="headingThree" role="tab">
-                                    <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
                                        data-toggle="collapse" href="#collapseEight">
                                         Are the assessments timed?</a>
                                 </div>
