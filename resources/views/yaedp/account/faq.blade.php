@@ -154,7 +154,7 @@
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
                                      id="collapseTen" role="tabpanel">
                                     <div class="card-body">
-                                        Yes, you can. You can re-watch completed modules or courses by simply going back to the selected module/ course and replaying it.
+                                        Yes. You can re-watch completed videos by simply going back to the selected course and replaying it.
                                     </div>
                                 </div><!-- collapse -->
                             </div>
@@ -163,7 +163,7 @@
                                 <div class="card-header" id="headingThree" role="tab">
                                     <a aria-controls="collapseNine" aria-expanded="false" class="collapsed"
                                        data-toggle="collapse" href="#collapseEleven">
-                                        I’m having trouble watching my videos</a>
+                                        I am having trouble playing the videos</a>
                                 </div>
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
                                      id="collapseEleven" role="tabpanel">
@@ -177,15 +177,12 @@
                                 <div class="card-header" id="headingThree" role="tab">
                                     <a aria-controls="collapseTwelve" aria-expanded="false" class="collapsed"
                                        data-toggle="collapse" href="#collapseTwelve">
-                                        I keep getting a server error code while I’m trying to login</a>
+                                        I keep getting a server error code while trying to log in.</a>
                                 </div>
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
                                      id="collapseTwelve" role="tabpanel">
                                     <div class="card-body">
-                                        Please try clearing your browser cookies and login again.<br>
-                                        For an optimal learning experience please use Mozilla Firefox and Chrome browsers.<br>
-
-                                        We are always ready to help, so please contact us at <strong>YAEDP@nourishingafrica.com</strong> if you have any further technical questions.
+                                        Please try clearing your browser cookies and log in again. For an optimal learning experience, we recommend that you use Mozilla Firefox or Google Chrome browsers.
                                     </div>
                                 </div><!-- collapse -->
                             </div>
