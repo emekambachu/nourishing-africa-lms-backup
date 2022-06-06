@@ -746,10 +746,11 @@ input[type="radio"].assessment-radio-input{
 .certificate-bg{
     margin: 0 auto;
     width: 700px;
-    height: 722px;
+    height: 400px;
     background-image: url(../images/icons/certificate_yaedp_700.jpg);
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
 }
 
 .certificate-bg-sample{
@@ -777,7 +778,7 @@ input[type="radio"].assessment-radio-input{
 }
 
 /* 425px and below for mobile devices */
-@media only screen and (max-width: 428px){
+@media only screen and (max-width: 416px){
 
     .certificate-bg{
         margin: 0 auto;
@@ -796,7 +797,7 @@ input[type="radio"].assessment-radio-input{
     .certificate-name{
         font-size: 18px;
         position: absolute;
-        top: 35%;
+        top: 42.5%;
         left: 36%;
         text-align: center;
         font-family: Manrope, serif !important;
@@ -804,7 +805,7 @@ input[type="radio"].assessment-radio-input{
 
     .certificate-date{
         position: absolute;
-        top: 46.5%;
+        top: 60%;
         left: 41%;
         font-size: 9px;
         font-family: Manrope, serif !important;
@@ -812,7 +813,23 @@ input[type="radio"].assessment-radio-input{
 }
 
 /* 425px and above for other devices */
-/*@media only screen and (min-width: 425px){*/
+/*@media only screen and (min-width: 416px){*/
+/*    .certificate-bg{*/
+/*        margin: 0 auto;*/
+/*        width: 700px;*/
+/*        height: 400px;*/
+/*        background-image: url(../images/icons/certificate_yaedp_700.jpg);*/
+/*        background-repeat: no-repeat;*/
+/*        background-size: contain;*/
+/*    }*/
+
+/*    .certificate-bg-sample{*/
+/*        margin: 0 auto;*/
+/*        width: 500px;*/
+/*        height: 406px;*/
+/*        background-image: url(../images/icons/certificate_yaedp_500_sample.png);*/
+/*    }*/
+
 /*    .certificate-name{*/
 /*        font-size: 26px;*/
 /*        position: absolute;*/

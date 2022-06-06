@@ -25,7 +25,7 @@
                 <h4 class="certificate-name">{{ Auth::user()->first_name.' '.Auth::user()->surname }}</h4>
                 <h4 class="certificate-date">{{ $certificateDate }}</h4>
             </div>
-            <div class="col-12 d-flex justify-content-center">
+            <div class="col-12 justify-content-center">
                 <a href="{{ route('yaedp.account.assessment.certificate.download') }}">
                     <button style="width:150px;" class="module-btn bg-light-brown d-flex justify-content-center">
                         Download</button>
