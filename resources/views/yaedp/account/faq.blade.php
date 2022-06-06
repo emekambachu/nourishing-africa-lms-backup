@@ -161,20 +161,6 @@
 
                             <div class="card">
                                 <div class="card-header" id="headingThree" role="tab">
-                                    <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
-                                       data-toggle="collapse" href="#collapseNine">
-                                        Can I fast-forward my videos?</a>
-                                </div>
-                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
-                                     id="collapseNine" role="tabpanel">
-                                    <div class="card-body">
-                                        Yes, you can fast-forward the videos when you watch them. Note that there’s a timer that would prevent you from moving on to the next course until you complete the videos.
-                                    </div>
-                                </div><!-- collapse -->
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header" id="headingThree" role="tab">
                                     <a aria-controls="collapseNine" aria-expanded="false" class="collapsed"
                                        data-toggle="collapse" href="#collapseTen">
                                         Can I re-watch previous modules?</a>
@@ -214,6 +200,21 @@
                                         For an optimal learning experience please use Mozilla Firefox and Chrome browsers.<br>
 
                                         We are always ready to help, so please contact us at <strong>YAEDP@nourishingafrica.com</strong> if you have any further technical questions.
+                                    </div>
+                                </div><!-- collapse -->
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" id="headingThree" role="tab">
+                                    <a aria-controls="collapseThirteen" aria-expanded="false" class="collapsed"
+                                       data-toggle="collapse" href="#collapseThirteen">
+                                        I am taken to an Error 400 page when I try to load a new page. What should I do?
+                                    </a>
+                                </div>
+                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
+                                     id="collapseThirteen" role="tabpanel">
+                                    <div class="card-body">
+                                        This is most likely a browser issue. Please clear your cookies/cache in your browser settings and refresh the page to proceed.
                                     </div>
                                 </div><!-- collapse -->
                             </div>
