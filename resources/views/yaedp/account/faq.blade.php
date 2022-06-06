@@ -58,7 +58,7 @@
                                 <div aria-labelledby="headingOne" class="collapse" data-parent="#accordion"
                                      id="collapseOne" role="tabpanel" style="">
                                     <div class="card-body">
-                                        The training runs for six weeks. All assessments must be completed within this period to enable you download your e-certificate.
+                                        The training runs for six weeks. The training ends at 23:59 WAT on Sunday, 16 July 2022. You should have completed all modules and assessments within this 6-week period.
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
                                      id="collapseFour" role="tabpanel">
                                     <div class="card-body">
-                                        The e-learning platform provides a discussion forum which allows you to start/join relevant conversations with other students. Navigate to the ‘Discussion Forum’ on each course page to participate.
+                                        The e-learning platform provides a discussion forum which allows you to start/join relevant conversations with other participants. Please navigate to the course page and click on ‘Discussion Forum’ to participate.
                                     </div>
                                 </div><!-- collapse -->
                             </div>
@@ -107,26 +107,12 @@
                                 <div class="card-header" id="headingThree" role="tab">
                                     <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
                                        data-toggle="collapse" href="#collapseFive">
-                                        Will I have access to my dashboard and course content after the 6-weeks period?</a>
+                                        Will I have access to my dashboard and training content after the training ends?</a>
                                 </div>
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
                                      id="collapseFive" role="tabpanel">
                                     <div class="card-body">
-                                        After you have completed all aspects of the training, you will have a 30-day read-only access to all the training content to review the course materials at your own leisure.
-                                    </div>
-                                </div><!-- collapse -->
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header" id="headingThree" role="tab">
-                                    <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
-                                       data-toggle="collapse" href="#collapseSix">
-                                        How do I contact technical support? </a>
-                                </div>
-                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
-                                     id="collapseSix" role="tabpanel">
-                                    <div class="card-body">
-                                        For technical assistance, please go to how to for pre-recorded solutions to technical problems. We are always ready to help, so please contact us at <strong>YAEDP@nourishingafrica.com</strong> if you have any further technical questions.
+                                        Yes, all participants will have a 30-day read-only access to all the training content after the training ends.
                                     </div>
                                 </div><!-- collapse -->
                             </div>
@@ -154,7 +140,7 @@
                                 <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
                                      id="collapseEight" role="tabpanel">
                                     <div class="card-body">
-                                        No, assessments are not timed. You can complete the assessments at your pace. However, participants must complete the previous module assessments before they can proceed to the next module.
+                                        No, assessments are not timed. You can complete the assessments at your pace. However, participants must complete the previous module assessment before they can proceed to the next module.
                                     </div>
                                 </div><!-- collapse -->
                             </div>
@@ -215,6 +201,35 @@
                                      id="collapseThirteen" role="tabpanel">
                                     <div class="card-body">
                                         This is most likely a browser issue. Please clear your cookies/cache in your browser settings and refresh the page to proceed.
+                                    </div>
+                                </div><!-- collapse -->
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" id="headingThree" role="tab">
+                                    <a aria-controls="collapseFifteen" aria-expanded="false" class="collapsed"
+                                       data-toggle="collapse" href="#collapseFifteen">
+                                        Can I retake the assessments
+                                    </a>
+                                </div>
+                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
+                                     id="collapseFifteen" role="tabpanel">
+                                    <div class="card-body">
+                                        Yes, participants can retake the assessment twice after the initial try. Note that your most recent score for each assessment will be regarded as your final score for that module and will count towards your overall grade.
+                                    </div>
+                                </div><!-- collapse -->
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" id="headingThree" role="tab">
+                                    <a aria-controls="collapseThree" aria-expanded="false" class="collapsed"
+                                       data-toggle="collapse" href="#collapseSix">
+                                        How do I contact technical support? </a>
+                                </div>
+                                <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
+                                     id="collapseSix" role="tabpanel">
+                                    <div class="card-body">
+                                        Kindly watch the self-help videos and read through the questions on this FAQ page for responses to some common technical issues. You may also contact us at YAEDP@nourishingafrica.com if you experience any further technical issues.
                                     </div>
                                 </div><!-- collapse -->
                             </div>
