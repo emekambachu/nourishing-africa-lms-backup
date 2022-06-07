@@ -102,11 +102,12 @@
                         Welcome to Module {{ $module->number }}</h5>
                 </div>
                 <div id="intro-iframe{{ $module->id }}" class="modal-body">
-                    <video width="100%" controls preload="auto" controlsList="nodownload">
-                        <source src="{{ $module->introduction_video }}"
-                                type="video/mp4">
-                        Your browser does not support HTML video.
-                    </video>
+{{--                    <video width="100%" controls preload="auto" controlsList="nodownload">--}}
+{{--                        <source src="{{ $module->introduction_video }}"--}}
+{{--                                type="video/mp4">--}}
+{{--                        Your browser does not support HTML video.--}}
+{{--                    </video>--}}
+                    <script src="https://player.vimeo.com/api/player.js"></script>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button id="intro-close-forever" class="btn ripple btn-danger btn-rounded startCourse"
