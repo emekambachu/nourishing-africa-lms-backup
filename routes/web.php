@@ -109,6 +109,14 @@ Route::get('/', static function (){
 //    return view('terms');
 //})->name('yaedp.terms');
 //
+
+
+
+
+
+
+
+
 //Route::get('/yaedp/login', [YaedpLoginController::class, 'showLoginForm'])
 //    ->name('yaedp.login');
 //Route::get('/yaedp', [YaedpLoginController::class, 'showLoginForm'])
