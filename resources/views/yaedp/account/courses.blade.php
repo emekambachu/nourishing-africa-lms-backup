@@ -107,6 +107,7 @@
 {{--                                type="video/mp4">--}}
 {{--                        Your browser does not support HTML video.--}}
 {{--                    </video>--}}
+                    {!! $module->introduction_video !!}
                     <script src="https://player.vimeo.com/api/player.js"></script>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
