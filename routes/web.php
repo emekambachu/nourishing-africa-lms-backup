@@ -114,14 +114,15 @@ Route::get('/', static function (){
 //})->name('yaedp.terms');
 //
 
-//Route::get('/yaedp/login', [YaedpLoginController::class, 'showLoginForm'])
-//    ->name('yaedp.login');
-//Route::get('/yaedp', [YaedpLoginController::class, 'showLoginForm'])
-//    ->name('yaedp.login');
-Route::post('/yaedp/login/submit', [YaedpLoginController::class, 'login'])
-    ->name('yaedp.login.submit');
-Route::get('/yaedp/logout', [YaedpLoginController::class, 'logout'])
-    ->name('yaedp.logout');
+Route::get('/yaedp/login', [YaedpLoginController::class, 'showLoginForm'])
+    ->name('yaedp.login');
+Route::get('/yaedp', [YaedpLoginController::class, 'showLoginForm'])
+    ->name('yaedp.login');
+
+//Route::post('/yaedp/login/submit', [YaedpLoginController::class, 'login'])
+//    ->name('yaedp.login.submit');
+//Route::get('/yaedp/logout', [YaedpLoginController::class, 'logout'])
+//    ->name('yaedp.logout');
 //
 //// YAEDP Password Reset
 //Route::get('/yaedp/forgot-password', [YaedpResetPasswordController::class, 'forgotPassword'])
