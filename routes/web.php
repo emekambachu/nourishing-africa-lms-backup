@@ -105,6 +105,10 @@ Route::get('/', static function (){
     return view('auth.yaedp.login');
 });
 
+Route::get('/bk', static function (){
+    return view('auth.yaedp.login-bk');
+});
+
 //Route::get('/yaedp/terms', static function (){
 //    return view('terms');
 //})->name('yaedp.terms');
@@ -114,10 +118,10 @@ Route::get('/', static function (){
 //    ->name('yaedp.login');
 //Route::get('/yaedp', [YaedpLoginController::class, 'showLoginForm'])
 //    ->name('yaedp.login');
-//Route::post('/yaedp/login/submit', [YaedpLoginController::class, 'login'])
-//    ->name('yaedp.login.submit');
-//Route::get('/yaedp/logout', [YaedpLoginController::class, 'logout'])
-//    ->name('yaedp.logout');
+Route::post('/yaedp/login/submit', [YaedpLoginController::class, 'login'])
+    ->name('yaedp.login.submit');
+Route::get('/yaedp/logout', [YaedpLoginController::class, 'logout'])
+    ->name('yaedp.logout');
 //
 //// YAEDP Password Reset
 //Route::get('/yaedp/forgot-password', [YaedpResetPasswordController::class, 'forgotPassword'])
@@ -130,50 +134,50 @@ Route::get('/', static function (){
 //    ->name('yaedp.password-reset-confirm');
 //
 ////YAEDP Account
-//Route::get('/yaedp/account',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'dashboard'])
-//    ->name('yaedp.account');
-//Route::get('/yaedp/account/modules',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'modules'])
-//    ->name('yaedp.account.modules');
-//Route::get('/yaedp/account/{id}/courses',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'courses'])
-//    ->name('yaedp.account.courses');
-//Route::get('/yaedp/account/{id}/course',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'course'])
-//    ->name('yaedp.account.course');
-//Route::post('/yaedp/account/course/{id}/complete',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'courseComplete'])
-//    ->name('yaedp.account.course.complete');
-//Route::get('/yaedp/account/course/download-document/{id}/{file_name}',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'downloadCourseDocument'])
-//    ->name('yaedp.account.course.download-document');
-//Route::get('/yaedp/account/faq',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'faq'])
-//    ->name('yaedp.account.faq');
+Route::get('/yaedp/account',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'dashboard'])
+    ->name('yaedp.account');
+Route::get('/yaedp/account/modules',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'modules'])
+    ->name('yaedp.account.modules');
+Route::get('/yaedp/account/{id}/courses',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'courses'])
+    ->name('yaedp.account.courses');
+Route::get('/yaedp/account/{id}/course',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'course'])
+    ->name('yaedp.account.course');
+Route::post('/yaedp/account/course/{id}/complete',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'courseComplete'])
+    ->name('yaedp.account.course.complete');
+Route::get('/yaedp/account/course/download-document/{id}/{file_name}',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'downloadCourseDocument'])
+    ->name('yaedp.account.course.download-document');
+Route::get('/yaedp/account/faq',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'faq'])
+    ->name('yaedp.account.faq');
 //Route::get('/yaedp/account/self-help',
 //    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'selfHelp'])
 //    ->name('yaedp.account.self-help');
-//Route::get('yaedp/account/course/{id}/discussions',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'showDiscussions'])
-//    ->name('yaedp.account.discussion.all');
-//Route::post('yaedp/account/discussion',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'discussion'])
-//    ->name('yaedp.account.discussion');
-//Route::post('yaedp/account/discussion/like',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'likeDiscussion'])
-//    ->name('yaedp.account.like-discussion');
-//Route::get('yaedp/account/notifications',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountNotifications'])
-//    ->name('yaedp.account.notifications');
-//Route::get('yaedp/account/about-program',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'aboutProgram'])
-//    ->name('yaedp.account.about-program');
+Route::get('yaedp/account/course/{id}/discussions',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'showDiscussions'])
+    ->name('yaedp.account.discussion.all');
+Route::post('yaedp/account/discussion',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'discussion'])
+    ->name('yaedp.account.discussion');
+Route::post('yaedp/account/discussion/like',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'likeDiscussion'])
+    ->name('yaedp.account.like-discussion');
+Route::get('yaedp/account/notifications',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountNotifications'])
+    ->name('yaedp.account.notifications');
+Route::get('yaedp/account/about-program',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'aboutProgram'])
+    ->name('yaedp.account.about-program');
 //
 //// YAEDP Account Settings
-//Route::get('/yaedp/account/settings',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettings'])
-//    ->name('yaedp.account.settings');
+Route::get('/yaedp/account/settings',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettings'])
+    ->name('yaedp.account.settings');
 //Route::get('/yaedp/account/settings/email',
 //    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettingsEmail'])
 //    ->name('yaedp.account.settings.email');
@@ -185,21 +189,21 @@ Route::get('/', static function (){
 //    ->name('yaedp.account.email-confirmation.token');
 //
 //// YAEDP Assessment Controller
-//Route::get('/yaedp/account/assessments',
-//    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'index'])
-//    ->name('yaedp.account.assessments');
+Route::get('/yaedp/account/assessments',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'index'])
+    ->name('yaedp.account.assessments');
 //Route::get('/yaedp/account/assessment/{id}/start',
 //    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'start'])
 //    ->name('yaedp.account.assessment.start');
-//Route::get('/yaedp/account/assessment/{id}/questions',
-//    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'questions'])
-//    ->name('yaedp.account.assessment.questions');
+Route::get('/yaedp/account/assessment/{id}/questions',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'questions'])
+    ->name('yaedp.account.assessment.questions');
 //Route::post('/yaedp/account/assessment/{id}/submit',
 //    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'submitAssessment'])
 //    ->name('yaedp.account.assessment.submit');
-//Route::get('/yaedp/account/assessment/certificate',
-//    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'certificate'])
-//    ->name('yaedp.account.assessment.certificate');
+Route::get('/yaedp/account/assessment/certificate',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'certificate'])
+    ->name('yaedp.account.assessment.certificate');
 //Route::get('/yaedp/account/assessment/certificate/download',
 //    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'downloadCertificate'])
 //    ->name('yaedp.account.assessment.certificate.download');
