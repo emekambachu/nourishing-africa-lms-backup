@@ -105,14 +105,13 @@ Route::get('/', static function (){
     return view('auth.yaedp.login');
 });
 
-Route::get('/bk', static function (){
-    return view('auth.yaedp.login-bk');
-});
+//Route::get('/bk', static function (){
+//    return view('auth.yaedp.login-bk');
+//});
 
-//Route::get('/yaedp/terms', static function (){
-//    return view('terms');
-//})->name('yaedp.terms');
-//
+Route::get('/yaedp/terms', static function (){
+    return view('terms');
+})->name('yaedp.terms');
 
 Route::get('/yaedp/login', [YaedpLoginController::class, 'showLoginForm'])
     ->name('yaedp.login');
@@ -124,15 +123,15 @@ Route::post('/yaedp/login/submit', [YaedpLoginController::class, 'login'])
 Route::get('/yaedp/logout', [YaedpLoginController::class, 'logout'])
     ->name('yaedp.logout');
 
-//// YAEDP Password Reset
-//Route::get('/yaedp/forgot-password', [YaedpResetPasswordController::class, 'forgotPassword'])
-//    ->name('yaedp.forgot-password');
-//Route::post('/yaedp/forgot-password/send-link', [YaedpResetPasswordController::class, 'sendPasswordResetLink'])
-//    ->name('yaedp.forgot-password.send-link');
-//Route::get('/yaedp/password-reset-token/{token}', [YaedpResetPasswordController::class, 'passwordResetToken'])
-//    ->name('yaedp.password-reset-token');
-//Route::post('/yaedp/password-reset/confirm/{token}', [YaedpResetPasswordController::class, 'passwordResetConfirm'])
-//    ->name('yaedp.password-reset-confirm');
+// YAEDP Password Reset
+Route::get('/yaedp/forgot-password', [YaedpResetPasswordController::class, 'forgotPassword'])
+    ->name('yaedp.forgot-password');
+Route::post('/yaedp/forgot-password/send-link', [YaedpResetPasswordController::class, 'sendPasswordResetLink'])
+    ->name('yaedp.forgot-password.send-link');
+Route::get('/yaedp/password-reset-token/{token}', [YaedpResetPasswordController::class, 'passwordResetToken'])
+    ->name('yaedp.password-reset-token');
+Route::post('/yaedp/password-reset/confirm/{token}', [YaedpResetPasswordController::class, 'passwordResetConfirm'])
+    ->name('yaedp.password-reset-confirm');
 
 //YAEDP Account
 Route::get('/yaedp/account',
@@ -175,21 +174,21 @@ Route::get('yaedp/account/about-program',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'aboutProgram'])
     ->name('yaedp.account.about-program');
 //
-//// YAEDP Account Settings
+// YAEDP Account Settings
 Route::get('/yaedp/account/settings',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettings'])
     ->name('yaedp.account.settings');
-//Route::get('/yaedp/account/settings/email',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettingsEmail'])
-//    ->name('yaedp.account.settings.email');
-//Route::get('/yaedp/account/settings/password',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettingsPassword'])
-//    ->name('yaedp.account.settings.password');
-//Route::get('/yaedp/account/{token}/email-confirmation',
-//    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'emailConfirmationToken'])
-//    ->name('yaedp.account.email-confirmation.token');
-//
-//// YAEDP Assessment Controller
+Route::get('/yaedp/account/settings/email',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettingsEmail'])
+    ->name('yaedp.account.settings.email');
+Route::get('/yaedp/account/settings/password',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettingsPassword'])
+    ->name('yaedp.account.settings.password');
+Route::get('/yaedp/account/{token}/email-confirmation',
+    [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'emailConfirmationToken'])
+    ->name('yaedp.account.email-confirmation.token');
+
+// YAEDP Assessment Controller
 Route::get('/yaedp/account/assessments',
     [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'index'])
     ->name('yaedp.account.assessments');
@@ -199,15 +198,15 @@ Route::get('/yaedp/account/assessment/{id}/start',
 Route::get('/yaedp/account/assessment/{id}/questions',
     [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'questions'])
     ->name('yaedp.account.assessment.questions');
-//Route::post('/yaedp/account/assessment/{id}/submit',
-//    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'submitAssessment'])
-//    ->name('yaedp.account.assessment.submit');
+Route::post('/yaedp/account/assessment/{id}/submit',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'submitAssessment'])
+    ->name('yaedp.account.assessment.submit');
 Route::get('/yaedp/account/assessment/certificate',
     [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'certificate'])
     ->name('yaedp.account.assessment.certificate');
-//Route::get('/yaedp/account/assessment/certificate/download',
-//    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'downloadCertificate'])
-//    ->name('yaedp.account.assessment.certificate.download');
+Route::get('/yaedp/account/assessment/certificate/download',
+    [App\Http\Controllers\Yaedp\YaedpAssessmentController::class, 'downloadCertificate'])
+    ->name('yaedp.account.assessment.certificate.download');
 
 //Github Deployment
 Route::post('/github/deploy', [GithubDeploymentController::class, 'deploy']);
