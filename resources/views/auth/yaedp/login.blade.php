@@ -35,7 +35,7 @@
         <div class="container-fluid">
             <div class="row justify-content-center">
 
-                <div class="col-11 col-md-6 margin-50px-tb padding-four-all md-padding-eight-all md-padding-15px-lr sm-padding-50px-tb border-radius-4 card"
+                <div class="col-11 col-md-5 margin-50px-tb padding-four-all md-padding-eight-all md-padding-15px-lr sm-padding-50px-tb border-radius-4 card"
                      style="visibility: visible; animation-name: fadeInLeft; background-color: #fff;">
                     <div class="row m-0">
                         <div class="col-12 margin-six-bottom lg-margin-six-bottom md-margin-30px-bottom sm-no-margin-bottom">
