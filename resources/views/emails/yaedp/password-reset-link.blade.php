@@ -5,7 +5,7 @@
     <div style="padding: 10px;">
         <h4>Dear {{ $name ?? 'Participant' }},</h4>
 
-        Copy and paste this the link on a new browser page<br><br>
+        Click on the link below or Copy and paste the the link on a new browser page<br><br>
 
         <p>https://learning.nourishingafrica.com/yaedp/password-reset-token/{{ $verification_token }}</p>
 
