@@ -51,9 +51,9 @@ class PasswordResetService
 
         // Send email to the NA Team
         Mail::send('emails.yaedp.password-reset-link', $data, static function ($message) use ($data) {
-            $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME').' | Password Reset');
+            $message->from('yaedp@nourishingafrica.com', 'Password Reset | Password Reset');
             $message->to($data['email']);
-            $message->replyTo(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME').' | Password Reset');
+            $message->replyTo('yaedp@nourishingafrica.com', 'Password Reset | Password Reset');
             $message->subject('YAEDP Password Reset Link');
         });
 
