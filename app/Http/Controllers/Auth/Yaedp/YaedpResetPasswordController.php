@@ -29,19 +29,6 @@ class YaedpResetPasswordController extends Controller
 
     public function sendPasswordResetLink(PasswordResetRequest $request){
 
-//        $rules = [
-//            'email' => 'email|required|min:5',
-//        ];
-//
-//        $validator = Validator::make($input, $rules);
-//
-//        // Validate the input and return correct response
-//        if ($validator->fails()){
-//            return response()->json([
-//                'errors' => $validator->getMessageBag()->toArray()
-//            ], 400); // 400 being the HTTP code for an invalid request.
-//        }
-
         try {
             $userExists = PasswordResetService::processPasswordReset($request);
             $user = PasswordResetService::sendPasswordResetEmail($userExists);
@@ -59,8 +46,8 @@ class YaedpResetPasswordController extends Controller
             ], 200);
         }
 
-
     }
+
 
     public function passwordResetToken($token){
         $verifiedUser = YaedpUser::where([
