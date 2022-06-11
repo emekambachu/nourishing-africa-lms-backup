@@ -47,7 +47,7 @@
                             <div id="validation-alert"></div>
                         </div>
 
-{{--                        <p class="text-center fa fa-4x fa-spin fa-spinner brand-text" id="loader"></p>--}}
+                        {{--<p class="text-center fa fa-4x fa-spin fa-spinner brand-text" id="loader"></p>--}}
                         <div id="validation-alert"></div>
 
                         <!-- start feature box item -->
@@ -92,17 +92,13 @@
 
                                     <div class="col-12">
                                         <p class="font-small-manrope-black margin-10px-bottom">
-                                            By using this you agree to our <a class="login-link" href="">
-                                                Terms of Service</a> and <a class="login-link" href="">Privacy Policy</a>
+                                            By using this you agree to our <a class="login-link"
+                                                                              href="{{ route('yaedp.terms') }}">Terms of Use</a>
                                         </p>
                                         <p class="text-center login-shortcut margin-10px-bottom">
                                             Have an account? <a class="na-text-dark-green"
                                                                 href="{{ route('yaedp.login') }}">Login</a>
                                         </p>
-{{--                                        <p class="text-center login-shortcut margin-10px-bottom">--}}
-{{--                                            No account? <a class="na-text-dark-green"--}}
-{{--                                                           href="https://nourishingafrica.com/yaedp/application">Sign up</a>--}}
-{{--                                        </p>--}}
                                     </div>
                                 </div>
 

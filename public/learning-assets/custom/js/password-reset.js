@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    let formSubmission = (event, route, buttonId, formFields) => {
+    let formSubmission = (event, route, buttonId, formFields, formType) => {
         // prevent default form submission
         event.preventDefault();
 
@@ -37,7 +37,12 @@ $(document).ready(function(){
                     $('#validation-alert').html(
                         '<div class="alert alert-success alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.message+'</div>'
                     );
-                    $('#form-fields').fadeIn(1000);
+                    if(formType === 'password-update'){
+                        $('#validation-alert').append(
+                            "<a class='text-center login-link' href='/yaedp/login'>Login</a>"
+                        );
+                    }
+                    // $('#form-fields').fadeIn(1000);
                     //clear all fields after submission
                     // $("#password-reset-form")[0].reset();
                     // Show image container
@@ -47,9 +52,19 @@ $(document).ready(function(){
                 }
 
                 if (response.success === false) {
-                    $('#validation-alert').html(
-                        '<div class="alert alert-danger alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.message+'</div>'
-                    );
+                    // check if response.message exists and is an object, then iterate
+                    if(response.message && typeof response.message === 'object'){
+                        Object.entries(response.message).map(item => {
+                            $('#validation-alert').append(
+                                '<p class="text-danger">'+item[1]+'</p>'
+                            );
+                        })
+                    }else{
+                        $('#validation-alert').html(
+                            '<div class="alert alert-danger alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.message+'</div>'
+                        );
+                    }
+
                     $('#form-fields').fadeIn(1000);
                     // Show image container
                     $('#loader').fadeOut(1000);
@@ -60,13 +75,15 @@ $(document).ready(function(){
 
             // error: function (response){
             //     $("#loader").fadeOut(1000);
-            //     $('#validation-alert').html(
-            //         '<div class="alert alert-danger alert-dismissable" style="width: 80%; margin: 10px auto; padding: 10px;">'+response.error+'</div>'
-            //     );
+            //     for (const error of response.errors) {
+            //         $('#validation-alert').append(
+            //             '<p class="text-danger">'+error+'</p>'
+            //         );
+            //     }
             //     $('#form-fields').fadeIn('1000');
             //     //after submission remove disabled attribute
             //     $('#'+buttonId).removeAttr("disabled");
-            //     console.log(response.error);
+            //     console.log(response.errors);
             // },
 
         });
@@ -77,6 +94,7 @@ $(document).ready(function(){
         let route = $(this).data('route');
         let buttonId = $(this).attr('id');
         let formFields = $('.login-form');
+        let formType = 'password-token';
 
         // Email Validation
         function validEmail(email) {
@@ -101,6 +119,7 @@ $(document).ready(function(){
         let route = $(this).data('route');
         let buttonId = $(this).attr('id');
         let formFields = $('.login-form');
+        let formType = 'password-update';
 
         let password = $('#password-update-form').find('input[name="password"]').val();
         let password_confirm = $('#password-update-form').find('input[name="password_confirm"]').val();
@@ -112,7 +131,7 @@ $(document).ready(function(){
             $("#validation-alert").html(validationAlert);
         }else{
             $("#validation-alert").empty();
-            formSubmission(event, route, buttonId, formFields);
+            formSubmission(event, route, buttonId, formFields, formType);
         }
 
     });

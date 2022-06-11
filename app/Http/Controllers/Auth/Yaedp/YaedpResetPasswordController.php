@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth\Yaedp;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Account\PasswordResetRequest;
 use App\Models\YaedpUser;
+use App\Services\BaseService;
 use App\Services\Learning\Account\PasswordResetService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -30,7 +31,9 @@ class YaedpResetPasswordController extends Controller
     public function sendPasswordResetLink(PasswordResetRequest $request){
 
         try {
-            $userExists = PasswordResetService::processPasswordReset($request);
+            // process user email, get user info
+            $userExists = PasswordResetService::processPasswordReset($request->email);
+            // Send password reset link to user email
             $user = PasswordResetService::sendPasswordResetEmail($userExists);
 
             return response()->json([
@@ -45,12 +48,12 @@ class YaedpResetPasswordController extends Controller
                 'message' => $e->getMessage(),
             ], 200);
         }
-
     }
 
 
     public function passwordResetToken($token){
-        $verifiedUser = YaedpUser::where([
+
+        $verifiedUser = BaseService::yaedpUser()->where([
             ['verification_token', $token]
         ])->first();
 
@@ -62,19 +65,19 @@ class YaedpResetPasswordController extends Controller
 
     public function passwordResetConfirm($token, Request $request){
 
-        $password = $request->input('password');
+        try {
+            PasswordResetService::confirmNewPassword($token, $request);
+            return response()->json([
+                'success' => true,
+                'message' => 'Your password has been updated, login to your account'
+            ], 200);
 
-        $userToken = YaedpUser::where([
-            ['verification_token', $token]
-        ])->first();
-
-        if(!$userToken){
-            return response()->json(['errors' => 'Incorrect password reset token'], 404);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 200);
         }
 
-        $userToken->password = bcrypt($password);
-        $userToken->save();
-
-        return response()->json(['success' => 'Your password has been updated, login to your account'], 200);
     }
 }

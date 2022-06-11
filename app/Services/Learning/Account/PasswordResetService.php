@@ -3,12 +3,13 @@
 namespace App\Services\Learning\Account;
 
 use App\Models\YaedpUser;
+use App\Services\BaseService;
 use Illuminate\Support\Facades\Mail;
 
 /**
  * Class PasswordResetService.
  */
-class PasswordResetService
+class PasswordResetService extends BaseService
 {
     public static function verificationToken($length = 12){
         $characters = '0123456789ABCDEFGHI';
@@ -20,24 +21,18 @@ class PasswordResetService
         return $randomString;
     }
 
-    public static function processPasswordReset($request){
+    public static function processPasswordReset($email){
 
-        $input = $request->all();
-        $userExists = YaedpUser::where([
-            ['email', $input['email']]
+        // get user data from email
+        $user = self::yaedpUser()->where([
+            ['email', $email]
         ])->first();
 
-        if(!$userExists){
-            return response()->json([
-                'success' => false,
-                'message' => 'Email does not exist',
-            ]);
-        }
+        // add verification token to user
+        $user->verification_token = self::verificationToken();
+        $user->save();
 
-        $userExists->verification_token = self::verificationToken();
-        $userExists->save();
-
-        return $userExists;
+        return $user;
     }
 
     public static function sendPasswordResetEmail($user){
@@ -58,5 +53,25 @@ class PasswordResetService
         });
 
         return $data;
+    }
+
+    public static function confirmNewPassword($token, $request){
+
+        // check if user token is correct
+        $password = $request->input('password');
+        $userToken = self::YaedpUser()->where([
+            ['verification_token', $token]
+        ])->first();
+
+        if(!$userToken){
+            return response()->json([
+                'success' => false,
+                'message' => 'Incorrect password reset token'
+            ], 404);
+        }
+
+        // update password if user token is correct
+        $userToken->password = bcrypt($password);
+        $userToken->save();
     }
 }

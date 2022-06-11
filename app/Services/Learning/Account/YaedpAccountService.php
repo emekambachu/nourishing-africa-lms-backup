@@ -7,6 +7,7 @@ use App\Models\Learning\LearningCourse;
 use App\Models\Learning\LearningCourseView;
 use App\Models\Learning\LearningModule;
 use App\Models\Learning\LearningModuleView;
+use App\Models\YaedpUser;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -17,6 +18,14 @@ class YaedpAccountService
 
     public static function yaedpId(){
         return LearningCategory::where('slug', 'yaedp')->first()->id;
+    }
+
+    public static function yaedpUser(){
+        return new YaedpUser();
+    }
+
+    public static function yaedpUserWithRelationships(){
+        return YaedpUser::with('learning_assessment', 'learning_module_assessments');
     }
 
     public static function getModules(){

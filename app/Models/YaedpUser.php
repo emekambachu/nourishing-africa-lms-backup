@@ -61,7 +61,15 @@ class YaedpUser extends Authenticatable
         return $this->hasOne(LearningAssessment::class, 'user_id', 'id');
     }
 
+    public function learning_assessment(){
+        return $this->hasOne(LearningAssessment::class, 'user_id', 'id');
+    }
+
     public function learningModuleAssessments(){
+        return $this->hasMany(LearningModuleView::class, 'user_id', 'id');
+    }
+
+    public function learning_module_assessments(){
         return $this->hasMany(LearningModuleView::class, 'user_id', 'id');
     }
 
@@ -82,7 +90,7 @@ class YaedpUser extends Authenticatable
 
     public static function getUserFullName($id){
         if($id == 0) return "Admin";
-        
+
         $user = YaedpUser::find($id);
         $firstName = $user->first_name ?? NULL;
         $lastName = $user->surname ?? "Anonymous";

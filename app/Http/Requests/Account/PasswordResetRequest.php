@@ -5,6 +5,7 @@ namespace App\Http\Requests\Account;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class PasswordResetRequest extends FormRequest
 {
@@ -26,7 +27,7 @@ class PasswordResetRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|min:4',
+            'email' => 'required|email|min:4|exists:yedp_users,email',
         ];
     }
 
@@ -34,15 +35,17 @@ class PasswordResetRequest extends FormRequest
     {
         return [
             'email.required' => 'Email is required!',
+            'email.exists' => 'Email does not exists!',
         ];
     }
 
     protected function failedValidation(Validator $validator)
     {
+        // return errors in json object/array
         if($this->wantsJson()){
             $response = response()->json([
                 "success" => false,
-                "errors" => $validator->getMessageBag()->toArray()
+                'message' => $validator->getMessageBag()->toArray(),
             ]);
         }
 
@@ -54,7 +57,7 @@ class PasswordResetRequest extends FormRequest
 //            ]);
 //        }else{
 //            $response = redirect()
-//                ->route('guest.login')
+//                ->route('yaedp.forgot-password')
 //                ->with('message', 'Ops! Some errors occurred')
 //                ->withErrors($validator);
 //        }
