@@ -20,14 +20,14 @@
         </div>
 
         @if($completedAssessment && $completedAssessment->percent > 80)
-            <div class="row" style="margin-bottom: 20px;">
+            <div class="row" style="margin-bottom: 100px;">
                 <div class="certificate-bg-sample">
                     <img src="{{ asset('images/icons/certificate_yaedp_500_sample.png') }}"/>
                 </div>
             </div>
 
             <div class="row justify-content-center">
-                <div class="col-12">
+                <div class="col-12 text-center">
                     <h4><strong>Congratulations</strong> on successfully passing your overall assessment.<br>
                         Your certificate will be available on the <strong>16th of july, 2022</strong>.</h4>
                 </div>
