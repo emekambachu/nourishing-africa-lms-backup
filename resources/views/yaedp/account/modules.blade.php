@@ -9,7 +9,6 @@
 
 @section('content')
     <div class="container">
-
         <p class="bread-crumbs">
             <a href="{{ route('yaedp.account') }}">Dashboard</a> / <span class="light-green">Modules</span>
         </p>

@@ -21,16 +21,24 @@
 
         <div class="row">
         @if($completedAssessment && $completedAssessment->percent > 80)
-            <div class="certificate-bg justify-content-center">
-                <h4 class="certificate-name">{{ Auth::user()->first_name.' '.Auth::user()->surname }}</h4>
-                <p class="certificate-date">{{ $certificateDate }}</p>
+            <div class="certificate-bg-sample">
+                <img src="{{ asset('images/icons/certificate_yaedp_500_sample.png') }}"/>
             </div>
-            <div class="col-12 justify-content-center">
-                <a href="{{ route('yaedp.account.assessment.certificate.download') }}">
-                    <button style="width:150px;" class="module-btn bg-light-brown d-flex justify-content-center">
-                        Download</button>
-                </a>
+            <div class="col-12">
+                <p><strong>Congratulations</strong> on successfully passing your overall assessment.<br>
+                    Your certificate will be available on the <strong>16th of july, 2022</strong>.</p>
             </div>
+
+{{--            <div class="certificate-bg justify-content-center">--}}
+{{--                <h4 class="certificate-name">{{ Auth::user()->first_name.' '.Auth::user()->surname }}</h4>--}}
+{{--                <p class="certificate-date">{{ $certificateDate }}</p>--}}
+{{--            </div>--}}
+{{--            <div class="col-12 justify-content-center">--}}
+{{--                <a href="{{ route('yaedp.account.assessment.certificate.download') }}">--}}
+{{--                    <button style="width:150px;" class="module-btn bg-light-brown d-flex justify-content-center">--}}
+{{--                        Download</button>--}}
+{{--                </a>--}}
+{{--            </div>--}}
         @else
             <div class="certificate-bg-sample">
                 <img src="{{ asset('images/icons/certificate_yaedp_500_sample.png') }}"/>
