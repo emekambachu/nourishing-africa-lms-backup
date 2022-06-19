@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LearningLoginSession extends Model
 {
-    use IpTrait;
 
     protected $fillable = [
         'user_id',
@@ -23,6 +22,10 @@ class LearningLoginSession extends Model
     ];
 
     public function yaedpUser(){
+        $this->belongsTo(YaedpUser::class, 'email', 'email');
+    }
+
+    public function yaedp_user(){
         $this->belongsTo(YaedpUser::class, 'email', 'email');
     }
 

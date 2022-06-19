@@ -5,9 +5,11 @@ namespace App\Services;
 use App\Models\Learning\LearningCategory;
 use App\Models\Learning\LearningCourse;
 use App\Models\Learning\LearningCourseView;
+use App\Models\Learning\LearningLoginSession;
 use App\Models\Learning\LearningModule;
 use App\Models\Learning\LearningModuleView;
 use App\Models\YaedpUser;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -43,6 +45,14 @@ class BaseService
         return LearningModuleView::where('learning_category_id', self::yaedpId());
     }
 
+    public static function learningLoginSession(){
+        return new LearningLoginSession();
+    }
+
+    public static function learningLoginSessionWithRelationships(){
+        return self::learningLoginSession()->with('yaedp_user', 'yaedpUser');
+    }
+
     public static function getCategoryModules(){
         return self::getModules()->with('learningCourses')
             ->has('learningCourses')
@@ -71,4 +81,20 @@ class BaseService
             ->with('learningModule', 'learning_course_resources')
             ->where('learning_category_id', self::yaedpId());
     }
+
+    public static function getIp(Request $request){
+        foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key){
+            if (array_key_exists($key, $_SERVER) === true){
+                foreach (explode(',', $_SERVER[$key]) as $ip){
+                    $ip = trim($ip); // just to be safe
+                    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false){
+                        return $ip;
+                    }
+                }
+            }
+        }
+        return $request->ip(); // it will return server ip when no client ip found
+    }
+
+
 }

@@ -27,11 +27,10 @@
                         <h5 class="na-text-dark-green">Re-watch the welcome video</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
-                        <video width="100%" controls preload="auto" controlsList="nodownload">
-                            <source src=""
-                                    type="video/mp4">
-                            Your browser does not support HTML video.
-                        </video>
+                        <div style="padding:56.25% 0 0 0;position:relative;">
+                            <iframe src="https://player.vimeo.com/video/717588967?h=214fdf5d57&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="YAEDP Welcome New.mp4"></iframe>
+                        </div>
+                        <script src="https://player.vimeo.com/api/player.js"></script>
                     </div>
                 </div>
             </div>
@@ -42,11 +41,8 @@
                         <h5 class="na-text-dark-green">Updating your profile</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
-                        <video width="100%" controls preload="auto" controlsList="nodownload">
-                            <source src="https://learning.nourishingafrica.com/videos/yaedp/self-help/Update Profile.mp4"
-                                    type="video/mp4">
-                            Your browser does not support HTML video.
-                        </video>
+                        <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/721554425?h=22c8497ad5&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Update Profile"></iframe></div>
+                        <script src="https://player.vimeo.com/api/player.js"></script>
                     </div>
                 </div>
             </div>
@@ -57,11 +53,8 @@
                         <h5 class="na-text-dark-green">Starting or joining a discussion</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
-                        <video width="100%" controls preload="auto" controlsList="nodownload">
-                            <source src="https://learning.nourishingafrica.com/videos/yaedp/self-help/Starting or Joining a Discussion.mp4"
-                                    type="video/mp4">
-                            Your browser does not support HTML video.
-                        </video>
+                        <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/721553870?h=2e493b76ea&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Starting or Joining a Discussion"></iframe></div>
+                        <script src="https://player.vimeo.com/api/player.js"></script>
                     </div>
                 </div>
             </div>
@@ -72,11 +65,8 @@
                         <h5 class="na-text-dark-green">Taking an assessment</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
-                        <video width="100%" controls preload="auto" controlsList="nodownload">
-                            <source src="https://learning.nourishingafrica.com/videos/yaedp/self-help/Taking an Assessment.mp4"
-                                    type="video/mp4">
-                            Your browser does not support HTML video.
-                        </video>
+                        <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/721554176?h=5973ae7813&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Taking an Assessment"></iframe></div>
+                        <script src="https://player.vimeo.com/api/player.js"></script>
                     </div>
                 </div>
             </div>
@@ -87,11 +77,8 @@
                         <h5 class="na-text-dark-green">Viewing your assessment</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
-                        <video width="100%" controls preload="auto" controlsList="nodownload">
-                            <source src="https://learning.nourishingafrica.com/videos/yaedp/self-help/Viewing Your Assessments.mp4"
-                                    type="video/mp4">
-                            Your browser does not support HTML video.
-                        </video>
+                        <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/721554690?h=768330a119&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Viewing Your Assessments"></iframe></div>
+                        <script src="https://player.vimeo.com/api/player.js"></script>
                     </div>
                 </div>
             </div>
@@ -102,11 +89,8 @@
                         <h5 class="na-text-dark-green">Downloading your certificate</h5>
                     </div>
                     <div class="card-body text-inter shadow-2">
-                        <video width="100%" controls preload="auto" controlsList="nodownload">
-                            <source src="https://learning.nourishingafrica.com/videos/yaedp/self-help/Downloading Your Certificate.mp4"
-                                    type="video/mp4">
-                            Your browser does not support HTML video.
-                        </video>
+                        <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/721553575?h=c9a0761d01&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Downloading Your Certificate"></iframe></div>
+                        <script src="https://player.vimeo.com/api/player.js"></script>
                     </div>
                 </div>
             </div>
