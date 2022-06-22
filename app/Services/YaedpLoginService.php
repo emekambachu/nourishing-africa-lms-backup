@@ -14,7 +14,7 @@ class YaedpLoginService extends BaseService
 {
     public static function storeLoginSession($request){
         // Get User Agent (Browser and device)
-        $user_agent = (new Request)->server('HTTP_USER_AGENT');
+        $user_agent = $request->server('HTTP_USER_AGENT');
         $ip = self::getIp($request);
 
         $hasSession = BaseService::learningLoginSession()
