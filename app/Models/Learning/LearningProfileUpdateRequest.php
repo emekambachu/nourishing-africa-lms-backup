@@ -10,6 +10,7 @@ class LearningProfileUpdateRequest extends Model
 {
     protected $fillable = [
         'user_id',
+        'learning_category_id',
         'surname',
         'first_name',
         'mobile',
