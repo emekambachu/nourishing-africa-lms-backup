@@ -357,6 +357,7 @@ class YaedpAccountController extends Controller
 
         $input = $request->all();
         $input['user_id'] = Auth::user()->id;
+        $input['learning_category_id'] = $this->yaedpId();
         LearningProfileUpdateRequest::create($input);
 
         // Send email queue to YAEDP admin after submitting update request
