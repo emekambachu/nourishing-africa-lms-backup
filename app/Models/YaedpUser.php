@@ -57,6 +57,14 @@ class YaedpUser extends Authenticatable
         'token',
     ];
 
+    public function state_residence(){
+        return $this->belongsTo(State::class, 'state_residence', 'id');
+    }
+
+    public function state_origin(){
+        return $this->belongsTo(State::class, 'state_orign', 'id');
+    }
+
     public function learningAssessment(){
         return $this->hasOne(LearningAssessment::class, 'user_id', 'id');
     }

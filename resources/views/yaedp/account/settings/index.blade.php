@@ -29,7 +29,9 @@
         </div>
 
         <div>
-            <account-settings-component :profile="{{ Auth::user() }}"></account-settings-component>
+            <account-settings-component
+                :profile="{{ Auth::user() }}">
+            </account-settings-component>
         </div>
     </div>
 @endsection

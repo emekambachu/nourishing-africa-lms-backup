@@ -27,10 +27,10 @@ Route::middleware('auth:sanctum')->group(function (){
         [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'updateProfile'])
         ->name('yaedp.update-profile');
 
+    // Profile update request
     Route::get('/yaedp/get/update-request',
         [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'getUpdateRequest'])
         ->name('yaedp.get.update-request');
-
     Route::post('/yaedp/submit/update-request',
         [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'submitUpdateProfileRequest'])
         ->name('yaedp.submit.update-request');
@@ -46,5 +46,8 @@ Route::middleware('auth:sanctum')->group(function (){
         ->name('yaedp.update-password');
 
 });
+
+// get all states
+Route::get('/states', [App\Http\Controllers\Api\BaseController::class, 'getStates']);
 
 

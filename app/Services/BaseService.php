@@ -8,6 +8,7 @@ use App\Models\Learning\LearningCourseView;
 use App\Models\Learning\LearningLoginSession;
 use App\Models\Learning\LearningModule;
 use App\Models\Learning\LearningModuleView;
+use App\Models\State;
 use App\Models\YaedpUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,26 +34,6 @@ class BaseService
         return new LearningModule();
     }
 
-    public static function getCourses(){
-        return new LearningCourse();
-    }
-
-    public static function getCourseViews(){
-        return LearningCourseView::where('learning_category_id', self::yaedpId());
-    }
-
-    public static function getModuleViews(){
-        return LearningModuleView::where('learning_category_id', self::yaedpId());
-    }
-
-    public static function learningLoginSession(){
-        return new LearningLoginSession();
-    }
-
-    public static function learningLoginSessionWithRelationships(){
-        return self::learningLoginSession()->with('yaedp_user', 'yaedpUser');
-    }
-
     public static function getCategoryModules(){
         return self::getModules()->with('learningCourses')
             ->has('learningCourses')
@@ -72,6 +53,18 @@ class BaseService
             ->where('learning_category_id', self::yaedpId());
     }
 
+    public static function getModuleViews(){
+        return LearningModuleView::where('learning_category_id', self::yaedpId());
+    }
+
+    public static function getCourses(){
+        return new LearningCourse();
+    }
+
+    public static function getCourseViews(){
+        return LearningCourseView::where('learning_category_id', self::yaedpId());
+    }
+
     public static function getCategoryCourses(){
         return self::getCourses()->where('learning_category_id', self::yaedpId());
     }
@@ -80,6 +73,18 @@ class BaseService
         return self::getCourses()
             ->with('learningModule', 'learning_course_resources')
             ->where('learning_category_id', self::yaedpId());
+    }
+
+    public static function learningLoginSession(){
+        return new LearningLoginSession();
+    }
+
+    public static function learningLoginSessionWithRelationships(){
+        return self::learningLoginSession()->with('yaedp_user', 'yaedpUser');
+    }
+
+    public static function nigerianStates(){
+        return State::orderBy('name')->get();
     }
 
     public static function getIp(Request $request){

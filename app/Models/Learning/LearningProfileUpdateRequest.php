@@ -15,6 +15,7 @@ class LearningProfileUpdateRequest extends Model
         'first_name',
         'mobile',
         'state_residence',
+        'location',
         'business_address',
         'focus_area',
         'value_chain',

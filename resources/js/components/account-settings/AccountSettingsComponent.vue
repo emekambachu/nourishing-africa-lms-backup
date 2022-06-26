@@ -26,8 +26,8 @@
                         <div class="tab-pane active" id="tab1">
                             <div class="row">
                                 <div v-if="!formLoading" class="col-12">
-                                    <strong class="mb-3">Profile details</strong>
-                                    <p>Request to update any field by inserting the new data</p>
+                                    <h5 class="mb-3">Profile details</h5>
+                                    <p><strong class="text-danger">Only input data you wish to change</strong></p>
                                     <div v-if="requestUpdateStatus" class="bg-badge-warning p-2 text-center w-auto">
                                         Your update request is being reviewed
                                     </div>
@@ -37,52 +37,52 @@
                                             <div class="col-6">
                                                 <div class="row">
                                                     <div class="col-md-12">
-
                                                         <label class="form-label">Surname</label>
-                                                        <input type="text" class="form-input mb-2" name="surname"
-                                                               v-model="form.surname" :placeholder="profile.surname">
+                                                        <input type="text" class="form-input mb-2"
+                                                               v-model="form.surname"
+                                                               :placeholder="profile.surname">
 
                                                         <label class="form-label">First Name</label>
-                                                        <input type="text" class="form-input mb-2" name="first_name"
-                                                               v-model="form.first_name" :placeholder="profile.first_name">
+                                                        <input type="text" class="form-input mb-2"
+                                                               v-model="form.first_name"
+                                                               :placeholder="profile.first_name">
 
                                                         <label class="form-label">Mobile</label>
-                                                        <input type="tel" class="form-input mb-2" name="mobile"
-                                                               v-model="form.mobile" :placeholder="profile.mobile">
-
-                                                        <label class="form-label">State Residence</label>
-                                                        <input type="text" class="form-input" name="state_residence"
-                                                               v-model="form.state_residence" :placeholder="profile.state_residence">
+                                                        <input type="tel" class="form-input mb-2"
+                                                               v-model="form.mobile"
+                                                               :placeholder="profile.mobile">
 
                                                         <label class="form-label">Business Address</label>
-                                                        <input type="text" class="form-input" name="business_address"
-                                                               v-model="form.business_address" :placeholder="profile.business_address">
-                                                    </div>
+                                                        <input type="text" class="form-input"
+                                                               v-model="form.business_address"
+                                                               :placeholder="profile.business_address">
 
-                                                    <div class="col-md-6">
-                                                        <label class="form-label">Focus Area</label>
-                                                        <select name="focus_area" class="form-control form-select"
-                                                                v-model="form.focus_area">
-                                                            <option v-for="focus in focusAreas"
-                                                                    :key="focus.value"
-                                                                    :value="focus.value"
-                                                                    :selected="focus.value === profile.focus_area">
-                                                                {{ focus.name }}
+                                                        <label class="form-label">State Residence</label>
+                                                        <select class="form-control form-select"
+                                                                v-model="form.state_residence">
+                                                            <option selected value="">
+                                                                {{ profile.state_residence.name }}
+                                                            </option>
+                                                            <option v-for="(state, index) in states"
+                                                                    :key="state.id"
+                                                                    :value="state.id">
+                                                                {{ state.name }}
                                                             </option>
                                                         </select>
-                                                    </div>
 
-                                                    <div class="col-md-6">
-                                                        <label class="form-label">Value Chain</label>
-                                                        <select name="value_chain" class="form-control form-select"
-                                                                v-model="form.value_chain">
-                                                            <option v-for="value in valueChains"
-                                                                    :key="value.value"
-                                                                    :value="value.value"
-                                                                    :selected="value.value === profile.value_chain">
-                                                                {{ value.name }}
+                                                        <label class="form-label">Business Location</label>
+                                                        <select class="form-control form-select"
+                                                                v-model="form.location">
+                                                            <option selected value="">
+                                                                {{ profile.location }}
+                                                            </option>
+                                                            <option v-for="(location, index) in locations"
+                                                                    :key="index"
+                                                                    :value="location.value">
+                                                                {{ location.value }}
                                                             </option>
                                                         </select>
+
                                                     </div>
 
                                                 </div>
@@ -91,6 +91,32 @@
                                             <div class="col-md-6">
                                                 <div class="row">
                                                     <div class="col-12">
+                                                        <label class="form-label">Focus Area</label>
+                                                        <select name="focus_area" class="form-control form-select"
+                                                                v-model="form.focus_area">
+                                                            <option selected value="">
+                                                                {{ profile.focus_area }}
+                                                            </option>
+                                                            <option v-for="focus in focusAreas"
+                                                                    :key="focus.value"
+                                                                    :value="focus.value">
+                                                                {{ focus.name }}
+                                                            </option>
+                                                        </select>
+
+                                                        <label class="form-label">Value Chain</label>
+                                                        <select class="form-control form-select"
+                                                                v-model="form.value_chain">
+                                                            <option selected value="">
+                                                                {{ profile.value_chain }}
+                                                            </option>
+                                                            <option v-for="value in valueChains"
+                                                                    :key="value.value"
+                                                                    :value="value.value">
+                                                                {{ value.name }}
+                                                            </option>
+                                                        </select>
+
                                                         <label class="form-label">Website</label>
                                                         <input type="text" class="form-input" name="website"
                                                                v-model="form.website" :placeholder="profile.website">
@@ -116,7 +142,9 @@
                                             </div>
 
                                             <div class="col-12">
-                                                <label class="form-label">Provide a reason for this update request (e.g., changed mobile number)<i class="text-danger">*</i></label>
+                                                <label class="form-label">
+                                                    Provide a reason for change request (e.g., Current mobile number not correct)
+                                                    <i class="text-danger">*</i></label>
                                                 <textarea class="form-control" v-model="form.reason" required></textarea>
                                             </div>
 
@@ -152,14 +180,14 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label">Current Email</label>
-                                        <input readonly type="email" class="form-input" name="old_email"
+                                        <input readonly type="email" class="form-input"
                                                v-model="formEmail.old_email">
                                         <p class="text-danger font-weight-bold tx-8"
                                            v-if="errors.old_email">{{ errors.old_email }}</p>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">New Email</label>
-                                        <input type="email" class="form-input" name="new_email"
+                                        <input type="email" class="form-input"
                                                v-model="formEmail.new_email" required>
                                         <p class="text-danger font-weight-bold tx-8"
                                            v-if="errors.new_email">{{ errors.new_email }}</p>
@@ -176,24 +204,9 @@
                         <div class="tab-pane" id="tab3">
                             <form @submit.prevent="updatePassword">
                                 <div class="row">
-<!--                                    <div class="col-12">-->
-<!--                                        <label class="form-label">Old Password</label>-->
-<!--                                        <input type="text" class="form-input" name="old_password"-->
-<!--                                               v-model="formPassword.old_password" required>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-6">-->
-<!--                                        <label class="form-label">New Password</label>-->
-<!--                                        <input type="text" class="form-input" name="new_password"-->
-<!--                                               v-model="formPassword.new_password" required>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-6">-->
-<!--                                        <label class="form-label">Confirm New Password</label>-->
-<!--                                        <input type="text" class="form-input" name="new_password_confirmation"-->
-<!--                                               v-model="formPassword.new_password_confirmation" required>-->
-<!--                                    </div>-->
                                     <div class="col-11">
                                         <label class="form-label">Old Password</label>
-                                        <input :type="typeOldPassword" class="form-input" name="old_password"
+                                        <input :type="typeOldPassword" class="form-input"
                                                v-model="formPassword.old_password" required>
                                     </div>
                                     <div class="col-1" style="padding-top: 35px;">
@@ -203,7 +216,7 @@
 
                                     <div class="col-md-5">
                                         <label class="form-label">New Password</label>
-                                        <input :type="typeNewPassword" class="form-input" name="new_password"
+                                        <input :type="typeNewPassword" class="form-input"
                                                v-model="formPassword.new_password" required>
                                     </div>
                                     <div class="col-1" style="padding-top: 35px;">
@@ -214,7 +227,6 @@
                                     <div class="col-md-5">
                                         <label class="form-label">Confirm New Password</label>
                                         <input :type="typeNewPasswordConfirm" class="form-input"
-                                               name="new_password_confirmation"
                                                v-model="formPassword.new_password_confirmation" required>
                                     </div>
                                     <div class="col-1" style="padding-top: 35px;">
@@ -253,6 +265,7 @@
                     mobile: '',
                     state_residence: '',
                     business_address: '',
+                    location: '',
                     focus_area: '',
                     value_chain: '',
                     website: '',
@@ -288,6 +301,20 @@
                     { value: 'Rubber', name: 'Rubber' },
                     { value: 'Others', name: 'Others' },
                 ],
+                locations: [
+                    { value: 'Abia', name: 'Abia' },
+                    { value: 'Adamawa', name: 'Adamawa' },
+                    { value: 'Cross river', name: 'Cross river' },
+                    { value: 'Edo', name: 'Edo' },
+                    { value: 'FCT', name: 'FCT' },
+                    { value: 'Kano', name: 'Kano' },
+                    { value: 'Kaduna', name: 'Kaduna' },
+                    { value: 'Kogi', name: 'Kogi' },
+                    { value: 'Lagos', name: 'Lagos' },
+                    { value: 'Oyo', name: 'Oyo' },
+                    { value: 'Others', name: 'Others' },
+                ],
+                states: [],
                 errors:[],
                 formLoading: false,
                 formSuccessful: false,
@@ -314,7 +341,7 @@
                 });
             },
 
-            submitForm: function(url, form){
+            submitForm(url, form){
                 // Install sweetalert2 to use
                 // Loading
                 Swal.fire({
@@ -330,18 +357,24 @@
                 axios.post(url, form)
                     .then(response => {
                         console.log(response.data);
-                        response.data.success === true ? [
+                        if(response.data.success === true){
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Submitted',
                                 showConfirmButton: true,
                                 timer: 10000
-                            }),
-                            this.formSuccessful = true,
-                        ] : [
-                            this.formError = response.data.success === false,
-                            this.alertMessage = response.data.message
-                        ]
+                            });
+                            this.formSuccessful = true;
+                        }else{
+                            Swal.fire({
+                                icon: 'error',
+                                html: response.data.message,// add html attribute if you want or remove
+                                showConfirmButton: true,
+                                timer: 10000
+                            });
+                            this.formError = response.data.success === false;
+                            this.alertMessage = response.data.message;
+                        }
                     }).catch((error) => {
                         console.log(error.response.data.errors);
                     });
@@ -368,9 +401,14 @@
                     }
                 });
                 if(i < 2){
-                    alert(i);
                     this.updateRequestError = true;
                     this.alertMessage = "Give a reason and input your new data in the assigned field";
+                    Swal.fire({
+                        icon: 'error',
+                        html: this.alertMessage,// add html attribute if you want or remove
+                        showConfirmButton: true,
+                        timer: 10000
+                    });
                     return false;
                 }
                 // Install sweetalert2 to use
@@ -389,20 +427,25 @@
                 axios.post('/api/yaedp/submit/update-request', this.form)
                     .then(response => {
                         console.log(response.data);
-                        response.data.success = this.profileUpdateSuccess(response);
+                        if(response.data.success === true){
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Submitted',
+                                showConfirmButton: true,
+                                timer: 10000
+                            });
+                            this.requestUpdateStatus = true;
+                        }else{
+                            Swal.fire({
+                                icon: 'error',
+                                html: response.data.message,// add html attribute if you want or remove
+                                showConfirmButton: true,
+                                timer: 10000
+                            });
+                        }
                     }).catch((error) => {
                         console.log(error);
                 });
-            },
-
-            profileUpdateSuccess: function(request){
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Submitted',
-                    showConfirmButton: true,
-                    timer: 10000
-                }),
-                this.requestUpdateStatus = true;
             },
 
             updateEmail: function(){
@@ -428,6 +471,14 @@
                 if(input === 'new-confirm'){
                     this.typeNewPasswordConfirm === 'password' ? this.typeNewPasswordConfirm = 'text' : this.typeNewPasswordConfirm = 'password';
                 }
+            },
+
+            getStates(){
+                axios.get('/api/states').then((response) => {
+                    if(response.data.success === true){
+                        this.states = response.data.states;
+                    }
+                });
             }
         },
         computed: {
@@ -441,7 +492,7 @@
 
         mounted(){
             this.getProfileUpdateRequest();
-            // this.getProfile();
+            this.getStates();
         }
     }
 </script>
