@@ -52,12 +52,7 @@
                                                                v-model="form.mobile"
                                                                :placeholder="profile.mobile">
 
-                                                        <label class="form-label">Business Address</label>
-                                                        <input type="text" class="form-input"
-                                                               v-model="form.business_address"
-                                                               :placeholder="profile.business_address">
-
-                                                        <label class="form-label">State Residence</label>
+                                                        <label class="form-label">State of Residence</label>
                                                         <select class="form-control form-select"
                                                                 v-model="form.state_residence">
                                                             <option selected value="">
@@ -87,6 +82,11 @@
                                                                 {{ location.value }}
                                                             </option>
                                                         </select>
+
+                                                        <label class="form-label">Business Address</label>
+                                                        <input type="text" class="form-input"
+                                                               v-model="form.business_address"
+                                                               :placeholder="profile.business_address">
 
                                                     </div>
 
