@@ -253,7 +253,6 @@ class YaedpAssessmentController extends Controller
     }
 
     public function certificate(){
-
         $data['completedAssessment'] = $this->completedAssessment($this->yaedpId());
         $data['certificateDate'] = Carbon::now()->format('jS \\of F Y');
 

@@ -70,6 +70,11 @@
                                                             </option>
                                                         </select>
 
+                                                        <label class="form-label">Business Name</label>
+                                                        <input type="text" class="form-input"
+                                                               v-model="form.business"
+                                                               :placeholder="profile.business">
+
                                                         <label class="form-label">Business Location</label>
                                                         <select class="form-control form-select"
                                                                 v-model="form.location">
@@ -265,6 +270,7 @@
                     mobile: '',
                     state_residence: '',
                     business_address: '',
+                    business: '',
                     location: '',
                     focus_area: '',
                     value_chain: '',
@@ -375,8 +381,6 @@
                             this.formError = response.data.success === false;
                             this.alertMessage = response.data.message;
                         }
-                    }).catch((error) => {
-                        console.log(error.response.data.errors);
                     });
             },
 

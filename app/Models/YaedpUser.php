@@ -6,6 +6,7 @@ use App\Models\Learning\LearningAssessment;
 use App\Models\Learning\LearningCourseView;
 use App\Models\Learning\LearningModule;
 use App\Models\Learning\LearningModuleView;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 class YaedpUser extends Authenticatable
 {
     use Notifiable;
+    use SoftDeletes;
+
     protected $guard = 'yaedp-users';
     protected $table = 'yedp_users';
 

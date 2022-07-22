@@ -5,9 +5,12 @@ namespace App\Models\Learning;
 use App\Models\YaedpUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class LearningProfileUpdateRequest extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'user_id',
         'learning_category_id',
@@ -15,6 +18,7 @@ class LearningProfileUpdateRequest extends Model
         'first_name',
         'mobile',
         'state_residence',
+        'business',
         'location',
         'business_address',
         'focus_area',
