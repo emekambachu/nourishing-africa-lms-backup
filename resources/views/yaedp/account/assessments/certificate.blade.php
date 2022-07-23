@@ -44,9 +44,13 @@
 {{--                </a>--}}
 {{--            </div>--}}
         @else
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <h4>You are yet to complete your modules.<br>
+                        Please complete all outstanding courses and assessments to view your certificate.</h4>
+                </div>
+            </div>
             <div class="row">
-                <p class="mb-5">You are yet to complete your modules.<br>
-                    Please complete all outstanding courses and assessments to view your certificate.</p>
                 <div class="certificate-bg-sample">
                     <img src="{{ asset('images/icons/certificate_yaedp_500_sample.png') }}"/>
                 </div>
