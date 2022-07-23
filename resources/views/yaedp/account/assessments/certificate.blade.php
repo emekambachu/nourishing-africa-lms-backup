@@ -46,8 +46,8 @@
         @else
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
-                    <h4>You are yet to complete your modules.<br>
-                        Please complete all outstanding courses and assessments to view your certificate.</h4>
+                    <p>You are yet to complete your modules.<br>
+                        Please complete all outstanding courses and assessments to view your certificate.</p>
                 </div>
             </div>
             <div class="row">
