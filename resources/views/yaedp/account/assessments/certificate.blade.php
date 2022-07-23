@@ -20,16 +20,16 @@
         </div>
 
         @if($completedAssessment && $completedAssessment->percent > 80)
-            <div class="row" style="margin-bottom: 100px;">
-                <div class="certificate-bg-sample">
-                    <img src="{{ asset('images/icons/certificate_yaedp_500_sample.png') }}"/>
-                </div>
-            </div>
+{{--            <div class="row" style="margin-bottom: 100px;">--}}
+{{--                <div class="certificate-bg-sample">--}}
+{{--                    <img src="{{ asset('images/icons/certificate_yaedp_500_sample.png') }}"/>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
-                    <h4><strong>Congratulations</strong> on completing your modules and making the overall score in the assessments!
-Your certificate will be available for download on <strong>16th of July, 2022</strong>.</h4>
+                    <h4><strong>Congratulations</strong> Congratulations on completing your modules!
+                        We will inform you via email when your certificate is ready for download.</h4>
                 </div>
             </div>
 
