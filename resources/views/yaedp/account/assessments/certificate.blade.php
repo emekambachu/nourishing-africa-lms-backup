@@ -19,7 +19,7 @@
             <h2 class="font-large-inter text-light-brown font-weight-bold">Certificate</h2>
         </div>
 
-        @if($completedAssessment && $completedAssessment->percent > 80)
+        @if($completedAssessment && $completedAssessment->percent > 79)
 {{--            <div class="row" style="margin-bottom: 100px;">--}}
 {{--                <div class="certificate-bg-sample">--}}
 {{--                    <img src="{{ asset('images/icons/certificate_yaedp_500_sample.png') }}"/>--}}
