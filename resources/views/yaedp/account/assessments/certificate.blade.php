@@ -20,31 +20,17 @@
         </div>
 
         @if($completedAssessment)
-            @if($completedAssessment->percent > 79)
-                <div class="row justify-content-center">
-                    <div class="col-12 d-flex justify-content-center">
-                        <img src="{{ asset('images/icons/certification.png') }}" width="250"/>
-                    </div>
-                    <div class="col-12 text-center">
-                        <h4>
-                            <strong class="text-success">Congratulations</strong> on completing your modules!
-                            We will inform you via email when your certificate is ready for download.
-                        </h4>
-                    </div>
+            <div class="row justify-content-center">
+                <div class="col-12 d-flex justify-content-center">
+                    <img src="{{ asset('images/icons/certification.png') }}" width="250"/>
                 </div>
-            @else
-                <div class="row justify-content-center">
-                    <div class="col-12 d-flex justify-content-center">
-                        <img src="{{ asset('images/icons/fail-test.png') }}" width="250"/>
-                    </div>
-                    <div class="col-12 text-center">
-                        <h4>
-                            Unfortunately, You haven't met the cut-off mark.<br>
-                            Try to re-take certain module assessments and aim for a higher score.
-                        </h4>
-                    </div>
+                <div class="col-12 text-center">
+                    <h4>
+                        <strong class="text-success">Congratulations</strong> on completing your modules!
+                        We will inform you via email when your certificate is ready for download.
+                    </h4>
                 </div>
-            @endif
+            </div>
         @else
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
