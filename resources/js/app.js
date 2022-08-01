@@ -28,8 +28,11 @@ window.Swal = Swal;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Local Components
+// YAEDP Account
 import AccountSettingsComponent from './components/account-settings/AccountSettingsComponent';
+
+// Export Diagnostic Tool
+import ExportDiagnosticLogin from './components/export-diagnostic-tool/ExportDiagnosticLogin';
 
 
 /**
@@ -41,5 +44,7 @@ import AccountSettingsComponent from './components/account-settings/AccountSetti
 createApp({
     components: {
         AccountSettingsComponent,
+
+        ExportDiagnosticLogin
     }
 }).use(router, axios, VueAxios).mount('#app');

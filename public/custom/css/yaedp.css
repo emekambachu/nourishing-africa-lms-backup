@@ -1,0 +1,155 @@
+span.page-link{
+    background-color: #006600 !important;
+    padding-top: 12px !important;
+    height: 42px !important;
+}
+.page-item.disabled .page-link{
+    color: #006600 !important;
+    background-color: #FFFFFF !important;
+    padding-top: 10px !important;
+}
+a.page-link{
+    color: #006600 !important;
+}
+.page-item.active .page-link{
+    background-color: #006600 !important;
+}
+.container-fluid{
+    max-width: 1600px !important;
+}
+button.dropdown-toggle{
+    padding-top: 15px !important;
+    height : 48px !important;
+    background-color: transparent !important;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border-radius: 5px;
+    color: #495057;
+}
+div.dropdown-menu{
+}
+.test-container{
+    -webkit-box-shadow: 0px 0px 30px 0px rgb(0 0 0 / 10%);
+    -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 30px 0px rgb(0 0 0 / 10%);
+    background: #ffffff url(/esp2/img/pattern_1.png) repeat;
+}
+.yedp-begin-btn{
+    background: #006600;
+    border: 2px solid #006600;
+    box-sizing: border-box;
+    border-radius: 5.06329px;
+    font-family: tahoma, arial, helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    color: #ffffff;
+}
+
+.yedp-begin-btn:hover{
+    background: #FFFFFF;
+    border: 2px solid #006600;
+    box-sizing: border-box;
+    border-radius: 5.06329px;
+    font-family: tahoma, arial, helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    color: #006600;
+}
+
+.yedp-begin-title{
+    font-family: tahoma, arial, helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: capitalize
+    font-size: 30px;
+    line-height: 52px;
+    text-align: center;
+    color: #1E1E1E;
+}
+.yedp-begin-btn-next{
+    background: #FFFFFF;
+    border: 1.01266px solid #006600;
+    box-sizing: border-box;
+    border-radius: 5.06329px;
+    font-family: tahoma, arial, helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    color: #006600;
+    width: 100px;
+}
+.ten{
+    width: 10%;
+    background-color: #006600;
+}
+.twenty{
+    width: 20%;
+    background-color: #006600;
+}
+.thirty{
+    width: 30%;
+    background-color: #006600;
+}
+.fifty{
+    width: 50%;
+    background-color: #006600;
+}
+.eighty{
+    width: 80%;
+    background-color: #006600;
+}
+.hundred{
+    width: 100%;
+    background-color: #006600;
+}
+.yaedp-content{
+    font-family: tahoma, arial, helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-align: justify;
+    color: #1E1E1E;
+}
+.md-form {
+    margin-top: unset;
+    margin-bottom: unset;
+}
+
+.md-form-container {
+    padding: 10px;
+    background-color: #fff;
+}
+
+.form-check-input {
+    position: absolute;
+    margin-top: .2rem;
+    margin-left: -2rem;
+    opacity: 1 !important;
+}
+
+.privacy-policy-accordion-header {
+    background: #046B60;
+    color: #fff;
+    border-radius: 0;
+    padding: 18px 28px 19px;
+}
+
+.privacy-policy-accordion-body {
+    background: #eeeded;
+    padding: 35px 28px 25px;
+    border-top: none;
+}
+
+.justify-text {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+strong {
+    font-weight: 600;
+}
