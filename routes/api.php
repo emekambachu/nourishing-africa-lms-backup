@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -45,5 +46,8 @@ Route::middleware('auth:sanctum')->group(function (){
 
 // get all states
 Route::get('/states', [App\Http\Controllers\Api\BaseController::class, 'getStates']);
+
+// YAEDP Export Diagnostic Tool
+Route::post('/yaedp/export-diagnostic/login', [DiagnosticApplicationController::class, 'login']);
 
 

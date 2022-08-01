@@ -212,6 +212,13 @@ Route::get('/yaedp/account/assessment/certificate/download',
 Route::get('/yaedp/export-diagnostic/',
     [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'index'])
     ->name('yaedp.diagnostic-tool.index');
+Route::get('/yaedp/export-diagnostic/instructions',
+    [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'instructions'])
+    ->name('yaedp.diagnostic-tool.instructions');
+Route::get('/yaedp/export-diagnostic/start',
+    [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'start'])
+    ->name('yaedp.diagnostic-tool.start');
+
 
 //Github Deployment
 Route::post('/github/deploy', [GithubDeploymentController::class, 'deploy']);

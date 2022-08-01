@@ -35,15 +35,14 @@
 @stop
 
 @section('top-panel')
-    <section class="wow fadeIn parallax padding-50px-tb" data-stellar-background-ratio="0.5"
+    <section class="wow fadeIn parallax" data-stellar-background-ratio="0.5"
              style="background-image: url(&quot;{{ asset('images/login-intro.jpg') }}&quot;); visibility: visible; animation-name: fadeIn;background-attachment: unset; background-position: center; background-attachment: fixed;">
         <div class="opacity-medium bg-extra-dark-gray"></div>
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12 d-flex mt-3 flex-column justify-content-center text-center extra-small-screen page-title-large">
                     <!-- start page title -->
-                    <h1 class="text-white-2 mt-3"
-                        style="margin-bottom: 0; text-transform: uppercase; text-align: center; font-weight-500: letter-spacing-minus-1;">
+                    <h1 class="text-white-2 mt-3 font-family: tahoma, arial, helvetica, sans-serif; text-align: center; font-weight-500 letter-spacing-minus-1" style="margin-bottom: 0; text-transform: uppercase;">
                         YAEDP | Export Diagnostic Tool</h1>
                     <!-- end page title -->
                 </div>
@@ -82,7 +81,7 @@
                     <div id="intro">
                         <div class="row p-4">
 
-                            <div class="col-md-7">
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <div class="big-scrn d-none d-sm-none d-md-block">
                                         <div class="row">
@@ -90,10 +89,9 @@
                                                 <img style="float: left;" src="{{ asset('images/newlogo.png') }}"
                                                      alt="" width="99" height="60" />
                                             </div>
-                                            <div class="col-8 pt-4" style="display: flex; justify-content: left; align-items: center;">
-                                                <p class="" style="color: #169179; font-size: 16pt; font-weight: 600; font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">
-                                                    Youth in Agri-food Export Development Program (YAEDP)
-                                                </p>
+                                            <div class="col-8 pt-4 text-center">
+                                                <h6 class="text-center" style="color: #169179;">
+                                                    Instructions</h6>
                                             </div>
                                             <div class="col-2" style="justify-content: center;align-items: center;display: flex;">
                                                 <img style="float: left;" src="{{ asset('images/nepc-logo.png') }}"
@@ -117,8 +115,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-12 pt-4" style="display: flex; justify-content: left; align-items: center;">
-                                                <p class="" style="color: #169179; font-size: 16pt; font-weight: 600; font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">
-                                                    YAEDP | Export Diagnostic Tool
+                                                <p style="color: #169179; font-size: 16pt; font-weight: 600; font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">
+                                                    Instructions
                                                 </p>
                                             </div>
                                         </div>
@@ -126,9 +124,11 @@
                                 </div>
 
                                 <p class="yaedp-content">
+                                    Hello <strong>{{ Session::get('session_name') }}</strong><br>
                                     The Youth in Agri-food Export Development Program (YAEDP) is designed to develop the capacity of Nigerian youth, aged 25 – 40 to participate in the export sector.
                                     The program will provide training, market linkages, and digital support to entrepreneurs and co-operative leaders in the Nigerian agri-food sector.
                                 </p>
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <p class="mb-1">
@@ -145,6 +145,10 @@
                                             </span>
                                         </p>
                                         <p style="font-family: tahoma, arial, helvetica, sans-serif; text-align: justify;">The YAEDP is accepting applications from agrifood entrepreners and cooperative leaders in these value chains: Cocoa, Spices, Sesame, Shea butter, Cashew, Cassava, Soybean, Rubber, and Ginger.</p>
+
+                                        <a href="{{ route('yaedp.export-diagnostic.start') }}">
+                                            <button type="button" class="yedp-begin-btn btn active">Start</button>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -156,19 +160,7 @@
                                         <img class="float-right" src="{{ asset('images/nepc-logo.png') }}"
                                              alt="" width="70" height="40" /></div>
                                 </div>
-                            </div>
 
-                            <div id="app" class="col-md-5 mt-3"
-                                 style="justify-content: center; align-items: center;">
-                                @if(session('logged_out'))
-                                    <div class="alert alert-danger mg-b-0" role="alert">
-                                        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <strong>{{ session('logged_out') }}</strong>
-                                    </div>
-                                @endif
-                                <export-diagnostic-login></export-diagnostic-login>
                             </div>
 
                         </div>
