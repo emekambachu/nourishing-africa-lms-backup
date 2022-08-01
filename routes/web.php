@@ -211,13 +211,13 @@ Route::get('/yaedp/account/assessment/certificate/download',
 // YAEDP Export Diagnostic tool
 Route::get('/yaedp/export-diagnostic/',
     [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'index'])
-    ->name('yaedp.diagnostic-tool.index');
+    ->name('yaedp.export-diagnostic.index');
 Route::get('/yaedp/export-diagnostic/instructions',
     [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'instructions'])
-    ->name('yaedp.diagnostic-tool.instructions');
+    ->name('yaedp.export-diagnostic.instructions');
 Route::get('/yaedp/export-diagnostic/start',
     [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'start'])
-    ->name('yaedp.diagnostic-tool.start');
+    ->name('yaedp.export-diagnostic.start');
 
 
 //Github Deployment

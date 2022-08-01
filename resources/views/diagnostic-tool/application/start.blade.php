@@ -78,21 +78,13 @@
 
             <div class="row m-0">
                 <div class="col-md-12 test-container" style="border-radius: 12px">
-                    <div id="intro">
-
-                        <div class="row p-4">
-                            <div class="col-md-12">
-
-                                
-
-                            </div>
-                        </div>
+                    <div id="app">
+                        <export-diagnostic-application></export-diagnostic-application>
                     </div>
                 </div>
             </div>
 
         </div>
-
     </section>
 
 @stop

@@ -146,8 +146,10 @@
                                         </p>
                                         <p style="font-family: tahoma, arial, helvetica, sans-serif; text-align: justify;">The YAEDP is accepting applications from agrifood entrepreners and cooperative leaders in these value chains: Cocoa, Spices, Sesame, Shea butter, Cashew, Cassava, Soybean, Rubber, and Ginger.</p>
 
-                                        <a href="{{ route('yaedp.export-diagnostic.start') }}">
-                                            <button type="button" class="yedp-begin-btn btn active">Start</button>
+                                        <a class="justify-content-center d-flex"
+                                           href="{{ route('yaedp.export-diagnostic.start') }}">
+                                            <button type="button"
+                                                    class="yedp-begin-btn btn active">Start</button>
                                         </a>
                                     </div>
                                 </div>

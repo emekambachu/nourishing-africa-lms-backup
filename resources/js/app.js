@@ -33,6 +33,7 @@ import AccountSettingsComponent from './components/account-settings/AccountSetti
 
 // Export Diagnostic Tool
 import ExportDiagnosticLogin from './components/export-diagnostic-tool/ExportDiagnosticLogin';
+import ExportDiagnosticApplication from './components/export-diagnostic-tool/ExportDiagnosticApplication';
 
 
 /**
@@ -45,6 +46,7 @@ createApp({
     components: {
         AccountSettingsComponent,
 
-        ExportDiagnosticLogin
+        ExportDiagnosticLogin,
+        ExportDiagnosticApplication,
     }
 }).use(router, axios, VueAxios).mount('#app');

@@ -36,6 +36,14 @@ class DiagnosticApplicationController extends Controller
         return view('diagnostic-tool.application.index');
     }
 
+    public function start(){
+        if(Session::has('session_email')){
+            return redirect()->route('yaedp.export-diagnostic.start');
+        }
+        Session::flash('logged_out', 'You have been logged out');
+        return redirect()->route('yaedp.export-diagnostic.index');
+    }
+
     public function logout(){
 
     }

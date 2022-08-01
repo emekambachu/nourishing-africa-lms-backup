@@ -4,7 +4,7 @@
         <div class="text-center" v-show="loading">
             <img :src="'/images/loaders/loading.gif'" width="100"/>
         </div>
-        <form v-else @submit.prevent="login">
+        <form v-if="!loading" @submit.prevent="login">
             <div v-if="errors" class="text-danger text-center">
                 <span v-for="(error, index) in errors" :key="index">
                     {{ error.toString() }}<br>
