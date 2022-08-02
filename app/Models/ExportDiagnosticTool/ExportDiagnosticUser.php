@@ -14,6 +14,7 @@ class ExportDiagnosticUser extends Model
 
     protected $fillable = [
         'yaedp_user_id',
+        'last_question_id',
         'score',
         'percent',
         'completed'

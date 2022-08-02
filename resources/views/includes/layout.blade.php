@@ -87,10 +87,10 @@
     <!--Jquery UI-->
     <link href="{{ asset('custom/js/libs/jquery-ui-1.12.1/jquery-ui.min.css') }}" rel="stylesheet">
 
-@yield('top-assets')
-
-<!-- CSRF Token -->
+    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+@yield('top-assets')
 
     <!-- Hotjar Tracking Code for nourishingafrica.com -->
     <script>

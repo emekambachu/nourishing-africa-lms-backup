@@ -59,8 +59,18 @@ class DiagnosticApplicationController extends Controller
         }
     }
 
-    public function submitQuestion(){
+    public function storeAnswer(Request $request, $id){
+        try {
+            ExportDiagnosticApplicationService::storeAnswerFromQuestionId($request, $id);
+            return response()->json([
+                'success' => true
+            ]);
 
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ]);
+        }
     }
 
     public function logout(){

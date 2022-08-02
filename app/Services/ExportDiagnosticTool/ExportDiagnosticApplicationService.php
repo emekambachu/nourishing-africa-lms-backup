@@ -63,19 +63,40 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
 
     public static function getApplicationQuestion(){
 
-        // get all question Id's and store them in an array
-        $questions = self::question()->select('id')->get()->toArray();
+        // get question Id's from answers
+        $questionIdFromAnswers = self::answer()
+            ->select('export_diagnostic_question_id')
+            ->where('export_diagnostic_user_id', Session::get('session_id'))
+            ->get()->toArray();
+        $answered = self::answer()
+            ->where('export_diagnostic_user_id', Session::get('session_id'))
+            ->count();
 
         // get single question using following commands
-        return self::question()->with('export_diagnostic_category', 'export_diagnostic_options', 'export_diagnostic_answer')
-            ->whereHas('export_diagnostic_category', function (Builder $query){
+        return self::question()->orderBy('sort')
+            ->with('export_diagnostic_category', function ($query){
                 $query->orderBy('sort');
-            })->whereHas('export_diagnostic_options', function (Builder $query) {
+            })->with('export_diagnostic_options', function ($query) {
                 $query->orderBy('sort');
-            })->whereHas('export_diagnostic_answer', function (Builder $query) use ($questions) {
-                $query->where('export_diagnostic_user_id', '<>', Session::get('session_id'))
-                    ->whereNotIn('export_diagnostic_question_id', $questions);
-            })->orderBy('sort')->first();
-
+            })->when($answered > 0, function ($query) use ($questionIdFromAnswers) {
+                $query->whereNotIn('id', $questionIdFromAnswers);
+            })->first();
     }
+
+    public static function storeAnswerFromQuestionId($request, $id){
+        $question = self::questionWithRelationships()->findOrFail($id);
+        $option = '';
+        if($question->type === 'radio'){
+            $option = self::option()->findOrFail($request->option_id);
+        }
+        self::answer()->create([
+           'yaedp_user_id' => Session::get('session_id'),
+           'export_diagnostic_user_id' => Session::get('session_id'),
+           'export_diagnostic_question_id' => $question->id,
+           'export_diagnostic_category_id' => $question->export_diagnostic_category_id,
+           'answer' => $option->option,
+           'points' => $option->points,
+        ]);
+    }
+
 }
