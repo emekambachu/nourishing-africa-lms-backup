@@ -4,7 +4,6 @@ namespace App\Services\ExportDiagnosticTool;
 
 use App\Models\ExportDiagnosticTool\ExportDiagnosticOption;
 use App\Models\ExportDiagnosticTool\ExportDiagnosticQuestion;
-use App\Models\ExportDiagnosticTool\ExportDiagnosticQuestionCategory;
 
 /**
  * Class ExportDiagnosticToolQuestionService.

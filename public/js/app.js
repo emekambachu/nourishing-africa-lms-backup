@@ -23031,7 +23031,57 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "ExportDiagnosticQuestion"
+  data: function data() {
+    return {
+      form: {
+        answer: ''
+      },
+      loading: false,
+      errors: [],
+      question: '',
+      options: []
+    };
+  },
+  methods: {
+    getQuestion: function getQuestion() {
+      var _this = this;
+
+      axios.get('/api/yaedp/export-diagnostic/get-question').then(function (response) {
+        console.log(response.data);
+
+        if (response.data.success === true) {
+          _this.question = response.data.question;
+          _this.options = response.data.question.export_diagnostic_options;
+        } else {
+          console.log(response.data.message);
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      })["finally"](function () {});
+    },
+    submitAnswer: function submitAnswer() {
+      var _this2 = this;
+
+      this.errors = [];
+      this.loading = true;
+      axios.post('/api/yaedp/export-diagnostic/login', this.form).then(function (response) {
+        console.log(response.data);
+
+        if (response.data.success === true) {
+          window.location.href = '/yaedp/export-diagnostic/instructions';
+        } else {
+          _this2.errors = response.data.errors;
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      })["finally"](function () {
+        _this2.loading = false;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getQuestion();
+  }
 });
 
 /***/ }),
@@ -23829,12 +23879,121 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "row p-4"
 };
+var _hoisted_2 = {
+  "class": "col-12"
+};
+var _hoisted_3 = {
+  key: 0,
+  "class": "text-danger text-center"
+};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-md-12\"><form><!--                &lt;div v-if=&quot;errors&quot; class=&quot;text-danger text-center&quot;&gt;--><!--                    &lt;span v-for=&quot;(error, index) in errors&quot; :key=&quot;index&quot;&gt;--><!--                        {{ error.toString() }}&lt;br&gt;--><!--                    &lt;/span&gt;--><!--                &lt;/div&gt;--><label class=\"form-text\">Email: <span class=\"text-danger\">*</span><input class=\"form-control\" type=\"email\" placeholder=\"YEADP Email\" required><span class=\"feedback-custom\"></span></label><button type=\"submit\" class=\"yedp-begin-btn btn active\">Next</button></form></div>", 1);
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
 
-var _hoisted_3 = [_hoisted_2];
+var _hoisted_5 = {
+  key: 1,
+  "class": "form-text"
+};
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-danger"
+}, "*", -1
+/* HOISTED */
+);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "feedback-custom"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  key: 2,
+  "class": "form-text"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-danger"
+}, "*", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "feedback-custom"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  key: 3,
+  "class": "form-text"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-danger"
+}, "*", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  "class": "form-control",
+  type: "text",
+  placeholder: "YEADP Email",
+  required: ""
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "feedback-custom"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "yedp-begin-btn btn active"
+}, "Next", -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    onSubmit: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.submitAnswer && $options.submitAnswer.apply($options, arguments);
+    }, ["prevent"]))
+  }, [$data.errors ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.errors, function (error, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
+      key: index
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(error.toString()), 1
+    /* TEXT */
+    ), _hoisted_4]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.question.type === 'radio' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.question.question) + ": ", 1
+  /* TEXT */
+  ), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "form-control",
+    type: "radio",
+    value: "",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.form.answer = $event;
+    }),
+    required: ""
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.answer]]), _hoisted_7])) : $data.question.type === 'checkbox' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.question.question) + ": ", 1
+  /* TEXT */
+  ), _hoisted_9, _hoisted_10, _hoisted_11])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.question.question) + ": ", 1
+  /* TEXT */
+  ), _hoisted_13, _hoisted_14, _hoisted_15])), _hoisted_16], 32
+  /* HYDRATE_EVENTS */
+  )])]);
 }
 
 /***/ }),

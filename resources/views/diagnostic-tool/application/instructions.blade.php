@@ -35,7 +35,7 @@
 @stop
 
 @section('top-panel')
-    <section class="wow fadeIn parallax" data-stellar-background-ratio="0.5"
+    <section class="wow fadeIn parallax padding-50px-tb" data-stellar-background-ratio="0.5"
              style="background-image: url(&quot;{{ asset('images/login-intro.jpg') }}&quot;); visibility: visible; animation-name: fadeIn;background-attachment: unset; background-position: center; background-attachment: fixed;">
         <div class="opacity-medium bg-extra-dark-gray"></div>
         <div class="container">

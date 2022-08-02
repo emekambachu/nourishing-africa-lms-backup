@@ -33,15 +33,34 @@ class DiagnosticApplicationController extends Controller
             return view('diagnostic-tool.application.instructions');
         }
         Session::flash('logged_out', 'You have been logged out');
-        return view('diagnostic-tool.application.index');
+        return redirect()->route('yaedp.export-diagnostic.index');
     }
 
     public function start(){
         if(Session::has('session_email')){
-            return redirect()->route('yaedp.export-diagnostic.start');
+            return view('diagnostic-tool.application.start');
         }
         Session::flash('logged_out', 'You have been logged out');
         return redirect()->route('yaedp.export-diagnostic.index');
+    }
+
+    public function getQuestion(){
+        try {
+            $question = ExportDiagnosticApplicationService::getApplicationQuestion();
+            return response()->json([
+                'success' => true,
+                'question' => $question
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function submitQuestion(){
+
     }
 
     public function logout(){

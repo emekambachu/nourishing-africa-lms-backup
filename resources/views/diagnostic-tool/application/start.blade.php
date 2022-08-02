@@ -35,7 +35,7 @@
 @stop
 
 @section('top-panel')
-    <section class="wow fadeIn parallax" data-stellar-background-ratio="0.5"
+    <section class="wow fadeIn parallax padding-50px-tb" data-stellar-background-ratio="0.5"
              style="background-image: url(&quot;{{ asset('images/login-intro.jpg') }}&quot;); visibility: visible; animation-name: fadeIn;background-attachment: unset; background-position: center; background-attachment: fixed;">
         <div class="opacity-medium bg-extra-dark-gray"></div>
         <div class="container">
@@ -76,8 +76,8 @@
     <section class="wow fadeIn pt-5 pl-3 pr-3 pb-5" style="margin-top: 0px; z-index: 3;">
         <div class="shrink-responsiveness-ent-o container-fluid">
 
-            <div class="row m-0">
-                <div class="col-md-12 test-container" style="border-radius: 12px">
+            <div class="row m-0 justify-content-center d-flex">
+                <div class="col-12 col-sm-12 col-md-8 col-lg-6 test-container" style="border-radius: 12px">
                     <div id="app">
                         <export-diagnostic-application></export-diagnostic-application>
                     </div>

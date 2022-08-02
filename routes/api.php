@@ -49,5 +49,7 @@ Route::get('/states', [App\Http\Controllers\Api\BaseController::class, 'getState
 
 // YAEDP Export Diagnostic Tool
 Route::post('/yaedp/export-diagnostic/login', [DiagnosticApplicationController::class, 'login']);
+Route::get('/yaedp/export-diagnostic/get-question', [DiagnosticApplicationController::class, 'getQuestion']);
+Route::post('/yaedp/export-diagnostic/submit-question', [DiagnosticApplicationController::class, 'submitQuestion']);
 
 
