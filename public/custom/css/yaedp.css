@@ -176,6 +176,12 @@ strong {
     cursor: pointer;
 }
 
+.radio-container text {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
 /* Create a custom radio button */
 .checkmark {
     position: absolute;
@@ -189,6 +195,10 @@ strong {
 
 /* On mouse-over, add a grey background color */
 .radio-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.radio-container:hover text ~ .checkmark {
     background-color: #ccc;
 }
 

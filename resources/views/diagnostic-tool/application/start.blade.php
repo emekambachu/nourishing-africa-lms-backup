@@ -77,7 +77,7 @@
         <div class="shrink-responsiveness-ent-o container-fluid">
 
             <div class="row m-0 justify-content-center d-flex">
-                <div class="col-12 col-sm-12 col-md-8 col-lg-6 test-container" style="border-radius: 12px">
+                <div class="col-12 col-sm-12 col-md-8 test-container" style="border-radius: 12px">
                     <div id="app">
                         <export-diagnostic-application></export-diagnostic-application>
                     </div>

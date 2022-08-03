@@ -84,19 +84,51 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
     }
 
     public static function storeAnswerFromQuestionId($request, $id){
+
         $question = self::questionWithRelationships()->findOrFail($id);
-        $option = '';
-        if($question->type === 'radio'){
+        //If question type is radio, get option value and point from id
+        // that was passed from the form
+        if($question->type === 'radio') {
             $option = self::option()->findOrFail($request->option_id);
+            self::answer()->create([
+                'yaedp_user_id' => Session::get('session_id'),
+                'export_diagnostic_user_id' => Session::get('session_id'),
+                'export_diagnostic_question_id' => $question->id,
+                'export_diagnostic_category_id' => $question->export_diagnostic_category_id,
+                'answer' => $option->option,
+                'points' => $option->points,
+            ]);
+
+        // if question type is a checkbox, get array of ids from form
+        // Iterate them and get their points and option from options table
+        // add options to array and store as a string in answers table
+        }elseif($question->type === 'checkbox'){
+            $optionPoints = 0;
+            $selectedOptionsArray = [];
+            foreach($request->option_ids as $key=>$value){
+                $optionPoints += self::option()->findOrFail($value)->points;
+                $selectedOptionsArray[] = self::option()->findOrFail($value)->option;
+            }
+            self::answer()->create([
+                'yaedp_user_id' => Session::get('session_id'),
+                'export_diagnostic_user_id' => Session::get('session_id'),
+                'export_diagnostic_question_id' => $question->id,
+                'export_diagnostic_category_id' => $question->export_diagnostic_category_id,
+                'answer' => implode(", ", $selectedOptionsArray),
+                'points' => $optionPoints,
+            ]);
+        }else{
+            self::answer()->create([
+                'yaedp_user_id' => Session::get('session_id'),
+                'export_diagnostic_user_id' => Session::get('session_id'),
+                'export_diagnostic_question_id' => $question->id,
+                'export_diagnostic_category_id' => $question->export_diagnostic_category_id,
+                'answer' => $request->answer,
+            ]);
         }
-        self::answer()->create([
-           'yaedp_user_id' => Session::get('session_id'),
-           'export_diagnostic_user_id' => Session::get('session_id'),
-           'export_diagnostic_question_id' => $question->id,
-           'export_diagnostic_category_id' => $question->export_diagnostic_category_id,
-           'answer' => $option->option,
-           'points' => $option->points,
-        ]);
+
+
+
     }
 
 }

@@ -1,15 +1,23 @@
 <template>
     <div class="row p-4">
+        <div class="col-12 margin-3px-bottom">
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-warning"
+                     role="progressbar" style="width: 75%"
+                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75</div>
+            </div>
+        </div>
         <div v-if="dataLoaded" class="col-12">
+            <h5 v-if="question.export_diagnostic_category" class="custom-font2">
+                {{ question.export_diagnostic_category.name }}</h5>
             <form @submit.prevent="submitAnswer">
-
                 <div v-if="errors" class="text-danger text-center">
                     <span v-for="(error, index) in errors" :key="index">
                         {{ error.toString() }}<br>
                     </span>
                 </div>
 
-                <div v-if="question.type === 'radio'" class="">
+                <div v-if="question.type === 'radio'">
                     <p class="custom-font1 text-large brand-text-brown">
                         {{ question.question }}: <span class="text-danger">*</span>
                     </p>
@@ -23,21 +31,28 @@
                     <span class="feedback-custom"></span>
                 </div>
 
-                <label v-if="question.type === 'checkbox'" class="form-text">
-                    {{ question.question }}: <span class="text-danger">*</span>
-                    <select class="form-control" required @change="selectOption($event)">
-                        <option value="" selected>Select answer</option>
-                        <option v-for="(option, index) in options" :key="option.id"
-                                :value="option.option">{{ option.option }}</option>
-                    </select>
-                    <span class="feedback-custom"></span>
-                </label>
+                <div v-if="question.type === 'checkbox'">
+                    <p class="custom-font1 text-large brand-text-brown">
+                        {{ question.question }}: <span class="text-danger">*</span>
+                    </p>
+                    <div v-for="(option, index) in options" :key="option.id"
+                         class="form-group form-check ml-5">
+                        <input type="checkbox" class="form-check-input"
+                               :id="'checkbox'+option.id" :value="option.id"
+                               v-model="form.option_ids" @change="selectOption">
+                        <label class="" :for="'checkbox'+option.id">
+                            {{ option.option }}
+                        </label>
+                    </div>
+                </div>
 
-                <label v-if="question.type === 'freetext'" class="form-text">
-                    {{ question.question }}: <span class="text-danger">*</span>
-                    <input class="form-control" type="text" placeholder="YEADP Email" required />
+                <div  v-if="question.type === 'freetext'">
+                    <p class="custom-font1 text-large brand-text-brown">
+                        {{ question.question }}: <span class="text-danger">*</span>
+                    </p>
+                    <input class="input-bg" type="text" v-model="form.answer" required />
                     <span class="feedback-custom"></span>
-                </label>
+                </div>
 
                 <button v-if="!loading" type="submit" class="yedp-begin-btn btn active">Next</button>
                 <button v-else disabled class="yedp-begin-btn btn active">
@@ -79,8 +94,8 @@
             return {
                 form: {
                     answer: '',
-                    points: '',
-                    option_Id: ''
+                    option_id: '',
+                    option_ids: []
                 },
                 loading: false,
                 errors: [],
@@ -104,7 +119,7 @@
                             this.question = response.data.question;
                             this.options = response.data.question.export_diagnostic_options;
                             this.dataLoaded = true;
-                            console.log(this.options);
+                            console.log(response.data.question.export_diagnostic_options);
                         }else{
                             console.log(response.data.message);
                         }
@@ -116,6 +131,7 @@
             },
 
             submitAnswer(){
+                console.log(this.form.option_ids);
                 this.loading = true;
                 axios.post('/api/yaedp/export-diagnostic/question/'+this.question.id+'/answer/store', this.form)
                     .then(response => {
