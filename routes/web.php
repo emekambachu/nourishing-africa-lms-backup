@@ -218,6 +218,9 @@ Route::get('/yaedp/export-diagnostic/instructions',
 Route::get('/yaedp/export-diagnostic/start',
     [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'start'])
     ->name('yaedp.export-diagnostic.start');
+Route::get('/yaedp/export-diagnostic/logout',
+    [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'logout'])
+    ->name('yaedp.export-diagnostic.logout');
 
 
 //Github Deployment

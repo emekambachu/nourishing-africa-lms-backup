@@ -16,6 +16,8 @@ class CreateExportDiagnosticUsersTable extends Migration
         Schema::create('export_diagnostic_users', static function (Blueprint $table) {
             $table->id()->index();
             $table->unsignedBigInteger('yaedp_user_id')->index();
+            $table->unsignedBigInteger('last_question_id')->nullable();
+            $table->timestamp('last_login')->nullable();
             $table->integer('score')->default(0)->index();
             $table->integer('percent')->default(0)->index();
             $table->boolean('completed')->default(0);

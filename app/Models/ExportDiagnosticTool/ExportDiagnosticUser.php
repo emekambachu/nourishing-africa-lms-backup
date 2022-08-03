@@ -10,11 +10,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ExportDiagnosticUser extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $fillable = [
         'yaedp_user_id',
         'last_question_id',
+        'last_login',
         'score',
         'percent',
         'completed'

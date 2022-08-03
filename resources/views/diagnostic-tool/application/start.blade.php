@@ -73,10 +73,17 @@
 @stop
 
 @section('content')
-    <section class="wow fadeIn pt-5 pl-3 pr-3 pb-5" style="margin-top: 0px; z-index: 3;">
+    <section class="wow fadeIn pl-3 pr-3 pt-1" style="margin-top: 0px; z-index: 3;">
         <div class="shrink-responsiveness-ent-o container-fluid">
 
             <div class="row m-0 justify-content-center d-flex">
+                <div class="col-12">
+                    <p class="float-right text-medium">
+                        <a class="text-danger" href="{{ route('yaedp.export-diagnostic.logout') }}">
+                            Logout <i class="fa fa-sign-out"></i>
+                        </a>
+                    </p>
+                </div>
                 <div class="col-12 col-sm-12 col-md-8 test-container" style="border-radius: 12px">
                     <div id="app">
                         <export-diagnostic-application></export-diagnostic-application>

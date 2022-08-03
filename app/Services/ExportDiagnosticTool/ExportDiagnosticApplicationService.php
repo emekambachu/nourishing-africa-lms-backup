@@ -7,6 +7,7 @@ use App\Models\ExportDiagnosticTool\ExportDiagnosticOption;
 use App\Models\ExportDiagnosticTool\ExportDiagnosticQuestion;
 use App\Models\ExportDiagnosticTool\ExportDiagnosticUser;
 use App\Services\Learning\Account\YaedpAccountService;
+use Carbon\Carbon;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Session;
 
@@ -53,11 +54,13 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         Session::put('session_email', $user->email);
         Session::put('session_name', $user->surname.' '.$user->first_name);
 
-        $startedUser = self::diagnosticUser()->where('yaedp_user_id', $user->id);
+        $startedUser = self::diagnosticUser()->where('yaedp_user_id', $user->id)->first();
         if(!$startedUser){
             self::diagnosticUser()->create([
                'yaedp_user_id' => $user->id,
             ]);
+        }else{
+            $startedUser->last_login = Carbon::now()->format('Y-m-d h:i:s');
         }
     }
 
@@ -127,8 +130,15 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
             ]);
         }
 
+    }
 
-
+    public static function getProgressPercentage(){
+        // get all questions, divide them by the answered questions
+        $questions = self::question()->count();
+        $answered = self::answer()
+            ->where('export_diagnostic_user_id', Session::get('session_id'))
+            ->count();
+        return ($answered / $questions) * 100;
     }
 
 }

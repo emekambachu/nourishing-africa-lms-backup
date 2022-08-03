@@ -73,7 +73,26 @@ class DiagnosticApplicationController extends Controller
         }
     }
 
-    public function logout(){
+    public function applicationProgress(){
+        try {
+            $progressPercent = ExportDiagnosticApplicationService::getprogressPercentage();
+            return response()->json([
+                'success' => true,
+                'progress' => $progressPercent
+            ]);
 
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function logout(){
+        if(Session::has('session_email')){
+            Session::forget(['session_email', 'session_id', 'session_name']);
+        }
+        Session::flash('logged_out', 'You have been logged out');
+        return view('diagnostic-tool.application.index');
     }
 }
