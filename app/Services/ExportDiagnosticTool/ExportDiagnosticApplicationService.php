@@ -61,6 +61,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
             ]);
         }else{
             $startedUser->last_login = Carbon::now()->format('Y-m-d h:i:s');
+            $startedUser->save();
         }
     }
 
