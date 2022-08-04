@@ -23158,6 +23158,7 @@ __webpack_require__.r(__webpack_exports__);
           window.location.href = '/yaedp/export-diagnostic/instructions';
         } else {
           _this.errors = response.data.errors;
+          _this.loading = false;
         }
       })["catch"](function (error) {
         console.log(error);

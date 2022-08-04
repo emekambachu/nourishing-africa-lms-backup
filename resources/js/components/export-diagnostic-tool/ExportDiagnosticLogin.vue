@@ -58,6 +58,7 @@
                             window.location.href = '/yaedp/export-diagnostic/instructions';
                         }else{
                             this.errors = response.data.errors;
+                            this.loading = false;
                         }
                     }).catch(error => {
                         console.log(error)

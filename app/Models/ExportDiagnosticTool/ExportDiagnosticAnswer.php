@@ -17,6 +17,7 @@ class ExportDiagnosticAnswer extends Model
         'export_diagnostic_user_id',
         'export_diagnostic_question_id',
         'answer',
+        'document',
         'points',
     ];
 

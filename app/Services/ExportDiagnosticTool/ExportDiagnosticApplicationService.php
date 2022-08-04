@@ -58,6 +58,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         if(!$startedUser){
             self::diagnosticUser()->create([
                'yaedp_user_id' => $user->id,
+               'last_login' => Carbon::now()->format('Y-m-d h:i:s'),
             ]);
         }else{
             $startedUser->last_login = Carbon::now()->format('Y-m-d h:i:s');
