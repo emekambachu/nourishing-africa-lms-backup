@@ -29,7 +29,7 @@ class DiagnosticApplicationController extends Controller
     }
 
     public function instructions(){
-        if(Session::has('session_email')){
+        if(Session::has('user')){
             return view('diagnostic-tool.application.instructions');
         }
         Session::flash('logged_out', 'You have been logged out');

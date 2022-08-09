@@ -50,6 +50,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
 
     public static function createLoginSessionWithEmail($request){
         $user = self::yaedpUser()->where('email', $request->email)->first();
+        Session::put('user', $user);
         Session::put('session_id', $user->id);
         Session::put('session_email', $user->email);
         Session::put('session_name', $user->surname.' '.$user->first_name);

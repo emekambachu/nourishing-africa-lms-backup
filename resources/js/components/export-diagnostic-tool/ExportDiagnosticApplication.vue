@@ -1,22 +1,29 @@
 <template>
-    <div class="row p-4">
 
-        <div class="col-12">
-            <div class="progress margin-3px-bottom">
-                <div class="progress-bar progress-bar-striped bg-warning padding-2px-tb"
-                     role="progressbar" :style="'width: '+progress+'%'"
-                     :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100">{{ progress }}</div>
-            </div>
+    <div class="col-12">
+        <p class="float-right text-medium">
+            <a class="text-danger" :href="'/yaedp/export-diagnostic/logout'">
+                Logout <i class="fa fa-sign-out"></i>
+            </a>
+        </p>
+    </div>
+
+    <div class="col-12 mb-3">
+        <h5 v-if="question.export_diagnostic_category" class="custom-font2 na-text-dark-green">
+            {{ question.export_diagnostic_category.name }}</h5>
+        <div class="progress margin-3px-bottom">
+            <div class="progress-bar progress-bar-striped na-bg-brown-2 padding-2px-tb"
+                 role="progressbar" :style="'width: '+progress+'%'"
+                 :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100">{{ progress }}%</div>
         </div>
+    </div>
 
+    <!--Inside Card-->
+    <div class="col-12 col-sm-12 col-md-8 test-container" style="border-radius: 12px">
         <!--If assessment progress is less than 100 percent-->
         <div class="row justify-content-center d-flex" v-if="progress < 100">
-
             <div v-if="dataLoaded" class="col-12">
                 <!--Question category name-->
-                <h5 v-if="question.export_diagnostic_category" class="custom-font2 na-text-dark-green">
-                    {{ question.export_diagnostic_category.name }}</h5>
-
                 <form @submit.prevent="submitAnswer">
                     <div v-if="errors" class="text-danger text-center">
                         <span v-for="(error, index) in errors" :key="index">
@@ -84,17 +91,42 @@
                     <circle cx="34" cy="110" r="8" />
                     <rect x="50" y="106" rx="5" ry="5" width="100" height="8" />
                 </ContentLoader>
-
             </div>
         </div>
-        <!--If assessment progress is 100 percent-->
-        <div class="row justify-content-center d-flex" v-else>
-            <h5 class="na-text-dark-green">Assessment Complete</h5>
-            <p>Thank you for completing your assessment, we will contact you for further steps</p>
-            <p>yaedp@nourishingafrica.com</p>
-        </div>
 
+        <!--If assessment progress is 100 percent, show partcipant feedback-->
+        <div class="row justify-content-center d-flex" v-else>
+
+            <div v-if="dataLoaded" class="col-12">
+                <h5 class="na-text-dark-green">Assessment Complete</h5>
+                <p>Thank you for completing your assessment, we will contact you for further steps</p>
+                <p>yaedp@nourishingafrica.com</p>
+            </div>
+            <!--Show loader-->
+            <div class="col-12" v-else>
+                <ContentLoader
+                    height={200}
+                    width={400}
+                    viewBox="0 0 400 200"
+                    backgroundColor="#d9d9d9"
+                    foregroundColor="#ecebeb"
+                >
+                    <rect x="15" y="15" rx="4" ry="4" width="130" height="10" />
+                    <rect x="155" y="15" rx="3" ry="3" width="130" height="10" />
+                    <rect x="295" y="15" rx="3" ry="3" width="90" height="10" />
+                    <rect x="15" y="50" rx="3" ry="3" width="90" height="10" />
+                    <rect x="115" y="50" rx="3" ry="3" width="60" height="10" />
+                    <rect x="185" y="50" rx="3" ry="3" width="200" height="10" />
+                    <rect x="15" y="90" rx="3" ry="3" width="130" height="10" />
+                    <rect x="160" y="90" rx="3" ry="3" width="120" height="10" />
+                    <rect x="290" y="90" rx="3" ry="3" width="95" height="10" />
+                    <rect x="15" y="130" rx="3" ry="3" width="130" height="10" />
+                    <rect x="160" y="130" rx="3" ry="3" width="225" height="10" />
+                </ContentLoader>
+            </div>
+        </div>
     </div>
+
 </template>
 
 <script>

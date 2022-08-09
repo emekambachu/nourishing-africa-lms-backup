@@ -16,7 +16,7 @@
 @stop
 
 @section('title')
-    YAEDP - Youth in export development program
+    YAEDP | Export Readiness Diagnostic Tool
 @stop
 
 @section('top-assets')
@@ -35,7 +35,8 @@
 @stop
 
 @section('top-panel')
-    <section class="wow fadeIn parallax padding-50px-tb" data-stellar-background-ratio="0.5"
+    <section class="wow fadeIn parallax padding-50px-tb"
+             data-stellar-background-ratio="0.5"
              style="background-image: url(&quot;{{ asset('images/login-intro.jpg') }}&quot;); visibility: visible; animation-name: fadeIn;background-attachment: unset; background-position: center; background-attachment: fixed;">
         <div class="opacity-medium bg-extra-dark-gray"></div>
         <div class="container">
@@ -43,7 +44,7 @@
                 <div class="col-12 d-flex mt-3 flex-column justify-content-center text-center extra-small-screen page-title-large">
                     <!-- start page title -->
                     <h1 class="text-white-2 mt-3 font-family: tahoma, arial, helvetica, sans-serif; text-align: center; font-weight-500 letter-spacing-minus-1" style="margin-bottom: 0; text-transform: uppercase;">
-                        YAEDP | Export Diagnostic Tool</h1>
+                        YAEDP | Export Readiness Diagnostic Tool</h1>
                     <!-- end page title -->
                 </div>
             </div>
@@ -60,9 +61,8 @@
                         <li><a href="{{ url('/') }}" class="text-light"
                                style="font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">Home</a>
                         </li>
-                        <li><a href="#" class="text-light"
-                               style="font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">
-                                YAEDP | Export Diagnostic Tool</a>
+                        <li><a href="#" class="text-light custom-font2">
+                                YAEDP | Export Readiness Diagnostic Tool</a>
                         </li>
                     </ul>
                     <!-- end breadcrumb -->
@@ -76,19 +76,8 @@
     <section class="wow fadeIn pl-3 pr-3 pt-1" style="margin-top: 0px; z-index: 3;">
         <div class="shrink-responsiveness-ent-o container-fluid">
 
-            <div class="row m-0 justify-content-center d-flex">
-                <div class="col-12">
-                    <p class="float-right text-medium">
-                        <a class="text-danger" href="{{ route('yaedp.export-diagnostic.logout') }}">
-                            Logout <i class="fa fa-sign-out"></i>
-                        </a>
-                    </p>
-                </div>
-                <div class="col-12 col-sm-12 col-md-8 test-container" style="border-radius: 12px">
-                    <div id="app">
-                        <export-diagnostic-application></export-diagnostic-application>
-                    </div>
-                </div>
+            <div id="app" class="row m-0 justify-content-center d-flex">
+                <export-diagnostic-application></export-diagnostic-application>
             </div>
 
         </div>

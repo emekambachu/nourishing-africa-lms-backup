@@ -228,3 +228,14 @@ strong {
     border-radius: 50%;
     background: white;
 }
+
+/*Progress bar*/
+.progress {
+    display: -ms-flexbox;
+    display: flex;
+    height: 1.5rem;
+    overflow: hidden;
+    font-size: 1rem;
+    background-color: #e9ecef;
+    border-radius: .50rem;
+}

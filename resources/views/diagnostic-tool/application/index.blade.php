@@ -36,7 +36,7 @@
 
 @section('top-panel')
     <section class="wow fadeIn parallax padding-50px-tb" data-stellar-background-ratio="0.5"
-             style="background-image: url(&quot;{{ asset('images/login-intro.jpg') }}&quot;); visibility: visible; animation-name: fadeIn;background-attachment: unset; background-position: center; background-attachment: fixed;">
+             style="background-image: url(&quot;{{ asset('images/login-intro.jpg') }}&quot;); visibility: visible; animation-name: fadeIn; background-attachment: unset; background-position: center; background-attachment: fixed;">
         <div class="opacity-medium bg-extra-dark-gray"></div>
         <div class="container">
             <div class="row align-items-center">
@@ -44,7 +44,7 @@
                     <!-- start page title -->
                     <h1 class="text-white-2 mt-3"
                         style="margin-bottom: 0; text-transform: uppercase; text-align: center; font-weight-500: letter-spacing-minus-1;">
-                        YAEDP | Export Diagnostic Tool</h1>
+                        YAEDP | Export Readiness Diagnostic Tool</h1>
                     <!-- end page title -->
                 </div>
             </div>
@@ -63,7 +63,7 @@
                         </li>
                         <li><a href="#" class="text-light"
                                style="font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">
-                                YAEDP | Export Diagnostic Tool</a>
+                                YAEDP | Export Readiness Diagnostic Tool</a>
                         </li>
                     </ul>
                     <!-- end breadcrumb -->
@@ -76,9 +76,9 @@
 @section('content')
     <section class="wow fadeIn pt-5 pl-3 pr-3 pb-5" style="margin-top: 0px; z-index: 3;">
         <div class="shrink-responsiveness-ent-o container-fluid">
-            <div class="row m-0">
+            <div class="row m-0 justify-content-center d-flex">
                 {{--@if(Session::get('status') != "success")--}}
-                <div class="col-md-12 test-container" style="border-radius: 12px">
+                <div class="col-md-9 test-container" style="border-radius: 12px">
                     <div id="intro">
                         <div class="row p-4">
 
@@ -118,33 +118,31 @@
                                         <div class="row">
                                             <div class="col-12 pt-4" style="display: flex; justify-content: left; align-items: center;">
                                                 <p class="" style="color: #169179; font-size: 16pt; font-weight: 600; font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">
-                                                    YAEDP | Export Diagnostic Tool
+                                                    YAEDP | Export Readiness Diagnostic Tool
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <p class="yaedp-content">
-                                    The Youth in Agri-food Export Development Program (YAEDP) is designed to develop the capacity of Nigerian youth, aged 25 – 40 to participate in the export sector.
-                                    The program will provide training, market linkages, and digital support to entrepreneurs and co-operative leaders in the Nigerian agri-food sector.
-                                </p>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <p class="mb-1">
-                                        <span style="color: #1E1E1E; font-family: tahoma, arial, helvetica, sans-serif;">
-                                            <strong>Locations<i class="fa fa-pin"></i></strong>
-                                        </span>
-                                        </p>
-                                        <p style="font-family: tahoma, arial, helvetica, sans-serif;">
-                                            Abia, Adamawa, Cross River, Edo, FCT, Kano, Kaduna, Kogi, Lagos, Ogun, and Oyo.</p>
 
-                                        <p class="mb-1">
-                                            <span style="color: #1E1E1E; font-family: tahoma, arial, helvetica, sans-serif;">
-                                                <strong>Value Chains:</strong>
-                                            </span>
+                                        <p class="yaedp-content text-large">
+                                            <strong>Objective: </strong><br>
+                                            This tool is designed to evaluate the export-readiness level of YAEDP participants by assessing multi-level information about their previous, current, and future business operations. It will also collect research data for analytical and program reporting purposes.
                                         </p>
-                                        <p style="font-family: tahoma, arial, helvetica, sans-serif; text-align: justify;">The YAEDP is accepting applications from agrifood entrepreners and cooperative leaders in these value chains: Cocoa, Spices, Sesame, Shea butter, Cashew, Cassava, Soybean, Rubber, and Ginger.</p>
+
+                                        <p class="yaedp-content text-large">
+                                            <strong>Introduction: </strong><br>
+                                            These range of questions/assessments are to evaluate your business in alignment with export requirements and to further move to the next stage of the YAEDP program.<br>
+                                        </p>
+
+                                        <p class="yaedp-content text-large">
+                                            Answer all questions as it relates to your business.<br>
+                                            Kindly note that information provided will be authenticated by Nourishing Africa.
+                                        </p>
+
                                     </div>
                                 </div>
 
@@ -156,6 +154,7 @@
                                         <img class="float-right" src="{{ asset('images/nepc-logo.png') }}"
                                              alt="" width="70" height="40" /></div>
                                 </div>
+
                             </div>
 
                             <div id="app" class="col-md-5 mt-3"

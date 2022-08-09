@@ -58,11 +58,11 @@
                     <!-- breadcrumb -->
                     <ul>
                         <li><a href="{{ url('/') }}" class="text-light"
-                               style="font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">Home</a>
+                               style="text-align: center;">Home</a>
                         </li>
-                        <li><a href="#" class="text-light"
-                               style="font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">
-                                YAEDP | Export Diagnostic Tool</a>
+                        <li><a href="#" class="text-light custom-font2"
+                               style="text-align: center;">
+                                YAEDP | Export Readiness Diagnostic Tool</a>
                         </li>
                     </ul>
                     <!-- end breadcrumb -->
@@ -75,9 +75,9 @@
 @section('content')
     <section class="wow fadeIn pt-5 pl-3 pr-3 pb-5" style="margin-top: 0px; z-index: 3;">
         <div class="shrink-responsiveness-ent-o container-fluid">
-            <div class="row m-0">
+            <div class="row m-0 justify-content-center d-flex">
                 {{--@if(Session::get('status') != "success")--}}
-                <div class="col-md-12 test-container" style="border-radius: 12px">
+                <div class="col-md-8 test-container" style="border-radius: 12px">
                     <div id="intro">
                         <div class="row p-4">
 
@@ -113,38 +113,39 @@
                                                      width="120" height="60" />
                                             </div>
                                         </div>
+
                                         <div class="row">
-                                            <div class="col-12 pt-4" style="display: flex; justify-content: left; align-items: center;">
-                                                <p style="color: #169179; font-size: 16pt; font-weight: 600; font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">
-                                                    Instructions
-                                                </p>
+                                            <div class="col-12 pt-4"
+                                                 style="display: flex; justify-content: left; align-items: center;">
+                                                <h4 class="custom-font2" style="color: #169179; text-align: center;">
+                                                    Instructions</h4>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
 
-                                <p class="yaedp-content">
-                                    Hello <strong>{{ Session::get('session_name') }}</strong><br>
-                                    The Youth in Agri-food Export Development Program (YAEDP) is designed to develop the capacity of Nigerian youth, aged 25 – 40 to participate in the export sector.
-                                    The program will provide training, market linkages, and digital support to entrepreneurs and co-operative leaders in the Nigerian agri-food sector.
-                                </p>
-
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <p class="mb-1">
-                                        <span style="color: #1E1E1E; font-family: tahoma, arial, helvetica, sans-serif;">
-                                            <strong>Locations<i class="fa fa-pin"></i></strong>
-                                        </span>
+                                        <p class="yaedp-content text-large">
+                                            Hello <strong>{{ Session::get('user.name') }}</strong><br>
+                                            Thank you for taking part on the YAEDP Export Diagnostic Readiness tool, below are instructions to follow that will give you a clear understanding of this assessment.
                                         </p>
-                                        <p style="font-family: tahoma, arial, helvetica, sans-serif;">
-                                            Abia, Adamawa, Cross River, Edo, FCT, Kano, Kaduna, Kogi, Lagos, Ogun, and Oyo.</p>
 
-                                        <p class="mb-1">
-                                            <span style="color: #1E1E1E; font-family: tahoma, arial, helvetica, sans-serif;">
-                                                <strong>Value Chains:</strong>
-                                            </span>
+                                        <p class="width-75 mx-auto yaedp-content text-extra-dark-gray lg-width-90 sm-width-100 text-large">
+                                            <i class="fa fa-check na-text-dark-green"></i>
+                                            This survey will take approximately 20 minutes to be completed<br>
+                                            <i class="fa fa-check na-text-dark-green"></i>
+                                            These questions consists of 3 stages<br>
+                                            <i class="fa fa-check na-text-dark-green"></i>
+                                            Kindly answer with sincerity and note that you won’t be able to go back to review previous question<br>
+                                            <i class="fa fa-check na-text-dark-green"></i>
+                                            You cannot skip any question; you must answer current question to proceed to next<br>
+                                            <i class="fa fa-check na-text-dark-green"></i>
+                                            You can leave at anytime and continue where you left off<br>
+                                            <i class="fa fa-check na-text-dark-green"></i>
+                                            You will be assessed at the end of this assessment<br>
                                         </p>
-                                        <p style="font-family: tahoma, arial, helvetica, sans-serif; text-align: justify;">The YAEDP is accepting applications from agrifood entrepreners and cooperative leaders in these value chains: Cocoa, Spices, Sesame, Shea butter, Cashew, Cassava, Soybean, Rubber, and Ginger.</p>
 
                                         <a class="justify-content-center d-flex"
                                            href="{{ route('yaedp.export-diagnostic.start') }}">
