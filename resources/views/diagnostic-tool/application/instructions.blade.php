@@ -76,11 +76,18 @@
     <section class="wow fadeIn pt-5 pl-3 pr-3 pb-5" style="margin-top: 0px; z-index: 3;">
         <div class="shrink-responsiveness-ent-o container-fluid">
             <div class="row m-0 justify-content-center d-flex">
-                {{--@if(Session::get('status') != "success")--}}
+
+                <div class="col-12">
+                    <p class="float-right text-medium">
+                        <a class="text-danger" href="/yaedp/export-diagnostic/logout">
+                            Logout <i class="fa fa-sign-out"></i>
+                        </a>
+                    </p>
+                </div>
+
                 <div class="col-md-8 test-container" style="border-radius: 12px">
                     <div id="intro">
                         <div class="row p-4">
-
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <div class="big-scrn d-none d-sm-none d-md-block">
@@ -128,7 +135,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <p class="yaedp-content text-large">
-                                            Hello <strong>{{ Session::get('user.name') }}</strong><br>
+                                            Hello <strong>{{ Session::get('session_name') }}</strong><br>
                                             Thank you for taking part on the YAEDP Export Diagnostic Readiness tool, below are instructions to follow that will give you a clear understanding of this assessment.
                                         </p>
 
@@ -146,6 +153,33 @@
                                             <i class="fa fa-check na-text-dark-green"></i>
                                             You will be assessed at the end of this assessment<br>
                                         </p>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h4 class="text-center yaedp-content text-extra-dark-gray text-large">
+                                                    Your Information</h4>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="yaedp-content text-extra-dark-gray text-large text-left">
+                                                    <strong>Mobile: </strong>{{ Session::get('session_mobile') }}<br>
+                                                    <strong>Email: </strong>{{ Session::get('session_email') }}<br>
+                                                    <strong>DOB: </strong> {{ Session::get('session_dob') }}<br>
+                                                    <strong>Gender: </strong> {{ Session::get('session_gender') }}<br>
+                                                    <strong>State of Origin: </strong> {{ Session::get('session_state_origin') }}<br>
+                                                    <strong>State of Residence: </strong> {{ Session::get('session_state_residence') }}<br>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="yaedp-content text-extra-dark-gray text-large text-left">
+                                                    <strong>Highest Education: </strong> {{ Session::get('session_education') }}<br>
+                                                    <strong>Location: </strong> {{ Session::get('session_location') }}<br>
+                                                    <strong>Registered Company: </strong> {{ Session::get('session_legal') }}<br>
+                                                    <strong>Company Type: </strong> {{ Session::get('session_company_type') }}<br>
+                                                    <strong>Value Chain: </strong> {{ Session::get('session_value_chain') }}<br>
+                                                    <strong>Focus Area: </strong> {{ Session::get('session_focus_area') }}<br>
+                                                </p>
+                                            </div>
+                                        </div>
 
                                         <a class="justify-content-center d-flex"
                                            href="{{ route('yaedp.export-diagnostic.start') }}">

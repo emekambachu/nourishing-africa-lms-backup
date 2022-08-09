@@ -50,10 +50,31 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
 
     public static function createLoginSessionWithEmail($request){
         $user = self::yaedpUser()->where('email', $request->email)->first();
-        Session::put('user', $user);
+        $user_array = [];
+        // iterate $user object and add to array
+        foreach ($user->getOriginal() as $key => $value){
+            $user_array[$key] = $value;
+        }
+        // add $user_array to session variable
+        // testing session array
+//        Session::put('user_array', []);
+//        Session::push('user_array', $user_array);
+
         Session::put('session_id', $user->id);
         Session::put('session_email', $user->email);
         Session::put('session_name', $user->surname.' '.$user->first_name);
+        Session::put('session_mobile', $user->mobile);
+        Session::put('session_dob', $user->dob);
+        Session::put('session_gender', $user->gender);
+        Session::put('session_state_origin', $user->state_origin->name);
+        Session::put('session_state_residence', $user->state_residence->name);
+        Session::put('session_education', $user->education_level);
+        Session::put('session_location', $user->location);
+        Session::put('session_business', $user->business);
+        Session::put('session_legal', $user->company_legal);
+        Session::put('session_company_type', $user->company_type);
+        Session::put('session_value_chain', $user->value_chain);
+        Session::put('session_focus_area', $user->focus_area);
 
         $startedUser = self::diagnosticUser()->where('yaedp_user_id', $user->id)->first();
         if(!$startedUser){

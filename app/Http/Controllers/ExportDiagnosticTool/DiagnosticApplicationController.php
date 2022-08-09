@@ -29,7 +29,7 @@ class DiagnosticApplicationController extends Controller
     }
 
     public function instructions(){
-        if(Session::has('user')){
+        if(Session::has('session_email')){
             return view('diagnostic-tool.application.instructions');
         }
         Session::flash('logged_out', 'You have been logged out');
@@ -90,9 +90,9 @@ class DiagnosticApplicationController extends Controller
 
     public function logout(){
         if(Session::has('session_email')){
-            Session::forget(['session_email', 'session_id', 'session_name']);
+            Session::flush();
         }
         Session::flash('logged_out', 'You have been logged out');
-        return view('diagnostic-tool.application.index');
+        return redirect()->route('yaedp.export-diagnostic.index');
     }
 }
