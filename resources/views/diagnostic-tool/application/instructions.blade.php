@@ -165,8 +165,8 @@
                                                     <strong>Email: </strong>{{ Session::get('session_email') }}<br>
                                                     <strong>DOB: </strong> {{ Session::get('session_dob') }}<br>
                                                     <strong>Gender: </strong> {{ Session::get('session_gender') }}<br>
-                                                    <strong>State of Origin: </strong> {{ Session::get('session_state_origin') }}<br>
-                                                    <strong>State of Residence: </strong> {{ Session::get('session_state_residence') }}<br>
+                                                    <strong>State of Origin: </strong> {{ Session::has('session_state_origin') ? Session::get('session_state_origin') : '' }}<br>
+                                                    <strong>State of Residence: </strong> {{ Session::has('session_state_residence') ? Session::get('session_state_residence') : '' }}<br>
                                                 </p>
                                             </div>
                                             <div class="col-md-6">

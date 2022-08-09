@@ -60,12 +60,23 @@ class YaedpUser extends Authenticatable
         'token',
     ];
 
+    // for vue.js, Vue.js can't read Camelcase, only snake_case
     public function state_residence(){
         return $this->belongsTo(State::class, 'state_residence', 'id');
     }
 
+    public function stateResidence(){
+        return $this->belongsTo(State::class, 'state_residence', 'id');
+    }
+
+    // for vue.js, Vue.js can't read Camelcase, only snake_case
     public function state_origin(){
-        return $this->belongsTo(State::class, 'state_orign', 'id');
+        return $this->belongsTo(State::class, 'state_origin', 'id');
+    }
+
+    // for laravel, sometimes laravel can't read snake_case
+    public function stateOrigin(){
+        return $this->belongsTo(State::class, 'state_origin', 'id');
     }
 
     public function learningAssessment(){

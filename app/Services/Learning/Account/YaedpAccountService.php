@@ -25,7 +25,7 @@ class YaedpAccountService
     }
 
     public static function yaedpUserWithRelationships(){
-        return YaedpUser::with('learning_assessment', 'learning_module_assessments');
+        return YaedpUser::with('learning_assessment', 'learning_module_assessments', 'state_origin', 'state_residence');
     }
 
     public static function getModules(){

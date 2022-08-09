@@ -49,16 +49,16 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
     }
 
     public static function createLoginSessionWithEmail($request){
-        $user = self::yaedpUser()->where('email', $request->email)->first();
+        $user = self::yaedpUserWithRelationships()->where('email', $request->email)->first();
         $user_array = [];
         // iterate $user object and add to array
-        foreach ($user->getOriginal() as $key => $value){
-            $user_array[$key] = $value;
-        }
+//        foreach ($user->getOriginal() as $key => $value){
+//            $user_array[$key] = $value;
+//        }
         // add $user_array to session variable
         // testing session array
-//        Session::put('user_array', []);
-//        Session::push('user_array', $user_array);
+        // Session::put('user_array', []);
+        // Session::push('user_array', $user_array);
 
         Session::put('session_id', $user->id);
         Session::put('session_email', $user->email);
@@ -66,8 +66,13 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         Session::put('session_mobile', $user->mobile);
         Session::put('session_dob', $user->dob);
         Session::put('session_gender', $user->gender);
-        Session::put('session_state_origin', $user->state_origin->name);
-        Session::put('session_state_residence', $user->state_residence->name);
+        if($user->stateOrigin){
+            Session::put('session_state_origin', $user->stateOrigin->name);
+        }
+        if($user->stateResidence){
+            Session::put('session_state_residence', $user->stateResidence->name);
+        }
+
         Session::put('session_education', $user->education_level);
         Session::put('session_location', $user->location);
         Session::put('session_business', $user->business);
