@@ -20,8 +20,9 @@
 
     <!--Inside Card-->
     <div class="col-12 col-sm-12 col-md-8 test-container" style="border-radius: 12px">
+
         <!--If assessment progress is less than 100 percent-->
-        <div class="row justify-content-center d-flex" v-if="progress < 100">
+        <div class="row justify-content-center d-flex" v-if="question !== false">
             <div v-if="dataLoaded" class="col-12">
                 <!--Question category name-->
                 <form @submit.prevent="submitAnswer">
@@ -67,7 +68,7 @@
                         <p class="custom-font1 text-large brand-text-brown">
                             {{ question.question }}: <span class="text-danger">*</span>
                         </p>
-                        <input class="input-bg ml-3" type="text" v-model="form.answer" required />
+                        <input class="input-bg" type="text" v-model="form.answer" required />
                         <span class="feedback-custom"></span>
                     </div>
 
@@ -77,6 +78,7 @@
                             <i class="fa fa-circle-o-notch fa-spin"></i>
                         </button>
                     </div>
+
                 </form>
             </div>
 
@@ -97,33 +99,27 @@
         <!--If assessment progress is 100 percent, show partcipant feedback-->
         <div class="row justify-content-center d-flex" v-else>
 
-            <div v-if="dataLoaded" class="col-12">
-                <h5 class="na-text-dark-green">Assessment Complete</h5>
-                <p>Thank you for completing your assessment, we will contact you for further steps</p>
-                <p>yaedp@nourishingafrica.com</p>
+            <div v-if="dataLoaded" class="col-12 justify-content-center">
+                <h5 class="na-text-dark-green custom-font2">Assessment Complete</h5>
+                <p class="custom-font1 text-large">Thank you for completing your assessment</p>
+                <p class="custom-font1 text-large">
+                    <strong class="na-text-dark-green">Congratulations</strong>, You scored
+                    <strong>{{ status.percent }}%</strong>.<br>
+                </p>
             </div>
-            <!--Show loader-->
+
             <div class="col-12" v-else>
-                <ContentLoader
-                    height={200}
-                    width={400}
-                    viewBox="0 0 400 200"
-                    backgroundColor="#d9d9d9"
-                    foregroundColor="#ecebeb"
-                >
-                    <rect x="15" y="15" rx="4" ry="4" width="130" height="10" />
-                    <rect x="155" y="15" rx="3" ry="3" width="130" height="10" />
-                    <rect x="295" y="15" rx="3" ry="3" width="90" height="10" />
-                    <rect x="15" y="50" rx="3" ry="3" width="90" height="10" />
-                    <rect x="115" y="50" rx="3" ry="3" width="60" height="10" />
-                    <rect x="185" y="50" rx="3" ry="3" width="200" height="10" />
-                    <rect x="15" y="90" rx="3" ry="3" width="130" height="10" />
-                    <rect x="160" y="90" rx="3" ry="3" width="120" height="10" />
-                    <rect x="290" y="90" rx="3" ry="3" width="95" height="10" />
-                    <rect x="15" y="130" rx="3" ry="3" width="130" height="10" />
-                    <rect x="160" y="130" rx="3" ry="3" width="225" height="10" />
+                <ContentLoader viewBox="0 0 400 150" height={130} width={400}>
+                    <circle cx="10" cy="20" r="8" />
+                    <rect x="25" y="15" rx="5" ry="5" width="300" height="10" />
+                    <rect x="25" y="45" rx="5" ry="5" width="220" height="10" />
+                    <circle cx="34" cy="80" r="8" />
+                    <rect x="51" y="75" rx="5" ry="5" width="90" height="8" />
+                    <circle cx="34" cy="110" r="8" />
+                    <rect x="50" y="106" rx="5" ry="5" width="100" height="8" />
                 </ContentLoader>
             </div>
+
         </div>
     </div>
 
@@ -156,7 +152,8 @@
                 question: '',
                 options: [],
                 dataLoaded: false,
-                progress: 0
+                progress: 0,
+                status: ''
             }
         },
         methods:{
@@ -171,10 +168,16 @@
                     .then(response => {
                         console.log(response.data);
                         if(response.data.success === true){
-                            this.question = response.data.question;
-                            this.options = response.data.question.export_diagnostic_options;
-                            this.dataLoaded = true;
-                            console.log(response.data.question.export_diagnostic_options);
+                            if(response.data.question !== null){
+                                this.question = response.data.question;
+                                this.options = response.data.question.export_diagnostic_options;
+                                this.dataLoaded = true;
+                                console.log(response.data.question.export_diagnostic_options);
+                            }else{
+                                this.question = false;
+                                this.status = response.data.status;
+                                this.dataLoaded = true;
+                            }
                         }else{
                             console.log(response.data.message);
                         }
@@ -183,6 +186,22 @@
                     }).finally(() => {
 
                     });
+            },
+
+            getApplicationProgress(){
+                axios.get('/api/yaedp/export-diagnostic/application/progress')
+                    .then(response => {
+                        if(response.data.success === true){
+                            this.progress = response.data.progress;
+                            console.log(response.data.progress);
+                        }else{
+                            console.log(response.data.message);
+                        }
+                    }).catch(error => {
+                    console.log(error)
+                }).finally(() => {
+
+                });
             },
 
             submitAnswer(){
@@ -204,21 +223,6 @@
                     });
             },
 
-            getApplicationProgress(){
-                axios.get('/api/yaedp/export-diagnostic/application/progress')
-                    .then(response => {
-                        if(response.data.success === true){
-                            this.progress = response.data.progress;
-                            console.log(response.data.progress);
-                        }else{
-                            console.log(response.data.message);
-                        }
-                    }).catch(error => {
-                    console.log(error)
-                }).finally(() => {
-
-                });
-            }
         },
 
         mounted(){

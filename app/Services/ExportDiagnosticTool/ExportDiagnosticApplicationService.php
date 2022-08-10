@@ -3,6 +3,7 @@
 namespace App\Services\ExportDiagnosticTool;
 
 use App\Models\ExportDiagnosticTool\ExportDiagnosticAnswer;
+use App\Models\ExportDiagnosticTool\ExportDiagnosticHiddenQuestion;
 use App\Models\ExportDiagnosticTool\ExportDiagnosticOption;
 use App\Models\ExportDiagnosticTool\ExportDiagnosticQuestion;
 use App\Models\ExportDiagnosticTool\ExportDiagnosticUser;
@@ -46,6 +47,10 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
 
     public static function diagnosticUserWithRelationships(){
         return self::question()->with('user', 'export_diagnostic_answers');
+    }
+
+    public static function hiddenQuestion(){
+        return ExportDiagnosticHiddenQuestion::with('yaedp_user');
     }
 
     public static function createLoginSessionWithEmail($request){
@@ -95,24 +100,77 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
 
     public static function getApplicationQuestion(){
 
-        // get question Id's from answers
-        $questionIdFromAnswers = self::answer()
+        // get answered question id from answers
+        $answeredQuestionsId = self::answer()
             ->select('export_diagnostic_question_id')
             ->where('export_diagnostic_user_id', Session::get('session_id'))
             ->get()->toArray();
-        $answered = self::answer()
-            ->where('export_diagnostic_user_id', Session::get('session_id'))
-            ->count();
+        // count answers for this user
+//        $answered = self::answer()
+//            ->where('export_diagnostic_user_id', Session::get('session_id'))
+//            ->count();
+        // Get stored hidden questions for this user
+        $getHiddenQuestions = self::hiddenQuestion()
+            ->where('yaedp_user_id', Session::get('session_id'))->first();
+        $hiddenQuestions = '';
+        if($getHiddenQuestions){
+            $hiddenQuestions = explode(',', $getHiddenQuestions->questions);
+        }
 
         // get single question using following commands
         return self::question()->orderBy('sort')
-            ->with('export_diagnostic_category', function ($query){
-                $query->orderBy('sort');
-            })->with('export_diagnostic_options', function ($query) {
-                $query->orderBy('sort');
-            })->when($answered > 0, function ($query) use ($questionIdFromAnswers) {
-                $query->whereNotIn('id', $questionIdFromAnswers);
+            ->with('export_diagnostic_category', function ($query) {
+                $query->orderBy('sort', 'asc');
+            })->with('export_diagnostic_options', static function ($query){
+                $query->orderBy('sort', 'asc');
+            })->when(count($answeredQuestionsId) > 0, function ($query) use ($answeredQuestionsId) {
+                $query->whereNotIn('id', $answeredQuestionsId);
+            })->when($getHiddenQuestions, function ($query) use ($hiddenQuestions) {
+                $query->whereNotIn('id', $hiddenQuestions);
             })->first();
+    }
+
+    public static function getProgressPercentage(){
+        // get answered question id from answers
+        $answeredQuestionsId = self::answer()
+            ->select('export_diagnostic_question_id')
+            ->where('export_diagnostic_user_id', Session::get('session_id'))
+            ->get()->toArray();
+        // count answers for this user
+//        $answered = self::answer()
+//            ->where('export_diagnostic_user_id', Session::get('session_id'))
+//            ->count();
+        // Get stored hidden questions for this user
+        $getHiddenQuestions = self::hiddenQuestion()
+            ->where('yaedp_user_id', Session::get('session_id'))->first();
+        $hiddenQuestions = '';
+        if($getHiddenQuestions){
+            $hiddenQuestions = explode(',', $getHiddenQuestions->questions);
+        }
+
+        // get single question using following commands
+        $questions = self::question()->orderBy('sort')
+            ->with('export_diagnostic_category', function ($query) {
+                $query->orderBy('sort', 'asc');
+            })->with('export_diagnostic_options', static function ($query){
+                $query->orderBy('sort', 'asc');
+            })->when($getHiddenQuestions, function ($query) use ($hiddenQuestions) {
+                $query->whereNotIn('id', $hiddenQuestions);
+            })->get();
+
+        return round((count($answeredQuestionsId) / $questions->count()) * 100, 0);
+    }
+
+    public static function calculateUserScore(){
+        $score = self::answer()->where('yaedp_user_id', Session::get('session_id'))->sum('points');
+        $percent = ($score / 1500) * 100;
+        self::diagnosticUser()->where('yaedp_user_id', Session::get('session_id'))
+            ->update([
+                'score' => $score,
+                'percent' => $percent,
+                'completed' => 1,
+            ]);
+        return self::diagnosticUser()->where('yaedp_user_id', Session::get('session_id'))->first();
     }
 
     public static function storeAnswerFromQuestionId($request, $id){
@@ -130,6 +188,21 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
                 'answer' => $option->option,
                 'points' => $option->points,
             ]);
+
+            if($question->conditional === 1){
+                $hasCondition = self::hiddenQuestion()
+                    ->where('yaedp_user_id', Session::get('session_id'))
+                    ->first();
+                if(!$hasCondition){
+                    self::hiddenQuestion()->create([
+                       'yaedp_user_id' => Session::get('session_id'),
+                       'questions' => $option->hide_questions,
+                    ]);
+                }else{
+                    $hasCondition->questions .= ',' . $option->hide_questions;
+                    $hasCondition->save();
+                }
+            }
 
         // if question type is a checkbox, get array of ids from form
         // Iterate them and get their points and option from options table
@@ -159,15 +232,6 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
             ]);
         }
 
-    }
-
-    public static function getProgressPercentage(){
-        // get all questions, divide them by the answered questions
-        $questions = self::question()->count();
-        $answered = self::answer()
-            ->where('export_diagnostic_user_id', Session::get('session_id'))
-            ->count();
-        return ($answered / $questions) * 100;
     }
 
 }

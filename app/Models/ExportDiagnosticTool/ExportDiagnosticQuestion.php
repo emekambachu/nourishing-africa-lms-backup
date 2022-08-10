@@ -28,6 +28,6 @@ class ExportDiagnosticQuestion extends Model
     }
 
     public function export_diagnostic_options(){
-        return $this->hasMany(ExportDiagnosticOption::class, 'export_diagnostic_question_id', 'id');
+        return $this->hasMany(ExportDiagnosticOption::class, 'export_diagnostic_question_id', 'id')->orderBy('sort', 'asc');
     }
 }

@@ -46,10 +46,16 @@ class DiagnosticApplicationController extends Controller
 
     public function getQuestion(){
         try {
+            $status = '';
             $question = ExportDiagnosticApplicationService::getApplicationQuestion();
+            if(!$question){
+                $status = ExportDiagnosticApplicationService::calculateUserScore();
+            }
+
             return response()->json([
                 'success' => true,
-                'question' => $question
+                'question' => $question,
+                'status' => $status
             ]);
 
         } catch (\Exception $e) {
