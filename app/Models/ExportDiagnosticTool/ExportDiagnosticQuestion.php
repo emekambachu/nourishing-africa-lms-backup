@@ -16,6 +16,7 @@ class ExportDiagnosticQuestion extends Model
         'type',
         'points',
         'sort',
+        'conditional',
     ];
 
     public function export_diagnostic_category(){

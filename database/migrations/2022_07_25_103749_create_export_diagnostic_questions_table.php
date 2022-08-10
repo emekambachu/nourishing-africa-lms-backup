@@ -19,6 +19,7 @@ class CreateExportDiagnosticQuestionsTable extends Migration
             $table->text('question')->index();
             $table->string('type');
             $table->integer('sort')->default(0);
+            $table->boolean('conditional')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

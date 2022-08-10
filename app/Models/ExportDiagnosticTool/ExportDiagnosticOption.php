@@ -15,6 +15,7 @@ class ExportDiagnosticOption extends Model
         'option',
         'sort',
         'points',
+        'hide_questions',
     ];
 
     public function export_diagnostic_category(){

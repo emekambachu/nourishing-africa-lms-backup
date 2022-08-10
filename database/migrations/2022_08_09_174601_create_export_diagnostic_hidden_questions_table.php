@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExportDiagnosticOptionsTable extends Migration
+class CreateExportDiagnosticHiddenQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateExportDiagnosticOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('export_diagnostic_options', static function (Blueprint $table){
+        Schema::create('export_diagnostic_hidden_questions', static function (Blueprint $table) {
             $table->id()->index();
-            $table->unsignedBigInteger('export_diagnostic_category_id');
+            $table->unsignedBigInteger('yaedp_user_id');
             $table->unsignedBigInteger('export_diagnostic_question_id');
-            $table->string('option');
-            $table->string('sort')->default(0);
-            $table->string('points')->default(0);
-            $table->string('hide_questions')->nullable();
+            $table->unsignedBigInteger('export_diagnostic_option_id');
+            $table->string('questions')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -33,6 +30,6 @@ class CreateExportDiagnosticOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('export_diagnostic_options');
+        Schema::dropIfExists('export_diagnostic_hidden_questions');
     }
 }
