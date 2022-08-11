@@ -55,15 +55,6 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
 
     public static function createLoginSessionWithEmail($request){
         $user = self::yaedpUserWithRelationships()->where('email', $request->email)->first();
-        $user_array = [];
-        // iterate $user object and add to array
-//        foreach ($user->getOriginal() as $key => $value){
-//            $user_array[$key] = $value;
-//        }
-        // add $user_array to session variable
-        // testing session array
-        // Session::put('user_array', []);
-        // Session::push('user_array', $user_array);
 
         Session::put('session_id', $user->id);
         Session::put('session_email', $user->email);
@@ -105,10 +96,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
             ->select('export_diagnostic_question_id')
             ->where('export_diagnostic_user_id', Session::get('session_id'))
             ->get()->toArray();
-        // count answers for this user
-//        $answered = self::answer()
-//            ->where('export_diagnostic_user_id', Session::get('session_id'))
-//            ->count();
+
         // Get stored hidden questions for this user
         $getHiddenQuestions = self::hiddenQuestion()
             ->where('yaedp_user_id', Session::get('session_id'))->first();
@@ -136,10 +124,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
             ->select('export_diagnostic_question_id')
             ->where('export_diagnostic_user_id', Session::get('session_id'))
             ->get()->toArray();
-        // count answers for this user
-//        $answered = self::answer()
-//            ->where('export_diagnostic_user_id', Session::get('session_id'))
-//            ->count();
+
         // Get stored hidden questions for this user
         $getHiddenQuestions = self::hiddenQuestion()
             ->where('yaedp_user_id', Session::get('session_id'))->first();
@@ -164,13 +149,15 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
     public static function calculateUserScore(){
         $score = self::answer()->where('yaedp_user_id', Session::get('session_id'))->sum('points');
         $percent = ($score / 1500) * 100;
-        self::diagnosticUser()->where('yaedp_user_id', Session::get('session_id'))
-            ->update([
-                'score' => $score,
-                'percent' => $percent,
-                'completed' => 1,
-            ]);
-        return self::diagnosticUser()->where('yaedp_user_id', Session::get('session_id'))->first();
+
+        $status = self::diagnosticUser()->where('yaedp_user_id', Session::get('session_id'))->first();
+        if($status->completed !== 1){
+            $status->completed = 1;
+            $status->percent = $percent;
+            $status->score = $score;
+            $status->save();
+        }
+        return $status;
     }
 
     public static function storeAnswerFromQuestionId($request, $id){

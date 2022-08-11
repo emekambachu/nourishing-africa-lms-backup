@@ -21,7 +21,7 @@
     <!--Inside Card-->
     <div class="col-12 col-sm-12 col-md-8 test-container" style="border-radius: 12px">
 
-        <!--If assessment progress is less than 100 percent-->
+        <!--If there are no questions, process feedback-->
         <div class="row justify-content-center d-flex" v-if="question !== false">
             <div v-if="dataLoaded" class="col-12">
                 <!--Question category name-->
@@ -96,15 +96,29 @@
             </div>
         </div>
 
-        <!--If assessment progress is 100 percent, show partcipant feedback-->
+        <!--show partcipant feedback-->
         <div class="row justify-content-center d-flex" v-else>
 
-            <div v-if="dataLoaded" class="col-12 justify-content-center">
+            <div v-if="dataLoaded" class="col-12 text-center">
                 <h5 class="na-text-dark-green custom-font2">Assessment Complete</h5>
                 <p class="custom-font1 text-large">Thank you for completing your assessment</p>
-                <p class="custom-font1 text-large">
+                <p v-if="status.percent >= 90" class="custom-font1 text-large">
                     <strong class="na-text-dark-green">Congratulations</strong>, You scored
                     <strong>{{ status.percent }}%</strong>.<br>
+                    You are fully export ready, and will going to the priority list. More information will be relayed to you
+                </p>
+                <p v-else-if="status.percent >= 70 && status.percent < 90" class="custom-font1 text-large">
+                    <strong class="na-text-dark-green">Congratulations</strong>, You scored
+                    <strong>{{ status.percent }}%</strong>.<br>
+                    You are almost export ready, and will going to the regular list. More information will be relayed to you
+                </p>
+                <p v-else-if="status.percent >= 60 && status.percent < 70" class="custom-font1 text-large">
+                    You scored <strong>{{ status.percent }}%</strong>.<br>
+                    We will engage you with further steps.
+                </p>
+                <p v-else class="custom-font1 text-large">
+                    You scored <strong>{{ status.percent }}%</strong>.<br>
+                    We will engage you with further steps.
                 </p>
             </div>
 

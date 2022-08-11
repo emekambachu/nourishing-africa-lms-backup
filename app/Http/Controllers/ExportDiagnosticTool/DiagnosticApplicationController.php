@@ -48,6 +48,7 @@ class DiagnosticApplicationController extends Controller
         try {
             $status = '';
             $question = ExportDiagnosticApplicationService::getApplicationQuestion();
+            // If no more questions, get calculated scores
             if(!$question){
                 $status = ExportDiagnosticApplicationService::calculateUserScore();
             }

@@ -173,7 +173,7 @@
                                                 <p class="yaedp-content text-extra-dark-gray text-large text-left">
                                                     <strong>Highest Education: </strong> {{ Session::get('session_education') }}<br>
                                                     <strong>Location: </strong> {{ Session::get('session_location') }}<br>
-                                                    <strong>Registered Company: </strong> {{ Session::get('session_legal') }}<br>
+                                                    <strong>Registered Company: </strong> {{ Session::get('session_legal') === 1 ? 'Yes' : 'No' }}<br>
                                                     <strong>Company Type: </strong> {{ Session::get('session_company_type') }}<br>
                                                     <strong>Value Chain: </strong> {{ Session::get('session_value_chain') }}<br>
                                                     <strong>Focus Area: </strong> {{ Session::get('session_focus_area') }}<br>
