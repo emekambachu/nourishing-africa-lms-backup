@@ -39,12 +39,15 @@
                         </p>
                         <label v-for="(option, index) in options" :key="option.id"
                                class="radio-container ml-5">{{ option.option }}
-                            <input type="radio" @change="selectOption"
+                            <input type="radio" @change="selectOption($event, option.conditions, option.display_text)"
                                    v-model="form.option_id"
                                    :value="option.id">
                             <span class="checkmark"></span>
                         </label>
-                        <span class="feedback-custom"></span>
+
+                        <p class="text-center text-large" v-show="display_text !== ''">
+                            {{ display_text }}
+                        </p>
                     </div>
 
                     <!--If question type is checkbox-->
@@ -167,14 +170,32 @@
                 options: [],
                 dataLoaded: false,
                 progress: 0,
-                status: ''
+                status: '',
+                display_text: '',
+                input_text: false
             }
         },
         methods:{
-            selectOption(e){
-                console.log(e);
-                console.log(e.target);
+            selectOption(e, conditions, display_text){
                 console.log(e.target.value);
+
+                if(conditions === 'display_text'){
+                    console.log(conditions);
+                    console.log(display_text);
+                    this.display_text = display_text;
+                }else{
+                    this.display_text = '';
+                }
+
+                // if(this.question.conditional === 1){
+                //
+                //
+                //     if(condition === 'input_text'){
+                //         this.input_text = true;
+                //     }else{
+                //         this.input_text = false;
+                //     }
+                // }
             },
             getQuestion(){
                 this.dataLoaded = false;
