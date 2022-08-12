@@ -146,7 +146,7 @@
                                             <i class="fa fa-check na-text-dark-green"></i>
                                             Select only the most accurate answer for each question<br>
                                             <i class="fa fa-check na-text-dark-green"></i>
-                                            Note that once you click on ‘Next’, you cannot go back to change your response to a previous question. Again, we encourage you to select only the right answers as it relates to your business<br>
+                                            Note that once you click on ‘Next’, you cannot go back to change your response to a previous question. Again, we encourage you to select only the right answers as they relate to your business<br>
                                             <i class="fa fa-check na-text-dark-green"></i>
                                             All information provided will be duly authenticated.<br>
                                             <i class="fa fa-check na-text-dark-green"></i>

@@ -97,8 +97,10 @@
                                                      alt="" width="99" height="60" />
                                             </div>
                                             <div class="col-8 pt-4 text-center">
+                                                <h6 class="text-center">
+                                                    Welcome to the export-readiness diagnostic tool.</h6>
                                                 <h6 class="text-center custom-font2" style="color: #169179;">
-                                                    Participant information</h6>
+                                                    Participant Information</h6>
                                             </div>
                                             <div class="col-2" style="justify-content: center;align-items: center;display: flex;">
                                                 <img style="float: left;" src="{{ asset('images/nepc-logo.png') }}"
@@ -127,9 +129,6 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row">
-                                            <div class="col-12">
-                                                <p>Welcome to the export-readiness diagnostic tool.</p>
-                                            </div>
                                             <div class="col-md-6">
                                                 <p class="yaedp-content text-extra-dark-gray text-large text-left">
                                                     <strong>Name: </strong>{{ Session::get('session_name') }}<br>
