@@ -98,7 +98,7 @@
                                             </div>
                                             <div class="col-8 pt-4 text-center">
                                                 <h6 class="text-center" style="color: #169179;">
-                                                    Instructions</h6>
+                                                    Participant Information</h6>
                                             </div>
                                             <div class="col-2" style="justify-content: center;align-items: center;display: flex;">
                                                 <img style="float: left;" src="{{ asset('images/nepc-logo.png') }}"
@@ -118,14 +118,6 @@
                                                  style="justify-content: center;align-items: center;display: flex;">
                                                 <img style="float: left;" src="{{ asset('images/nepc-logo.png') }}"
                                                      width="120" height="60" />
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-12 pt-4"
-                                                 style="display: flex; justify-content: left; align-items: center;">
-                                                <h4 class="custom-font2" style="color: #169179; text-align: center;">
-                                                    Participant Information</h4>
                                             </div>
                                         </div>
 
