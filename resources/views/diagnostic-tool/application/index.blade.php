@@ -128,7 +128,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <p class="yaedp-content text-large">
-                                            <strong class="text-center">Export-Readiness Diagnostic Tool: </strong><br>
+                                            <strong class="text-center">Export-Readiness Diagnostic Tool</strong><br>
                                             This tool is designed to evaluate the export-readiness level of participants by assessing multi-level information about their business operations and export activities. Participants are assessed based on a range of questions in alignment with standard minimum export requirements.<br><br>
 
                                             Participants are encouraged to select the most accurate answers as it relates to their businesses. All information provided will be duly authenticated.
