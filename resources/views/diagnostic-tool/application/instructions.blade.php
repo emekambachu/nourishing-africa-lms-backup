@@ -148,9 +148,13 @@
                                             <i class="fa fa-check na-text-dark-green"></i>
                                             Note that once you click on ‘Next’, you cannot go back to change your response to a previous question. Again, we encourage you to select only the right answers as they relate to your business<br>
                                             <i class="fa fa-check na-text-dark-green"></i>
+                                            You cannot skip any question; you must answer current question to proceed to next<br>
+                                            <i class="fa fa-check na-text-dark-green"></i>
+                                            You can leave at anytime and continue where you left off<br>
+                                            <i class="fa fa-check na-text-dark-green"></i>
                                             All information provided will be duly authenticated.<br>
                                             <i class="fa fa-check na-text-dark-green"></i>
-                                            The form automatically saves your answers; all completed fields will be saved even if you lose connection to the internet or decide to complete the next questions later.<br>
+                                            The form automatically saves your answers; all completed fields will be saved even if you lose connection to the internet or decide to complete the next questions later.
                                         </p>
 
                                         <a class="justify-content-center d-flex"
