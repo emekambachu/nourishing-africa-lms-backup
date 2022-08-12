@@ -35,8 +35,7 @@
                     <!--If question type is radio-->
                     <div v-if="question.type === 'radio'">
                         <p class="custom-font1 text-large brand-text-brown">
-                            {{ question.question }}: <span class="text-danger">*</span>
-                        </p>
+                            {{ question.question }}:</p>
                         <label v-for="(option, index) in options" :key="option.id"
                                class="radio-container ml-5">{{ option.option }}
                             <input type="radio" @change="selectOption($event, option.conditions, option.display_text)"

@@ -148,7 +148,7 @@
                                             <i class="fa fa-check na-text-dark-green"></i>
                                             Note that once you click on ‘Next’, you cannot go back to change your response to a previous question. Again, we encourage you to select only the right answers as they relate to your business<br>
                                             <i class="fa fa-check na-text-dark-green"></i>
-                                            You cannot skip any question; you must answer current question to proceed to next<br>
+                                            You cannot skip any question; you must answer current question to proceed to the next<br>
                                             <i class="fa fa-check na-text-dark-green"></i>
                                             You can leave at anytime and continue where you left off<br>
                                             <i class="fa fa-check na-text-dark-green"></i>
