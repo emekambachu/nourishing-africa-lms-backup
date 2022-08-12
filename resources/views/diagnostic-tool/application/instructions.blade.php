@@ -135,56 +135,28 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <p class="yaedp-content text-large">
-                                            Hello <strong>{{ Session::get('session_name') }}</strong><br>
-                                            Thank you for taking part on the YAEDP Export Diagnostic Readiness tool, below are instructions to follow that will give you a clear understanding of this assessment.
+                                            Before you proceed, please read the below instructions carefully.
                                         </p>
 
                                         <p class="width-75 mx-auto yaedp-content text-extra-dark-gray lg-width-90 sm-width-100 text-large">
                                             <i class="fa fa-check na-text-dark-green"></i>
-                                            This survey will take approximately 20 minutes to be completed<br>
+                                            This survey will take approximately 20 minutes to complete<br>
                                             <i class="fa fa-check na-text-dark-green"></i>
-                                            These questions consists of 3 stages<br>
+                                            The survey questions will be completed in two stages; Stage 1 requires information about your business operations while Stage 2 requires information about your export activities<br>
                                             <i class="fa fa-check na-text-dark-green"></i>
-                                            Kindly answer with sincerity and note that you won’t be able to go back to review previous question<br>
+                                            Select only the most accurate answer for each question<br>
                                             <i class="fa fa-check na-text-dark-green"></i>
-                                            You cannot skip any question; you must answer current question to proceed to next<br>
+                                            Note that once you click on ‘Next’, you cannot go back to change your response to a previous question. Again, we encourage you to select only the right answers as it relates to your business<br>
                                             <i class="fa fa-check na-text-dark-green"></i>
-                                            You can leave at anytime and continue where you left off<br>
+                                            All information provided will be duly authenticated.<br>
                                             <i class="fa fa-check na-text-dark-green"></i>
-                                            You will be assessed at the end of this assessment<br>
+                                            The form automatically saves your answers; all completed fields will be saved even if you lose connection to the internet or decide to complete the next questions later.<br>
                                         </p>
-
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h4 class="text-center yaedp-content text-extra-dark-gray text-large">
-                                                    Your Information</h4>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p class="yaedp-content text-extra-dark-gray text-large text-left">
-                                                    <strong>Mobile: </strong>{{ Session::get('session_mobile') }}<br>
-                                                    <strong>Email: </strong>{{ Session::get('session_email') }}<br>
-                                                    <strong>DOB: </strong> {{ Session::get('session_dob') }}<br>
-                                                    <strong>Gender: </strong> {{ Session::get('session_gender') }}<br>
-                                                    <strong>State of Origin: </strong> {{ Session::has('session_state_origin') ? Session::get('session_state_origin') : '' }}<br>
-                                                    <strong>State of Residence: </strong> {{ Session::has('session_state_residence') ? Session::get('session_state_residence') : '' }}<br>
-                                                </p>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p class="yaedp-content text-extra-dark-gray text-large text-left">
-                                                    <strong>Highest Education: </strong> {{ Session::get('session_education') }}<br>
-                                                    <strong>Location: </strong> {{ Session::get('session_location') }}<br>
-                                                    <strong>Registered Company: </strong> {{ Session::get('session_legal') === 1 ? 'Yes' : 'No' }}<br>
-                                                    <strong>Company Type: </strong> {{ Session::get('session_company_type') }}<br>
-                                                    <strong>Value Chain: </strong> {{ Session::get('session_value_chain') }}<br>
-                                                    <strong>Focus Area: </strong> {{ Session::get('session_focus_area') }}<br>
-                                                </p>
-                                            </div>
-                                        </div>
 
                                         <a class="justify-content-center d-flex"
                                            href="{{ route('yaedp.export-diagnostic.start') }}">
                                             <button type="button"
-                                                    class="yedp-begin-btn btn active">Start</button>
+                                                    class="yedp-begin-btn btn active">Next</button>
                                         </a>
                                     </div>
                                 </div>

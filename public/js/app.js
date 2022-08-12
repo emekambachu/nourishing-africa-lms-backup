@@ -23179,7 +23179,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data);
 
         if (response.data.success === true) {
-          window.location.href = '/yaedp/export-diagnostic/instructions';
+          window.location.href = '/yaedp/export-diagnostic/participant-information';
         } else {
           _this.errors = response.data.errors;
           _this.loading = false;

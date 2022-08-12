@@ -215,6 +215,9 @@ Route::get('/yaedp/export-diagnostic/',
 Route::get('/yaedp/export-diagnostic/instructions',
     [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'instructions'])
     ->name('yaedp.export-diagnostic.instructions');
+Route::get('/yaedp/export-diagnostic/participant-information',
+    [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'participantInformation'])
+    ->name('yaedp.export-diagnostic.participant-information');
 Route::get('/yaedp/export-diagnostic/start',
     [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'start'])
     ->name('yaedp.export-diagnostic.start');

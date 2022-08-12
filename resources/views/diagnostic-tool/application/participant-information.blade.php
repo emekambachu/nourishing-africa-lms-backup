@@ -36,15 +36,14 @@
 
 @section('top-panel')
     <section class="wow fadeIn parallax padding-50px-tb" data-stellar-background-ratio="0.5"
-             style="background-image: url(&quot;{{ asset('images/login-intro.jpg') }}&quot;); visibility: visible; animation-name: fadeIn; background-attachment: unset; background-position: center; background-attachment: fixed;">
+             style="background-image: url(&quot;{{ asset('images/login-intro.jpg') }}&quot;); visibility: visible; animation-name: fadeIn;background-attachment: unset; background-position: center; background-attachment: fixed;">
         <div class="opacity-medium bg-extra-dark-gray"></div>
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12 d-flex mt-3 flex-column justify-content-center text-center extra-small-screen page-title-large">
                     <!-- start page title -->
-                    <h1 class="text-white-2 mt-3"
-                        style="margin-bottom: 0; text-transform: uppercase; text-align: center; font-weight-500: letter-spacing-minus-1;">
-                        YAEDP | Export Readiness Diagnostic Tool</h1>
+                    <h1 class="text-white-2 mt-3 font-family: tahoma, arial, helvetica, sans-serif; text-align: center; font-weight-500 letter-spacing-minus-1" style="margin-bottom: 0; text-transform: uppercase;">
+                        YAEDP | Export Diagnostic Tool</h1>
                     <!-- end page title -->
                 </div>
             </div>
@@ -59,10 +58,10 @@
                     <!-- breadcrumb -->
                     <ul>
                         <li><a href="{{ url('/') }}" class="text-light"
-                               style="font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">Home</a>
+                               style="text-align: center;">Home</a>
                         </li>
-                        <li><a href="#" class="text-light"
-                               style="font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">
+                        <li><a href="#" class="text-light custom-font2"
+                               style="text-align: center;">
                                 YAEDP | Export Readiness Diagnostic Tool</a>
                         </li>
                     </ul>
@@ -77,12 +76,19 @@
     <section class="wow fadeIn pt-5 pl-3 pr-3 pb-5" style="margin-top: 0px; z-index: 3;">
         <div class="shrink-responsiveness-ent-o container-fluid">
             <div class="row m-0 justify-content-center d-flex">
-                {{--@if(Session::get('status') != "success")--}}
-                <div class="col-md-9 test-container" style="border-radius: 12px">
+
+                <div class="col-12">
+                    <p class="float-right text-medium">
+                        <a class="text-danger" href="/yaedp/export-diagnostic/logout">
+                            Logout <i class="fa fa-sign-out"></i>
+                        </a>
+                    </p>
+                </div>
+
+                <div class="col-md-8 test-container" style="border-radius: 12px">
                     <div id="intro">
                         <div class="row p-4">
-
-                            <div class="col-md-7">
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <div class="big-scrn d-none d-sm-none d-md-block">
                                         <div class="row">
@@ -90,10 +96,9 @@
                                                 <img style="float: left;" src="{{ asset('images/newlogo.png') }}"
                                                      alt="" width="99" height="60" />
                                             </div>
-                                            <div class="col-8 pt-4" style="display: flex; justify-content: left; align-items: center;">
-                                                <p class="" style="color: #169179; font-size: 16pt; font-weight: 600; font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">
-                                                    Youth in Agri-food Export Development Program (YAEDP)
-                                                </p>
+                                            <div class="col-8 pt-4 text-center">
+                                                <h6 class="text-center" style="color: #169179;">
+                                                    Instructions</h6>
                                             </div>
                                             <div class="col-2" style="justify-content: center;align-items: center;display: flex;">
                                                 <img style="float: left;" src="{{ asset('images/nepc-logo.png') }}"
@@ -115,24 +120,48 @@
                                                      width="120" height="60" />
                                             </div>
                                         </div>
+
                                         <div class="row">
-                                            <div class="col-12 pt-4" style="display: flex; justify-content: left; align-items: center;">
-                                                <p class="" style="color: #169179; font-size: 16pt; font-weight: 600; font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">
-                                                    YAEDP | Export Readiness Diagnostic Tool
-                                                </p>
+                                            <div class="col-12 pt-4"
+                                                 style="display: flex; justify-content: left; align-items: center;">
+                                                <h4 class="custom-font2" style="color: #169179; text-align: center;">
+                                                    Participant Information</h4>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <p class="yaedp-content text-large">
-                                            <strong>Export-Readiness Diagnostic Tool: </strong><br>
-                                            This tool is designed to evaluate the export-readiness level of participants by assessing multi-level information about their business operations and export activities. Participants are assessed based on a range of questions in alignment with standard minimum export requirements.<br><br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="yaedp-content text-extra-dark-gray text-large text-left">
+                                                    <strong>Mobile: </strong>{{ Session::get('session_mobile') }}<br>
+                                                    <strong>Email: </strong>{{ Session::get('session_email') }}<br>
+                                                    <strong>DOB: </strong> {{ Session::get('session_dob') }}<br>
+                                                    <strong>Gender: </strong> {{ Session::get('session_gender') }}<br>
+                                                    <strong>State of Origin: </strong> {{ Session::has('session_state_origin') ? Session::get('session_state_origin') : '' }}<br>
+                                                    <strong>State of Residence: </strong> {{ Session::has('session_state_residence') ? Session::get('session_state_residence') : '' }}<br>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="yaedp-content text-extra-dark-gray text-large text-left">
+                                                    <strong>Highest Education: </strong> {{ Session::get('session_education') }}<br>
+                                                    <strong>Location: </strong> {{ Session::get('session_location') }}<br>
+                                                    <strong>Registered Company: </strong> {{ Session::get('session_legal') === 1 ? 'Yes' : 'No' }}<br>
+                                                    <strong>Company Type: </strong> {{ Session::get('session_company_type') }}<br>
+                                                    <strong>Value Chain: </strong> {{ Session::get('session_value_chain') }}<br>
+                                                    <strong>Focus Area: </strong> {{ Session::get('session_focus_area') }}<br>
+                                                </p>
+                                            </div>
+                                        </div>
 
-                                            Participants are encouraged to select the most accurate answers as it relates to their businesses. All information provided will be duly authenticated.
-                                        </p>
+                                        <a class="justify-content-center d-flex"
+                                           href="{{ route('yaedp.export-diagnostic.instructions') }}">
+                                            <button type="button"
+                                                    class="yedp-begin-btn btn active">Next</button>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -145,19 +174,6 @@
                                              alt="" width="70" height="40" /></div>
                                 </div>
 
-                            </div>
-
-                            <div id="app" class="col-md-5 mt-3"
-                                 style="justify-content: center; align-items: center;">
-                                @if(session('logged_out'))
-                                    <div class="alert alert-danger mg-b-0" role="alert">
-                                        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <strong>{{ session('logged_out') }}</strong>
-                                    </div>
-                                @endif
-                                <export-diagnostic-login></export-diagnostic-login>
                             </div>
 
                         </div>

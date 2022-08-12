@@ -55,7 +55,7 @@
                     .then(response => {
                         console.log(response.data);
                         if(response.data.success === true){
-                            window.location.href = '/yaedp/export-diagnostic/instructions';
+                            window.location.href = '/yaedp/export-diagnostic/participant-information';
                         }else{
                             this.errors = response.data.errors;
                             this.loading = false;
