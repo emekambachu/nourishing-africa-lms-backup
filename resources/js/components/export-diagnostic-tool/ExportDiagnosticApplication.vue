@@ -52,7 +52,7 @@
                     <!--If question type is checkbox-->
                     <div v-if="question.type === 'checkbox'">
                         <p class="custom-font1 text-large brand-text-brown">
-                            {{ question.question }}: <span class="text-danger">*</span>
+                            {{ question.question }}:
                         </p>
                         <div v-for="(option, index) in options" :key="option.id"
                              class="form-group form-check ml-5">
@@ -68,7 +68,7 @@
                     <!--If question type is freetext-->
                     <div  v-if="question.type === 'freetext'">
                         <p class="custom-font1 text-large brand-text-brown">
-                            {{ question.question }}: <span class="text-danger">*</span>
+                            {{ question.question }}:
                         </p>
                         <input class="input-bg" type="text" v-model="form.answer" required />
                         <span class="feedback-custom"></span>
