@@ -58,7 +58,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
 
         Session::put('session_id', $user->id);
         Session::put('session_email', $user->email);
-        Session::put('session_name', $user->surname.' '.$user->first_name);
+        Session::put('session_name', $user->first_name.' '.$user->surname);
         Session::put('session_mobile', $user->mobile);
         Session::put('session_dob', $user->dob);
         Session::put('session_gender', $user->gender);

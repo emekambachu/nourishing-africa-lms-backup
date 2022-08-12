@@ -98,7 +98,7 @@
                                             </div>
                                             <div class="col-8 pt-4 text-center">
                                                 <h6 class="text-center" style="color: #169179;">
-                                                    Participant Information</h6>
+                                                    Preview your information</h6>
                                             </div>
                                             <div class="col-2" style="justify-content: center;align-items: center;display: flex;">
                                                 <img style="float: left;" src="{{ asset('images/nepc-logo.png') }}"

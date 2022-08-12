@@ -118,7 +118,7 @@
                                         <div class="row">
                                             <div class="col-12 pt-4" style="display: flex; justify-content: left; align-items: center;">
                                                 <p class="" style="color: #169179; font-size: 16pt; font-weight: 600; font-family: tahoma, arial, helvetica, sans-serif; text-align: center;">
-                                                    YAEDP | Export Readiness Diagnostic Tool
+                                                    YAEDP | Export-Readiness Diagnostic Tool
                                                 </p>
                                             </div>
                                         </div>
@@ -127,7 +127,7 @@
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <p class="yaedp-content text-large">
+                                        <p class="yaedp-content text-large text-center">
                                             <strong>Export-Readiness Diagnostic Tool: </strong><br>
                                             This tool is designed to evaluate the export-readiness level of participants by assessing multi-level information about their business operations and export activities. Participants are assessed based on a range of questions in alignment with standard minimum export requirements.<br><br>
 
