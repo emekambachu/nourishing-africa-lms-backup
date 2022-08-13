@@ -96,9 +96,8 @@
                                                 <img style="float: left;" src="{{ asset('images/newlogo.png') }}"
                                                      alt="" width="99" height="60" />
                                             </div>
-                                            <div class="col-8 pt-4 text-center">
-                                                <h6 class="text-center" style="color: #169179;">
-                                                    Instructions</h6>
+                                            <div class="col-8 pt-4 text-center custom-font2">
+                                                <h5 class="brand-text">Instructions</h5>
                                             </div>
                                             <div class="col-2" style="justify-content: center;align-items: center;display: flex;">
                                                 <img style="float: left;" src="{{ asset('images/nepc-logo.png') }}"

@@ -98,30 +98,30 @@
             </div>
         </div>
 
-        <!--show partcipant feedback-->
+        <!--show participant feedback-->
         <div class="row justify-content-center d-flex" v-else>
 
             <div v-if="dataLoaded" class="col-12 text-center">
                 <h5 class="na-text-dark-green custom-font2">Assessment Complete</h5>
-                <p class="custom-font1 text-large">Thank you for completing your assessment</p>
-                <p v-if="status.percent >= 90" class="custom-font1 text-large">
-                    <strong class="na-text-dark-green">Congratulations</strong>, You scored
-                    <strong>{{ status.percent }}%</strong>.<br>
-                    You are fully export ready, and will going to the priority list. More information will be relayed to you
-                </p>
-                <p v-else-if="status.percent >= 70 && status.percent < 90" class="custom-font1 text-large">
-                    <strong class="na-text-dark-green">Congratulations</strong>, You scored
-                    <strong>{{ status.percent }}%</strong>.<br>
-                    You are almost export ready, and will going to the regular list. More information will be relayed to you
-                </p>
-                <p v-else-if="status.percent >= 60 && status.percent < 70" class="custom-font1 text-large">
-                    You scored <strong>{{ status.percent }}%</strong>.<br>
-                    We will engage you with further steps.
-                </p>
-                <p v-else class="custom-font1 text-large">
-                    You scored <strong>{{ status.percent }}%</strong>.<br>
-                    We will engage you with further steps.
-                </p>
+                <p class="custom-font1 text-large">Thank you for completing the assessment, we will evaluate your responses in accordance with the program requirements and contact successful participants for further steps.</p>
+<!--                <p v-if="status.percent >= 90" class="custom-font1 text-large">-->
+<!--                    <strong class="na-text-dark-green">Congratulations</strong>, You scored-->
+<!--                    <strong>{{ status.percent }}%</strong>.<br>-->
+<!--                    You are fully export ready, and will going to the priority list. More information will be relayed to you-->
+<!--                </p>-->
+<!--                <p v-else-if="status.percent >= 70 && status.percent < 90" class="custom-font1 text-large">-->
+<!--                    <strong class="na-text-dark-green">Congratulations</strong>, You scored-->
+<!--                    <strong>{{ status.percent }}%</strong>.<br>-->
+<!--                    You are almost export ready, and will going to the regular list. More information will be relayed to you-->
+<!--                </p>-->
+<!--                <p v-else-if="status.percent >= 60 && status.percent < 70" class="custom-font1 text-large">-->
+<!--                    You scored <strong>{{ status.percent }}%</strong>.<br>-->
+<!--                    We will engage you with further steps.-->
+<!--                </p>-->
+<!--                <p v-else class="custom-font1 text-large">-->
+<!--                    You scored <strong>{{ status.percent }}%</strong>.<br>-->
+<!--                    We will engage you with further steps.-->
+<!--                </p>-->
             </div>
 
             <div class="col-12" v-else>
