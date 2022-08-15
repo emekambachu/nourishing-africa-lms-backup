@@ -154,9 +154,9 @@
             <!-- start logo -->
             <div class="col-auto pl-md-5">
                 <a href="{{ url('/') }}" title="African Food Changemakers" >
-                    <img src="{{ asset('images/newlogo.png') }}"
-                         data-rjs="{{ asset('images/newlogo.png') }}" width="100px"
-                         class="logo-light default" alt="Nourishing Nfrica logo">
+                    <img src="{{ asset('images/afchub_logo_w200.png') }}"
+                         data-rjs="{{ asset('images/afchub_logo_w200.png') }}" width="100px"
+                         class="logo-light default" alt="afchub logo">
                 </a>
             </div>
             <!-- end logo -->
