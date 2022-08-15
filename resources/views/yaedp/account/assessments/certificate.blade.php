@@ -21,14 +21,18 @@
 
         @if($completedAssessment)
             <div class="row justify-content-center">
-                <div class="col-12 d-flex justify-content-center">
-                    <img src="{{ asset('images/icons/certification.png') }}" width="250"/>
-                </div>
+{{--                <div class="col-12 d-flex justify-content-center">--}}
+{{--                    <img src="{{ asset('images/icons/certification.png') }}" width="250"/>--}}
+{{--                </div>--}}
                 <div class="col-12 text-center">
-                    <h4>
-                        <strong class="text-success">Congratulations</strong> on completing your modules!
-                        We will inform you via email when your certificate is ready for download.
-                    </h4>
+                    <div class="certificate-bg">
+                        <p class="certificate-name">{{ Auth::user()->first_name.' '.Auth::user()->surname }}</p>
+                        <p class="certificate-date">{{ Carbon\Carbon::now()->format('Y-m-d') }}</p>
+                    </div>
+{{--                    <h4>--}}
+{{--                        <strong class="text-success">Congratulations</strong> on completing your modules!--}}
+{{--                        We will inform you via email when your certificate is ready for download.--}}
+{{--                    </h4>--}}
                 </div>
             </div>
         @else
