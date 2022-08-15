@@ -331,12 +331,12 @@
                 <div class="col-lg-3 col-md-6 widget md-no-border-right md-margin-30px-bottom sm-text-center">
                     <!-- start logo -->
                     <a href="#" class="margin-20px-bottom d-inline-block">
-                        <img class="footer-logo-new" src="{{ asset('images/afchub-logo-white-w200.png') }}"
+                        <img class="" src="{{ asset('images/afchub-logo-white-w200.png') }}"
                              data-rjs="{{ asset('images/afchub-logo-white-w200.png') }}" alt="African food Change-makers logo"/></a>
                     <!-- end logo -->
                     <br/>
                     <p class="text-small width-95 sm-width-100" style="color:#FFF">
-                        A Home for Agri-Food Entrepreneurs Transforming Africa's Agricultural Landscape.</p>
+                        Nourishing Africa and Narrative Change-makers.</p>
                 </div>
 
                 <!-- start additional links -->
