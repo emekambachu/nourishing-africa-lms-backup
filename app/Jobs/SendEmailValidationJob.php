@@ -34,9 +34,9 @@ class SendEmailValidationJob implements ShouldQueue
         $data = $this->data;
 
         Mail::send('emails.yaedp.email-verification', $data, static function ($message) use ($data) {
-            $message->from('yaedp@nourishingafrica.com', 'Nourishing Africa | YAEDP');
+            $message->from('yaedp@nourishingafrica.com', 'African Food Changemakers | YAEDP');
             $message->to($data['email'], $data['name']);
-            $message->replyTo('yaedp@nourishingafrica.com', 'Nourishing Africa | YAEDP');
+            $message->replyTo('yaedp@nourishingafrica.com', 'African Food Changemakers | YAEDP');
             $message->subject('Email verification');
         });
     }

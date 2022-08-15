@@ -8,7 +8,7 @@
     <meta property="og:type" content="object" />
     <meta property="og:title" content="YAEDP - Youth in Agrifood Export Development Program" />
     <meta property="og:url" content="{{ Request::fullUrl() }}" />
-    <meta property="og:site_name" content="Nourishing Africa" />
+    <meta property="og:site_name" content="African Food Changemakers" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:description" content="yaedp | For young nigerian agripreneurs and cooperative leaders looking to export their products through training, market linkages and digital support." />
     <meta name="twitter:title" content="YAEDP - Youth in Agrifood Export Development Program" />
@@ -20,7 +20,7 @@
       {
          "@type":"Organization",
          "@id":"https://nourishingafrica.com/#organization",
-         "name":"Nourishing Africa",
+         "name":"African Food Changemakers",
          "url":"https://nourishingafrica.com/",
          "sameAs":[
             "https://www.facebook.com/nourishafrica1",
@@ -35,7 +35,7 @@
             "url":"https://nourishingafrica.com/wp-content/uploads/2019/04/NA-1-Official.png",
             "width":848,
             "height":519,
-            "caption":"Nourishing Africa"
+            "caption":"African Food Changemakers"
          },
          "image":{
             "@id":"https://nourishingafrica.com/#logo"
@@ -45,7 +45,7 @@
          "@type":"WebSite",
          "@id":"https://nourishingafrica.com/#website",
          "url":"https://nourishingafrica.com/",
-         "name":"Nourishing Africa",
+         "name":"African Food Changemakers",
          "inLanguage":"en-US",
          "description":"A home for 1 million agri-food entrepreneurs transforming Africa&#039;s agricultural",
          "publisher":{
@@ -1031,7 +1031,7 @@
                                                             <label class="form-text">How did you hear about this program?<span class="text-danger">*</span>
                                                                 <select name="referred_by" id="referral-type-part-3" required class="form-control" onchange="referralevent()" />
                                                                     <option value="" selected>-- Select --</option>
-                                                                    <option value="Nourishing Africa">Nourishing Africa</option>
+                                                                    <option value="African Food Changemakers">African Food Changemakers</option>
                                                                     <option value="NEPC/EEFP">NEPC/EEFP</option>
                                                                     <option value="Riby">Riby</option>
                                                                     <option value="Social media">Social media</option>
@@ -1089,12 +1089,12 @@
 {{--                                        <div class="form-group row mb-0">--}}
 {{--                                            <div class="col-md-12 text-center p-3">--}}
 {{--                                                <a href="{{ route('entrepreneur.sign-up-form') }}" class="btn btn-stage-one-active-prev text-center p-2 m-2" style="white-space: normal !important;">--}}
-{{--                                                    {{ __('Are You an Agripreneur? Sign up to join the Nourishing Africa Community') }}--}}
+{{--                                                    {{ __('Are You an Agripreneur? Sign up to join the African Food Changemakers Community') }}--}}
 {{--                                                </a>--}}
 {{--                                            </div>--}}
 {{--                                            <div class="col-md-12 text-center p-3">--}}
 {{--                                                <a href="https://nourishingafrica.com" class="btn btn-stage-one-active-prev text-center p-2 m-2" style="white-space: normal !important;">--}}
-{{--                                                   {{ __('Go to Nourishing Africa Home Page') }}--}}
+{{--                                                   {{ __('Go to African Food Changemakers Home Page') }}--}}
 {{--                                                </a>--}}
 {{--                                            </div>--}}
 {{--                                        </div>--}}

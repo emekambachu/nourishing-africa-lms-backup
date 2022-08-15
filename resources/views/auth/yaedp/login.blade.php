@@ -5,23 +5,23 @@
 @endsection
 
 @section('meta-tags')
-    <meta name="description" content="Nourishing Africa | YAEDP - Login"/>
+    <meta name="description" content="African Food Changemakers | YAEDP - Login"/>
     <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
     <link rel="canonical" href="{{ Request::fullUrl() }}" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Nourishing Africa | YAEDP - Login" />
-    <meta property="og:description" content="Nourishing Africa | YAEDP - Login" />
+    <meta property="og:title" content="African Food Changemakers | YAEDP - Login" />
+    <meta property="og:description" content="African Food Changemakers | YAEDP - Login" />
     <meta property="og:url" content="{{ Request::fullUrl() }}" />
-    <meta property="og:site_name" content="Nourishing Africa" />
+    <meta property="og:site_name" content="African Food Changemakers" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:description" content="Nourishing Africa | YAEDP - Login" />
-    <meta name="twitter:title" content="Nourishing Africa | YAEDP - Login" />
+    <meta name="twitter:description" content="African Food Changemakers | YAEDP - Login" />
+    <meta name="twitter:title" content="African Food Changemakers | YAEDP - Login" />
     <meta name="twitter:site" content="@nourish_africa" />
     <meta name="twitter:creator" content="@nourish_africa" />
     <script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>
 
-    {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nourishingafrica.com/#organization","name":"Nourishing Africa","url":"https://nourishingafrica.com/","sameAs":["https://www.facebook.com/nourishafrica1","https://instagram.com/nourish_africa","https://www.linkedin.com/company/28506256","https://twitter.com/nourish_africa"],"logo":{"@type":"ImageObject","@id":"https://nourishingafrica.com/#logo","url":"https://nourishingafrica.com/wp-content/uploads/2019/04/NA-1-Official.png","width":848,"height":519,"caption":"Nourishing Africa"},"image":{"@id":"https://nourishingafrica.com/#logo"}},{"@type":"WebSite","@id":"https://nourishingafrica.com/#website","url":"https://nourishingafrica.com/","name":"Nourishing Africa","description":"A home for 1 million agri-food entrepreneurs transforming Africa&#039;s agricultural","publisher":{"@id":"https://nourishingafrica.com/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://nourishingafrica.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://nourishingafrica.com/#webpage","url":"https://nourishingafrica.com/","inLanguage":"en-US","name":"Welcome to Nourishing Africa Hub - Nourishing Africa","isPartOf":{"@id":"https://nourishingafrica.com/#website"},"about":{"@id":"https://nourishingafrica.com/#organization"},"datePublished":"2019-12-03T12:51:31+00:00","dateModified":"2020-02-07T15:22:22+00:00","description":"Welcome to Nourishing Africa Hub, A Home for Agri-Food Entrepreneurs Transforming Africa\u2019s Agricultural Landscape."}]}
+    {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nourishingafrica.com/#organization","name":"African Food Changemakers","url":"https://nourishingafrica.com/","sameAs":["https://www.facebook.com/nourishafrica1","https://instagram.com/nourish_africa","https://www.linkedin.com/company/28506256","https://twitter.com/nourish_africa"],"logo":{"@type":"ImageObject","@id":"https://nourishingafrica.com/#logo","url":"https://nourishingafrica.com/wp-content/uploads/2019/04/NA-1-Official.png","width":848,"height":519,"caption":"African Food Changemakers"},"image":{"@id":"https://nourishingafrica.com/#logo"}},{"@type":"WebSite","@id":"https://nourishingafrica.com/#website","url":"https://nourishingafrica.com/","name":"African Food Changemakers","description":"A home for 1 million agri-food entrepreneurs transforming Africa&#039;s agricultural","publisher":{"@id":"https://nourishingafrica.com/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://nourishingafrica.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://nourishingafrica.com/#webpage","url":"https://nourishingafrica.com/","inLanguage":"en-US","name":"Welcome to African Food Changemakers Hub - African Food Changemakers","isPartOf":{"@id":"https://nourishingafrica.com/#website"},"about":{"@id":"https://nourishingafrica.com/#organization"},"datePublished":"2019-12-03T12:51:31+00:00","dateModified":"2020-02-07T15:22:22+00:00","description":"Welcome to African Food Changemakers Hub, A Home for Agri-Food Entrepreneurs Transforming Africa\u2019s Agricultural Landscape."}]}
 </script>
 @endsection
 
@@ -123,30 +123,4 @@
 
 @section('bottom-assets')
     <script src="{{ asset('learning-assets/custom/js/login-form.js') }}"></script>
-    {{--    <script>--}}
-    {{--    $(function() {--}}
-    {{--        $(document).ready(function () {--}}
-    {{--            document.cookie = 'my_cookie=; path=/; domain=.nourishingafrica.com; expires=' + new Date(0).toUTCString();--}}
-    {{--            (function () {--}}
-    {{--                let cookies = document.cookie.split("; ");--}}
-    {{--                for (let c = 0; c < cookies.length; c++) {--}}
-    {{--                    let d = window.location.hostname.split(".");--}}
-    {{--                    while (d.length > 0) {--}}
-    {{--                        let cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + 'nourishingafrica.com' + ' ;path=';--}}
-    {{--                        console.log(d[1] + '.' + d[2]);--}}
-    {{--                        let p = location.pathname.split('/');--}}
-    {{--                        document.cookie = cookieBase + '/';--}}
-    {{--                        while (p.length > 0) {--}}
-    {{--                            document.cookie = cookieBase + p.join('/');--}}
-    {{--                            p.pop();--}}
-    {{--                        }--}}
-    {{--                        d.shift();--}}
-    {{--                    }--}}
-    {{--                }--}}
-    {{--                console.log('cookie deleted');--}}
-    {{--                console.log(window.location.hostname);--}}
-    {{--            })();--}}
-    {{--        });--}}
-    {{--    });--}}
-    {{--    </script>--}}
 @endsection

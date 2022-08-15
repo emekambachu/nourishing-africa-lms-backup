@@ -8,7 +8,7 @@
     <meta property="og:type" content="object" />
     <meta property="og:title" content="YAEDP - Youth in Agrifood Export Development Program" />
     <meta property="og:url" content="{{ Request::fullUrl() }}" />
-    <meta property="og:site_name" content="Nourishing Africa" />
+    <meta property="og:site_name" content="African Food Changemakers" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:description" content="YAEDP | Export Diagnostic Tool" />
     <meta name="twitter:title" content="YAEDP - Youth in Agrifood Export Development Program" />

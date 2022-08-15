@@ -26,9 +26,9 @@ class AccountSettingsService extends BaseService
                                 Click <a href='/admin/learning/3/update-request'>here</a> to go to the admin and access it";
         $adminEmails = ['embachu@nourishingafrica.com', 'reyinfunjowo@nourishingafrica.com', 'tkareem@nourishingafrica.com'];
         Mail::send('emails.index', $data, static function ($message) use ($adminEmails) {
-            $message->from('yaedp@nourishingafrica.com', 'Nourishing Africa | YAEDP');
+            $message->from('yaedp@nourishingafrica.com', 'African Food Changemakers | YAEDP');
             $message->to($adminEmails);
-            $message->replyTo('yaedp@nourishingafrica.com', 'Nourishing Africa | YAEDP');
+            $message->replyTo('yaedp@nourishingafrica.com', 'African Food Changemakers | YAEDP');
             $message->subject('YAEDP | Update request');
         });
     }

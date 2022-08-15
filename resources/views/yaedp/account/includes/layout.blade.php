@@ -92,7 +92,7 @@
         <div class="app-sidebar__user">
             <div class="dropdown user-pro-body text-center">
                 <div class="">
-                    <img src="{{ asset('images/na-logo-dark.png') }}" width="100" class="">
+                    <img src="{{ asset('images/afchub_logo_w200.png') }}" width="100" class="">
                 </div>
             </div>
         </div>

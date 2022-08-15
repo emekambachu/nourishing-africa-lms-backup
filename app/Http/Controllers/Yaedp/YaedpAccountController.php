@@ -451,9 +451,9 @@ class YaedpAccountController extends Controller
         $data['email'] = $request->old_email;
         $data['name'] = Auth::user()->surname.' '.Auth::user()->first_name;
         Mail::send('emails.yaedp.email-verification', $data, static function ($message) use ($data) {
-            $message->from('yaedp@nourishingafrica.com', 'Nourishing Africa | YAEDP');
+            $message->from('yaedp@nourishingafrica.com', 'African Food Changemakers | YAEDP');
             $message->to($data['email'], $data['name']);
-            $message->replyTo('yaedp@nourishingafrica.com', 'Nourishing Africa | YAEDP');
+            $message->replyTo('yaedp@nourishingafrica.com', 'African Food Changemakers | YAEDP');
             $message->subject('YAEDP | Email verification');
         });
 

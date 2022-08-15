@@ -414,7 +414,7 @@ function referralevent() {
     if (
         val == "other" ||
         val == "From another organisation" ||
-        val == "Invitation from a Nourishing Africa Team Member"
+        val == "Invitation from a African Food Changemakers Team Member"
     ) {
         $("#referred_by_suffix_part").removeClass("d-none");
     } else {
@@ -891,7 +891,7 @@ function stagecontentpart2form() {
     }else{
         validFeedbackPart('2','registration-number');
     }
-    
+
     this.reg_number_doc = $('#registration-number-doc-part-2').val();
     if(isEmpty(this.reg_number_doc)){
         if(this.company_legal == "1"){
@@ -1203,7 +1203,7 @@ function stagecontentpart3form() {
     }else{
         validFeedbackPart('3','business-revenue');
     }
-    
+
     this.business_profit = $('#business-profit-part-3').val();
     if(isEmpty(this.business_revenue)){
         invalidFeedbackPart('3','business-profit', 'This field is required');

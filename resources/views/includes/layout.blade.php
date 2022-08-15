@@ -3,7 +3,7 @@
 
 <head>
     <!-- title -->
-    <title>@yield('title') - Nourishing Africa</title>
+    <title>@yield('title') - African Food Changemakers</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -153,7 +153,7 @@
         <div class="container-fluid nav-header-container" style='padding-top: 10px;'>
             <!-- start logo -->
             <div class="col-auto pl-md-5">
-                <a href="{{ url('/') }}" title="Nourishing Africa" >
+                <a href="{{ url('/') }}" title="African Food Changemakers" >
                     <img src="{{ asset('images/newlogo.png') }}"
                          data-rjs="{{ asset('images/newlogo.png') }}" width="100px"
                          class="logo-light default" alt="Nourishing Nfrica logo">
@@ -204,7 +204,7 @@
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
                                                         href="{{ route('team') }}?page=our_ambassadors">Our Ambassadors</a></li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('careers') }}">Nourishing Africa Careers</a></li>
+                                                        href="{{ route('careers') }}">African Food Changemakers Careers</a></li>
                             </ul>
                         </li>
                         <li class="dropdown simple-dropdown"><a href="#" style="color: #267c26">Membership</a>
@@ -331,8 +331,8 @@
                 <div class="col-lg-3 col-md-6 widget md-no-border-right md-margin-30px-bottom sm-text-center">
                     <!-- start logo -->
                     <a href="#" class="margin-20px-bottom d-inline-block">
-                        <img class="footer-logo-new" src="{{ asset('images/logo2.png') }}"
-                             data-rjs="{{ asset('images/logo2.png') }}" alt="nourishing africa logo"/></a>
+                        <img class="footer-logo-new" src="{{ asset('images/afchub-logo-white-w200.png') }}"
+                             data-rjs="{{ asset('images/afchub-logo-white-w200.png') }}" alt="African food Change-makers logo"/></a>
                     <!-- end logo -->
                     <br/>
                     <p class="text-small width-95 sm-width-100" style="color:#FFF">
@@ -414,7 +414,7 @@
             <div class="row">
                 <!-- start copyright -->
                 <div class="col-md-12 text-small text-center footer-content">
-                    &copy; {{ date('Y') }} Nourishing Africa</div>
+                    &copy; {{ date('Y') }} African Food Change-makers</div>
                 <!-- end copyright -->
             </div>
         </div>
