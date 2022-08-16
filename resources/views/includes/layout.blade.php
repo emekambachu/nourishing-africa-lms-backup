@@ -336,7 +336,7 @@
                     <!-- end logo -->
                     <br/>
                     <p class="text-small width-95 sm-width-100" style="color:#FFF">
-                        Nourishing Africa and Narrative Change-makers.</p>
+                        Nourishing Africa and Changing Global Narratives.</p>
                 </div>
 
                 <!-- start additional links -->
