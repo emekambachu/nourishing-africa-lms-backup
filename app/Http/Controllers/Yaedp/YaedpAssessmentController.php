@@ -260,7 +260,6 @@ class YaedpAssessmentController extends Controller
     }
 
     public function DownloadCertificate(){
-
         $data = YaedpAssessmentService::generateCertificateForUser(Auth::user()->id, Auth::user()->first_name, Auth::user()->surname);
 
         return PDF::loadView('yaedp_certificate_pdf', compact('data'))
