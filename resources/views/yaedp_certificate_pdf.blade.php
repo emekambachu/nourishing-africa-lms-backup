@@ -12,20 +12,23 @@
 
             .certificate-name{
                 position: absolute;
-                top: 30%;
-                left: 36%;
-                text-align: center;
+                top: 35%;
                 font-family: sans-serif;
                 font-weight: normal;
-                font-size: 30px;
+                font-size: 22px;
+                margin: 0 auto;
+                width: inherit;
+                text-align: center;
             }
 
             .certificate-date{
                 position: absolute;
-                top: 56%;
-                left: 39%;
+                top: 57.8%;
                 font-size: 14px;
                 font-family: monospace, sans-serif;
+                margin: 0 auto;
+                width: inherit;
+                text-align: center;
             }
 
             .certificate-id{
