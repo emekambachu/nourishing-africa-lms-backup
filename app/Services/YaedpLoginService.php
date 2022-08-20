@@ -6,6 +6,7 @@ use App\Models\Learning\LearningLoginSession;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 /**
  * Class YaedpLoginService.
@@ -38,5 +39,24 @@ class YaedpLoginService extends BaseService
                 'user_agent' => $user_agent,
             ]);
         }
+    }
+
+    public static function loginUser($request){
+
+        // authenticate user and check if they are approved
+        if(Auth::guard('yaedp-users')->attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+            'is_approved' => 1],
+            $request->get('remember'))) {
+
+            // if authenticated store login time and session
+            self::storeLoginSession($request);
+            // redirect to account
+            return redirect()->intended('/yaedp/account');
+        }
+
+        Session::flash('warning', 'Incorrect or unauthorized login');
+        return back()->withInput($request->only('email', 'remember'));
     }
 }

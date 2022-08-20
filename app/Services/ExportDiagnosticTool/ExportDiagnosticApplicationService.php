@@ -53,8 +53,14 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         return ExportDiagnosticHiddenQuestion::with('yaedp_user');
     }
 
-    public static function createLoginSessionWithEmail($request){
-        $user = self::yaedpUserWithRelationships()->where('email', $request->email)->first();
+    public static function authenticateUser($request){
+        return self::yaedpUserWithRelationships()->where([
+            ['email', $request->email],
+            ['is_approved', 1],
+        ])->first();
+    }
+
+    public static function createLoginSessionWithEmail($user){
 
         Session::put('session_id', $user->id);
         Session::put('session_email', $user->email);

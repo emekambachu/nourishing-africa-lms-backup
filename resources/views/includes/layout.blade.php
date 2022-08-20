@@ -186,110 +186,103 @@
                 </button>
                 <div class="navbar-collapse collapse justify-content-md-center" id="navbar-collapse-toggle-1">
                     <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal navtopmenu" data-in="fadeIn" data-out="fadeOut">
-                        <li class="dropdown simple-dropdown"><a href="{{ route('home') }}" style="color: #267c26">Home</a></li>
-                        <li class="dropdown simple-dropdown"><a href="{{ route('about') }}" style="color: #267c26">About Us</a>
+                        <li class="dropdown simple-dropdown">
+                            <a href="https://afchub.org/" style="color: #267c26">Home</a></li>
+                        <li class="dropdown simple-dropdown">
+                            <a href="https://afchub.org/about" style="color: #267c26">About Us</a>
                             <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                             <!-- start sub menu -->
                             <ul class="dropdown-menu" role="menu">
-                                <li class="dropdown d-none"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                               href="{{ route('about') }}">Impact and Reach</a></li>
-                                <li class="dropdown d-none"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                               href="{{ route('about') }}">Our Approach</a></li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('team') }}?page=our_team">Our Team</a></li>
+                                                        href="https://afchub.org/about">About Us</a></li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('team') }}?page=our_board">Our Board</a></li>
+                                                        href="https://afchub.org/our-team-new?page=our_team">Our Team</a></li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('team') }}?page=our_partners">Our Partners</a></li>
+                                                        href="https://afchub.org/our-team-new?page=our_partners">Partners</a></li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('team') }}?page=our_ambassadors">Our Ambassadors</a></li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('careers') }}">African Food Changemakers Careers</a></li>
+                                                        href="https://afchub.org/careers">Careers</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown simple-dropdown"><a href="#" style="color: #267c26">Membership</a>
+                        <li class="dropdown simple-dropdown"><a href="#" style="color: #267c26">Community</a>
                             <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                             <!-- start sub menu -->
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ route('entrepreneurs') }}">Our Members</a></li>
+                                       href="https://afchub.org/entrepreneurs">Our Community</a></li>
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ route('membership') }}">Membership</a></li>
+                                       href="https://afchub.org/membership">Membership</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown simple-dropdown">
-                            <a href="#" style="color: #267c26">Programs</a>
-                            <i class="fas fa-angle-down dropdown-toggle"
-                               data-toggle="dropdown" aria-hidden="true"></i>
+
+                        <li class="dropdown simple-dropdown"><a href="#" style="color: #267c26">Funding</a>
+                            <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown"
+                                       href="https://afchub.org/funding"
+                                       style="color: #006600">Financial Support</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown"
+                                       href="https://afchub.org/capacity-building"
+                                       style="color: #006600">Capacity Building</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown simple-dropdown"><a href="#" style="color: #267c26">Programs</a>
+                            <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                             <!-- start sub menu -->
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="https://nourishingafrica.com/yaedp/application">
-                                        YAEDP</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown simple-dropdown">
-                            <a href="javascript:void(0)" style="color: #267c26">Resources</a>
-                            <i class="fas fa-angle-down dropdown-toggle"
-                               data-toggle="dropdown" aria-hidden="true"></i>
-                            <!-- start sub menu -->
-                            <ul class="dropdown-menu" role="menu">
+                                       href="#">BRACE</a></li>
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ route('data') }}">Data</a>
-                                </li>
-                                <li class="dropdown simple-dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Funding</a>
-                                    <i class="dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                       href="#">SEP</a>
                                     <ul class="dropdown-menu" role="menu" style="background-color: rgb(255, 255, 255);">
                                         <li class="dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown"
-                                               href="{{ route('funding') }}"
-                                               style="color: #006600" >Financial Support</a></li>
+                                               href="#">SEP</a></li>
                                         <li class="dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown"
-                                               href="{{ route('capacity-building') }}"
-                                               style="color: #006600">Capacity Building</a></li>
+                                               href="https://afchub.org/yaedp/application">YAEDP</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('events') }}">Events</a></li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="{{ route('jobs') }}">Jobs</a></li>
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ route('trainings') }}">Trainings and Workshops</a>
-                                </li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown"
-                                        href="{{ route('technology-innovation') }}">Technology and Innovation</a>
-                                </li>
+                                       href="#">25 Leading Africans in Food</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown simple-dropdown">
-                            <a href="javascript:void(0)" style="color: #267c26">SME Toolkit</a>
+                        <li class="dropdown simple-dropdown"><a href="javascript:void(0)" style="color: #267c26">Opportunities</a>
                             <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                             <!-- start sub menu -->
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ route('ask-an-expert') }}">Ask an Expert</a></li>
-
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ route('association-directory') }}">Association Directory</a>
+                                       href="https://afchub.org/association-directory">Association Directory</a>
                                 </li>
-
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ route('first-thursdays') }}">First Thursdays</a></li>
-
+                                       href="https://afchub.org/data">Data</a>
+                                </li>
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                                        href="https://afchub.org/events">Events</a></li>
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"
-                                       href="{{ route('podcasts') }}">Podcasts</a>
+                                       href="https://afchub.org/trainings">Trainings and Workshops</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown simple-dropdown">
+                            <a href="javascript:void(0)" style="color: #267c26">Narrative Changers</a>
+                            <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                            <!-- start sub menu -->
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown"
+                                       href="https://afchub.org/podcasts">Podcasts</a>
                                 </li>
 
                                 <li class="dropdown simple-dropdown"><a href="#">Food Culture</a>
@@ -298,19 +291,37 @@
                                     <ul class="dropdown-menu" role="menu" style="background-color: rgb(255, 255, 255);">
                                         <li class="dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown"
-                                               href="{{ route('food') }}" style="color: #006600">Food</a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a class="dropdown-toggle" data-toggle="dropdown"
-                                               href="{{ route('chefs-and-cooks') }}" style="color: #006600">Chefs and Cooks</a>
+                                               href="https://afchub.org/food" style="color: #006600">Food</a>
                                         </li>
                                     </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown"
+                                       href="https://afchub.org/ask-an-expert">Ask an Expert</a></li>
+
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown"
+                                       href="https://afchub.org/first-thursdays">First Thursdays</a></li>
+
+                                <li class="dropdown simple-dropdown">
+                                    <a href="https://afchub.org/news-update/all"
+                                       style="color: #267c26">News & Updates</a>
                                 </li>
                             </ul>
                         </li>
 
-                        <li class="dropdown simple-dropdown">
-                            <a href="{{ route('news-and-updates') }}" style="color: #267c26">News & Updates</a>
+                        <li class="dropdown simple-dropdown d-sm-block d-md-block d-lg-none">
+                            <a href="javascript:void(0)" style="color: #267c26">Login / Join</a>
+                            <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                            <!-- start sub menu -->
+                            <ul class="dropdown-menu" role="menu" style="margin-top: 15px; margin-left: -25px;">
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                                        href="https://afchub.org/login">Login</a></li>
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                                        href="https://afchub.org/entrepreneur/become-a-member">
+                                        Join the community</a></li>
+                            </ul>
                         </li>
 
                     </ul>
@@ -345,17 +356,17 @@
                          style="color:#FFF">Quick Links</div>
                     <ul class="list-unstyled add-link-sub">
                         <li><a class="text-small text-white"
-                               href="https://nourishingafrica.com/subscribe">Subscribe</a></li>
+                               href="https://afchub.org/subscribe">Subscribe</a></li>
                         <li><a class="text-small text-white"
-                               href="https://nourishingafrica.com/team">The Team</a></li>
+                               href="https://afchub.org/team">The Team</a></li>
                         <li><a class="text-small text-white"
-                               href="https://nourishingafrica.com/terms-of-use">Terms of Use</a></li>
+                               href="https://afchub.org/terms-of-use">Terms of Use</a></li>
                         <li><a class="text-small text-white"
-                               href="https://nourishingafrica.com/privacy-policy">Privacy Policy</a></li>
+                               href="https://afchub.org/privacy-policy">Privacy Policy</a></li>
                         <li><a class="text-small text-white"
-                               href="https://nourishingafrica.com/faq">FAQs</a></li>
+                               href="https://afchub.org/faq">FAQs</a></li>
                         <li><a class="text-small text-white"
-                               href="https://www.nourishingafrica.com/whistleblowing">Whistle-Blowing</a></li>
+                               href="https://afchub.org/whistleblowing">Whistle-Blowing</a></li>
                     </ul>
                 </div>
                 <!-- end additional links -->
@@ -373,17 +384,21 @@
 
                     <div class="social-icon-style-8 d-inline-block vertical-align-middle p-2">
                         <ul class="small-icon no-margin-bottom">
-                            <li><a class="facebook text-white-2" href="https://www.facebook.com/nourishafrica1"
+                            <li><a class="facebook text-white-2"
+                                   href="https://www.facebook.com/africanfoodchangemakers"
                                    target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                            <li><a class="twitter text-white-2" href="https://twitter.com/nourish_africa"
+                            <li><a class="twitter text-white-2"
+                                   href="https://twitter.com/AFC_Hub_"
                                    target="_blank"><i class="fab fa-twitter"></i></a></li>
-                            <li><a class="linkedin text-white-2" href="https://www.linkedin.com/company/nourishing-africa/"
+                            <li><a class="linkedin text-white-2"
+                                   href="https://www.linkedin.com/company/nourishing-africa/"
                                    target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                            <li><a class="instagram text-white-2" href="https://www.instagram.com/nourish_africa/"
+                            <li><a class="instagram text-white-2"
+                                   href="https://www.instagram.com/africanfoodchangemakers/"
                                    target="_blank"><i class="fab fa-instagram no-margin-right"
                                                       aria-hidden="true"></i></a></li>
                             <li><a class="instagram text-white-2"
-                                   href="https://www.youtube.com/channel/UCDb5yT_Y9BGrURR-wSi2oaw"
+                                   href="https://www.youtube.com/channel/UC9_IpnSwsK6iUMW_C9jXfmQ"
                                    target="_blank"><i class="fab fa-youtube no-margin-right"
                                                       aria-hidden="true"></i></a></li>
                         </ul>
@@ -396,7 +411,10 @@
                 <div class="col-lg-3 col-md-6 widget padding-5px-left md-padding-15px-left text-center text-md-left">
                     <div class="widget-title subscribe-text text-medium-gray margin-20px-bottom font-weight-300" style="color:#FFF">To report illegal/unethical behavior on this program</div>
                     <div class="input-group justify-content-center">
-                        <p class="text-white">Please reach out at: <a class="brand-text-yellow" href="https://www.nourishingafrica.com/whistleblowing">https://www.nourishingafrica.com/whistleblowing</a></p>
+                        <p class="text-white">Please reach out at:
+                            <a class="brand-text-yellow"
+                               href="https://afchub.org/whistleblowing">
+                                https://afchub.org/whistleblowing</a></p>
                     </div>
 
                     <div class="float-left margin-five-top">
@@ -428,9 +446,10 @@
 <!-- end scroll to top -->
 <!-- javascript libraries -->
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
 
-<!--<script type="text/javascript" src="js/modernizr.js"></script>-->
 <script type="text/javascript" src="{{ asset('js/bootstrap.bundle.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/skrollr.min.js') }}"></script>

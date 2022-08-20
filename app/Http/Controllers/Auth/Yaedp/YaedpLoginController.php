@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth\Yaedp;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LearningLoginRequest;
 use App\Models\Learning\LearningLoginSession;
 use App\Providers\RouteServiceProvider;
 use App\Services\YaedpLoginService;
@@ -43,26 +44,13 @@ class YaedpLoginController extends Controller
         return view('auth.yaedp.login', ['url' => 'yaedp/login']);
     }
 
-    public function login(Request $request){
-        $this->validate($request, [
-            'email'   => 'required|email',
-            'password' => 'required|min:6'
-        ]);
-
-        if(Auth::guard('yaedp-users')->attempt([
-            'email' => $request->email,
-            'password' => $request->password],
-            $request->get('remember'))) {
-
-            $this->authenticated($request);
-            return redirect()->intended('/yaedp/account');
+    public function login(LearningLoginRequest $request){
+        try {
+            $response = YaedpLoginService::loginUser($request);
+        }catch (\Exception $e) {
+            $response = redirect()->back()->with('warning', $e->getMessage());
         }
-        Session::flash('warning', 'Incorrect Login Details');
-        return back()->withInput($request->only('email', 'remember'));
-    }
-
-    protected function authenticated(Request $request){
-        YaedpLoginService::storeLoginSession($request);
+        return $response;
     }
 
     //add for logout function to work

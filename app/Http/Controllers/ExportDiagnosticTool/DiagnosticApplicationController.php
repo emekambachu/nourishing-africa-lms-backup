@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\ExportDiagnosticTool;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\YaedpLoginRequest;
+use App\Http\Requests\ExportDiagnosticLoginRequest;
+use App\Http\Requests\LearningLoginRequest;
 use App\Services\ExportDiagnosticTool\ExportDiagnosticApplicationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -14,11 +15,22 @@ class DiagnosticApplicationController extends Controller
         return view('diagnostic-tool.application.index');
     }
 
-    public function login(YaedpLoginRequest $request){
+    public function login(ExportDiagnosticLoginRequest $request){
         try {
-            ExportDiagnosticApplicationService::createLoginSessionWithEmail($request);
+            // check if user is authenticated
+            $authenticatedUser = ExportDiagnosticApplicationService::authenticateUser($request);
+            if($authenticatedUser){
+                // If authenticated, login and create session
+                ExportDiagnosticApplicationService::createLoginSessionWithEmail($authenticatedUser);
+                return response()->json([
+                    'success' => true
+                ]);
+            }
             return response()->json([
-                'success' => true
+                'success' => false,
+                'errors' => [
+                    'unauthorized'=>'Unauthorized user'
+                ]
             ]);
 
         } catch (\Exception $e) {
