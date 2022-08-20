@@ -12,6 +12,7 @@ class ExportDiagnosticHiddenQuestion extends Model
 
     protected $fillable = [
         'yaedp_user_id',
+        'export_diagnostic_user_id',
         'export_diagnostic_question_id',
         'export_diagnostic_option_id',
         'questions',
@@ -19,6 +20,10 @@ class ExportDiagnosticHiddenQuestion extends Model
 
     public function yaedp_user(){
         return $this->belongsTo(YaedpUser::class, 'yaedp_user_id', 'id');
+    }
+
+    public function export_diagnostic_user(){
+        return $this->belongsTo(ExportDiagnosticUser::class, 'export_diagnostic_user_id', 'id');
     }
 
     public function export_diagnostic_question(){

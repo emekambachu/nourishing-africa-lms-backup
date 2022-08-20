@@ -96,7 +96,6 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
     }
 
     public static function getApplicationQuestion(){
-
         // get answered question id from answers
         $answeredQuestionsId = self::answer()
             ->select('export_diagnostic_question_id')
@@ -154,7 +153,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
 
     public static function calculateUserScore(){
         $score = self::answer()->where('yaedp_user_id', Session::get('session_id'))->sum('points');
-        $percent = ($score / 1500) * 100;
+        $percent = ($score / 1560) * 100;
 
         $status = self::diagnosticUser()->where('yaedp_user_id', Session::get('session_id'))->first();
         if($status->completed !== 1){
@@ -182,6 +181,10 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
                 'points' => $option->points,
             ]);
 
+            // if question is conditional
+            // check if user has other conditional questions
+            // if they don't create a new hidden question for the user
+            // else concatinate the new hidden questions to the user
             if($question->conditional === 1){
                 $hasCondition = self::hiddenQuestion()
                     ->where('yaedp_user_id', Session::get('session_id'))
@@ -189,6 +192,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
                 if(!$hasCondition){
                     self::hiddenQuestion()->create([
                        'yaedp_user_id' => Session::get('session_id'),
+                       'export_diagnostic_user_id' => Session::get('session_id'),
                        'questions' => $option->hide_questions,
                     ]);
                 }else{

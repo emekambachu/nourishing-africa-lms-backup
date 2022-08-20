@@ -311,13 +311,13 @@
                             </ul>
                         </li>
 
-                        <li class="dropdown simple-dropdown d-sm-block d-md-block d-lg-none">
+                        <li class="dropdown simple-dropdown d-sm-block d-md-block">
                             <a href="javascript:void(0)" style="color: #267c26">Login / Join</a>
                             <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                             <!-- start sub menu -->
                             <ul class="dropdown-menu" role="menu" style="margin-top: 15px; margin-left: -25px;">
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="https://afchub.org/login">Login</a></li>
+                                                        href="https://afchub.org/login">Member Login</a></li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
                                                         href="https://afchub.org/entrepreneur/become-a-member">
                                         Join the community</a></li>
