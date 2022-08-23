@@ -29,7 +29,7 @@
                     <p class="tx-17">
                         Once downloaded, you will be unable to redo any assessments<br>
                         <strong>Date Completed:</strong>
-                        {{ Carbon\Carbon::parse($completedAssessment->updated_at)->format('M d, Y') }}
+                        {{ Carbon\Carbon::parse($completedAssessment->created_at)->format('M d, Y') }}
                     </p>
                     <div class="certificate-bg">
                         <p class="certificate-name">{{ Auth::user()->first_name.' '.Auth::user()->surname }}</p>

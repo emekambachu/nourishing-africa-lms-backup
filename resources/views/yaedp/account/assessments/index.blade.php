@@ -37,7 +37,7 @@
                     </a>
                     <p class="tx-17 text-center">
                         <strong>Date Completed:</strong>
-                        {{ Carbon\Carbon::parse($completedAssessment->updated_at)->format('M d, Y') }}
+                        {{ Carbon\Carbon::parse($completedAssessment->created_at)->format('M d, Y') }}
                     </p>
                 </div>
             @endif
