@@ -46,12 +46,12 @@ class YaedpAssessmentController extends Controller
     }
 
     public function index(){
-
         $data['completedAssessment'] = $this->completedAssessment($this->yaedpId());
         $data['moduleAssessments'] = LearningModuleView::where([
             ['user_id', Auth::user()->id],
             ['status', 1],
         ])->oldest()->get();
+        $data['hasCertificate'] = YaedpAssessmentService::downloadedCertificate(Auth::user()->id);
 
         return view('yaedp.account.assessments.index', $data);
     }
@@ -75,6 +75,7 @@ class YaedpAssessmentController extends Controller
 
         $data['exhaustedRetakes'] = YaedpAssessmentService::exhaustedRetakesByUser(Auth::user()->id, $id, 3);
         $data['modulePassed'] = YaedpAssessmentService::moduleAssessmentPassedByUser(Auth::user()->id, $id);
+        $data['hasCertificate'] = YaedpAssessmentService::downloadedCertificate(Auth::user()->id);
 
         return view('yaedp.account.assessments.questions', $data);
     }

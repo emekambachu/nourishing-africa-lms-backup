@@ -313,7 +313,8 @@
 
                         <li class="dropdown simple-dropdown d-sm-block d-md-block">
                             <a href="javascript:void(0)" style="color: #267c26">Login / Join</a>
-                            <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                            <i class="fas fa-angle-down dropdown-toggle"
+                               data-toggle="dropdown" aria-hidden="true"></i>
                             <!-- start sub menu -->
                             <ul class="dropdown-menu" role="menu" style="margin-top: 15px; margin-left: -25px;">
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"

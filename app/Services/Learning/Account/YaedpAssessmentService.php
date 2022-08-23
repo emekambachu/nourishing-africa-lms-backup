@@ -92,6 +92,12 @@ class YaedpAssessmentService extends YaedpAccountService
             'certificate_image' => $base64_image,
             'certificate_id' => $downloaded->certificate_id,
         ];
+    }
 
+    public static function downloadedCertificate($userId){
+        return self::getCategoryAssessments()->where([
+            ['user_id', $userId],
+            ['certificate_downloads', '>', 0],
+        ])->first();
     }
 }

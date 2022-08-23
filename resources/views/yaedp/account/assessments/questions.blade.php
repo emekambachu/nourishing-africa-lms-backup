@@ -40,7 +40,10 @@
                                     class="module-btn bg-light-brown d-flex justify-content-center mt-2">
                                 Modules</button>
                         </a>
-                    @else
+                        @elseif($hasCertificate)
+                        <h5 class="text-center mb-3">You have downloaded you certificate and unable to take any assessments</h5>
+                        <p>Although you can re-watch our videos as much as you can.</p>
+                        @else
                         <form id="submit-form" method="post"
                           data-route="{{ route('yaedp.account.assessment.submit', $module->id) }}">
                         @csrf

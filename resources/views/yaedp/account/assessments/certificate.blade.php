@@ -22,10 +22,15 @@
         @if($completedAssessment)
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
-                    <h4>
+                    <h5>
                         <strong class="text-success">Congratulations</strong> on completing your modules!
-                        Please download your certificate.
-                    </h4>
+                        Please download your certificate.<br>
+                    </h5>
+                    <p class="tx-17">
+                        Once downloaded, you will be unable to redo any assessments<br>
+                        <strong>Date Completed:</strong>
+                        {{ Carbon\Carbon::parse($completedAssessment->updated_at)->format('M d, Y') }}
+                    </p>
                     <div class="certificate-bg">
                         <p class="certificate-name">{{ Auth::user()->first_name.' '.Auth::user()->surname }}</p>
                         <p class="certificate-date">{{ Carbon\Carbon::now()->format('Y-m-d') }}</p>
