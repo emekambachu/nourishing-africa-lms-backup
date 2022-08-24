@@ -23121,9 +23121,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.loading = true;
-      this.errors = [];
+      this.errors = []; // clear errors
+
       var url = '/api/yaedp/export-diagnostic/question/' + this.question.id + '/answer/store';
-      var fields; // assign the right input field based on the question type
+      var fields = {}; // create empty object
+      // assign the right input field on the question type
+      // Laravel validation request will use this to validate only available fields
 
       if (this.question.type === 'radio') {
         fields = {
@@ -23148,6 +23151,11 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data);
 
         if (response.data.success === true) {
+          // Empty all fields
+          _this3.form.answer = '';
+          _this3.form.option_id = '';
+          _this3.form.option_ids = []; // get next question and progress percentage
+
           _this3.getQuestion();
 
           _this3.getApplicationProgress();

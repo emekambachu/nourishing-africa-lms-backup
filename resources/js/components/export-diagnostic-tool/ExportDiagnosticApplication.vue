@@ -241,10 +241,11 @@
 
             submitAnswer(){
                 this.loading = true;
-                this.errors = [];
+                this.errors = []; // clear errors
                 let url = '/api/yaedp/export-diagnostic/question/'+this.question.id+'/answer/store';
-                var fields;
-                // assign the right input field based on the question type
+                let fields = {}; // create empty object
+                // assign the right input field on the question type
+                // Laravel validation request will use this to validate only available fields
                 if(this.question.type === 'radio'){
                     fields = {option_id : this.form.option_id};
                 }
@@ -259,6 +260,11 @@
                     .then(response => {
                         console.log(response.data);
                         if(response.data.success === true){
+                            // Empty all fields
+                            this.form.answer = '';
+                            this.form.option_id = '';
+                            this.form.option_ids = [];
+                            // get next question and progress percentage
                             this.getQuestion();
                             this.getApplicationProgress();
                         }else{
@@ -271,7 +277,6 @@
                         this.loading = false;
                     });
             },
-
         },
 
         mounted(){
