@@ -255,7 +255,6 @@
                     .then(response => {
                         console.log(response.data);
                         if(response.data.success === true){
-                            this.errors = [];
                             this.getQuestion();
                             this.getApplicationProgress();
                         }else{

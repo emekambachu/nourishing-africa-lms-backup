@@ -23143,8 +23143,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data);
 
         if (response.data.success === true) {
-          _this3.errors = [];
-
           _this3.getQuestion();
 
           _this3.getApplicationProgress();
