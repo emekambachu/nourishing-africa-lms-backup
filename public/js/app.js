@@ -24270,8 +24270,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
         return $data.form.option_id = $event;
       }),
-      value: option.id,
-      required: ""
+      value: option.id
     }, null, 40
     /* PROPS, HYDRATE_EVENTS */
     , _hoisted_13), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.option_id]]), _hoisted_14]);
@@ -24297,8 +24296,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }),
       onChange: _cache[2] || (_cache[2] = function () {
         return $options.selectOption && $options.selectOption.apply($options, arguments);
-      }),
-      required: ""
+      })
     }, null, 40
     /* PROPS, HYDRATE_EVENTS */
     , _hoisted_17), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.option_ids]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {

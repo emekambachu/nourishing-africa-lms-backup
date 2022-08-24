@@ -97,10 +97,10 @@
                                                      alt="" width="99" height="60" />
                                             </div>
                                             <div class="col-8 pt-4 text-center custom-font2">
-                                                <h5 class="text-dark mb-0">
-                                                    Welcome to the export-readiness<br> diagnostic tool.</h5>
-                                                <h5 class="brand-text">
-                                                    Participant Information</h5>
+                                                <h6 class="text-dark mb-0">
+                                                    Welcome to the export-readiness<br> diagnostic tool.</h6>
+                                                <h6 class="brand-text">
+                                                    Participant Information</h6>
                                             </div>
                                             <div class="col-2" style="justify-content: center;align-items: center;display: flex;">
                                                 <img style="float: left;" src="{{ asset('images/nepc-logo.png') }}"
@@ -138,12 +138,12 @@
                                                     <strong>Gender: </strong> {{ Session::get('session_gender') }}<br>
                                                     <strong>State of Origin: </strong> {{ Session::has('session_state_origin') ? Session::get('session_state_origin') : '' }}<br>
                                                     <strong>State of Residence: </strong> {{ Session::has('session_state_residence') ? Session::get('session_state_residence') : '' }}<br>
+                                                    <strong>Highest Education: </strong> {{ Session::get('session_education') }}<br>
                                                 </p>
                                             </div>
                                             <div class="col-md-6">
                                                 <p class="yaedp-content text-extra-dark-gray text-large text-left">
                                                     <strong>Business Name: </strong> {{ Session::get('session_business') }}<br>
-                                                    <strong>Highest Education: </strong> {{ Session::get('session_education') }}<br>
                                                     <strong>Business Location: </strong> {{ Session::get('session_location') }}<br>
                                                     <strong>Registered Company: </strong> {{ Session::get('session_legal') === 1 ? 'Yes' : 'No' }}<br>
                                                     <strong>Company Type: </strong> {{ Session::get('session_company_type') }}<br>
