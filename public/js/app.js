@@ -23122,6 +23122,7 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log(this.form.option_ids);
       this.loading = true;
+      this.errors = [];
       var url = '/api/yaedp/export-diagnostic/question/' + this.question.id + '/answer/store';
       var fields; // assign the right input field based on the question type
 
@@ -23129,11 +23130,15 @@ __webpack_require__.r(__webpack_exports__);
         fields = {
           option_id: this.form.option_id
         };
-      } else if (this.question.type === 'checkbox') {
+      }
+
+      if (this.question.type === 'checkbox') {
         fields = {
           option_ids: this.form.option_ids
         };
-      } else {
+      }
+
+      if (this.question.type === 'freetext') {
         fields = {
           answer: this.form.answer
         };
@@ -24265,7 +24270,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
         return $data.form.option_id = $event;
       }),
-      value: option.id
+      value: option.id,
+      required: ""
     }, null, 40
     /* PROPS, HYDRATE_EVENTS */
     , _hoisted_13), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.option_id]]), _hoisted_14]);
@@ -24291,7 +24297,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }),
       onChange: _cache[2] || (_cache[2] = function () {
         return $options.selectOption && $options.selectOption.apply($options, arguments);
-      })
+      }),
+      required: ""
     }, null, 40
     /* PROPS, HYDRATE_EVENTS */
     , _hoisted_17), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.option_ids]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {

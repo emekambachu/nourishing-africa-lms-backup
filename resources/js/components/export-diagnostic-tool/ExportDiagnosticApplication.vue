@@ -40,7 +40,7 @@
                                class="radio-container ml-5">{{ option.option }}
                             <input type="radio" @change="selectOption($event, option.conditions, option.display_text)"
                                    v-model="form.option_id"
-                                   :value="option.id">
+                                   :value="option.id" required>
                             <span class="checkmark"></span>
                         </label>
 
@@ -58,7 +58,7 @@
                              class="form-group form-check ml-5">
                             <input type="checkbox" class="form-check-input"
                                    :id="'checkbox'+option.id" :value="option.id"
-                                   v-model="form.option_ids" @change="selectOption">
+                                   v-model="form.option_ids" @change="selectOption" required>
                             <label class="" :for="'checkbox'+option.id">
                                 {{ option.option }}
                             </label>
@@ -241,14 +241,17 @@
             submitAnswer(){
                 console.log(this.form.option_ids);
                 this.loading = true;
+                this.errors = [];
                 let url = '/api/yaedp/export-diagnostic/question/'+this.question.id+'/answer/store';
                 let fields;
                 // assign the right input field based on the question type
                 if(this.question.type === 'radio'){
                     fields = {option_id : this.form.option_id};
-                }else if(this.question.type === 'checkbox'){
+                }
+                if(this.question.type === 'checkbox'){
                     fields = {option_ids : this.form.option_ids};
-                }else{
+                }
+                if(this.question.type === 'freetext'){
                     fields = {answer : this.form.answer};
                 }
                 axios.post(url, fields)
