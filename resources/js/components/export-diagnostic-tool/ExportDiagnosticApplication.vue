@@ -247,7 +247,7 @@
                 // assign the right input field based on the question type
                 if(this.question.type === 'radio'){
                     fields = {option_id : this.form.option_id};
-                }else{}
+                }
                 if(this.question.type === 'checkbox'){
                     fields = {option_ids : this.form.option_ids};
                 }

@@ -23129,7 +23129,7 @@ __webpack_require__.r(__webpack_exports__);
         fields = {
           option_id: this.form.option_id
         };
-      } else {}
+      }
 
       if (this.question.type === 'checkbox') {
         fields = {
