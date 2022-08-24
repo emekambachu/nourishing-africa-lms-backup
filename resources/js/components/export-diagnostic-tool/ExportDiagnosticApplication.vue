@@ -15,7 +15,7 @@
             <div class="progress-bar progress-bar-striped na-bg-brown-2 padding-2px-tb"
                  role="progressbar" :style="'width: '+progress+'%'"
                  :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100">
-                {{ progress }}% (progress)</div>
+                {{ progress }}% (Progress)</div>
         </div>
     </div>
 
