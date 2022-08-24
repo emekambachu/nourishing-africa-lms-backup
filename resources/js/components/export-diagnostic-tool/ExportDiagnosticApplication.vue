@@ -243,7 +243,7 @@
                 this.loading = true;
                 this.errors = [];
                 let url = '/api/yaedp/export-diagnostic/question/'+this.question.id+'/answer/store';
-                let fields;
+                var fields;
                 // assign the right input field based on the question type
                 if(this.question.type === 'radio'){
                     fields = {option_id : this.form.option_id};
