@@ -153,7 +153,12 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
 
     public static function calculateUserScore(){
         $score = self::answer()->where('yaedp_user_id', Session::get('session_id'))->sum('points');
-        $percent = ($score / 1560) * 100;
+        $generalScore = 1560;
+        // Add extra 50 points for females
+        if(Session::get('session_gender') === 'female'){
+            $generalScore += 50;
+        }
+        $percent = ($score / $generalScore) * 100;
 
         $status = self::diagnosticUser()->where('yaedp_user_id', Session::get('session_id'))->first();
         if($status->completed !== 1){
