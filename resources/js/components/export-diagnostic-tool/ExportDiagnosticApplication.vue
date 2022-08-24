@@ -40,7 +40,7 @@
                                class="radio-container ml-5">{{ option.option }}
                             <input type="radio" @change="selectOption($event, option.conditions, option.display_text)"
                                    v-model="form.option_id"
-                                   :value="option.id" required>
+                                   :value="option.id">
                             <span class="checkmark"></span>
                         </label>
 
@@ -58,7 +58,7 @@
                              class="form-group form-check ml-5">
                             <input type="checkbox" class="form-check-input"
                                    :id="'checkbox'+option.id" :value="option.id"
-                                   v-model="form.option_ids" @change="selectOption" required>
+                                   v-model="form.option_ids" @change="selectOption">
                             <label class="" :for="'checkbox'+option.id">
                                 {{ option.option }}
                             </label>
