@@ -33,9 +33,9 @@ class SubmitAnswerRequest extends FormRequest
 
     public function messages(){
         return [
-            'option_id.required' => 'Select an option!',
+            'option_id.required' => 'Select an option to proceed!',
             'option_ids.required' => 'Select one or more options to proceed!',
-            'answer.required' => 'An answer is required!',
+            'answer.required' => 'An answer is required to proceed!',
         ];
     }
 
