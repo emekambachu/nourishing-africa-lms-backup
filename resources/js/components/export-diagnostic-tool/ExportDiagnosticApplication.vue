@@ -14,7 +14,8 @@
         <div class="progress margin-3px-bottom">
             <div class="progress-bar progress-bar-striped na-bg-brown-2 padding-2px-tb"
                  role="progressbar" :style="'width: '+progress+'%'"
-                 :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100">{{ progress }}%</div>
+                 :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100">
+                {{ progress }}% (progress)</div>
         </div>
     </div>
 
@@ -239,7 +240,6 @@
             },
 
             submitAnswer(){
-                console.log(this.form.option_ids);
                 this.loading = true;
                 this.errors = [];
                 let url = '/api/yaedp/export-diagnostic/question/'+this.question.id+'/answer/store';
@@ -247,13 +247,14 @@
                 // assign the right input field based on the question type
                 if(this.question.type === 'radio'){
                     fields = {option_id : this.form.option_id};
-                }
+                }else{}
                 if(this.question.type === 'checkbox'){
                     fields = {option_ids : this.form.option_ids};
                 }
                 if(this.question.type === 'freetext'){
                     fields = {answer : this.form.answer};
                 }
+                console.log(fields);
                 axios.post(url, fields)
                     .then(response => {
                         console.log(response.data);

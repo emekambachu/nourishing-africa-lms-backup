@@ -23120,7 +23120,6 @@ __webpack_require__.r(__webpack_exports__);
     submitAnswer: function submitAnswer() {
       var _this3 = this;
 
-      console.log(this.form.option_ids);
       this.loading = true;
       this.errors = [];
       var url = '/api/yaedp/export-diagnostic/question/' + this.question.id + '/answer/store';
@@ -23130,7 +23129,7 @@ __webpack_require__.r(__webpack_exports__);
         fields = {
           option_id: this.form.option_id
         };
-      }
+      } else {}
 
       if (this.question.type === 'checkbox') {
         fields = {
@@ -23144,6 +23143,7 @@ __webpack_require__.r(__webpack_exports__);
         };
       }
 
+      console.log(fields);
       axios.post(url, fields).then(function (response) {
         console.log(response.data);
 
@@ -24240,7 +24240,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-valuenow": $data.progress,
     "aria-valuemin": "0",
     "aria-valuemax": "100"
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.progress) + "%", 13
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.progress) + "% (progress)", 13
   /* TEXT, STYLE, PROPS */
   , _hoisted_5)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Inside Card"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("If there are no questions, process feedback"), $data.question !== false ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [$data.dataLoaded ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Question category name"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
