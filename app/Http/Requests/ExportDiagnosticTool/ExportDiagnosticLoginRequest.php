@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\ExportDiagnosticTool;
 
 use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\ValidationException;
 
 class ExportDiagnosticLoginRequest extends FormRequest
 {
@@ -31,8 +31,7 @@ class ExportDiagnosticLoginRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
+    public function messages(){
         return [
             'email.required' => 'Email is required!',
             'email.exists' => 'Email does not exist!',
@@ -40,8 +39,7 @@ class ExportDiagnosticLoginRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(Validator $validator)
-    {
+    protected function failedValidation(Validator $validator){
         if($this->wantsJson()){
             $response = response()->json([
                 'success' => false,

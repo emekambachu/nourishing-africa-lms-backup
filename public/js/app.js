@@ -23122,15 +23122,35 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log(this.form.option_ids);
       this.loading = true;
-      axios.post('/api/yaedp/export-diagnostic/question/' + this.question.id + '/answer/store', this.form).then(function (response) {
+      var url = '/api/yaedp/export-diagnostic/question/' + this.question.id + '/answer/store';
+      var fields; // assign the right input field based on the question type
+
+      if (this.question.type === 'radio') {
+        fields = {
+          option_id: this.form.option_id
+        };
+      } else if (this.question.type === 'checkbox') {
+        fields = {
+          option_ids: this.form.option_ids
+        };
+      } else {
+        fields = {
+          answer: this.form.answer
+        };
+      }
+
+      axios.post(url, fields).then(function (response) {
         console.log(response.data);
 
         if (response.data.success === true) {
+          _this3.errors = [];
+
           _this3.getQuestion();
 
           _this3.getApplicationProgress();
         } else {
           _this3.errors = response.data.errors;
+          console.log(response.data.message);
         }
       })["catch"](function (error) {
         console.log(error);

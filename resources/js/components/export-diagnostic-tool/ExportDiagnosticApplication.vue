@@ -241,14 +241,26 @@
             submitAnswer(){
                 console.log(this.form.option_ids);
                 this.loading = true;
-                axios.post('/api/yaedp/export-diagnostic/question/'+this.question.id+'/answer/store', this.form)
+                let url = '/api/yaedp/export-diagnostic/question/'+this.question.id+'/answer/store';
+                let fields;
+                // assign the right input field based on the question type
+                if(this.question.type === 'radio'){
+                    fields = {option_id : this.form.option_id};
+                }else if(this.question.type === 'checkbox'){
+                    fields = {option_ids : this.form.option_ids};
+                }else{
+                    fields = {answer : this.form.answer};
+                }
+                axios.post(url, fields)
                     .then(response => {
                         console.log(response.data);
                         if(response.data.success === true){
+                            this.errors = [];
                             this.getQuestion();
                             this.getApplicationProgress();
                         }else{
                             this.errors = response.data.errors;
+                            console.log(response.data.message);
                         }
                     }).catch(error => {
                         console.log(error)

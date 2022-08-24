@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\ExportDiagnosticTool;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ExportDiagnosticLoginRequest;
-use App\Http\Requests\LearningLoginRequest;
+use App\Http\Requests\ExportDiagnosticTool\ExportDiagnosticLoginRequest;
+use App\Http\Requests\ExportDiagnosticTool\SubmitAnswerRequest;
 use App\Services\ExportDiagnosticTool\ExportDiagnosticApplicationService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class DiagnosticApplicationController extends Controller
@@ -86,7 +85,7 @@ class DiagnosticApplicationController extends Controller
         }
     }
 
-    public function storeAnswer(Request $request, $id){
+    public function storeAnswer(SubmitAnswerRequest $request, $id){
         try {
             ExportDiagnosticApplicationService::storeAnswerFromQuestionId($request, $id);
             return response()->json([
@@ -95,6 +94,7 @@ class DiagnosticApplicationController extends Controller
 
         } catch (\Exception $e) {
             return response()->json([
+                'success' => false,
                 'message' => $e->getMessage()
             ]);
         }
