@@ -57,6 +57,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         return self::yaedpUserWithRelationships()->where([
             ['email', $request->email],
             ['is_approved', 1],
+            ['percent', '>=', 70],
         ])->first();
     }
 
