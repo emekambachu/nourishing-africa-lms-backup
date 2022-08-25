@@ -54,11 +54,14 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
     }
 
     public static function authenticateUser($request){
-        return self::yaedpUserWithRelationships()->where([
-            ['email', $request->email],
-            ['is_approved', 1],
-            ['percent', '>=', 70],
-        ])->first();
+        // where email exists, yedp_user is approved and learning assessment percent is above 70
+        return self::yaedpUserWithRelationships()
+            ->where('email', $request->email)
+            ->leftjoin('learning_assessments', function($join) {
+            $join->on('yedp_users.id', '=', 'learning_assessments.user_id');
+        })->where('yedp_users.is_approved', 1)
+            ->where('learning_assessments.percent', '>=', 70)
+            ->first();
     }
 
     public static function createLoginSessionWithEmail($user){
