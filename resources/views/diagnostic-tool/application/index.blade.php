@@ -157,7 +157,7 @@
                                         <strong>{{ session('logged_out') }}</strong>
                                     </div>
                                 @endif
-                                <export-diagnostic-login></export-diagnostic-login>
+{{--                                <export-diagnostic-login></export-diagnostic-login>--}}
                             </div>
 
                         </div>
