@@ -17,7 +17,7 @@ class DiagnosticApplicationController extends Controller
     public function login(ExportDiagnosticLoginRequest $request){
         try {
             // check if user is authenticated
-            $authenticatedUser = ExportDiagnosticApplicationService::authenticateUser($request);
+            $authenticatedUser = ExportDiagnosticApplicationService::authenticateUser($request->email);
             if($authenticatedUser){
                 // If authenticated, login and create session
                 ExportDiagnosticApplicationService::createLoginSessionWithEmail($authenticatedUser);
