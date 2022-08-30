@@ -57,13 +57,22 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         // where email exists, yedp_user is approved and learning assessment percent is above 70
         return self::yaedpUserWithRelationships()
             ->has('learning_assessment')
-            ->where([
-                    ['email', $email],
-                    ['is_approved', 1],
-                ])->leftjoin('learning_assessments', function($join){
-            $join->on('yedp_users.id', '=', 'learning_assessments.user_id');
-        })->where('learning_assessments.percent', '>=', 70)
-            ->first();
+            ->leftJoin(
+                'learning_assessments',
+                'yedp_users.id', '=', 'learning_assessments.user_id'
+            )
+//            ->select(
+//                'yedp_users.*',
+//                'yedp_users.email AS yaedp_users_email',
+//                'yedp_users.is_approved AS yaedp_users_approved',
+//                'learning_assessments.*'
+//            )
+            ->where(function($query) use ($email){
+                $query->where('yedp_users.email', $email)
+                    ->where('yedp_users.is_approved', 1)
+                    ->where('learning_assessments.percent', '>', 69);
+//                    ->where('learning_assessments.created_at', '<', '2022-08-24 00:00:01');
+            })->first();
     }
 
     public static function createLoginSessionWithEmail($user){
