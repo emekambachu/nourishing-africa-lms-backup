@@ -70,10 +70,10 @@ class DiagnosticApplicationController extends Controller
     public function getQuestion(){
         try {
             $status = '';
-            $question = ExportDiagnosticApplicationService::getApplicationQuestion();
+            $question = $this->application->getApplicationQuestion();
             // If no more questions, get calculated scores
             if(!$question){
-                $status = ExportDiagnosticApplicationService::calculateUserScore();
+                $status = $this->application->calculateUserScore();
             }
 
             return response()->json([
@@ -91,7 +91,7 @@ class DiagnosticApplicationController extends Controller
 
     public function storeAnswer(SubmitAnswerRequest $request, $id){
         try {
-            ExportDiagnosticApplicationService::storeAnswerFromQuestionId($request, $id);
+            $this->application->storeAnswerFromQuestionId($request, $id);
             return response()->json([
                 'success' => true
             ]);
@@ -106,7 +106,7 @@ class DiagnosticApplicationController extends Controller
 
     public function applicationProgress(){
         try {
-            $progressPercent = ExportDiagnosticApplicationService::getprogressPercentage();
+            $progressPercent = $this->application->getprogressPercentage();
             return response()->json([
                 'success' => true,
                 'progress' => $progressPercent

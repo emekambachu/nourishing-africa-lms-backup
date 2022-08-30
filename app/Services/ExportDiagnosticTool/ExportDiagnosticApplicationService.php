@@ -110,7 +110,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         }
     }
 
-    public static function getApplicationQuestion(){
+    public function getApplicationQuestion(){
         // get answered question id from answers
         $answeredQuestionsId = self::answer()
             ->select('export_diagnostic_question_id')
@@ -138,7 +138,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
             })->first();
     }
 
-    public static function getProgressPercentage(){
+    public function getProgressPercentage(){
         // get answered question id from answers
         $answeredQuestionsId = self::answer()
             ->select('export_diagnostic_question_id')
@@ -166,7 +166,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         return round((count($answeredQuestionsId) / $questions->count()) * 100, 0);
     }
 
-    public static function calculateUserScore(){
+    public function calculateUserScore(){
         $score = self::answer()->where('yaedp_user_id', Session::get('session_id'))->sum('points');
         $generalScore = 1560;
         // Add extra 50 points for females
@@ -185,7 +185,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         return $status;
     }
 
-    public static function storeAnswerFromQuestionId($request, $id){
+    public function storeAnswerFromQuestionId($request, $id){
 
         $question = self::questionWithRelationships()->findOrFail($id);
         //If question type is radio, get option value and point from id
