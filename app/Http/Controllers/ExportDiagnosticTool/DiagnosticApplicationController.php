@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Session;
 
 class DiagnosticApplicationController extends Controller
 {
+    public function __construct(ExportDiagnosticApplicationService $application){
+        $this->application = $application;
+    }
+
     public function index(){
         return view('diagnostic-tool.application.index');
     }
@@ -17,10 +21,10 @@ class DiagnosticApplicationController extends Controller
     public function login(ExportDiagnosticLoginRequest $request){
         try {
             // check if user is authenticated
-            $authenticatedUser = ExportDiagnosticApplicationService::authenticateUser($request->email);
+            $authenticatedUser = $this->application->authenticateUser($request->email);
             if($authenticatedUser){
                 // If authenticated, login and create session
-                ExportDiagnosticApplicationService::createLoginSessionWithEmail($authenticatedUser);
+                $this->application->createLoginSessionWithEmail($authenticatedUser);
                 return response()->json([
                     'success' => true
                 ]);

@@ -53,7 +53,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         return ExportDiagnosticHiddenQuestion::with('yaedp_user');
     }
 
-    public static function authenticateUser($email){
+    public function authenticateUser($email){
         // where email exists, yedp_user is approved and learning assessment percent is above 70
         return self::yaedpUserWithRelationships()
             ->has('learning_assessment')
@@ -75,7 +75,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
             })->first();
     }
 
-    public static function createLoginSessionWithEmail($user){
+    public function createLoginSessionWithEmail($user){
 
         Session::put('session_id', $user->id);
         Session::put('session_email', $user->email);
