@@ -209,7 +209,7 @@ Route::get('/yaedp/account/assessment/certificate/download',
     ->name('yaedp.account.assessment.certificate.download');
 
 // YAEDP Export Diagnostic tool
-Route::get('/yaedp/export-diagnostic/',
+Route::get('/yaedp/export-readiness-diagnostic/',
     [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'index'])
     ->name('yaedp.export-diagnostic.index');
 Route::get('/yaedp/export-diagnostic/instructions',
