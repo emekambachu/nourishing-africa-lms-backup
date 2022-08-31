@@ -132,7 +132,6 @@
                                             <div class="col-md-6">
                                                 <p class="yaedp-content text-extra-dark-gray text-large text-left">
                                                     <strong>Name: </strong>{{ Session::get('session_name') }}<br>
-                                                    <strong>ID: </strong>{{ Session::get('session_id') }}<br>
                                                     <strong>Mobile: </strong>{{ Session::get('session_mobile') }}<br>
                                                     <strong>Email: </strong>{{ Session::get('session_email') }}<br>
                                                     <strong>Date of Birth: </strong> {{ Session::get('session_dob') }}<br>

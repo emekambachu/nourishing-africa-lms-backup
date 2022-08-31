@@ -27,14 +27,7 @@ class DiagnosticApplicationController extends Controller
     {
         try {
             // Authenticate user with email, password, yedp_users table and learning_assessments table
-            $this->application->authenticateUser($request);
-
-            return response()->json([
-                'success' => false,
-                'errors' => [
-                    'unauthorized'=>'Unauthorized user'
-                ]
-            ]);
+            return $this->application->authenticateUser($request);
 
         } catch (\Exception $e) {
             return response()->json([
