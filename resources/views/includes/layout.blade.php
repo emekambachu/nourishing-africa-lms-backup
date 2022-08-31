@@ -45,9 +45,9 @@
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" />
 
     <!-- revolution slider -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/settings.css') }}" media="screen" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/layers.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/navigation.css') }}">
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/settings.css') }}" media="screen" />--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/layers.css') }}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/navigation.css') }}">--}}
 
     <!-- bootsnav -->
     <link rel="stylesheet" href="{{ asset('css/bootsnav.css') }}">
@@ -75,14 +75,14 @@
     <!-- Default Theme -->
     <link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/intlTelInput.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('css/intlTelInput.css') }}">--}}
 
     <!-- font awesome -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+{{--    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">--}}
+{{--    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">--}}
 
     <!--Jquery UI-->
     <link href="{{ asset('custom/js/libs/jquery-ui-1.12.1/jquery-ui.min.css') }}" rel="stylesheet">
@@ -93,16 +93,16 @@
 @yield('top-assets')
 
     <!-- Hotjar Tracking Code for nourishingafrica.com -->
-    <script>
-        (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-            h._hjSettings={hjid:2299733,hjsv:6};
-            a=o.getElementsByTagName('head')[0];
-            r=o.createElement('script');r.async=1;
-            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
+{{--    <script>--}}
+{{--        (function(h,o,t,j,a,r){--}}
+{{--            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};--}}
+{{--            h._hjSettings={hjid:2299733,hjsv:6};--}}
+{{--            a=o.getElementsByTagName('head')[0];--}}
+{{--            r=o.createElement('script');r.async=1;--}}
+{{--            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;--}}
+{{--            a.appendChild(r);--}}
+{{--        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');--}}
+{{--    </script>--}}
 
     <!-- GTranslate: https://gtranslate.io/ -->
     <style type="text/css">

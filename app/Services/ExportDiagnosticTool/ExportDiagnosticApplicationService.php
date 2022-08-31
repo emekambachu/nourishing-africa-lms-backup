@@ -10,6 +10,7 @@ use App\Models\ExportDiagnosticTool\ExportDiagnosticUser;
 use App\Services\Learning\Account\YaedpAccountService;
 use Carbon\Carbon;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 /**
@@ -17,67 +18,79 @@ use Illuminate\Support\Facades\Session;
  */
 class ExportDiagnosticApplicationService extends YaedpAccountService
 {
-    public static function question(){
+
+    public function question(){
         return new ExportDiagnosticQuestion();
     }
 
-    public static function questionWithRelationships(){
-        return self::question()->with('export_diagnostic_category', 'export_diagnostic_options');
+    public function questionWithRelationships(){
+        return $this->question()->with('export_diagnostic_category', 'export_diagnostic_options');
     }
 
-    public static function option(){
+    public function option(){
         return new ExportDiagnosticOption();
     }
 
-    public static function optionWithRelationships(){
-        return self::option()->with('export_diagnostic_category', 'export_diagnostic_question');
+    public function optionWithRelationships(){
+        return $this->option()->with('export_diagnostic_category', 'export_diagnostic_question');
     }
 
-    public static function answer(){
+    public function answer(){
         return new ExportDiagnosticAnswer();
     }
 
-    public static function answerWithRelationships(){
-        return self::question()->with('yaedp_user', 'export_diagnostic_user', 'export_diagnostic_question');
+    public function answerWithRelationships(){
+        return $this->question()->with('yaedp_user', 'export_diagnostic_user', 'export_diagnostic_question');
     }
 
-    public static function diagnosticUser(){
+    public function diagnosticUser(){
         return new ExportDiagnosticUser();
     }
 
-    public static function diagnosticUserWithRelationships(){
-        return self::question()->with('user', 'export_diagnostic_answers');
+    public function diagnosticUserWithRelationships(){
+        return $this->question()->with('user', 'export_diagnostic_answers');
     }
 
-    public static function hiddenQuestion(){
+    public function hiddenQuestion(){
         return ExportDiagnosticHiddenQuestion::with('yaedp_user');
     }
 
-    public function authenticateUser($email){
+    public function authenticateUser($request){
         // where email exists, yedp_user is approved and learning assessment percent is above 70
-        return self::yaedpUserWithRelationships()
+        $user = self::yaedpUserWithRelationships()
             ->has('learning_assessment')
             ->leftJoin(
                 'learning_assessments',
                 'yedp_users.id', '=', 'learning_assessments.user_id'
-            )
-//            ->select(
-//                'yedp_users.*',
-//                'yedp_users.email AS yaedp_users_email',
-//                'yedp_users.is_approved AS yaedp_users_approved',
-//                'learning_assessments.*'
-//            )
-            ->where(function($query) use ($email){
-                $query->where('yedp_users.email', $email)
+            )->select(
+                'yedp_users.*',
+                'yedp_users.id AS yaedp_users_id',
+                'yedp_users.is_approved AS yaedp_users_approved',
+                'learning_assessments.*',
+            )->where(function($query) use ($request){
+                $query->where('yedp_users.email', $request->email)
                     ->where('yedp_users.is_approved', 1)
                     ->where('learning_assessments.percent', '>', 69);
 //                    ->where('learning_assessments.created_at', '<', '2022-08-24 00:00:01');
             })->first();
+
+        // verify user and check password
+        if($user && Hash::check($request->password, $user->password)){
+            // if successful create login session with email
+            return $this->createLoginSessionWithEmail($user);
+        }
+
+        return response()->json([
+            'success' => false,
+            'errors' => [
+                'unauthorized'=>'Unauthorized user'
+            ]
+        ]);
     }
 
     public function createLoginSessionWithEmail($user){
 
-        Session::put('session_id', $user->id);
+        Session::put('session_id', $user->yaedp_users_id);
         Session::put('session_email', $user->email);
         Session::put('session_name', $user->first_name.' '.$user->surname);
         Session::put('session_mobile', $user->mobile);
@@ -98,27 +111,35 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         Session::put('session_value_chain', $user->value_chain);
         Session::put('session_focus_area', $user->focus_area);
 
-        $startedUser = self::diagnosticUser()->where('yaedp_user_id', $user->id)->first();
+        $dateNow = Carbon::now()->format('Y-m-d h:i:s');
+        // Check if diagnostic user account has been created
+        // If created, update last login, else create new with last login
+
+        $startedUser = $this->diagnosticUser()->where('yaedp_user_id', Session::get('session_id'))->first();
         if(!$startedUser){
-            self::diagnosticUser()->create([
-               'yaedp_user_id' => $user->id,
-               'last_login' => Carbon::now()->format('Y-m-d h:i:s'),
+            $this->diagnosticUser()->create([
+               'yaedp_user_id' => Session::get('session_id'),
+               'last_login' => $dateNow,
             ]);
-        }else{
-            $startedUser->last_login = Carbon::now()->format('Y-m-d h:i:s');
-            $startedUser->save();
         }
+        $startedUser->last_login = $dateNow;
+        $startedUser->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Logged in'
+        ]);
     }
 
     public function getApplicationQuestion(){
         // get answered question id from answers
-        $answeredQuestionsId = self::answer()
+        $answeredQuestionsId = $this->answer()
             ->select('export_diagnostic_question_id')
             ->where('export_diagnostic_user_id', Session::get('session_id'))
             ->get()->toArray();
 
         // Get stored hidden questions for this user
-        $getHiddenQuestions = self::hiddenQuestion()
+        $getHiddenQuestions = $this->hiddenQuestion()
             ->where('yaedp_user_id', Session::get('session_id'))->first();
         $hiddenQuestions = '';
         if($getHiddenQuestions){
@@ -126,7 +147,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         }
 
         // get single question using following commands
-        return self::question()->orderBy('sort')
+        return $this->question()->orderBy('sort')
             ->with('export_diagnostic_category', function ($query) {
                 $query->orderBy('sort', 'asc');
             })->with('export_diagnostic_options', static function ($query){
@@ -140,13 +161,13 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
 
     public function getProgressPercentage(){
         // get answered question id from answers
-        $answeredQuestionsId = self::answer()
+        $answeredQuestionsId = $this->answer()
             ->select('export_diagnostic_question_id')
             ->where('export_diagnostic_user_id', Session::get('session_id'))
             ->get()->toArray();
 
         // Get stored hidden questions for this user
-        $getHiddenQuestions = self::hiddenQuestion()
+        $getHiddenQuestions = $this->hiddenQuestion()
             ->where('yaedp_user_id', Session::get('session_id'))->first();
         $hiddenQuestions = '';
         if($getHiddenQuestions){
@@ -154,7 +175,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         }
 
         // get single question using following commands
-        $questions = self::question()->orderBy('sort')
+        $questions = $this->question()->orderBy('sort')
             ->with('export_diagnostic_category', function ($query) {
                 $query->orderBy('sort', 'asc');
             })->with('export_diagnostic_options', static function ($query){
@@ -167,7 +188,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
     }
 
     public function calculateUserScore(){
-        $score = self::answer()->where('yaedp_user_id', Session::get('session_id'))->sum('points');
+        $score = $this->answer()->where('yaedp_user_id', Session::get('session_id'))->sum('points');
         $generalScore = 1560;
         // Add extra 50 points for females
         if(Session::get('session_gender') === 'female'){
@@ -175,7 +196,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         }
         $percent = ($score / $generalScore) * 100;
 
-        $status = self::diagnosticUser()->where('yaedp_user_id', Session::get('session_id'))->first();
+        $status = $this->diagnosticUser()->where('yaedp_user_id', Session::get('session_id'))->first();
         if($status->completed !== 1){
             $status->completed = 1;
             $status->percent = $percent;
@@ -187,12 +208,12 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
 
     public function storeAnswerFromQuestionId($request, $id){
 
-        $question = self::questionWithRelationships()->findOrFail($id);
+        $question = $this->questionWithRelationships()->findOrFail($id);
         //If question type is radio, get option value and point from id
         // that was passed from the form
         if($question->type === 'radio') {
-            $option = self::option()->findOrFail($request->option_id);
-            self::answer()->create([
+            $option = $this->option()->findOrFail($request->option_id);
+            $this->answer()->create([
                 'yaedp_user_id' => Session::get('session_id'),
                 'export_diagnostic_user_id' => Session::get('session_id'),
                 'export_diagnostic_question_id' => $question->id,
@@ -206,11 +227,11 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
             // if they don't create a new hidden question for the user
             // else concatinate the new hidden questions to the user
             if($question->conditional === 1){
-                $hasCondition = self::hiddenQuestion()
+                $hasCondition = $this->hiddenQuestion()
                     ->where('yaedp_user_id', Session::get('session_id'))
                     ->first();
                 if(!$hasCondition){
-                    self::hiddenQuestion()->create([
+                    $this->hiddenQuestion()->create([
                        'yaedp_user_id' => Session::get('session_id'),
                        'export_diagnostic_user_id' => Session::get('session_id'),
                        'questions' => $option->hide_questions,
@@ -228,10 +249,10 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
             $optionPoints = 0;
             $selectedOptionsArray = [];
             foreach($request->option_ids as $key=>$value){
-                $optionPoints += self::option()->findOrFail($value)->points;
-                $selectedOptionsArray[] = self::option()->findOrFail($value)->option;
+                $optionPoints += $this->option()->findOrFail($value)->points;
+                $selectedOptionsArray[] = $this->option()->findOrFail($value)->option;
             }
-            self::answer()->create([
+            $this->answer()->create([
                 'yaedp_user_id' => Session::get('session_id'),
                 'export_diagnostic_user_id' => Session::get('session_id'),
                 'export_diagnostic_question_id' => $question->id,
@@ -240,7 +261,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
                 'points' => $optionPoints,
             ]);
         }else{
-            self::answer()->create([
+            $this->answer()->create([
                 'yaedp_user_id' => Session::get('session_id'),
                 'export_diagnostic_user_id' => Session::get('session_id'),
                 'export_diagnostic_question_id' => $question->id,
