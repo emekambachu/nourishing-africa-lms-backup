@@ -11,6 +11,7 @@ use App\Services\Learning\Account\YaedpAccountService;
 use Carbon\Carbon;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 /**
@@ -199,25 +200,6 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         return round((count($answeredQuestionsId) / $questions->count()) * 100, 0);
     }
 
-    public function calculateUserScore(){
-        $score = $this->answer()->where('yaedp_user_id', Session::get('session_id'))->sum('points');
-        $generalScore = 1560;
-        // Add extra 50 points for females
-        if(Session::get('session_gender') === 'female'){
-            $generalScore += 50;
-        }
-        $percent = ($score / $generalScore) * 100;
-
-        $status = $this->diagnosticUser()->where('yaedp_user_id', Session::get('session_id'))->first();
-        if($status->completed !== 1){
-            $status->completed = 1;
-            $status->percent = $percent;
-            $status->score = $score;
-            $status->save();
-        }
-        return $status;
-    }
-
     public function storeAnswerFromQuestionId($request, $id){
 
         $question = $this->questionWithRelationships()->findOrFail($id);
@@ -282,6 +264,43 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
             ]);
         }
 
+    }
+
+    public function calculateUserScore(){
+        $score = $this->answer()->where('yaedp_user_id', Session::get('session_id'))->sum('points');
+        $generalScore = 1560;
+        // Add extra 50 points for females
+        if(Session::get('session_gender') === 'female'){
+            $score += 50;
+        }
+        $percent = ($score / $generalScore) * 100;
+
+        $user = $this->diagnosticUser()->where('yaedp_user_id', Session::get('session_id'))->first();
+        if($user->completed !== 1){
+            $user->completed = 1;
+            $user->percent = $percent;
+            $user->score = $score;
+            $user->save();
+
+            // Send email
+            $this->sendCompletionEmail($user);
+        }
+        return $user;
+    }
+
+    public function sendCompletionEmail($user): void
+    {
+        $mail = [
+            'name' => $user->user->name,
+            'email' => $user->user->email,
+        ];
+
+        Mail::send('emails.export-diagnostic.completion', $mail, static function ($message) use ($mail) {
+            $message->from('yaedp@nourishingafrica.com', 'YAEDP|Export-readiness Diagnostic Tool');
+            $message->to($mail['email'], $mail['name']);
+            $message->replyTo('yaedp@nourishingafrica.com', 'YAEDP|Export-readiness Diagnostic Tool');
+            $message->subject('Completed|Export-readiness Diagnostic Tool');
+        });
     }
 
 }
