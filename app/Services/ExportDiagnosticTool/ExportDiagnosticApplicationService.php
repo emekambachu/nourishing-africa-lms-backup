@@ -75,17 +75,29 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
             })->first();
 
         // verify user and check password
-        if($user && Hash::check($request->password, $user->password)){
-            // if successful create login session with email
-            return $this->createLoginSessionWithEmail($user);
+        if($user){
+            if(Hash::check($request->password, $user->password)){
+                // if successful create login session with email
+                $response = $this->createLoginSessionWithEmail($user);
+            }else{
+                $response = response()->json([
+                    'success' => false,
+                    'errors' => [
+                        'password'=>'Incorrect password'
+                    ]
+                ]);
+            }
+
+        }else{
+            $response = response()->json([
+                'success' => false,
+                'errors' => [
+                    'unauthorized'=>'Unauthorized user'
+                ]
+            ]);
         }
 
-        return response()->json([
-            'success' => false,
-            'errors' => [
-                'unauthorized'=>'Unauthorized user'
-            ]
-        ]);
+        return $response;
     }
 
     public function createLoginSessionWithEmail($user){

@@ -14,7 +14,6 @@ class DiagnosticApplicationController extends Controller
      * @var ExportDiagnosticApplicationService
      */
     private $application;
-
     public function __construct(ExportDiagnosticApplicationService $application){
         $this->application = $application;
     }

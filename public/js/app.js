@@ -24163,12 +24163,13 @@ var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_39 = {
+var _hoisted_39 = [_hoisted_37, _hoisted_38];
+var _hoisted_40 = {
   key: 1,
   "class": "col-12"
 };
 
-var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("circle", {
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("circle", {
   cx: "10",
   cy: "20",
   r: "8"
@@ -24176,7 +24177,7 @@ var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("rect", {
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("rect", {
   x: "25",
   y: "15",
   rx: "5",
@@ -24187,7 +24188,7 @@ var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("rect", {
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("rect", {
   x: "25",
   y: "45",
   rx: "5",
@@ -24198,7 +24199,7 @@ var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("circle", {
+var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("circle", {
   cx: "34",
   cy: "80",
   r: "8"
@@ -24206,7 +24207,7 @@ var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("rect", {
+var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("rect", {
   x: "51",
   y: "75",
   rx: "5",
@@ -24217,7 +24218,7 @@ var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("circle", {
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("circle", {
   cx: "34",
   cy: "110",
   r: "8"
@@ -24225,7 +24226,7 @@ var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("rect", {
+var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("rect", {
   x: "50",
   y: "106",
   rx: "5",
@@ -24345,13 +24346,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("show participant feedback"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [$data.dataLoaded ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, [_hoisted_37, _hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                <p v-if=\"status.percent >= 90\" class=\"custom-font1 text-large\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    <strong class=\"na-text-dark-green\">Congratulations</strong>, You scored"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    <strong>{{ status.percent }}%</strong>.<br>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    You are fully export ready, and will going to the priority list. More information will be relayed to you"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                </p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                <p v-else-if=\"status.percent >= 70 && status.percent < 90\" class=\"custom-font1 text-large\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    <strong class=\"na-text-dark-green\">Congratulations</strong>, You scored"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    <strong>{{ status.percent }}%</strong>.<br>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    You are almost export ready, and will going to the regular list. More information will be relayed to you"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                </p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                <p v-else-if=\"status.percent >= 60 && status.percent < 70\" class=\"custom-font1 text-large\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    You scored <strong>{{ status.percent }}%</strong>.<br>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    We will engage you with further steps."), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                </p>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                <p v-else class=\"custom-font1 text-large\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    You scored <strong>{{ status.percent }}%</strong>.<br>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    We will engage you with further steps."), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                </p>")])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContentLoader, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("show participant feedback"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [$data.dataLoaded ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, _hoisted_39)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContentLoader, {
     viewBox: "0 0 400 150",
     height: "{130}",
     width: "{400}"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_40, _hoisted_41, _hoisted_42, _hoisted_43, _hoisted_44, _hoisted_45, _hoisted_46];
+      return [_hoisted_41, _hoisted_42, _hoisted_43, _hoisted_44, _hoisted_45, _hoisted_46, _hoisted_47];
     }),
     _: 1
     /* STABLE */
