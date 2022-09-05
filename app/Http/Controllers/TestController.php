@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class TestController extends Controller
 {
     public function archiveIneligibleUsers(){
+
         return ExportDiagnosticUser::leftJoin(
                 'learning_assessments',
                 'export_diagnostic_users.yaedp_user_id', '=', 'learning_assessments.user_id'
@@ -23,9 +24,12 @@ class TestController extends Controller
                 'export_diagnostic_users.id AS export_diagnostic_users_id',
             )->where(function($query){
                 $query->where('yedp_users.is_approved', 0)
-                    ->orWhere('learning_assessments.percent', '<', 70);
+                    ->orWhere('learning_assessments.percent', '<', 70)
+                    // where yaedp user does not have a learning_assessments table
+                    ->orWhere('learning_assessments.id', null);
             })->update([
                 'export_diagnostic_users.status' => 1
             ]);
+
     }
 }

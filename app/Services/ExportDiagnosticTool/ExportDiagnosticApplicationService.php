@@ -55,7 +55,8 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
         return ExportDiagnosticHiddenQuestion::with('yaedp_user');
     }
 
-    public function authenticateUser($request){
+    public function authenticateUser($request): \Illuminate\Http\JsonResponse
+    {
         // where email exists, yedp_user is approved and learning assessment percent is above 70
         $user = self::yaedpUserWithRelationships()
             ->has('learning_assessment')
@@ -67,6 +68,7 @@ class ExportDiagnosticApplicationService extends YaedpAccountService
                 'yedp_users.id AS yaedp_users_id',
                 'yedp_users.is_approved AS yaedp_users_approved',
                 'learning_assessments.*',
+                'learning_assessments.id AS learning_assessments_id',
             )->where(function($query) use ($request){
                 $query->where('yedp_users.email', $request->email)
                     ->where('yedp_users.is_approved', 1)

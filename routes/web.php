@@ -227,7 +227,7 @@ Route::get('/yaedp/export-diagnostic/logout',
     ->name('yaedp.export-diagnostic.logout');
 
 //Tests
-//Route::get('/yaedp/archive-ineligible-users', [TestController::class, 'archiveIneligibleUsers']);
+Route::get('/yaedp/archive-ineligible-users', [TestController::class, 'archiveIneligibleUsers']);
 
 //Github Deployment
 Route::post('/github/deploy', [GithubDeploymentController::class, 'deploy']);
