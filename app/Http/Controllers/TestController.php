@@ -9,7 +9,7 @@ class TestController extends Controller
 {
     public function archiveIneligibleUsers(){
 
-        $data = ExportDiagnosticUser::leftJoin(
+        return ExportDiagnosticUser::leftJoin(
                 'learning_assessments',
                 'export_diagnostic_users.yaedp_user_id', '=', 'learning_assessments.user_id'
             )->leftJoin(
@@ -27,8 +27,9 @@ class TestController extends Controller
                     ->orWhere('learning_assessments.percent', '<', 70)
                     // where yaedp user does not have a learning_assessments table
                     ->orWhere('learning_assessments.id', null);
-            })->distinct()->limit(50)->get();
+            })->update([
+                'export_diagnostic_users.status' => 1
+            ]);
 
-        return dd($data);
     }
 }
