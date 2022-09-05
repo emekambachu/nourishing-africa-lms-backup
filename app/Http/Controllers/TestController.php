@@ -27,7 +27,7 @@ class TestController extends Controller
                     ->orWhere('learning_assessments.percent', '<', 70)
                     // where yaedp user does not have a learning_assessments table
                     ->orWhere('learning_assessments.id', null);
-            });
+            })->get();
 
         return dd($data);
     }
