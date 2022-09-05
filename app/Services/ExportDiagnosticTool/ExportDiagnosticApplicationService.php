@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Session;
  */
 class ExportDiagnosticApplicationService extends YaedpAccountService
 {
-
     public function question(){
         return new ExportDiagnosticQuestion();
     }

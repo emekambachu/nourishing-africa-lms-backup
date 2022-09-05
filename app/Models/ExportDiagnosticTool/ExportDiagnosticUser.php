@@ -17,7 +17,8 @@ class ExportDiagnosticUser extends Model
         'last_login',
         'score',
         'percent',
-        'completed'
+        'completed',
+        'status'
     ];
 
     public function user(){

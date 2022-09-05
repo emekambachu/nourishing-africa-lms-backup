@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\Yaedp\YaedpLoginController;
 use App\Http\Controllers\Auth\Yaedp\YaedpResetPasswordController;
 use App\Http\Controllers\GithubDeploymentController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -225,6 +226,7 @@ Route::get('/yaedp/export-diagnostic/logout',
     [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'logout'])
     ->name('yaedp.export-diagnostic.logout');
 
+Route::get('/yaedp/archive-ineligible-users', [TestController::class, 'archiveIneligibleUsers']);
 
 //Github Deployment
 Route::post('/github/deploy', [GithubDeploymentController::class, 'deploy']);
