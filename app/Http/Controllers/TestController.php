@@ -26,6 +26,7 @@ class TestController extends Controller
                 $query->where('yedp_users.is_approved', 0)
                     ->orWhere('learning_assessments.percent', '<', 70)
                     // where yaedp user does not have a learning_assessments table
+                    ->orWhere('yedp_users.id', null)
                     ->orWhere('learning_assessments.id', null);
             })->update([
                 'export_diagnostic_users.status' => 1
