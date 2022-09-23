@@ -3,17 +3,15 @@
 namespace App\Http\Controllers\Yaedp;
 
 use App\Http\Controllers\Controller;
-use App\Jobs\GeneralEmailJob;
-use App\Jobs\SendEmailValidationJob;
+use App\Models\Learning\Course\LearningCourse;
+use App\Models\Learning\Course\LearningCourseView;
+use App\Models\Learning\Discussion\LearningDiscussion;
+use App\Models\Learning\Discussion\LearningDiscussionLike;
+use App\Models\Learning\Discussion\LearningDiscussionReply;
 use App\Models\Learning\LearningCategory;
-use App\Models\Learning\LearningCourse;
-use App\Models\Learning\LearningCourseView;
-use App\Models\Learning\LearningModule;
-use App\Models\Learning\LearningModuleView;
-use App\Models\Learning\LearningDiscussion;
-use App\Models\Learning\LearningDiscussionReply;
-use App\Models\Learning\LearningDiscussionLike;
 use App\Models\Learning\LearningProfileUpdateRequest;
+use App\Models\Learning\Module\LearningModule;
+use App\Models\Learning\Module\LearningModuleView;
 use App\Models\YaedpUser;
 use App\Services\AccountSettingsService;
 use App\Services\Learning\Account\YaedpAccountService;

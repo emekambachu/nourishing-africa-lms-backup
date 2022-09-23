@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Models\Learning;
+namespace App\Models\Learning\Course;
 
+use App\Models\Learning\LearningCategory;
+use App\Models\Learning\Module\LearningModule;
 use Illuminate\Database\Eloquent\Model;
 
 class LearningCourse extends Model

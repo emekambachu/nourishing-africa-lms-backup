@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models\Learning;
+namespace App\Models\Learning\Assessment;
 
+use App\Models\Learning\LearningCategory;
 use App\Models\YaedpUser;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class LearningAssessment extends Model

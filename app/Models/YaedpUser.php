@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\Learning\LearningAssessment;
-use App\Models\Learning\LearningCourseView;
-use App\Models\Learning\LearningModule;
-use App\Models\Learning\LearningModuleView;
+use App\Models\Learning\Assessment\LearningAssessment;
+use App\Models\Learning\Course\LearningCourseView;
+use App\Models\Learning\LearningDocumentUpload;
+use App\Models\Learning\Module\LearningModuleView;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 
 class YaedpUser extends Authenticatable
@@ -93,6 +93,11 @@ class YaedpUser extends Authenticatable
 
     public function learning_module_assessments(){
         return $this->hasMany(LearningModuleView::class, 'user_id', 'id');
+    }
+
+    public function document_uploads(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(LearningDocumentUpload::class, 'yaedp_user_id', 'id');
     }
 
     public static function startedModule($moduleId){

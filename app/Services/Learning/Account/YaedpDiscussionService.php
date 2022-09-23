@@ -2,7 +2,7 @@
 
 namespace App\Services\Learning\Account;
 
-use App\Models\Learning\LearningDiscussion;
+use App\Models\Learning\Discussion\LearningDiscussion;
 
 /**
  * Class YaedpDiscussionService.

@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Yaedp;
 
 use App\Http\Controllers\Controller;
-use App\Models\Learning\LearningAssessment;
-use App\Models\Learning\LearningAssignmentAnswer;
-use App\Models\Learning\LearningAssignmentQuestion;
+use App\Models\Learning\Assessment\LearningAssessment;
+use App\Models\Learning\Assessment\LearningAssignmentAnswer;
+use App\Models\Learning\Assessment\LearningAssignmentQuestion;
 use App\Models\Learning\LearningCategory;
-use App\Models\Learning\LearningModule;
-use App\Models\Learning\LearningModuleView;
+use App\Models\Learning\Module\LearningModule;
+use App\Models\Learning\Module\LearningModuleView;
 use App\Services\Learning\Account\YaedpAccountService;
 use App\Services\Learning\Account\YaedpAssessmentService;
-use PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use PDF;
 
 class YaedpAssessmentController extends Controller
 {

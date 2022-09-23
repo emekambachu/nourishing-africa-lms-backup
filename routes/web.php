@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\Yaedp\YaedpLoginController;
 use App\Http\Controllers\Auth\Yaedp\YaedpResetPasswordController;
 use App\Http\Controllers\GithubDeploymentController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\Yaedp\YaedpDocumentUploadController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -174,7 +175,9 @@ Route::get('yaedp/account/notifications',
 Route::get('yaedp/account/about-program',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'aboutProgram'])
     ->name('yaedp.account.about-program');
-//
+Route::get('/yaedp/account/document/uploads', [YaedpDocumentUploadController::class, 'index'])
+    ->name('yaedp.account.document-uploads');
+
 // YAEDP Account Settings
 Route::get('/yaedp/account/settings',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettings'])

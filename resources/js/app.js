@@ -30,6 +30,7 @@ window.Swal = Swal;
 
 // YAEDP Account
 import AccountSettingsComponent from './components/account-settings/AccountSettingsComponent';
+import DocumentUploads from './components/document-uploads/DocumentUploads';
 
 // Export Diagnostic Tool
 import ExportDiagnosticLogin from './components/export-diagnostic-tool/ExportDiagnosticLogin';
@@ -45,6 +46,7 @@ import ExportDiagnosticApplication from './components/export-diagnostic-tool/Exp
 createApp({
     components: {
         AccountSettingsComponent,
+        DocumentUploads,
 
         ExportDiagnosticLogin,
         ExportDiagnosticApplication,

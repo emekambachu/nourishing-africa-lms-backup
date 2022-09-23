@@ -2,6 +2,8 @@
 
 namespace App\Models\Learning;
 
+use App\Models\Learning\Course\LearningCourse;
+use App\Models\Learning\Module\LearningModule;
 use Illuminate\Database\Eloquent\Model;
 
 class LearningCategory extends Model

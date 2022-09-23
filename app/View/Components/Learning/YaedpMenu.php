@@ -3,7 +3,7 @@
 namespace App\View\Components\Learning;
 
 use App\Models\Learning\LearningCategory;
-use App\Models\Learning\LearningModule;
+use App\Models\Learning\Module\LearningModule;
 use Illuminate\View\Component;
 
 class YaedpMenu extends Component

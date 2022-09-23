@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models\Learning;
+namespace App\Models\Learning\Discussion;
 
+use App\Models\Learning\Course\LearningCourse;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,7 @@ class LearningDiscussionLike extends Model
     public function learningDiscussionReply(){
         return $this->belongsTo(LearningDiscussionReply::class, 'learning_discussion_reply_id', 'id');
     }
-    
+
     public function learningCourse(){
         return $this->belongsTo(LearningCourse::class, 'learning_course_id', 'id');
     }

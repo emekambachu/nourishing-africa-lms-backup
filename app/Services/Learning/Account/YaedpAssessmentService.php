@@ -2,7 +2,7 @@
 
 namespace App\Services\Learning\Account;
 
-use App\Models\Learning\LearningAssessment;
+use App\Models\Learning\Assessment\LearningAssessment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use PDF;

@@ -2,16 +2,15 @@
 
 namespace App\Services;
 
+use App\Models\Learning\Course\LearningCourse;
+use App\Models\Learning\Course\LearningCourseView;
 use App\Models\Learning\LearningCategory;
-use App\Models\Learning\LearningCourse;
-use App\Models\Learning\LearningCourseView;
 use App\Models\Learning\LearningLoginSession;
-use App\Models\Learning\LearningModule;
-use App\Models\Learning\LearningModuleView;
+use App\Models\Learning\Module\LearningModule;
+use App\Models\Learning\Module\LearningModuleView;
 use App\Models\State;
 use App\Models\YaedpUser;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * Class BaseService.

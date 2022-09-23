@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Models\Learning;
+namespace App\Models\Learning\Course;
 
+use App\Models\Learning\Module\LearningModule;
+use App\Models\Learning\Module\LearningModuleView;
 use App\Models\YaedpUser;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class LearningCourseView extends Model{

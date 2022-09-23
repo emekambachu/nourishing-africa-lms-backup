@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController;
+use App\Http\Controllers\Yaedp\YaedpDocumentUploadController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,11 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('yaedp/authenticate', static function (Request $request) {
         return $request->user('yaedp-users');
     });
+
+    // Document Uploads
+    Route::get('/yaedp/upload/documents', [YaedpDocumentUploadController::class, 'getDocuments']);
+    Route::post('/yaedp/upload/document/create', [YaedpDocumentUploadController::class, 'store']);
+    Route::delete('/yaedp/upload/document/{id}/delete', [YaedpDocumentUploadController::class, 'destroy']);
 
     // Update profile
     Route::post('/yaedp/update-profile',

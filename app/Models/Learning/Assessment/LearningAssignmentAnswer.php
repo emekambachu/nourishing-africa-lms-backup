@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Models\Learning;
+namespace App\Models\Learning\Assessment;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class LearningAssignmentAnswer extends Model

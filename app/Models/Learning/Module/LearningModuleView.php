@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Learning;
+namespace App\Models\Learning\Module;
 
 use App\Models\YaedpUser;
 use Illuminate\Database\Eloquent\Model;
