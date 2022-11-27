@@ -136,6 +136,9 @@
                 </ul>
             </li>
 
+            <!--Gotten from App/View/Components/SelectUserMenu Component-->
+            <x-Learning.SelectedUsersMenu />
+
             <li class="slide mb-3">
                 <a class="side-menu__item" href="{{ route('yaedp.account.faq') }}">
                     <i class="side-menu__icon fa fa-question"></i>

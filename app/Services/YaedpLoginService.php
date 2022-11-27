@@ -2,9 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\Learning\LearningLoginSession;
+use App\Services\Base\BaseService;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
