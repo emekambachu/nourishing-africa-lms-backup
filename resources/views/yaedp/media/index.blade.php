@@ -144,10 +144,10 @@
       <ul class="nav " >
        
         <li class="nav-item  tab-heading-active-2" >
-          <a class="nav-link  tab-link-first text-dark" aria-current="page" href="#" >Pictures</a>
+          <a class="nav-link  tab-link-first text-dark" aria-current="page" href="{{ route('yaedp.media.pictures') }}" >Pictures</a>
         </li>
         <li class="nav-item tab-heading" >
-          <a class="nav-link" href="#">Videos</a>
+          <a class="nav-link" href="{{ route('yaedp.media.videos') }}">Videos</a>
         </li>
        
        

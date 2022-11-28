@@ -1,7 +1,7 @@
 @extends('yaedp.media.layouts.app')
 
 @section('title')
-    Terms of use
+Participant’s Profile
 @endsection
 
 @section('meta-tags')
@@ -149,16 +149,16 @@
 
         <ul class="nav">
             <li class="nav-item tab-heading " sty>
-                <a class="nav-link tab-link-first" href="#">Overview</a>
+                <a class="nav-link tab-link-first" href="{{ route('yaedp.media.pictures') }}">Overview</a>
             </li>
             <li class="nav-item    tab-heading">
-                <a class="nav-link " aria-current="page" href="#">Media</a>
+                <a class="nav-link " aria-current="page" href="{{ route('yaedp.media.pictures') }}">Media</a>
             </li>
             <li class="nav-item tab-heading">
-                <a class="nav-link " href="#">YAEDP Articles</a>
+                <a class="nav-link " href="{{ route('yaedp.articles.index') }}">YAEDP Articles</a>
             </li>
             <li class="nav-item  tab-heading-active">
-                <a class="nav-link tab-link-last  tab-text-active" href="#">Participant’s Profile</a>
+                <a class="nav-link tab-link-last  tab-text-active" href="{{ route('yaedp.participant.profile') }}">Participant’s Profile</a>
             </li>
 
         </ul>

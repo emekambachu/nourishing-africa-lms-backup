@@ -1,7 +1,7 @@
 @extends('yaedp.media.layouts.app')
 
 @section('title')
-    Terms of use
+Participant’s Profile
 @endsection
 
 @section('meta-tags')
@@ -142,37 +142,22 @@
 
 @section('content')
 
-    <section class="wow fadeIn parallax padding-four-bottom" data-stellar-background-ratio="0.5"
-        style="background-image: url('/images/Header Image.png'); visibility: visible; animation-name: fadeIn;">
-        <div class="opacity-medium bg-extra-dark-gray"></div>
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div
-                    class="col-12 d-flex flex-column justify-content-center text-center extra-small-screen page-title-large">
-                    <!-- start page title -->
-                    <h1 class="text-white-2 text-center alt-font font-weight-500 letter-spacing-minus-1 margin-10px-bottom">
-                        Youth In Agric Export Development Program</h1>
-                    <!-- end page title -->
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     <div class="container-fluid p-5 p container-2">
         .
 
         <ul class="nav">
             <li class="nav-item tab-heading " sty>
-                <a class="nav-link tab-link-first" href="#">Overview</a>
+                <a class="nav-link tab-link-first" href="{{ route('yaedp.media.pictures') }}">Overview</a>
             </li>
             <li class="nav-item    tab-heading">
-                <a class="nav-link " aria-current="page" href="#">Media</a>
+                <a class="nav-link " aria-current="page" href="{{ route('yaedp.media.pictures') }}">Media</a>
             </li>
             <li class="nav-item tab-heading">
-                <a class="nav-link " href="#">YAEDP Articles</a>
+                <a class="nav-link " href="{{ route('yaedp.articles.index') }}">YAEDP Articles</a>
             </li>
             <li class="nav-item  tab-heading-active">
-                <a class="nav-link tab-link-last  tab-text-active" href="#">Participant’s Profile</a>
+                <a class="nav-link tab-link-last  tab-text-active" href="{{ route('yaedp.participant.profile') }}">Participant’s Profile</a>
             </li>
 
         </ul>
@@ -243,9 +228,9 @@
                                             <h6>Jelli Farms Ltd</h6>
                                         </div>
                                         <div class="">
-                                            <button type="button"
+                                            <a href="{{ route('yaedp.participant.profile.show',1) }}"
                                                 class="btn btn-outline-primary btn-afc-orange rounded">See all
-                                                details</button>
+                                                details</a>
                                         </div>
                                     </div>
                                     <div class="row">
