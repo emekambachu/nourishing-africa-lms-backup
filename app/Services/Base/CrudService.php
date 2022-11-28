@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Base;
 
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
 
 /**
@@ -31,7 +30,7 @@ class CrudService
         ];
     }
 
-    protected function compressAndUploadImage($request, $path, $width, $height)
+    public function compressAndUploadImage($request, $path, $width, $height)
     {
         if($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();

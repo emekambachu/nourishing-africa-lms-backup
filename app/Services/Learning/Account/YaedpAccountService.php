@@ -24,8 +24,21 @@ class YaedpAccountService
         return new YaedpUser();
     }
 
-    public static function yaedpUserWithRelationships(){
-        return YaedpUser::with('learning_assessment', 'learning_module_assessments', 'state_origin', 'state_residence');
+    public function yaedpUserByEmail($email){
+        return self::yaedpUser()->where('email', $email)->first();
+    }
+
+    public function yaedpSelectedUser($email)
+    {
+        return self::yaedpUser()
+            ->with('export_selected_user')
+            ->has('export_selected_user')
+            ->where('email', $email)->first();
+    }
+
+    public static function yaedpUserWithRelationships(): \Illuminate\Database\Eloquent\Builder
+    {
+        return YaedpUser::with('learning_assessment', 'learning_module_assessments', 'state_origin', 'state_residence', 'export_selected_user');
     }
 
     public static function getModules(){

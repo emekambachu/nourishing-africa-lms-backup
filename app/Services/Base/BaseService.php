@@ -1,7 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Base;
 
+use App\Country;
+use App\FocusArea;
+use App\Models\AllCountries;
 use App\Models\Learning\Course\LearningCourse;
 use App\Models\Learning\Course\LearningCourseView;
 use App\Models\Learning\LearningCategory;
@@ -9,6 +12,7 @@ use App\Models\Learning\LearningLoginSession;
 use App\Models\Learning\Module\LearningModule;
 use App\Models\Learning\Module\LearningModuleView;
 use App\Models\State;
+use App\Models\Yaedp\YaedpValueChain;
 use App\Models\YaedpUser;
 use Illuminate\Http\Request;
 
@@ -98,6 +102,40 @@ class BaseService
             }
         }
         return $request->ip(); // it will return server ip when no client ip found
+    }
+
+    public static function focusAreas(){
+        return new FocusArea();
+    }
+
+    public static function focusAreasById($id){
+        return self::focusAreas()->findOrFail($id);
+    }
+
+    public static function countries(): Country{
+        return new Country();
+    }
+
+    public static function countriesById($id){
+        return self::countries()->findOrFail($id);
+    }
+
+    public static function allCountries(): AllCountries
+    {
+        return new AllCountries();
+    }
+
+    public static function africanCountries(){
+        return self::allCountries()->where('continent_name', 'Africa');
+    }
+
+    public static function nigerianStateById($id){
+        return self::nigerianStates()->findOrFail($id);
+    }
+
+    public static function yaedpValueChains(): YaedpValueChain
+    {
+        return new YaedpValueChain();
     }
 
 

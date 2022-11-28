@@ -518,6 +518,14 @@ img.module-grid-image{
     border: none;
 }
 
+.module-btn-2{
+    padding: 10px 0;
+    width: 200px;
+    border-radius: 5px;
+    margin: 10px auto;
+    border: none;
+}
+
 .module-title{
     background-color: #fff;
     color: #089803;

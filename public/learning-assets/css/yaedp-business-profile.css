@@ -1,0 +1,13 @@
+.card-header{
+    height: 62px;
+    background: #D8FFD7;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-body{
+    box-sizing: border-box;
+    height: 209px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 0 0 10px 10px;
+}

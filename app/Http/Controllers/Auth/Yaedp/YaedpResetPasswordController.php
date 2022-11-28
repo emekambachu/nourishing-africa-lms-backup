@@ -4,12 +4,9 @@ namespace App\Http\Controllers\Auth\Yaedp;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Account\PasswordResetRequest;
-use App\Models\YaedpUser;
-use App\Services\BaseService;
+use App\Services\Base\BaseService;
 use App\Services\Learning\Account\PasswordResetService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
 
 class YaedpResetPasswordController extends Controller
 {

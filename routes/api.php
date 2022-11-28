@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\Base\BaseController;
 use App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController;
+use App\Http\Controllers\Yaedp\YaedpAccountController;
 use App\Http\Controllers\Yaedp\YaedpDocumentUploadController;
+use App\Http\Controllers\Yaedp\YaedpSelectedCertificationController;
+use App\Http\Controllers\Yaedp\YaedpSelectedProductController;
+use App\Http\Controllers\Yaedp\YaedpSelectedUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +20,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+// Base Routes
+// States
+Route::get('/states', [BaseController::class, 'getStates']);
+Route::get('/yaedp/value-chains', [BaseController::class, 'valueChains']);
 
 // Sanctum middleware group
 Route::middleware('auth:sanctum')->group(function (){
@@ -30,14 +40,11 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::delete('/yaedp/upload/document/{id}/delete', [YaedpDocumentUploadController::class, 'destroy']);
 
     // Update profile
-    Route::post('/yaedp/update-profile',
-        [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'updateProfile']);
+    Route::post('/yaedp/update-profile', [YaedpAccountController::class, 'updateProfile']);
 
     // Profile update request
-    Route::get('/yaedp/get/update-request',
-        [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'getUpdateRequest']);
-    Route::post('/yaedp/submit/update-request',
-        [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'submitUpdateProfileRequest']);
+    Route::get('/yaedp/get/update-request', [YaedpAccountController::class, 'getUpdateRequest']);
+    Route::post('/yaedp/submit/update-request', [YaedpAccountController::class, 'submitUpdateProfileRequest']);
 
     // Update Email
     Route::post('/yaedp/update-email',
@@ -48,10 +55,20 @@ Route::middleware('auth:sanctum')->group(function (){
         [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'updatePassword'])
         ->name('yaedp.update-password');
 
-});
+    // YAEDP Selected Users
+    // Business Profile
+    Route::get('/yaedp/business/{email}/profile', [YaedpSelectedUserController::class, 'getBusinessProfile']);
 
-// get all states
-Route::get('/states', [App\Http\Controllers\Api\BaseController::class, 'getStates']);
+    // Yaedp User Products
+    Route::get('/yaedp/{id}/products', [YaedpSelectedProductController::class, 'getUserProducts']);
+    Route::post('/yaedp/{id}/products/add', [YaedpSelectedProductController::class, 'addUserProduct']);
+    Route::post('/yaedp/{user_id}/products/{product_id}/update', [YaedpSelectedProductController::class, 'updateUserProduct']);
+    Route::delete('/yaedp/{user_id}/products/{product_id}/delete', [YaedpSelectedProductController::class, 'deleteUserProduct']);
+
+    // Yaedp User Certificates
+    Route::get('/yaedp/{id}/certificates', [YaedpSelectedCertificationController::class, 'getCertificates']);
+    Route::post('/yaedp/{id}/certificates/add', [YaedpSelectedCertificationController::class, 'addUserCertificate']);
+});
 
 // YAEDP Export Diagnostic Tool
 Route::post('/yaedp/export-diagnostic/login', [DiagnosticApplicationController::class, 'login']);

@@ -3,9 +3,8 @@
 namespace App\Services\Learning;
 
 use App\Models\Learning\LearningDocumentUpload;
-use App\Services\CrudService;
+use App\Services\Base\CrudService;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 
 /**
  * Class DocumentUploadService.

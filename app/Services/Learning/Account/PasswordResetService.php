@@ -2,8 +2,7 @@
 
 namespace App\Services\Learning\Account;
 
-use App\Models\YaedpUser;
-use App\Services\BaseService;
+use App\Services\Base\BaseService;
 use Illuminate\Support\Facades\Mail;
 
 /**
