@@ -4,7 +4,9 @@ use App\Http\Controllers\Auth\Yaedp\YaedpLoginController;
 use App\Http\Controllers\Auth\Yaedp\YaedpResetPasswordController;
 use App\Http\Controllers\GithubDeploymentController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\Yaedp\YaedpAccountController;
 use App\Http\Controllers\Yaedp\YaedpDocumentUploadController;
+use App\Http\Controllers\Yaedp\YaedpSelectedUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -103,18 +105,19 @@ Auth::routes([
     'verify' => false
 ]);
 
+// Public
+Route::get('/yaedp/images', static function (){
+    return view('terms');
+})->name('yaedp.terms');
+
+Route::get('/yaedp/videos', static function (){
+    return view('terms');
+})->name('yaedp.terms');
+
 // YAEDP Login
 Route::get('/', static function (){
     return view('auth.yaedp.login');
 });
-
-//Route::get('/bk', static function (){
-//    return view('auth.yaedp.login-bk');
-//});
-
-Route::get('/yaedp/terms', static function (){
-    return view('terms');
-})->name('yaedp.terms');
 
 Route::get('/yaedp/login', [YaedpLoginController::class, 'showLoginForm'])
     ->name('yaedp.login');
@@ -179,6 +182,12 @@ Route::get('yaedp/account/about-program',
 Route::get('/yaedp/account/document/uploads', [YaedpDocumentUploadController::class, 'index'])
     ->name('yaedp.account.document-uploads');
 
+// YAEDP Account Business Profile
+Route::get('/yaedp/account/business/profile', [YaedpSelectedUserController::class, 'businessProfile'])
+    ->name('yaedp.account.business.profile');
+Route::get('/yaedp/account/export/resources', [YaedpSelectedUserController::class, 'exportResources'])
+    ->name('yaedp.account.export.resources');
+
 // YAEDP Account Settings
 Route::get('/yaedp/account/settings',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'accountSettings'])
@@ -192,6 +201,10 @@ Route::get('/yaedp/account/settings/password',
 Route::get('/yaedp/account/{token}/email-confirmation',
     [App\Http\Controllers\Yaedp\YaedpAccountController::class, 'emailConfirmationToken'])
     ->name('yaedp.account.email-confirmation.token');
+
+// YAEDP Unauthorized User
+Route::get('/yaedp/account/unauthorized', [YaedpAccountController::class, 'unauthorized'])
+    ->name('yaedp.account.unauthorized');
 
 // YAEDP Assessment Controller
 Route::get('/yaedp/account/assessments',

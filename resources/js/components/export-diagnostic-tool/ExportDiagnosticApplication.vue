@@ -39,7 +39,8 @@
                             {{ question.question }}:</p>
                         <label v-for="(option, index) in options" :key="option.id"
                                class="radio-container ml-5">{{ option.option }}
-                            <input type="radio" @change="selectOption($event, option.conditions, option.display_text)"
+                            <input type="radio"
+                                   @change="selectOption($event, option.conditions, option.display_text)"
                                    v-model="form.option_id"
                                    :value="option.id">
                             <span class="checkmark"></span>

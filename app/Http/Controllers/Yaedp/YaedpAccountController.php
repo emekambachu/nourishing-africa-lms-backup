@@ -516,4 +516,8 @@ class YaedpAccountController extends Controller
             "message" => 'Password Updated'
         ]);
     }
+
+    public function unauthorized(){
+        return view('yaedp.account.404');
+    }
 }

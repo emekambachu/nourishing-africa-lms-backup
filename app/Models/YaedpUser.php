@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\ExportDiagnosticTool\ExportSelectedUser;
 use App\Models\Learning\Assessment\LearningAssessment;
 use App\Models\Learning\Course\LearningCourseView;
 use App\Models\Learning\LearningDocumentUpload;
@@ -130,5 +131,10 @@ class YaedpUser extends Authenticatable
             ['learning_module_id', $moduleId],
             ['retake', 2],
         ])->first();
+    }
+
+    public function export_selected_user()
+    {
+        return $this->hasOne(ExportSelectedUser::class, 'email', 'email');
     }
 }

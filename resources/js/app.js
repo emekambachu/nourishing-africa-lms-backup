@@ -36,6 +36,10 @@ import DocumentUploads from './components/document-uploads/DocumentUploads';
 import ExportDiagnosticLogin from './components/export-diagnostic-tool/ExportDiagnosticLogin';
 import ExportDiagnosticApplication from './components/export-diagnostic-tool/ExportDiagnosticApplication';
 
+// Selected YAEDP Users
+import YaedpBusinessProfile from './components/yaedp/business-profile/YaedpBusinessProfile';
+import YaedpExportResources from './components/yaedp/export-resources/YaedpExportResources';
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -47,6 +51,9 @@ createApp({
     components: {
         AccountSettingsComponent,
         DocumentUploads,
+
+        YaedpBusinessProfile,
+        YaedpExportResources,
 
         ExportDiagnosticLogin,
         ExportDiagnosticApplication,
