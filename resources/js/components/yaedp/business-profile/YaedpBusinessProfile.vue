@@ -38,6 +38,7 @@
                             <div v-if="getProductsComponent" class="row justify-content-center">
                                 <yaedp-product-details
                                     @add-product-form="addProductForm"
+                                    :selected_user="selected_user"
                                 ></yaedp-product-details>
                             </div>
 
@@ -53,9 +54,9 @@
 
                         <div class="tab-pane" id="tab2">
                             <div class="row">
-                                <div class="col-12">
-
-                                </div>
+                                <yaedp-business-details
+                                    :selected_user="selected_user"
+                                ></yaedp-business-details>
                             </div>
                         </div>
 

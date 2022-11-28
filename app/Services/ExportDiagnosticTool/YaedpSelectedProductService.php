@@ -29,7 +29,8 @@ class YaedpSelectedProductService
         return $this->yaedpProductDetail()->where('user_id', $id);
     }
 
-    public function addProductByUserId($request, $id){
+    public function addProductByUserId($request, $id): array
+    {
         $input = $request->all();
         $input['user_id'] = $id;
 
@@ -37,7 +38,7 @@ class YaedpSelectedProductService
         $product = $this->yaedpProductDetail()->create($input);
 
         // Add to product Parameters
-        $input['product_detail_id'] = $product->id;
+        $input['yaedp_product_detail_id'] = $product->id;
         $this->yaedpProductParameter()->create($input);
 
         // Add images

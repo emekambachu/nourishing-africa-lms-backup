@@ -16,7 +16,7 @@ class CreateYaedpProductParametersTable extends Migration
         Schema::create('yaedp_product_parameters', static function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedBigInteger('value_chain_id')->index();
+            $table->unsignedBigInteger('yaedp_value_chain_id')->index();
             $table->unsignedBigInteger('yaedp_product_detail_id')->index();
             $table->string('moisture_content')->nullable();
             $table->string('crude_fat')->nullable();

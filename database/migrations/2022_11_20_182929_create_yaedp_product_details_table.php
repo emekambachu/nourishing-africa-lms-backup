@@ -18,7 +18,7 @@ class CreateYaedpProductDetailsTable extends Migration
             $table->unsignedBigInteger('user_id')->index();
             $table->string('name');
             $table->string('type');
-            $table->unsignedBigInteger('value_chain_id')->index();
+            $table->unsignedBigInteger('yaedp_value_chain_id')->index();
             $table->string('source_of_material');
             $table->boolean('originally_produced')->default(0);
             $table->boolean('nutrition_information_provided')->default(0);

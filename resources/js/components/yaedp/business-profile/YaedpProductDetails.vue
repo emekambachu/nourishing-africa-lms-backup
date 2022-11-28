@@ -1,15 +1,18 @@
 <template>
 
-    <div v-if="products.length === 0" class="col-8 text-center">
+    <div v-if="products.length === 0" class="col-12 text-center">
         <img :src="'/images/icons/no-product.png'" width="500"/>
         <p>No product added</p>
+    </div>
+
+    <div class="col-12 text-center">
         <button @click="emitAddProductForm"
                 class="module-btn-2 na-bg-dark-green text-white d-flex justify-content-center">
             <i class="fa fa-plus"></i> Add New Product</button>
     </div>
 
-    <div v-for="product in products" :key="product.id" class="col-md-6">
-        <div class="row">
+    <div v-for="product in products" :key="product.id" class="col-md-4">
+        <div class="row m-1">
             <div class="col-12 card-header">
                 <div class="row">
                     <div class="col-8">
@@ -36,6 +39,9 @@
 <script>
 export default {
     emits: ['add-product-form'], // Always include emits
+    props: {
+        selected_user: Object,
+    },
     data(){
         return {
             deleted: false,
@@ -49,6 +55,7 @@ export default {
         },
 
         getProducts(){
+            console.log(this.selected_user.id);
             axios.get('/api/yaedp/'+this.selected_user.id+'/products')
                 .then((response) => {
                     if(response.data.success === true){
@@ -64,7 +71,7 @@ export default {
     },
 
     mounted() {
-
+        this.getProducts();
     }
 }
 </script>

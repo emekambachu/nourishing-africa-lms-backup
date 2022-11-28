@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Services\ExportDiagnosticTool\ExportSelectedUserService;
 use App\Services\ExportDiagnosticTool\YaedpSelectedProductService;
 use App\Services\Learning\Account\YaedpAccountService;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+
 
 class YaedpSelectedProductController extends Controller
 {
@@ -28,9 +29,10 @@ class YaedpSelectedProductController extends Controller
     public function getUserProducts($id): \Illuminate\Http\JsonResponse
     {
         try {
+            $data = $this->product->getYaedpProductsByUserId($id)->latest()->get();
             return response()->json([
                 'success' => true,
-                'products' => $this->product->getYaedpProductsByUserId($id),
+                'products' => $data,
             ]);
 
         } catch (\Exception $e) {

@@ -7,9 +7,14 @@
                         class="module-btn-2 na-bg-dark-green text-white">
                     <i class="fa fa-lemon mr-1"></i> My Products</button>
             </div>
+            <div v-if="errors.length > 0" class="col-12">
+                <p class="text-danger" v-for="(error, index) in errors" :key="index">
+                    {{ error }}
+                </p>
+            </div>
         </div>
 
-        <form enctype="multipart/form-data" @submit.prevent="">
+        <form @submit.prevent="submitProduct">
             <div class="row">
                 <div class="col-12">
                     <div class="row">
@@ -276,7 +281,7 @@
                                     <img :src="image.src" :alt="image.file.name"
                                          :title="image.file.name"/><br>
                                     <i @click.prevent="removeImage(index)"
-                                       class="fa-duotone fa-x bg-danger text-white p-1"
+                                       class="fa fa-times bg-danger text-white p-1"
                                        title="remove"></i>
                                 </div>
                                 <div class="col-md-3">
@@ -357,7 +362,8 @@ export default {
             images: [],
             errorAlert: false,
             messageAlert: '',
-            imageValidation: ''
+            imageValidation: '',
+            errors: []
         }
     },
 
@@ -462,7 +468,6 @@ export default {
             });
         },
 
-
         formLoading(){
             // Install sweetalert2 to use
             // Loading
@@ -510,10 +515,14 @@ export default {
         },
 
         formEmpty(){
-            this.formFields.forEach((item, index)=>{
-                item.title = '';
-                item.document = '';
+            let self = this; //you need this because *this* will refer to Object.keys below`
+            //Iterate through each object field, key is name of the object field`
+            Object.keys(this.form).forEach(function(key) {
+                console.log(key); // key
+                console.log(self.form[key]); // value
+                self.form[key] = '';
             });
+            this.images = [];
         }
 
     },
