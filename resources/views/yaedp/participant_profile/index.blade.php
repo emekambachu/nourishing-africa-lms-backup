@@ -1,0 +1,338 @@
+@extends('yaedp.media.layouts.app')
+
+@section('title')
+    Terms of use
+@endsection
+
+@section('meta-tags')
+
+    <meta name="description" content="African Food Changemakers | Terms of Use" />
+    <meta name="keywords" content="African Food Changemakers, Terms of Use" />
+
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <link rel="canonical" href="{{ Request::fullUrl() }}" />
+
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="African Food Changemakers | YAEDP | Terms of Use" />
+    <meta property="og:description" content="African Food Changemakers | YAEDP | Terms of Use" />
+    <meta property="og:url" content="{{ Request::fullUrl() }}" />
+    <meta property="og:site_name" content="African Food Changemakers" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="African Food Changemakers | YAEDP | Terms of Use" />
+    <meta name="twitter:title" content="African Food Changemakers | YAEDP | Terms of Use" />
+    <meta name="twitter:site" content="@nourish_africa" />
+    <meta name="twitter:creator" content="@nourish_africa" />
+
+    <script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>
+    {
+   "@context":"https://schema.org",
+   "@graph":[
+      {
+         "@type":"Organization",
+         "@id":"https://nourishingafrica.com/#organization",
+         "name":"African Food Changemakers",
+         "url":"https://nourishingafrica.com/",
+         "sameAs":[
+            "https://www.facebook.com/nourishafrica1",
+            "https://instagram.com/nourish_africa",
+            "https://www.linkedin.com/company/28506256",
+            "https://twitter.com/nourish_africa"
+         ],
+         "logo":{
+            "@type":"ImageObject",
+            "@id":"https://nourishingafrica.com/#logo",
+            "url":"https://nourishingafrica.com/wp-content/uploads/2019/04/NA-1-Official.png",
+            "width":848,
+            "height":519,
+            "caption":"African Food Changemakers"
+         },
+         "image":{
+            "@id":"https://nourishingafrica.com/#logo"
+         }
+      },
+      {
+         "@type":"WebSite",
+         "@id":"https://nourishingafrica.com/#website",
+         "url":"https://nourishingafrica.com/",
+         "name":"African Food Changemakers",
+         "description":"African Food Changemakers | YAEDP | Terms of Use",
+         "publisher":{
+            "@id":"https://nourishingafrica.com/#organization"
+         },
+         "potentialAction":{
+            "@type":"SearchAction",
+            "target":"https://nourishingafrica.com/?s={search_term_string}",
+            "query-input":"required name=search_term_string"
+         }
+      },
+      {
+         "@type":"WebPage",
+         "@id":"https://nourishingafrica.com/#webpage",
+         "url":"{{ Request::fullUrl() }}",
+         "inLanguage":"en-US",
+         "name":"African Food Changemakers | YAEDP | Terms of Use",
+         "isPartOf":{
+            "@id":"https://nourishingafrica.com/#website"
+         },
+         "about":{
+            "@id":"https://nourishingafrica.com/#organization"
+         },
+         "datePublished":"2019-12-03T12:51:31+00:00",
+         "dateModified":"2020-02-07T15:22:22+00:00",
+         "description":"African Food Changemakers | YAEDP | Terms of Use"
+      }
+   ]
+}
+</script>
+@stop
+
+@section('title')
+    Terms of Use
+@stop
+
+@section('top-assets')
+    <style>
+        .privacy-policy-accordion-header {
+            background: #046B60;
+            color: #fff;
+            border-radius: 0;
+            padding: 18px 28px 19px;
+        }
+
+        .privacy-policy-accordion-body {
+            background: #eeeded;
+            padding: 35px 28px 25px;
+            border-top: none;
+        }
+
+        .justify-text {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .article-header {
+            color: #006600;
+        }
+
+        .article-card {
+            border-radius: 10px;
+        }
+
+        .btn-afc-orange {
+            color: #DC5D01;
+            border-color: #DC5D01;
+            text-transform: none;
+        }
+
+        .btn-afc-green {
+            color: #333333;
+            border-color: #333333;
+            text-transform: none;
+        }
+        .btn-afc-orange-green {
+           
+            border-color: #DDFFDD;
+            text-transform: none;
+            background-color: #DDFFDD;
+        }
+    </style>
+@stop
+
+@section('content')
+
+    <section class="wow fadeIn parallax padding-four-bottom" data-stellar-background-ratio="0.5"
+        style="background-image: url('/images/Header Image.png'); visibility: visible; animation-name: fadeIn;">
+        <div class="opacity-medium bg-extra-dark-gray"></div>
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div
+                    class="col-12 d-flex flex-column justify-content-center text-center extra-small-screen page-title-large">
+                    <!-- start page title -->
+                    <h1 class="text-white-2 text-center alt-font font-weight-500 letter-spacing-minus-1 margin-10px-bottom">
+                        Youth In Agric Export Development Program</h1>
+                    <!-- end page title -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-fluid p-5 p container-2">
+        .
+
+        <ul class="nav">
+            <li class="nav-item tab-heading " sty>
+                <a class="nav-link tab-link-first" href="#">Overview</a>
+            </li>
+            <li class="nav-item    tab-heading">
+                <a class="nav-link " aria-current="page" href="#">Media</a>
+            </li>
+            <li class="nav-item tab-heading">
+                <a class="nav-link " href="#">YAEDP Articles</a>
+            </li>
+            <li class="nav-item  tab-heading-active">
+                <a class="nav-link tab-link-last  tab-text-active" href="#">Participant’s Profile</a>
+            </li>
+
+        </ul>
+
+        <h5 class="mt-5 text-dark">
+            Participant’s Profile
+        </h5>
+
+
+        <div class="border border-5  border-top-0 border-left-0 border-right-0"></div>
+
+        <div class="row  p-4">
+            <div class="">
+                <button type="button" class="btn btn-outline-primary btn-afc-orange rounded-pill p-">Cocoa</button>
+            </div>
+            <div class="">
+                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Cassava</button>
+            </div>
+            <div class="">
+                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Cashew</button>
+            </div>
+            <div class="">
+                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Seesame</button>
+            </div>
+            <div class="">
+                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Ginger</button>
+            </div>
+            <div class="">
+                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Soy - Beans</button>
+            </div>
+            <div class="">
+                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Spices</button>
+            </div>
+            <div class="">
+                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Rubber</button>
+            </div>
+            <div class="">
+                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Shea - Butter</button>
+            </div>
+        </div>
+        <div class="border border-5  border-top-0 border-left-0 border-right-0"></div>
+
+
+        <h3 class="mt-4">
+            Cocoa
+        </h3>
+        <br><br>
+
+
+
+
+
+        <div class="">
+            <div class="">
+                <div class="row">
+
+                    @for ($i = 0; $i < 6; $i++)
+                        <div class="col-sm-6 mb-3 rounded-5">
+                            <div class="card border border-dark article-card shadow-none">
+
+
+                                <div class="card-body">
+
+                                    <p class="card-text">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="">
+                                            <img src="/images/Vector 2.png" alt="">
+                                            <h6>Jelli Farms Ltd</h6>
+                                        </div>
+                                        <div class="">
+                                            <button type="button"
+                                                class="btn btn-outline-primary btn-afc-orange rounded">See all
+                                                details</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="card border border-dark article-card shadow-none rounded-0" style="">
+                                                <img src="/images/product_image_1.png" class="p-5 img-fluid" alt="" style="">
+                                            </div>
+                                            <button type="button" class="btn btn-primary mt-3 btn-afc-orange-green rounded-pill text-afc-orange">Certified &#10003;</button>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h6>
+                                                        Product Name
+                                                    </h6>
+                                                    <p>Reel Fruit & nut mix</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h6>Product Type</h6>
+                                                    <p>Processed Food</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h6>
+                                                        Quantity Available
+                                                    </h6>
+                                                    <p>20,000 MT</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h6>Production Capacity</h6>
+                                                    <p>30 T</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h6>
+                                                        Packaging
+                                                    </h6>
+                                                    <p>Flexibag</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h6>Weight</h6>
+                                                    <p>14kg</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    @endfor
+                </div>
+            </div>
+            {{-- <div class="row"> 
+      
+      
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+
+        <img src="/images/workshop_images/Rectangle 216.png"  class="img-fluid">
+       
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+
+        <img src="/images/workshop_images/Rectangle 216.png"  class="img-fluid">
+       
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+
+        <img src="/images/workshop_images/Rectangle 216.png"  class="img-fluid">
+       
+      </div> --}}
+
+
+
+        </div>
+    </div>
+    </div>
+
+    <br><br>
+
+
+
+    </section>
+@stop

@@ -184,7 +184,9 @@ font-style: normal;
   margin: 50px auto;
   padding: 50px;
 }
-
+.bg-afc-orange-green{
+    background-color: #F2FFF2;`
+}
 @media (min-width:1281px) { /* hi-res laptops and desktops */ }
 </style>
     <div id="google_translate_element2"></div>
@@ -255,7 +257,7 @@ font-style: normal;
                         <li class="dropdown simple-dropdown">
                             <a href="https://afchub.org/" style="color: #267c26">Home</a></li>
                         <li class="dropdown simple-dropdown">
-                            <a href="https://afchub.org/about" style="color: #267c26">About Us</a>
+                            <a href="https://afchub.org/about" style="color: #267c26">About Us </a>
                             <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                             <!-- start sub menu -->
                             <ul class="dropdown-menu" role="menu">
@@ -327,13 +329,51 @@ font-style: normal;
                       
 
                     </ul>
+
+                    
                 </div>
+
+                
+            </div>
+
+            <div class="col-auto pr-lg-0">
+                <div class="pr-md-5">
+                                            <ul id="accordion-mobile" class="nav navbar-nav no-margin alt-font text-normal d-none d-sm-none d-md-none d-lg-block" data-in="fadeIn" data-out="fadeOut" style="background-color: transparent !important;">
+                            <li class="dropdown simple-dropdown" style="background-color: #efb443 !important; border-radius: 5px;">
+                                <a href="javascript:void(0)" class="m-0 text-white" style="background-color: #efb443 !important; padding: 8px; border-radius: 5px; font-family: inter; font-size: 14px;">
+                                    Login / Join
+                                    <i class="dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                </a>
+                                <!-- start sub menu -->
+                                <ul class="dropdown-menu animated" role="menu" style="margin-top: 15px; margin-left: -25px; display: none; opacity: 1;">
+                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="https://afchub.org/login">Login</a></li>
+                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="https://afchub.org/entrepreneur/become-a-member">Join the community</a></li>
+                                    <!--<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                                            href="#">Investors Login</a></li>
+                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                                            href="#">Institutions Login</a></li>-->
+                                </ul>
+                            </li>
+                        </ul>
+                                    </div>
             </div>
         </div>
     </nav>
+    
     @yield('top-panel')
 </header>
-
+<section class="wow fadeIn parallax padding-four-bottom" data-stellar-background-ratio="0.5" style="background-image: url('/images/Mask group.png'); visibility: visible; animation-name: fadeIn;">
+    <div class="opacity-medium bg-extra-dark-gray"></div>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-12 d-flex flex-column justify-content-center text-center extra-small-screen page-title-large">
+                <!-- start page title -->
+                <h1 class="text-white-2 text-center alt-font font-weight-500 letter-spacing-minus-1 margin-10px-bottom">Youth In Agric Export Development Program</h1>
+                <!-- end page title -->
+            </div>
+        </div>
+    </div>
+</section>
 @yield('content')
 
 <!-- start footer -->

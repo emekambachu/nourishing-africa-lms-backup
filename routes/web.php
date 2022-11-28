@@ -244,6 +244,14 @@ Route::get('/yaedp/export-diagnostic/logout',
         return view('yaedp.articles.index');
     })->name('yaedp.articles.index');
 
+    Route::get('/yaedp/participant/profile', static function (){
+        return view('yaedp.participant_profile.index');
+    })->name('yaedp.participant.profile');
+
+    Route::get('/yaedp/participant/profile/{id}', static function (){
+        return view('yaedp.participant_profile.show');
+    })->name('yaedp.participant.profile.show');
+
 //Tests
 Route::get('/yaedp/archive-ineligible-users', [TestController::class, 'archiveIneligibleUsers']);
 

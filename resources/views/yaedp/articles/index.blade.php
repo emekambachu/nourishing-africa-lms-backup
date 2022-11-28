@@ -111,8 +111,12 @@
             text-align: justify;
             text-justify: inter-word;
         }
-
-    
+.article-header{
+    color: #006600;
+}
+    .article-card{
+        border-radius: 10px;
+    }
     </style>
 @stop
 
@@ -161,27 +165,23 @@
 <div class="gallary">
     <div class="">
         <div class="row">
-            <div class="col-sm-4 ">
-               
-                <div class="embed-responsive embed-responsive-16by9 rounded">
-                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
-                </div>
-                <h5>Short title for videos</h5>
+
+            @for ($i = 0; $i < 9; $i++)
+                
+            <div class="col-sm-4 mb-3 rounded-5">
+                <div class="card border border-dark article-card shadow-none" >
+                  
+                    <div class="card-body">
+                      <h5 class="card-title article-header">Article Title Here</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+                      </p>
+                     
+                    </div>
+                  </div>
             </div>
-            <div class="col-sm-4">
-               
-                <div class="embed-responsive embed-responsive-16by9 rounded">
-                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
-                </div>
-                <h5>Short title for videos</h5>
-            </div>
-            <div class="col-sm-4">
-               
-                <div class="embed-responsive embed-responsive-16by9 rounded">
-                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
-                </div>
-                <h5>Short title for videos</h5>
-            </div>
+           
+            @endfor
         </div>
     </div>
     {{-- <div class="row"> 
