@@ -142,6 +142,26 @@ Participant’s Profile
 .nav-link {
     margin-left: -10px;
 }
+
+}
+h6{
+    font-family: Inter;
+font-style: normal;
+font-weight: 900;
+font-size: 16px;
+line-height: 19px;
+color: #585858;
+
+
+}
+h6 > p{
+    font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19px;
+letter-spacing: 0em;
+text-align: left;
+
 }
     </style>
 @stop
