@@ -177,17 +177,71 @@ font-style: normal;
     vertical-align: middle;
   
 }
-.container-2{
+@media (min-width:1025px){
+    .container-2{
     max-width: 95vw;
   width: 100% ;
   width: calc(100% - 1rem) ;
   margin: 50px auto;
   padding: 50px;
 }
+.certificates{
+    height: 218px;
+    width: 522px;
+    left: 120px;
+    border-radius: 5px;
+}
+}
+
 .bg-afc-orange-green{
     background-color: #F2FFF2;`
 }
 @media (min-width:1281px) { /* hi-res laptops and desktops */ }
+
+@media only screen and (max-width: 600px) {
+ .rounded-pill{
+    margin-bottom:20px; 
+ }
+ .row {
+    /* margin-right: -25px; */
+    /* margin-left: -25px; */
+}
+.nav-link {
+    margin-left: -10px;
+}
+.container-fluid{
+    padding: 2rem!important;
+}
+}
+.product-details-text{
+    font-family: Inter;
+font-size: 18px;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+}
+.product-detail-heading{
+    font-family: Inter;
+font-size: 18px;
+font-weight: 500;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+color: #333333;
+
+}
+/* .carousel-control-next-icon, .carousel-control-prev-icon {
+    height: 64px;
+width: 49px;
+left: 578px;
+top: 709px;
+border-radius: 5px;
+padding: 32px 24px 32px 24px;
+background-color: #fff;
+color: #000000;
+
+} */
 </style>
     <div id="google_translate_element2"></div>
 

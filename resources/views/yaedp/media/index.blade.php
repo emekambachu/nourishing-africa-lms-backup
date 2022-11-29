@@ -88,9 +88,6 @@
 </script>
 @stop
 
-@section('title')
-    Terms of Use
-@stop
 
 @section('top-assets')
     <style>
@@ -119,7 +116,7 @@
 
 
 <div class="container-fluid p-5 p container-2" >
-.
+
 
     <ul class="nav" >
         <li class="nav-item tab-heading " sty>

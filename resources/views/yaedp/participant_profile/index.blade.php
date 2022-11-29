@@ -88,9 +88,6 @@ Participant’s Profile
 </script>
 @stop
 
-@section('title')
-    Terms of Use
-@stop
 
 @section('top-assets')
     <style>
@@ -137,6 +134,15 @@ Participant’s Profile
             text-transform: none;
             background-color: #DDFFDD;
         }
+        @media only screen and (max-width: 600px) {
+ .rounded-pill{
+    margin-bottom:20px; 
+ }
+ 
+.nav-link {
+    margin-left: -10px;
+}
+}
     </style>
 @stop
 
@@ -169,33 +175,33 @@ Participant’s Profile
 
         <div class="border border-5  border-top-0 border-left-0 border-right-0"></div>
 
-        <div class="row  p-4">
+        <div class="row  pt-4 pb-4">
             <div class="">
-                <button type="button" class="btn btn-outline-primary btn-afc-orange rounded-pill p-">Cocoa</button>
+                <a href="#" class="btn btn-outline-primary btn-afc-orange rounded-pill p-">Cocoa</a>
             </div>
             <div class="">
-                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Cassava</button>
+                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Cassava</a>
             </div>
             <div class="">
-                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Cashew</button>
+                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Cashew</a>
             </div>
             <div class="">
-                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Seesame</button>
+                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Seesame</a>
             </div>
             <div class="">
-                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Ginger</button>
+                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Ginger</a>
             </div>
             <div class="">
-                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Soy - Beans</button>
+                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Soy - Beans</a>
             </div>
             <div class="">
-                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Spices</button>
+                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Spices</a>
             </div>
             <div class="">
-                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Rubber</button>
+                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Rubber</a>
             </div>
             <div class="">
-                <button type="button" class="btn btn-outline-primary btn-afc-green rounded-pill">Shea - Butter</button>
+                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Shea - Butter</a>
             </div>
         </div>
         <div class="border border-5  border-top-0 border-left-0 border-right-0"></div>
@@ -212,6 +218,7 @@ Participant’s Profile
 
         <div class="">
             <div class="">
+                
                 <div class="row">
 
                     @for ($i = 0; $i < 6; $i++)
@@ -235,49 +242,49 @@ Participant’s Profile
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="card border border-dark article-card shadow-none rounded-0" style="">
-                                                <img src="/images/product_image_1.png" class="p-5 img-fluid" alt="" style="">
+                                            <div class="card border border-dark article-card shadow-none rounded-0 " style="">
+                                                <img src="/images/product_image_1.png" class="p-4 " alt="" style="height:300px;width: auto;object-fit:contain; ">
                                             </div>
                                             <button type="button" class="btn btn-primary mt-3 btn-afc-orange-green rounded-pill text-afc-orange">Certified &#10003;</button>
                                         </div>
                                         <div class="col-md-8">
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="">
                                                     <h6>
                                                         Product Name
                                                     </h6>
                                                     <p>Reel Fruit & nut mix</p>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="">
                                                     <h6>Product Type</h6>
-                                                    <p>Processed Food</p>
+                                                    <p class="text-right">Processed Food</p>
                                                 </div>
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="">
                                                     <h6>
                                                         Quantity Available
                                                     </h6>
                                                     <p>20,000 MT</p>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="">
                                                     <h6>Production Capacity</h6>
-                                                    <p>30 T</p>
+                                                    <p class="text-right">30 T</p>
                                                 </div>
                                             </div>
 
 
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="">
                                                     <h6>
                                                         Packaging
                                                     </h6>
                                                     <p>Flexibag</p>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="">
                                                     <h6>Weight</h6>
-                                                    <p>14kg</p>
+                                                    <p class="text-right">14kg</p>
                                                 </div>
                                             </div>
                                         </div>

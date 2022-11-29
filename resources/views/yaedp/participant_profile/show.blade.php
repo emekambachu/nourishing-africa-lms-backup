@@ -137,6 +137,37 @@ Participant’s Profile
             text-transform: none;
             background-color: #DDFFDD;
         }
+        .product-details > h5{ 
+            font-family: Inter;
+font-size: 18px;
+font-weight: 500;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+color:#333333;
+
+        }
+        .product-details >p{
+            font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 19px;
+letter-spacing: 0em;
+text-align: left;
+
+        }
+        .carousel-item >img{
+            height: 466px;
+        width: auto;
+        object-fit:contain;
+border-radius: 10px;
+
+        }
+.certificates{
+padding: 30px;
+
+}
+
     </style>
 @stop
 
@@ -145,7 +176,7 @@ Participant’s Profile
    
 
     <div class="container-fluid p-5  container-2">
-        .
+        
 
         <ul class="nav">
             <li class="nav-item tab-heading " sty>
@@ -172,56 +203,46 @@ Participant’s Profile
     </div>
 
 
-  <div class="container-fluid p-5  container-2">
+  <div class="container-fluid p-5  container-2" style="margin-top: -90px;">
     <div class="row">
 
         <div class="col-md-6">
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
+            
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img src="/images/Rectangle 202.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>First slide label</h5>
-                      <p>Some representative placeholder content for the first slide.</p>
-                    </div>
+                  
                   </div>
                   <div class="carousel-item">
                     <img src="/images/Rectangle 202.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Second slide label</h5>
-                      <p>Some representative placeholder content for the second slide.</p>
-                    </div>
                   </div>
                   <div class="carousel-item">
                     <img src="/images/Rectangle 202.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Third slide label</h5>
-                      <p>Some representative placeholder content for the third slide.</p>
-                    </div>
                   </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
+                  <span class="sr-only">Next</span>
+                </a>
               </div>
         </div>
 
         <div class="col-md-6">
             <div class="row">
-                <div class="col-md-6">
-                    <h5 class="text-afc-orange">
+                <div class="col-md-6 product-details">
+                    <h6 class="text-afc-orange ">
                         Irish Cacao
-                    </h5>
+                    </h6>
                     <h5>
                         Type of product
                     </h5>
@@ -254,7 +275,7 @@ Participant’s Profile
                         Yes
                     </p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 product-details">
                    
                    <h5>
                     &nbsp;&nbsp;
@@ -294,47 +315,51 @@ Participant’s Profile
         </div>
     </div>
 
-    <div class="row mt-5">
-        <div class="col-md-6">
-            <div class="card  shadow-0 border border-dark p-3">
+    <div class="row mt-5 ">
+        <div class="col-md-6 container">
+            <div class="card  shadow-none border border-dark p-3 certificates" style="
+            ">
                 <h5>
                     Certificates
                 </h5>
 
-              <div class="row">
-<div class="col-md-3 mb-3">
-    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded">NAFDAC Certificate</button> 
-</div>
-<div class="col-md-3 mb-3">
-    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded">BIL Certificate</button> 
-</div>
-<div class="col-md-3 mb-3">
-    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded">ISO Certificate</button> 
-</div>
-<div class="col-md-3 mb-3">
-    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded">BIL Certificate</button> 
-</div>
-<div class="col-md-3 mb-3">
-    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded">BIL Certificate</button> 
-</div>
-<div class="col-md-3 mb-3">
-    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded">BIL Certificate</button> 
-</div>
+              <div class="">
+
+    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded mb-3">NAFDAC Certificate</button> 
+
+
+    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded mb-3">BIL Certificate</button> 
+
+
+    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded mb-3">ISO Certificate</button> 
+
+
+    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded mb-3">BIL Certificate</button> 
+
+
+    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded mb-3">BIL Certificate</button> 
+
+
+    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded mb-3">BIL Certificate</button> 
+
               </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <h5>
+        <div class="col-md-6 ">
+            
+            <h5 class="product-detail-heading mt-4">
                 About Jelli Farm Limited
             </h5>
-            <p>
+            <p class="product-details-text">
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
             </p>
+        
         </div>
     </div>
 
     <div class="row">
-     <div class="col-md-6">
+     <div class="col-md-6 container">
+        <div class="card  shadow-none border-0  p-3 certificates">
         <h5>
             Product Parameters
           </h5>
@@ -353,6 +378,7 @@ Participant’s Profile
           <p>
             Foreign Matter - 13
           </p>
+        </div>
      </div>
      <div class="col-md-6">
         <h5>
@@ -385,78 +411,78 @@ Participant’s Profile
                 <div class="row">
 
                     @for ($i = 0; $i < 2; $i++)
-                        <div class="col-sm-6 mb-3 rounded-5 ">
-                            <div class="card border border-dark article-card shadow-none bg-afc-orange-green">
+                    <div class="col-sm-6 mb-3 rounded-5">
+                        <div class="card border border-dark article-card shadow-none bg-afc-orange-green">
 
 
-                                <div class="card-body ">
+                            <div class="card-body ">
 
-                                    <p class="card-text">
-                                    <div class="d-flex justify-content-between ">
-                                        <div class="bg-afc-orange-green">
-                                            <img src="/images/Vector 2.png" alt="">
-                                            <h6>Jelli Farms Ltd</h6>
-                                        </div>
-                                        <div class="">
-                                            <button type="button"
-                                                class="btn btn-outline-primary btn-afc-orange rounded">See all
-                                                details</button>
-                                        </div>
+                                <p class="card-text ">
+                                <div class="d-flex justify-content-between">
+                                    <div class="">
+                                        <img src="/images/Vector 2.png" alt="">
+                                        <h6>Jelli Farms Ltd</h6>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="card border border-dark article-card shadow-none rounded bg-afc-orange-green" style="">
-                                                <img src="/images/product_image_1.png" class="p-5 img-fluid" alt="" style="">
-                                            </div>
-                                            <button type="button" class="btn btn-primary mt-3 btn-afc-orange-green rounded-pill text-afc-orange">Certified &#10003;</button>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <h6>
-                                                        Product Name
-                                                    </h6>
-                                                    <p>Reel Fruit & nut mix</p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <h6>Product Type</h6>
-                                                    <p>Processed Food</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <h6>
-                                                        Quantity Available
-                                                    </h6>
-                                                    <p>20,000 MT</p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <h6>Production Capacity</h6>
-                                                    <p>30 T</p>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <h6>
-                                                        Packaging
-                                                    </h6>
-                                                    <p>Flexibag</p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <h6>Weight</h6>
-                                                    <p>14kg</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="">
+                                        <a href="{{ route('yaedp.participant.profile.show',1) }}"
+                                            class="btn btn-outline-primary btn-afc-orange rounded">See all
+                                            details</a>
                                     </div>
-                                    </p>
-
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card border border-dark article-card shadow-none rounded-0 bg-afc-orange-green" style="">
+                                            <img src="/images/product_image_1.png" class="p-4 " alt="" style="height:300px;width: auto;object-fit:contain; ">
+                                        </div>
+                                        <button type="button" class="btn btn-primary mt-3 btn-afc-orange-green rounded-pill text-afc-orange">Certified &#10003;</button>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="">
+                                                <h6>
+                                                    Product Name
+                                                </h6>
+                                                <p>Reel Fruit & nut mix</p>
+                                            </div>
+                                            <div class="">
+                                                <h6>Product Type</h6>
+                                                <p class="text-right">Processed Food</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <div class="">
+                                                <h6>
+                                                    Quantity Available
+                                                </h6>
+                                                <p>20,000 MT</p>
+                                            </div>
+                                            <div class="">
+                                                <h6>Production Capacity</h6>
+                                                <p class="text-right">30 T</p>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="d-flex justify-content-between">
+                                            <div class="">
+                                                <h6>
+                                                    Packaging
+                                                </h6>
+                                                <p>Flexibag</p>
+                                            </div>
+                                            <div class="">
+                                                <h6>Weight</h6>
+                                                <p class="text-right">14kg</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </p>
+
                             </div>
                         </div>
+                    </div>
                     @endfor
                 </div>
             </div>
