@@ -6,8 +6,8 @@
 
 .card-body{
     box-sizing: border-box;
-    height: 209px;
+    height: 160px;
     background: #FFFFFF;
-    border: 1px solid #CCCCCC;
+    border: 1px solid #e2e0e0;
     border-radius: 0 0 10px 10px;
 }

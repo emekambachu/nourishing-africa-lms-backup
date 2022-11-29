@@ -4,6 +4,7 @@ use App\Http\Controllers\Base\BaseController;
 use App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController;
 use App\Http\Controllers\Yaedp\YaedpAccountController;
 use App\Http\Controllers\Yaedp\YaedpDocumentUploadController;
+use App\Http\Controllers\Yaedp\YaedpSelectedBusinessController;
 use App\Http\Controllers\Yaedp\YaedpSelectedCertificationController;
 use App\Http\Controllers\Yaedp\YaedpSelectedProductController;
 use App\Http\Controllers\Yaedp\YaedpSelectedUserController;
@@ -64,6 +65,12 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('/yaedp/{id}/products/add', [YaedpSelectedProductController::class, 'addUserProduct']);
     Route::post('/yaedp/{user_id}/products/{product_id}/update', [YaedpSelectedProductController::class, 'updateUserProduct']);
     Route::delete('/yaedp/{user_id}/products/{product_id}/delete', [YaedpSelectedProductController::class, 'deleteUserProduct']);
+
+    // Yaedp User Business
+    Route::get('/yaedp/{id}/business', [YaedpSelectedBusinessController::class, 'getUserBusiness']);
+    Route::post('/yaedp/{id}/business/add', [YaedpSelectedBusinessController::class, 'addUserBusiness']);
+    Route::post('/yaedp/{user_id}/business/{business_id}/update', [YaedpSelectedBusinessController::class, 'updateUserBusiness']);
+    Route::delete('/yaedp/{user_id}/business/{business_id}/delete', [YaedpSelectedBusinessController::class, 'deleteUserBusiness']);
 
     // Yaedp User Certificates
     Route::get('/yaedp/{id}/certificates', [YaedpSelectedCertificationController::class, 'getCertificates']);

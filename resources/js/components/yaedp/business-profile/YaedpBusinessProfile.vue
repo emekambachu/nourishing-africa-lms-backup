@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="tab-pane" id="tab2">
-                            <div class="row">
+                            <div class="row justify-content-center">
                                 <yaedp-business-details
                                     :selected_user="selected_user"
                                 ></yaedp-business-details>
