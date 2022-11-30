@@ -8,7 +8,7 @@
             </div>
         </div>
 
-        <div v-if="business === true || submittedBusiness" class="row justify-content-center">
+        <div v-if="business.length !== 0 || submittedBusiness" class="row justify-content-center">
             <div class="col-12 card-header">
                 <div class="row">
                     <div class="col-10">
@@ -317,8 +317,8 @@ export default {
     },
 
     mounted(){
-        condole.log('business -'+this.selected_user.business);
-        this.selected_user.business ? this.business = this.selected_user.business : null;
+        console.log('get business -'+this.selected_user.business);
+        this.selected_user.business.length !== 0 ? this.business = this.selected_user.business : null;
     }
 }
 </script>
