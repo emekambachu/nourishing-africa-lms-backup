@@ -317,6 +317,7 @@ export default {
     },
 
     mounted(){
+        condole.log('business -'+this.selected_user.business);
         this.selected_user.business ? this.business = this.selected_user.business : null;
     }
 }
