@@ -140,7 +140,7 @@
                             <label class="form-label">Value Chain</label>
                             <select class="form-control form-select"
                                     v-model="form.yaedp_value_chain_id" required>
-                                <option value="Jute Bag">Select</option>
+                                <option value="">Select</option>
                                 <option v-for="value in valueChains" :key="value.id"
                                         :value="value.id">{{ value.name }}</option>
                             </select>
@@ -373,6 +373,7 @@ export default {
         },
 
         getValueChains(){
+            console.log('getting value chains...')
             axios.get('/api/yaedp/value-chains')
                 .then((response) => {
                     if(response.data.success === true){

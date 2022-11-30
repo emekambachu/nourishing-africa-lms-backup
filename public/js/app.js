@@ -23498,6 +23498,7 @@ __webpack_require__.r(__webpack_exports__);
     getValueChains: function getValueChains() {
       var _this = this;
 
+      console.log('getting value chains...');
       axios.get('/api/yaedp/value-chains').then(function (response) {
         if (response.data.success === true) {
           _this.valueChains = response.data.value_chains;
@@ -25995,7 +25996,7 @@ var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "Jute Bag"
+  value: ""
 }, "Select", -1
 /* HOISTED */
 );
