@@ -23693,7 +23693,9 @@ __webpack_require__.r(__webpack_exports__);
       errorAlert: false,
       messageAlert: '',
       imageValidation: '',
-      errors: []
+      errors: [],
+      submittedBusiness: false,
+      business: {}
     };
   },
   methods: {
@@ -23749,40 +23751,56 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       // Install sweetalert2 to use
-      // Loading
-      this.formLoading();
-      var formData = new FormData(); // iterate form object
+      Swal.fire({
+        html: "<p>" + 'Once submitted, this action cannot be undone/modified unless contacting yaedp@afchub.org' + "</p>",
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Continue?',
+        denyButtonText: "No"
+      }).then(function (result) {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          _this.formLoading();
 
-      var self = this; //you need this because *this* will refer to Object.keys below`
-      //Iterate through each object field, key is name of the object field`
+          var formData = new FormData(); // iterate form object
 
-      Object.keys(this.form).forEach(function (key) {
-        console.log(key); // key
+          var self = _this; //you need this because *this* will refer to Object.keys below`
+          //Iterate through each object field, key is name of the object field`
 
-        console.log(self.form[key]); // value
+          Object.keys(_this.form).forEach(function (key) {
+            console.log(key); // key
 
-        formData.append(key, self.form[key]);
-      });
+            console.log(self.form[key]); // value
 
-      for (var i = 0; i < this.images.length; i++) {
-        formData.append("images[]", this.images[i].file);
-      }
+            formData.append(key, self.form[key]);
+          });
 
-      var config = {
-        headers: {
-          'content-type': 'multipart/form-data'
+          for (var i = 0; i < _this.images.length; i++) {
+            formData.append("images[]", _this.images[i].file);
+          }
+
+          var config = {
+            headers: {
+              'content-type': 'multipart/form-data'
+            }
+          };
+          axios.post('/api/yaedp/' + _this.selected_user.id + '/business/add', formData, config).then(function (response) {
+            if (response.data.success === true) {
+              _this.formSuccess(response);
+
+              _this.form = _this.business;
+              _this.submittedBusiness = true;
+            } else {
+              _this.formError(response);
+            }
+
+            console.log(response.data.message);
+          })["catch"](function (error) {
+            console.log(error);
+          });
+        } else if (result.isDenied) {
+          return false;
         }
-      };
-      axios.post('/api/yaedp/' + this.selected_user.id + '/business/add', formData, config).then(function (response) {
-        if (response.data.success === true) {
-          _this.formSuccess(response);
-        } else {
-          _this.formError(response);
-        }
-
-        console.log(response.data.message);
-      })["catch"](function (error) {
-        console.log(error);
       });
     },
     formLoading: function formLoading() {
@@ -23843,7 +23861,9 @@ __webpack_require__.r(__webpack_exports__);
       this.images = [];
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    this.selected_user.business ? this.business = this.selected_user.business : null;
+  }
 });
 
 /***/ }),
@@ -23863,6 +23883,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _YaedpProductDetails__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./YaedpProductDetails */ "./resources/js/components/yaedp/business-profile/YaedpProductDetails.vue");
 /* harmony import */ var _YaedpBusinessDetails__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./YaedpBusinessDetails */ "./resources/js/components/yaedp/business-profile/YaedpBusinessDetails.vue");
 /* harmony import */ var _YaedpCertifications__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./YaedpCertifications */ "./resources/js/components/yaedp/business-profile/YaedpCertifications.vue");
+/* harmony import */ var _YaedpCertificationForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./YaedpCertificationForm */ "./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue");
+
 
 
 
@@ -23872,7 +23894,8 @@ __webpack_require__.r(__webpack_exports__);
     YaedpAddProduct: _YaedpAddProduct__WEBPACK_IMPORTED_MODULE_0__["default"],
     YaedpProductDetails: _YaedpProductDetails__WEBPACK_IMPORTED_MODULE_1__["default"],
     YaedpBusinessDetails: _YaedpBusinessDetails__WEBPACK_IMPORTED_MODULE_2__["default"],
-    YaedpCertifications: _YaedpCertifications__WEBPACK_IMPORTED_MODULE_3__["default"]
+    YaedpCertifications: _YaedpCertifications__WEBPACK_IMPORTED_MODULE_3__["default"],
+    YaedpCertificationForm: _YaedpCertificationForm__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   props: {
     yaedp_user: Object,
@@ -23883,7 +23906,9 @@ __webpack_require__.r(__webpack_exports__);
       products: [],
       certificates: [],
       addProductComponent: false,
-      getProductsComponent: true
+      getProductsComponent: true,
+      showCertificationsComponent: true,
+      showCertificationFormComponent: false
     };
   },
   methods: {
@@ -23900,23 +23925,169 @@ __webpack_require__.r(__webpack_exports__);
         this.addProductComponent = false;
         this.getProductsComponent = true;
       }
-    } // getCertificates(){
-    //     axios.get('/api/yaedp/'+this.selected_user.id+'/certificates')
-    //         .then((response) => {
-    //             if(response.data.success === true){
-    //                 this.products = response.data.products;
-    //             }else{
-    //                 console.log(response.data.message);
-    //             }
-    //         }).catch((error) => {
-    //         console.log(error);
-    //     });
-    // },
+    },
+    addCertificationForm: function addCertificationForm(value) {
+      if (value === true) {
+        this.showCertificationsComponent = false;
+        this.showCertificationFormComponent = true;
+      }
+    },
+    showCertifications: function showCertifications(value) {
+      console.log(value);
 
+      if (value === true) {
+        this.showCertificationsComponent = true;
+        this.showCertificationFormComponent = false;
+      }
+    }
   },
   computed: {},
   watch: {},
   mounted: function mounted() {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=script&lang=js":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=script&lang=js ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    selected_user: Object
+  },
+  emits: ['show-certifications'],
+  data: function data() {
+    return {
+      form: {
+        name: '',
+        user_id: this.selected_user.id,
+        certificate_number: '',
+        issuing_organisation: '',
+        date_issued: '',
+        valid_to: ''
+      },
+      errorAlert: false,
+      messageAlert: '',
+      imageValidation: '',
+      errors: []
+    };
+  },
+  methods: {
+    emitShowCertifications: function emitShowCertifications(event) {
+      this.$emit('show-certifications', true);
+    },
+    submitCertification: function submitCertification() {
+      var _this = this;
+
+      // Install sweetalert2 to use
+      Swal.fire({
+        html: "<p>" + 'Once submitted, this action cannot be undone/modified unless contacting yaedp@afchub.org' + "</p>",
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Continue?',
+        denyButtonText: "No"
+      }).then(function (result) {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          _this.formLoading();
+
+          var formData = new FormData(); // iterate form object
+
+          var self = _this; //you need this because *this* will refer to Object.keys below`
+          //Iterate through each object field, key is name of the object field`
+
+          Object.keys(_this.form).forEach(function (key) {
+            console.log(key); // key
+
+            console.log(self.form[key]); // value
+
+            formData.append(key, self.form[key]);
+          });
+          axios.post('/api/yaedp/' + _this.selected_user.id + '/certifications/add', formData).then(function (response) {
+            if (response.data.success === true) {
+              _this.formSuccess(response);
+            } else {
+              _this.formError(response);
+            }
+
+            console.log(response.data.message);
+          })["catch"](function (error) {
+            console.log(error);
+          });
+        } else if (result.isDenied) {
+          return false;
+        }
+      });
+    },
+    formLoading: function formLoading() {
+      // Install sweetalert2 to use
+      // Loading
+      Swal.fire({
+        title: 'Please Wait !',
+        html: 'Submitting',
+        // add html attribute if you want or remove
+        allowOutsideClick: false,
+        showCancelButton: false,
+        showConfirmButton: false,
+        didOpen: function didOpen() {
+          Swal.showLoading();
+        }
+      });
+    },
+    formSuccess: function formSuccess(response) {
+      this.errors = [];
+      var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 10000,
+        timerProgressBar: true,
+        didOpen: function didOpen(toast) {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+      });
+      Toast.fire({
+        icon: 'success',
+        title: 'Submitted'
+      });
+    },
+    formError: function formError(response) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error Occurred',
+        showConfirmButton: false,
+        timer: 2500
+      });
+      this.errors = response.data.errors;
+      console.log(this.errors);
+      console.log(response.data.message);
+    },
+    formEmpty: function formEmpty() {
+      var self = this; //you need this because *this* will refer to Object.keys below`
+      //Iterate through each object field, key is name of the object field`
+
+      Object.keys(this.form).forEach(function (key) {
+        console.log(key); // key
+
+        console.log(self.form[key]); // value
+
+        self.form[key] = '';
+      });
+      this.images = [];
+    }
+  },
+  mounted: function mounted() {
+    this.getValueChains();
+  }
 });
 
 /***/ }),
@@ -23933,7 +24104,70 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Certifications"
+  emits: ['add-certification-form'],
+  // Always include emits
+  props: {
+    selected_user: Object
+  },
+  data: function data() {
+    return {
+      deleted: false,
+      certifications: []
+    };
+  },
+  methods: {
+    emitAddCertificationForm: function emitAddCertificationForm(event) {
+      this.$emit('add-certification-form', true);
+    },
+    getCertifications: function getCertifications() {
+      var _this = this;
+
+      console.log(this.selected_user.id);
+      axios.get('/api/yaedp/' + this.selected_user.id + '/certifications').then(function (response) {
+        if (response.data.success === true) {
+          _this.certifications = response.data.certifications;
+        } else {
+          console.log(response.data.message);
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    deleteCertification: function deleteCertification(id, index) {
+      var _this2 = this;
+
+      // Install sweetalert2 to use
+      Swal.fire({
+        title: 'Delete',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Yes',
+        denyButtonText: "No"
+      }).then(function (result) {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          _this2.formLoading();
+
+          axios["delete"]('/api/yaedp/' + _this2.selected_user.id + '/certifications/' + id + '/delete').then(function (response) {
+            if (response.data.success === true) {
+              _this2.certifications.splice(index, 1);
+
+              _this2.formSuccess(response);
+            } else {
+              _this2.formError(response);
+            }
+          })["catch"](function (error) {
+            console.log(error);
+          });
+        } else if (result.isDenied) {
+          return false;
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getCertifications();
+  }
 });
 
 /***/ }),
@@ -26699,19 +26933,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     );
   }), 128
   /* KEYED_FRAGMENT */
-  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $props.selected_user.business ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.selected_user.business.name), 1
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $data.business === true || $data.submittedBusiness ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.business.name), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.selected_user.date_of_establishment), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.business.date_of_establishment), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_11, _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.selected_user.years_of_operation), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_11, _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.business.years_of_operation), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_13, _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.selected_user.physical_address), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_13, _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.business.physical_address), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_15, _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.selected_user.online_address), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_15, _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.business.online_address), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_17, _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.selected_user.staff_size), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_17, _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.business.staff_size), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_19, _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.selected_user.business_description), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_19, _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.business.business_description), 1
   /* TEXT */
   )])])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", {
     key: 1,
@@ -26727,7 +26961,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
+    type: "date",
     "class": "form-input mb-2",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.form.date_of_establishment = $event;
@@ -26735,7 +26969,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.date_of_establishment]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
+    type: "number",
     "class": "form-input mb-2",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.form.years_of_operation = $event;
@@ -26871,20 +27105,13 @@ var _hoisted_10 = {
 var _hoisted_11 = {
   "class": "row justify-content-center"
 };
-
-var _hoisted_12 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "tab-pane",
-    id: "tab3"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "row"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "col-12"
-  })])], -1
-  /* HOISTED */
-  );
-});
-
+var _hoisted_12 = {
+  "class": "tab-pane",
+  id: "tab3"
+};
+var _hoisted_13 = {
+  "class": "row justify-content-center"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_yaedp_product_details = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("yaedp-product-details");
 
@@ -26892,7 +27119,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_yaedp_business_details = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("yaedp-business-details");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                <div v-if=\"formError\" class=\"alert alert-danger text-center\" role=\"alert\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    <button aria-label=\"Close\" class=\"close\" data-dismiss=\"alert\" type=\"button\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                        <span aria-hidden=\"true\">&times;</span>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    </button>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    <strong>{{ alertMessage }}</strong>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                </div>"), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [$data.getProductsComponent ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_yaedp_product_details, {
+  var _component_yaedp_certifications = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("yaedp-certifications");
+
+  var _component_yaedp_certification_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("yaedp-certification-form");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [$data.getProductsComponent ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_yaedp_product_details, {
     onAddProductForm: $options.addProductForm,
     selected_user: $props.selected_user
   }, null, 8
@@ -26907,7 +27138,191 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     selected_user: $props.selected_user
   }, null, 8
   /* PROPS */
-  , ["selected_user"])])]), _hoisted_12])])])])]);
+  , ["selected_user"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [$data.showCertificationsComponent ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_yaedp_certifications, {
+    key: 0,
+    onAddCertificationForm: $options.addCertificationForm,
+    selected_user: $props.selected_user
+  }, null, 8
+  /* PROPS */
+  , ["onAddCertificationForm", "selected_user"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.showCertificationFormComponent ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_yaedp_certification_form, {
+    key: 1,
+    onShowCertifications: $options.showCertifications,
+    selected_user: $props.selected_user
+  }, null, 8
+  /* PROPS */
+  , ["onShowCertifications", "selected_user"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])])])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=template&id=f9439572":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=template&id=f9439572 ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "col-md-8"
+};
+var _hoisted_2 = {
+  "class": "row"
+};
+var _hoisted_3 = {
+  "class": "col-12"
+};
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa fa-lemon mr-1"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" My Certifications");
+
+var _hoisted_6 = [_hoisted_4, _hoisted_5];
+var _hoisted_7 = {
+  key: 0,
+  "class": "col-12"
+};
+var _hoisted_8 = {
+  "class": "row"
+};
+var _hoisted_9 = {
+  "class": "col-12"
+};
+var _hoisted_10 = {
+  "class": "row"
+};
+var _hoisted_11 = {
+  "class": "col-md-12"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Name", -1
+/* HOISTED */
+);
+
+var _hoisted_13 = {
+  "class": "col-md-12"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Certificate Number", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = {
+  "class": "col-md-12"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Issuing Organisation", -1
+/* HOISTED */
+);
+
+var _hoisted_17 = {
+  "class": "col-md-12"
+};
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Date Issued", -1
+/* HOISTED */
+);
+
+var _hoisted_19 = {
+  "class": "col-md-12"
+};
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Validity", -1
+/* HOISTED */
+);
+
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "d-flex justify-content-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  style: {
+    "width": "150px"
+  },
+  "class": "module-btn bg-light-brown d-flex justify-content-center"
+}, " Add")], -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $options.emitShowCertifications && $options.emitShowCertifications.apply($options, arguments);
+    }),
+    "class": "module-btn-2 na-bg-dark-green text-white"
+  }, _hoisted_6)]), $data.errors.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.errors, function (error, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
+      "class": "text-danger",
+      key: index
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(error), 1
+    /* TEXT */
+    );
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    onSubmit: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.submitCertification && $options.submitCertification.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    "class": "form-input mb-2",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.form.name = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "number",
+    "class": "form-input mb-2",
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.form.certificate_number = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.certificate_number]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    "class": "form-input mb-2",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.form.issuing_organisation = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.issuing_organisation]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "date",
+    "class": "form-input mb-2",
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $data.form.date_issued = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.date_issued]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "date",
+    "class": "form-input mb-2",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $data.form.valid_to = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.valid_to]])])])])]), _hoisted_21], 32
+  /* HYDRATE_EVENTS */
+  )]);
 }
 
 /***/ }),
@@ -26923,8 +27338,140 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render)
 /* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0,
+  "class": "col-6 text-center"
+};
+var _hoisted_2 = ["src"];
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "No Certification added", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = {
+  "class": "col-12 text-center"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa fa-plus"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add New Certification");
+
+var _hoisted_7 = [_hoisted_5, _hoisted_6];
+var _hoisted_8 = {
+  "class": "row m-1"
+};
+var _hoisted_9 = {
+  "class": "col-12 card-header"
+};
+var _hoisted_10 = {
+  "class": "row"
+};
+var _hoisted_11 = {
+  "class": "col-10"
+};
+var _hoisted_12 = {
+  "class": "col-2"
+};
+var _hoisted_13 = ["onClick"];
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "fa fa-pen-alt text-warning float-right",
+  title: "edit"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_15 = {
+  "class": "col-12 card-body"
+};
+var _hoisted_16 = {
+  "class": "row"
+};
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-6"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Certificate Number:")], -1
+/* HOISTED */
+);
+
+var _hoisted_18 = {
+  "class": "col-6"
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-6"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Issuing Organisation:")], -1
+/* HOISTED */
+);
+
+var _hoisted_20 = {
+  "class": "col-6"
+};
+
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-6"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Date Issued:")], -1
+/* HOISTED */
+);
+
+var _hoisted_22 = {
+  "class": "col-6"
+};
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-6"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Validity:")], -1
+/* HOISTED */
+);
+
+var _hoisted_24 = {
+  "class": "col-6"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return null;
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [$data.certifications.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: '/images/icons/no-certificates.png',
+    width: "300"
+  }, null, 8
+  /* PROPS */
+  , _hoisted_2), _hoisted_3])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $options.emitAddCertificationForm && $options.emitAddCertificationForm.apply($options, arguments);
+    }),
+    "class": "module-btn-2 na-bg-dark-green text-white"
+  }, _hoisted_7)]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.certifications, function (cert, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      key: cert.id,
+      "class": "col-md-4"
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(cert.name), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+      onClick: function onClick($event) {
+        return $options.deleteCertification(cert.id, index);
+      },
+      "class": "fa fa-trash-alt text-danger float-left",
+      title: "delete"
+    }, null, 8
+    /* PROPS */
+    , _hoisted_13), _hoisted_14])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(cert.cartificate_number), 1
+    /* TEXT */
+    )]), _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(cert.issuing_organisation), 1
+    /* TEXT */
+    )]), _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(cert.date_issued), 1
+    /* TEXT */
+    )]), _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(cert.valid_to), 1
+    /* TEXT */
+    )])])])])]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))], 64
+  /* STABLE_FRAGMENT */
+  );
 }
 
 /***/ }),
@@ -26944,7 +27491,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = {
   key: 0,
-  "class": "col-12 text-center"
+  "class": "col-6 text-center"
 };
 var _hoisted_2 = ["src"];
 
@@ -26969,21 +27516,21 @@ var _hoisted_8 = {
   "class": "row m-1"
 };
 var _hoisted_9 = {
-  "class": "col-12 card-header"
+  "class": "col-12 card-header na-bg-lemon2"
 };
 var _hoisted_10 = {
   "class": "row"
 };
 var _hoisted_11 = {
-  "class": "col-10"
+  "class": "col-8"
 };
 var _hoisted_12 = {
-  "class": "col-2"
+  "class": "col-4"
 };
 var _hoisted_13 = ["onClick"];
 
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "fa fa-pen-alt text-danger float-right",
+  "class": "fa fa-pen-alt text-warning float-right",
   title: "edit"
 }, null, -1
 /* HOISTED */
@@ -27004,7 +27551,7 @@ var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [$data.products.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: '/images/icons/no-product.png',
-    width: "500"
+    width: "300"
   }, null, 8
   /* PROPS */
   , _hoisted_2), _hoisted_3])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -54454,6 +55001,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _YaedpCertificationForm_vue_vue_type_template_id_f9439572__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./YaedpCertificationForm.vue?vue&type=template&id=f9439572 */ "./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=template&id=f9439572");
+/* harmony import */ var _YaedpCertificationForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./YaedpCertificationForm.vue?vue&type=script&lang=js */ "./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=script&lang=js");
+/* harmony import */ var C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_YaedpCertificationForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpCertificationForm_vue_vue_type_template_id_f9439572__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/components/yaedp/business-profile/YaedpCertifications.vue":
 /*!********************************************************************************!*\
   !*** ./resources/js/components/yaedp/business-profile/YaedpCertifications.vue ***!
@@ -54650,6 +55225,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=script&lang=js":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_YaedpCertificationForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_YaedpCertificationForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./YaedpCertificationForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/yaedp/business-profile/YaedpCertifications.vue?vue&type=script&lang=js":
 /*!********************************************************************************************************!*\
   !*** ./resources/js/components/yaedp/business-profile/YaedpCertifications.vue?vue&type=script&lang=js ***!
@@ -54806,6 +55397,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_YaedpBusinessProfile_vue_vue_type_template_id_046df932_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_YaedpBusinessProfile_vue_vue_type_template_id_046df932_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./YaedpBusinessProfile.vue?vue&type=template&id=046df932&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/yaedp/business-profile/YaedpBusinessProfile.vue?vue&type=template&id=046df932&scoped=true");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=template&id=f9439572":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=template&id=f9439572 ***!
+  \*****************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_YaedpCertificationForm_vue_vue_type_template_id_f9439572__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_YaedpCertificationForm_vue_vue_type_template_id_f9439572__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./YaedpCertificationForm.vue?vue&type=template&id=f9439572 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=template&id=f9439572");
 
 
 /***/ }),

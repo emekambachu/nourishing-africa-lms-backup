@@ -72,9 +72,15 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('/yaedp/{user_id}/business/{business_id}/update', [YaedpSelectedBusinessController::class, 'updateUserBusiness']);
     Route::delete('/yaedp/{user_id}/business/{business_id}/delete', [YaedpSelectedBusinessController::class, 'deleteUserBusiness']);
 
-    // Yaedp User Certificates
-    Route::get('/yaedp/{id}/certificates', [YaedpSelectedCertificationController::class, 'getCertificates']);
-    Route::post('/yaedp/{id}/certificates/add', [YaedpSelectedCertificationController::class, 'addUserCertificate']);
+    // Yaedp User Certifications
+    Route::get('/yaedp/{id}/certifications',
+        [YaedpSelectedCertificationController::class, 'getCertifications']);
+    Route::post('/yaedp/{id}/certifications/add',
+        [YaedpSelectedCertificationController::class, 'addUserCertifications']);
+    Route::post('/yaedp/{user_id}/certifications/{cert_id}/update',
+        [YaedpSelectedCertificationController::class, 'updateUserCertification']);
+    Route::delete('/yaedp/{user_id}/certifications/{cert_id}/delete',
+        [YaedpSelectedCertificationController::class, 'deleteUserCertification']);
 });
 
 // YAEDP Export Diagnostic Tool

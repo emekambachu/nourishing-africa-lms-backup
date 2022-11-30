@@ -1,7 +1,7 @@
 <template>
 
-    <div v-if="products.length === 0" class="col-12 text-center">
-        <img :src="'/images/icons/no-product.png'" width="500"/>
+    <div v-if="products.length === 0" class="col-6 text-center">
+        <img :src="'/images/icons/no-product.png'" width="300"/>
         <p>No product added</p>
     </div>
 
@@ -13,16 +13,16 @@
 
     <div v-for="(product, index) in products" :key="product.id" class="col-md-4">
         <div class="row m-1">
-            <div class="col-12 card-header">
+            <div class="col-12 card-header na-bg-lemon2">
                 <div class="row">
-                    <div class="col-10">
+                    <div class="col-8">
                         {{ product.type }}
                     </div>
-                    <div class="col-2">
+                    <div class="col-4">
                         <span @click="deleteProduct(product.id, index)"
                               class="fa fa-trash-alt text-danger float-left"
                               title="delete"></span>
-                        <span class="fa fa-pen-alt text-danger float-right"
+                        <span class="fa fa-pen-alt text-warning float-right"
                               title="edit"></span>
                     </div>
                 </div>

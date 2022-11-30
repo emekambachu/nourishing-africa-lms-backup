@@ -4,13 +4,6 @@
 
             <div class="panel panel-primary tabs-style-2">
 
-<!--                <div v-if="formError" class="alert alert-danger text-center" role="alert">-->
-<!--                    <button aria-label="Close" class="close" data-dismiss="alert" type="button">-->
-<!--                        <span aria-hidden="true">&times;</span>-->
-<!--                    </button>-->
-<!--                    <strong>{{ alertMessage }}</strong>-->
-<!--                </div>-->
-
                 <div class="tab-menu-heading">
                     <div class="tabs-menu1">
                         <!-- Tabs -->
@@ -34,7 +27,6 @@
                     <div class="tab-content">
 
                         <div class="tab-pane active" id="tab1">
-
                             <div v-if="getProductsComponent" class="row justify-content-center">
                                 <yaedp-product-details
                                     @add-product-form="addProductForm"
@@ -49,7 +41,6 @@
                                     :selected_user="selected_user"
                                 ></yaedp-add-product>
                             </div>
-
                         </div>
 
                         <div class="tab-pane" id="tab2">
@@ -61,10 +52,15 @@
                         </div>
 
                         <div class="tab-pane" id="tab3">
-                            <div class="row">
-                                <div class="col-12">
-
-                                </div>
+                            <div class="row justify-content-center">
+                                <yaedp-certifications v-if="showCertificationsComponent"
+                                    @add-certification-form="addCertificationForm"
+                                    :selected_user="selected_user"
+                                ></yaedp-certifications>
+                                <yaedp-certification-form v-if="showCertificationFormComponent"
+                                    @show-certifications="showCertifications"
+                                    :selected_user="selected_user"
+                                ></yaedp-certification-form>
                             </div>
                         </div>
 
@@ -81,13 +77,15 @@ import YaedpAddProduct from "./YaedpAddProduct";
 import YaedpProductDetails from "./YaedpProductDetails";
 import YaedpBusinessDetails from "./YaedpBusinessDetails";
 import YaedpCertifications from "./YaedpCertifications";
+import YaedpCertificationForm from "./YaedpCertificationForm";
 
 export default {
     components: {
         YaedpAddProduct,
         YaedpProductDetails,
         YaedpBusinessDetails,
-        YaedpCertifications
+        YaedpCertifications,
+        YaedpCertificationForm
     },
     props: {
         yaedp_user: Object,
@@ -100,6 +98,8 @@ export default {
             certificates: [],
             addProductComponent: false,
             getProductsComponent: true,
+            showCertificationsComponent: true,
+            showCertificationFormComponent: false,
         }
     },
 
@@ -119,18 +119,21 @@ export default {
             }
         },
 
-        // getCertificates(){
-        //     axios.get('/api/yaedp/'+this.selected_user.id+'/certificates')
-        //         .then((response) => {
-        //             if(response.data.success === true){
-        //                 this.products = response.data.products;
-        //             }else{
-        //                 console.log(response.data.message);
-        //             }
-        //         }).catch((error) => {
-        //         console.log(error);
-        //     });
-        // },
+        addCertificationForm(value){
+            if(value === true){
+                this.showCertificationsComponent = false;
+                this.showCertificationFormComponent = true;
+            }
+        },
+
+        showCertifications(value){
+            console.log(value);
+            if(value === true){
+                this.showCertificationsComponent = true;
+                this.showCertificationFormComponent = false;
+            }
+        },
+
     },
     computed: {
 
