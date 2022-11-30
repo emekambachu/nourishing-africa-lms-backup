@@ -96,6 +96,7 @@ Route::get('member/login', static function (){
     return Redirect::to('http://nourishingafrica.com/login');
 })->name('member.login');
 
+
 // Disable default auth
 Auth::routes([
     'register' => false,
@@ -241,6 +242,28 @@ Route::get('/yaedp/export-diagnostic/start',
 Route::get('/yaedp/export-diagnostic/logout',
     [App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController::class, 'logout'])
     ->name('yaedp.export-diagnostic.logout');
+
+
+    //new routes for public users
+    Route::get('/yaedp/media', static function (){
+        return view('yaedp.media.index');
+    })->name('yaedp.media.pictures');
+
+    Route::get('/yaedp/media/videos', static function (){
+        return view('yaedp.media.videos');
+    })->name('yaedp.media.videos');
+
+    Route::get('/yaedp/articles', static function (){
+        return view('yaedp.articles.index');
+    })->name('yaedp.articles.index');
+
+    Route::get('/yaedp/participant/profile', static function (){
+        return view('yaedp.participant_profile.index');
+    })->name('yaedp.participant.profile');
+
+    Route::get('/yaedp/participant/profile/{id}', static function (){
+        return view('yaedp.participant_profile.show');
+    })->name('yaedp.participant.profile.show');
 
 //Tests
 Route::get('/yaedp/archive-ineligible-users', [TestController::class, 'archiveIneligibleUsers']);
