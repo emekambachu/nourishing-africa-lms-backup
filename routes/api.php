@@ -4,6 +4,7 @@ use App\Http\Controllers\Base\BaseController;
 use App\Http\Controllers\ExportDiagnosticTool\DiagnosticApplicationController;
 use App\Http\Controllers\Yaedp\YaedpAccountController;
 use App\Http\Controllers\Yaedp\YaedpDocumentUploadController;
+use App\Http\Controllers\Yaedp\YaedpSelectedBusinessController;
 use App\Http\Controllers\Yaedp\YaedpSelectedCertificationController;
 use App\Http\Controllers\Yaedp\YaedpSelectedProductController;
 use App\Http\Controllers\Yaedp\YaedpSelectedUserController;
@@ -65,9 +66,21 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('/yaedp/{user_id}/products/{product_id}/update', [YaedpSelectedProductController::class, 'updateUserProduct']);
     Route::delete('/yaedp/{user_id}/products/{product_id}/delete', [YaedpSelectedProductController::class, 'deleteUserProduct']);
 
-    // Yaedp User Certificates
-    Route::get('/yaedp/{id}/certificates', [YaedpSelectedCertificationController::class, 'getCertificates']);
-    Route::post('/yaedp/{id}/certificates/add', [YaedpSelectedCertificationController::class, 'addUserCertificate']);
+    // Yaedp User Business
+    Route::get('/yaedp/{id}/business', [YaedpSelectedBusinessController::class, 'getUserBusiness']);
+    Route::post('/yaedp/{id}/business/add', [YaedpSelectedBusinessController::class, 'addUserBusiness']);
+    Route::post('/yaedp/{user_id}/business/{business_id}/update', [YaedpSelectedBusinessController::class, 'updateUserBusiness']);
+    Route::delete('/yaedp/{user_id}/business/{business_id}/delete', [YaedpSelectedBusinessController::class, 'deleteUserBusiness']);
+
+    // Yaedp User Certifications
+    Route::get('/yaedp/{id}/certifications',
+        [YaedpSelectedCertificationController::class, 'getCertifications']);
+    Route::post('/yaedp/{id}/certifications/add',
+        [YaedpSelectedCertificationController::class, 'addUserCertifications']);
+    Route::post('/yaedp/{user_id}/certifications/{cert_id}/update',
+        [YaedpSelectedCertificationController::class, 'updateUserCertification']);
+    Route::delete('/yaedp/{user_id}/certifications/{cert_id}/delete',
+        [YaedpSelectedCertificationController::class, 'deleteUserCertification']);
 });
 
 // YAEDP Export Diagnostic Tool

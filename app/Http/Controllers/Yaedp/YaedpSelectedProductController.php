@@ -12,17 +12,17 @@ use Illuminate\Http\Request;
 class YaedpSelectedProductController extends Controller
 {
     protected YaedpAccountService $yaedpUser;
-    protected ExportSelectedUserService $selecteduser;
+    protected ExportSelectedUserService $selectedUser;
     protected YaedpSelectedProductService $product;
 
     public function __construct(
         YaedpAccountService $yaedpUser,
-        ExportSelectedUserService $selecteduser,
+        ExportSelectedUserService $selectedUser,
         YaedpSelectedProductService $product
     ){
         $this->middleware(['auth:yaedp-users', 'export.selected']);
         $this->yaedpUser = $yaedpUser;
-        $this->selecteduser = $selecteduser;
+        $this->selectedUser = $selectedUser;
         $this->product = $product;
     }
 

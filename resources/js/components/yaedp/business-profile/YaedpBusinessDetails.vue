@@ -1,20 +1,58 @@
 <template>
     <div class="col-md-8">
 
-        <div class="row">
-            <div class="col-12">
-                <button @click="emitShowProducts"
-                        class="module-btn-2 na-bg-dark-green text-white">
-                    <i class="fa fa-lemon mr-1"></i> My Products</button>
-            </div>
+        <div class="row justify-content-center">
             <div v-if="errors.length > 0" class="col-12">
                 <p class="text-danger" v-for="(error, index) in errors" :key="index">
-                    {{ error }}
+                    {{ error }}</p>
+            </div>
+        </div>
+
+        <div v-if="business === true || submittedBusiness" class="row justify-content-center">
+            <div class="col-12 card-header">
+                <div class="row">
+                    <div class="col-10">
+                        Business Details
+                    </div>
+                    <div class="col-2">
+                        <span class="fa fa-pen-alt text-danger float-right"
+                              title="edit"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 card-body">
+                <p>
+                    <strong class="na-text-dark-green">Name:</strong><br>
+                    {{ business.name }}
+                </p>
+                <p>
+                    <strong class="na-text-dark-green">Date of Establishment:</strong><br>
+                    {{ business.date_of_establishment }}
+                </p>
+                <p>
+                    <strong class="na-text-dark-green">Years of Operation:</strong><br>
+                    {{ business.years_of_operation }}
+                </p>
+                <p>
+                    <strong class="na-text-dark-green">Physical Address:</strong><br>
+                    {{ business.physical_address }}
+                </p>
+                <p>
+                    <strong class="na-text-dark-green">Online Address:</strong><br>
+                    {{ business.online_address }}
+                </p>
+                <p>
+                    <strong class="na-text-dark-green">Staff Size:</strong><br>
+                    {{ business.staff_size }}
+                </p>
+                <p>
+                    <strong class="na-text-dark-green">Business Description:</strong><br>
+                    {{ business.business_description }}
                 </p>
             </div>
         </div>
 
-        <form @submit.prevent="submitProduct">
+        <form v-else @submit.prevent="submitBusiness">
             <div class="row">
                 <div class="col-12">
                     <div class="row">
@@ -26,39 +64,38 @@
 
                         <div class="col-md-12">
                             <label class="form-label">Date of Establishment</label>
-                            <input type="text" class="form-input mb-2"
+                            <input type="date" class="form-input mb-2"
                                    v-model="form.date_of_establishment">
                         </div>
 
                         <div class="col-md-12">
                             <label class="form-label">Years of Operation</label>
-                            <input type="text" class="form-input mb-2"
+                            <input type="number" class="form-input mb-2"
                                    v-model="form.years_of_operation">
                         </div>
 
                         <div class="col-md-12">
-                            <label class="form-label">Product State/Form</label>
-                            <input type="text" class="form-input mb-2" v-model="form.form">
+                            <label class="form-label">Physical Address</label>
+                            <input type="text" class="form-input mb-2"
+                                   v-model="form.physical_address">
                         </div>
 
                         <div class="col-md-12">
-                            <label class="form-label">Production Capacity</label>
-                            <input type="text" class="form-input mb-2" v-model="form.capacity">
+                            <label class="form-label">Online Address</label>
+                            <input type="text" class="form-input mb-2"
+                                   v-model="form.online_address">
                         </div>
 
                         <div class="col-md-12">
-                            <label class="form-label">Packaging Method</label>
-                            <select class="form-control form-select"
-                                    v-model="form.packaging_method">
-                                <option value="Jute Bag">Jute Bag</option>
-                                <option value="Grainpro">Grainpro</option>
-                                <option value="Flexi-bag">Flexi-bag</option>
-                            </select>
+                            <label class="form-label">Staff Size</label>
+                            <input type="text" class="form-input mb-2"
+                                   v-model="form.staff_size">
                         </div>
 
                         <div class="col-md-12">
-                            <label class="form-label">Quantity Available</label>
-                            <input type="text" class="form-input mb-2" v-model="form.quantity_available">
+                            <label class="form-label">Business Description</label>
+                            <textarea class="form-input mb-2"
+                                      v-model="form.business_description"></textarea>
                         </div>
 
                         <div class="col-md-12">
@@ -90,7 +127,7 @@
             <div class="d-flex justify-content-center">
                 <button style="width:150px;"
                         class="module-btn bg-light-brown d-flex justify-content-center">
-                    Add</button>
+                    Submit</button>
             </div>
 
         </form>
@@ -105,26 +142,22 @@ export default {
     data(){
         return {
             form: {
-                name: '',
+                name: this.selected_user.name,
                 user_id: this.selected_user.id,
                 date_of_establishment: '',
                 years_of_operation: '',
-                source_of_material: '',
-                organically_produced: '',
-                nutrition_information_provided: '',
-                how_to_prepare: '',
-                weight_per_pack: '',
-                form: '',
-                capacity: '',
-                packaging_method: '',
-                quantity_available: '',
+                physical_address: '',
+                online_address: '',
+                staff_size: '',
+                business_description: '',
             },
-            valueChains: [],
             images: [],
             errorAlert: false,
             messageAlert: '',
             imageValidation: '',
-            errors: []
+            errors: [],
+            submittedBusiness: false,
+            business: {},
         }
     },
 
@@ -176,39 +209,51 @@ export default {
             this.images.splice(index, 1);
         },
 
-        submitProduct: function(){
+        submitBusiness(){
             // Install sweetalert2 to use
-            // Loading
-            this.formLoading();
-            let formData = new FormData();
-            // iterate form object
-            let self = this; //you need this because *this* will refer to Object.keys below`
-            //Iterate through each object field, key is name of the object field`
-            Object.keys(this.form).forEach(function(key) {
-                console.log(key); // key
-                console.log(self.form[key]); // value
-                formData.append(key, self.form[key]);
-            });
+            Swal.fire({
+                html: "<p>"+'Once submitted, this action cannot be undone/modified unless contacting yaedp@afchub.org'+"</p>",
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Continue?',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
 
-            for (let i = 0; i < this.images.length; i++) {
-                formData.append("images[]", this.images[i].file);
-            }
-
-            let config = {
-                headers: { 'content-type': 'multipart/form-data' }
-            }
-
-            axios.post('/api/yaedp/'+this.selected_user.id+'/products/add', formData, config)
-                .then((response) => {
-                    if(response.data.success === true){
-                        this.formSuccess(response)
-                    }else{
-                        this.formError(response)
+                    this.formLoading();
+                    let formData = new FormData();
+                    // iterate form object
+                    let self = this; //you need this because *this* will refer to Object.keys below`
+                    //Iterate through each object field, key is name of the object field`
+                    Object.keys(this.form).forEach(function(key) {
+                        console.log(key); // key
+                        console.log(self.form[key]); // value
+                        formData.append(key, self.form[key]);
+                    });
+                    for (let i = 0; i < this.images.length; i++) {
+                        formData.append("images[]", this.images[i].file);
                     }
-                    this.messageAlert = response.data.message;
-                    console.log(response.data.message);
-                }).catch((error) => {
-                console.log(error);
+                    let config = {
+                        headers: { 'content-type': 'multipart/form-data' }
+                    }
+                    axios.post('/api/yaedp/'+this.selected_user.id+'/business/add', formData, config)
+                        .then((response) => {
+                            if(response.data.success === true){
+                                this.formSuccess(response);
+                                this.form = this.business;
+                                this.submittedBusiness = true;
+                            }else{
+                                this.formError(response);
+                            }
+                            console.log(response.data.message);
+                        }).catch((error) => {
+                        console.log(error);
+                    });
+
+                } else if (result.isDenied) {
+                    return false;
+                }
             });
         },
 
@@ -271,8 +316,9 @@ export default {
 
     },
 
-    mounted() {
-
+    mounted(){
+        condole.log('business -'+this.selected_user.business);
+        this.selected_user.business ? this.business = this.selected_user.business : null;
     }
 }
 </script>
