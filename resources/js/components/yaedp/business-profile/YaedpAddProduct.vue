@@ -123,8 +123,9 @@
 
                         <div class="col-md-12">
                             <label class="form-label">Packaging Method</label>
-                            <select class="form-control form-select"
+                            <select class="form-control form-input-select"
                                     v-model="form.packaging_method">
+                                <option value="">Select</option>
                                 <option value="Jute Bag">Jute Bag</option>
                                 <option value="Grainpro">Grainpro</option>
                                 <option value="Flexi-bag">Flexi-bag</option>
@@ -138,17 +139,21 @@
 
                         <div class="col-md-12">
                             <label class="form-label">Value Chain</label>
-                            <select class="form-control form-select"
+                            <select class="form-control form-input-select"
                                     v-model="form.yaedp_value_chain_id" required>
                                 <option value="">Select</option>
-                                <option v-for="value in valueChains" :key="value.id"
+                                <option v-for="value in valueChains"
+                                        :key="value.id"
                                         :value="value.id">{{ value.name }}</option>
                             </select>
                         </div>
 
                         <div class="col-md-12">
                             <!--Numbers gotten from value chain array index-->
-                            <div class="row">
+                            <div v-if="form.yaedp_value_chain_id !== ''" class="row">
+                                <div class="col-12">
+                                    <h4 class="text-dark d-block">Product Parameters</h4>
+                                </div>
                                 <div v-if="form.yaedp_value_chain_id === 1" class="col-md-4">
                                     <label class="form-label">Moisture Content</label>
                                     <input type="text" class="form-input mb-2"
@@ -274,7 +279,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12 mt-2">
                             <div class="row">
                                 <div v-for="(image, index) in images" :key="index"
                                      class="col-md-3">
@@ -302,7 +307,7 @@
 
             <div class="d-flex justify-content-center">
                 <button style="width:150px;"
-                        class="module-btn bg-light-brown d-flex justify-content-center">
+                        class="module-btn-2 na-bg-dark-green text-white d-flex justify-content-center">
                     Add</button>
             </div>
 

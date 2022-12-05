@@ -26,7 +26,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Document</label>
-                                                <input @change="uploadFile(input, event)" type="file" class="form-control"/>
+                                                <input @change="uploadFile(input, event)"
+                                                       type="file" class="form-control"/>
                                                 <p v-if="input.validation_alert"
                                                    class="p-1 bg-danger text-center text-white">
                                                     {{ input.validation_alert }}</p>

@@ -31,6 +31,7 @@ class YaedpSubmitCertificationRequest extends FormRequest
             'issuing_organisation' => 'required',
             'date_issued' => 'required',
             'valid_to' => 'required',
+            'document' => 'required|mimes:doc,docx,pdf,jpg,jpeg,png|max:10048',
         ];
     }
 
