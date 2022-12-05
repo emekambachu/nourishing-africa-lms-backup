@@ -3,10 +3,23 @@
     border-radius: 10px 10px 0 0;
 }
 
-.card-body{
+.yaedp-card-body{
+    padding: 2px;
+    text-align: center;
     box-sizing: border-box;
     height: 160px;
     background: #FFFFFF;
     border: 1px solid #e2e0e0;
     border-radius: 0 0 10px 10px;
+}
+
+.border-rounded-green{
+    border: 1px solid #006600;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 7px;
+    gap: 6px;
 }

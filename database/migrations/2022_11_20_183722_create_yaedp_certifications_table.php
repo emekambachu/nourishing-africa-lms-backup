@@ -21,6 +21,7 @@ class CreateYaedpCertificationsTable extends Migration
             $table->string('issuing_organisation');
             $table->dateTime('date_issued');
             $table->dateTime('valid_to')->nullable();
+            $table->longText('document');
             $table->timestamps();
         });
     }

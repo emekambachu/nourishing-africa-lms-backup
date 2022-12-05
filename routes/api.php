@@ -74,9 +74,9 @@ Route::middleware('auth:sanctum')->group(function (){
 
     // Yaedp User Certifications
     Route::get('/yaedp/{id}/certifications',
-        [YaedpSelectedCertificationController::class, 'getCertifications']);
+        [YaedpSelectedCertificationController::class, 'getUserCertifications']);
     Route::post('/yaedp/{id}/certifications/add',
-        [YaedpSelectedCertificationController::class, 'addUserCertifications']);
+        [YaedpSelectedCertificationController::class, 'addUserCertification']);
     Route::post('/yaedp/{user_id}/certifications/{cert_id}/update',
         [YaedpSelectedCertificationController::class, 'updateUserCertification']);
     Route::delete('/yaedp/{user_id}/certifications/{cert_id}/delete',
