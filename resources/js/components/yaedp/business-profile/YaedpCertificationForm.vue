@@ -7,11 +7,12 @@
                         class="module-btn-2 na-bg-dark-green text-white">
                     <i class="fa fa-lemon mr-1"></i> My Certifications</button>
             </div>
+            <!--Error notifications-->
             <div v-if="errors.length > 0" class="col-12">
                 <p class="text-danger" v-for="(error, index) in errors" :key="index">
-                    {{ error }}
-                </p>
+                    {{ error }}</p>
             </div>
+            <p v-if="messageAlert !== ''" class="text-danger text-center">{{ messageAlert }}</p>
         </div>
 
         <form @submit.prevent="submitCertification">
@@ -82,7 +83,6 @@ export default {
                 valid_to: '',
                 document: null,
             },
-            errorAlert: false,
             messageAlert: '',
             documentValidation: '',
             errors: []
@@ -175,6 +175,7 @@ export default {
 
         formSuccess(response){
             this.errors = [];
+            this.messageAlert = '';
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -199,7 +200,8 @@ export default {
                 showConfirmButton: false,
                 timer: 2500
             });
-            this.errors = response.data.errors;
+            this.errors = response.data.errors !== undefined ? response.data.errors : [];
+            this.messageAlert = response.data.message !== undefined ? response.data.message : '';
             console.log(this.errors);
             console.log(response.data.message);
         },
