@@ -28,8 +28,8 @@ class YaedpSelectedCertificationService
 
         if($input['date_issued'] > $input['valid_to' ]){
             return [
-                'status' => false,
-                'message' => 'Expiry date must be greater than issued date'
+                'success' => false,
+                'message' => 'Validity must be greater than date issued'
             ];
         }
 

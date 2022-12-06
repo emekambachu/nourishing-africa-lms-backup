@@ -11,7 +11,7 @@
     </div>
 
     <template v-if="dataLoaded">
-        <div v-for="(product, index) in products" :key="product.id" class="col-md-6">
+        <div v-for="(product, index) in products" :key="product.id" class="col-md-5">
             <div class="row m-1">
                 <div class="col-12 card-header na-bg-lemon2">
                     <div class="row">
