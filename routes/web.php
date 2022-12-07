@@ -255,13 +255,19 @@ Route::get('/yaedp/export-diagnostic/logout',
     [App\Http\Controllers\Yaedp\YaedpVideoController::class, 'index'])
     ->name('yaedp.media.videos');
 
+   
+
     Route::get('/yaedp/articles', static function (){
         return view('yaedp.articles.index');
     })->name('yaedp.articles.index');
 
-    Route::get('/yaedp/participant/profile', static function (){
-        return view('yaedp.participant_profile.index');
-    })->name('yaedp.participant.profile');
+    Route::get('/yaedp/participant/profile',
+    [App\Http\Controllers\Yaedp\YaedpSelectedProductController::class, 'getProductsByValuedChain'])
+    ->name('yaedp.participant.profile');
+
+    // Route::get('/yaedp/participant/profile', static function (){
+    //     return view('yaedp.participant_profile.index');
+    // })->name('yaedp.participant.profile');
 
     Route::get('/yaedp/participant/profile/{id}', static function (){
         return view('yaedp.participant_profile.show');
