@@ -16,6 +16,7 @@ class YaedpCertification extends Model
         'issuing_organisation',
         'date_issued',
         'valid_to',
+        'document',
     ];
 
     public function user(){

@@ -11,46 +11,46 @@
             <i class="fa fa-plus"></i> Add New Certification</button>
     </div>
 
-    <div v-for="(cert, index) in certifications" :key="cert.id" class="col-md-4">
+    <div v-for="(cert, index) in certifications" :key="cert.id" class="col-md-6">
         <div class="row m-1">
             <div class="col-12 card-header">
                 <div class="row">
-                    <div class="col-10">
-                        {{ cert.name }}
+                    <div class="col-8">
+                        <h3 class="text-left text-orange">{{ cert.name }}</h3>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4">
+                        <span class="na-text-dark-green float-right border-rounded-green"
+                              title="edit">Edit</span>
                         <span @click="deleteCertification(cert.id, index)"
-                              class="fa fa-trash-alt text-danger float-left"
+                              class="fa fa-trash-alt text-danger float-right mr-2"
                               title="delete"></span>
-                        <span class="fa fa-pen-alt text-warning float-right"
-                              title="edit"></span>
                     </div>
                 </div>
             </div>
-            <div class="col-12 card-body">
+            <div class="col-12 yaedp-card-body p-2">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-6 float-left text-left">
                         <strong>Certificate Number:</strong>
                     </div>
-                    <div class="col-6">
-                        <p>{{ cert.cartificate_number }}</p>
+                    <div class="col-6 float-right text-left">
+                        <p>{{ cert.certificate_number }}</p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 float-left text-left">
                         <strong>Issuing Organisation:</strong>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 float-right text-left">
                         <p>{{ cert.issuing_organisation }}</p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 float-left text-left">
                         <strong>Date Issued:</strong>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 float-right text-left">
                         <p>{{ cert.date_issued }}</p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 float-left text-left">
                         <strong>Validity:</strong>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 float-right text-left">
                         <p>{{ cert.valid_to }}</p>
                     </div>
                 </div>
@@ -123,7 +123,7 @@ export default {
 
     },
 
-    mounted() {
+    mounted(){
         this.getCertifications();
     }
 }

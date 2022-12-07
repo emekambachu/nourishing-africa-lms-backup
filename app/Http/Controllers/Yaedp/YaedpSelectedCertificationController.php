@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Yaedp;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Yaedp\YaedpSubmitCertificationRequest;
 use App\Services\ExportDiagnosticTool\ExportSelectedUserService;
 use App\Services\ExportDiagnosticTool\YaedpSelectedCertificationService;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class YaedpSelectedCertificationController extends Controller
         }
     }
 
-    public function addUserCertification(Request $request, $id): \Illuminate\Http\JsonResponse
+    public function addUserCertification(YaedpSubmitCertificationRequest $request, $id): \Illuminate\Http\JsonResponse
     {
         try {
             $data = $this->certificate->addCertificationByUserId($request, $id);

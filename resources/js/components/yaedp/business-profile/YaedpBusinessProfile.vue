@@ -53,11 +53,11 @@
 
                         <div class="tab-pane" id="tab3">
                             <div class="row justify-content-center">
-                                <yaedp-certifications v-if="showCertificationsComponent"
+                                <yaedp-certifications v-if="showCertificationsComponent === true"
                                     @add-certification-form="addCertificationForm"
                                     :selected_user="selected_user"
                                 ></yaedp-certifications>
-                                <yaedp-certification-form v-if="showCertificationFormComponent"
+                                <yaedp-certification-form v-if="showCertificationFormComponent === true"
                                     @show-certifications="showCertifications"
                                     :selected_user="selected_user"
                                 ></yaedp-certification-form>

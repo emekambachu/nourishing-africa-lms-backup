@@ -10,15 +10,15 @@ use Intervention\Image\Facades\Image;
  */
 class CrudService
 {
-    protected function publishItem($item): array
+    protected static function publishItem($item): array
     {
         $message = '';
-        if($item->status === 'published'){
-            $item->status = 'pending';
+        if($item->status === 1){
+            $item->status = 0;
             $item_name = $item->name ?? $item->title;
             $message = $item_name.' is pending';
         }else{
-            $item->status = 'published';
+            $item->status = 1;
             $item_name = $item->name ?? $item->title;
             $message = $item_name.' is published';
         }
@@ -30,7 +30,7 @@ class CrudService
         ];
     }
 
-    public function compressAndUploadImage($request, $path, $width, $height)
+    public static function compressAndUploadImage($request, $path, $width, $height)
     {
         if($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();
@@ -56,7 +56,7 @@ class CrudService
         return false;
     }
 
-    protected function uploadDocument($request, $path)
+    public static function uploadDocument($request, $path)
     {
         if($file = $request->file('document')) {
             $name = time() . $file->getClientOriginalName();
@@ -66,14 +66,14 @@ class CrudService
         return false;
     }
 
-    protected function deleteFile($fileName, $filePath): void
+    public static function deleteFile($fileName, $filePath): void
     {
         if(File::exists(public_path() . '/'.$filePath.'/' . $fileName)){
             FILE::delete(public_path() . '/'.$filePath.'/' . $fileName);
         }
     }
 
-    protected function deleteRelations($items, $path = null): void
+    public static function deleteRelations($items, $path = null): void
     {
         if($items->count() > 0){
             foreach($items as $item){
