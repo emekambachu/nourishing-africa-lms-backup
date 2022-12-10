@@ -16,8 +16,7 @@ class CreateYaedpGalleriesTable extends Migration
         Schema::create('yaedp_galleries', static function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('path')->nullable();
-            $table->text('image');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

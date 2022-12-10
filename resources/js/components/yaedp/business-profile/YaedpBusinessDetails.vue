@@ -170,7 +170,7 @@ export default {
     data(){
         return {
             form: {
-                name: this.selected_user.name,
+                name: this.selected_user.business_name,
                 user_id: this.selected_user.id,
                 date_of_establishment: '',
                 years_of_operation: '',

@@ -79,7 +79,9 @@ export default {
         BulletListLoader,
         ListLoader,
     },
-    emits: ['add-product-form'], // Always include emits
+    emits: [
+        'add-product-form'
+    ], // Always include emits
     props: {
         selected_user: Object,
     },

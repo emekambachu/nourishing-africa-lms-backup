@@ -13,10 +13,15 @@ class YaedpBusinessDetail extends Model
         'user_id',
         'yaedp_value_chain_id',
         'name',
+        'description',
         'date_of_establishment',
         'years_of_operation',
         'physical_address',
-        'online_address',
+        'website',
+        'linkedin',
+        'facebook',
+        'instagram',
+        'twitter',
         'staff_size',
         'business_description'
     ];

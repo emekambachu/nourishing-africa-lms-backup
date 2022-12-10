@@ -15,6 +15,8 @@ class CreateYaedpGalleryVideosTable extends Migration
     {
         Schema::create('yaedp_gallery_videos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('yaedp_gallery_id')->index();
+            $table->longText('video');
             $table->timestamps();
         });
     }
