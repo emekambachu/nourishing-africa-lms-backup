@@ -41,6 +41,15 @@ class CreateYaedpProductParametersTable extends Migration
             $table->string('slaty')->nullable();
             $table->string('bean_count')->nullable();
             $table->string('mould')->nullable();
+            $table->string('impurity')->nullable();
+            $table->string('cluster_bean')->nullable();
+            $table->string('broken_beans')->nullable();
+            $table->string('float_rate')->nullable();
+            $table->string('total_defective_grains')->nullable();
+            $table->string('extraneous_matter')->nullable();
+            $table->string('split_beans')->nullable();
+            $table->string('microbes')->nullable();
+            $table->string('aflatoxin')->nullable();
             $table->timestamps();
         });
     }

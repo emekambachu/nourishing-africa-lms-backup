@@ -41,7 +41,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12" v-if="form.type === 'Raw Commodities'">
                             <label class="form-label">Source of Raw Material</label>
                             <input type="text" class="form-input mb-2"
                                    v-model="form.source_of_material">
@@ -104,32 +104,48 @@
                             </div>
                         </div>
 
-                        <div v-if="form.type === 'Processed Food'" class="col-md-12">
-                            <label class="form-label">Product Weight Per Pack (G/KG)</label>
-                            <input type="text" class="form-input mb-2" v-model="form.weight_per_pack">
-                        </div>
-
                         <div v-if="form.type === 'Raw Commodities'" class="col-md-12">
                             <label class="form-label">Product Weight Per Bag (KG)</label>
                             <input type="text" class="form-input mb-2" v-model="form.weight_per_bag">
                         </div>
 
+                        <div v-if="form.type === 'Processed Food'" class="col-md-12">
+                            <label class="form-label">Product Weight Per Pack (G/KG)</label>
+                            <input type="text" class="form-input mb-2" v-model="form.weight_per_pack">
+                        </div>
+
                         <div class="col-md-12">
                             <label v-if="form.type === 'Processed Food'"
                                    class="form-label">Production Capacity Per Month (KG)</label>
-                            <label v-if="form.type === 'Raw Commodities'"
+                            <label v-else
                                    class="form-label">Production Capacity Per Month (Metric Ton)</label>
                             <input type="text" class="form-input mb-2" v-model="form.capacity">
                         </div>
 
-                        <div class="col-md-12">
+                        <div v-if="form.type === 'Raw Commodities'" class="col-md-12">
                             <label class="form-label">Packaging Material</label>
                             <select class="form-control form-input-select"
                                     v-model="form.packaging_method">
                                 <option value="">Select</option>
                                 <option value="Jute Bag">Jute Bag</option>
-                                <option value="Grainpro">Grainpro</option>
-                                <option value="Flexi-bag">Flexi-bag</option>
+                                <option value="Polypropylene Sacks">Polypropylene Sacks</option>
+                            </select>
+                        </div>
+
+                        <div v-if="form.type === 'Processed Food'" class="col-md-12">
+                            <label class="form-label">Packaging Material</label>
+                            <select class="form-control form-input-select"
+                                    v-model="form.packaging_method" required>
+                                <option value="">Select</option>
+                                <option value="Plastic Bag">Plastic Bag</option>
+                                <option value="Foil Sealed bag">Foil Sealed bag</option>
+                                <option value="Glass Bottle">Glass Bottle</option>
+                                <option value="Plastic Bottle">Plastic Bottle</option>
+                                <option value="Pouch">Pouch</option>
+                                <option value="Paper Box">Paper Box</option>
+                                <option value="Plastic Jar">Plastic Jar</option>
+                                <option value="Glass Jar">Glass Jar</option>
+                                <option value="Aluminium Foil">Aluminium Foil</option>
                             </select>
                         </div>
 
@@ -151,137 +167,177 @@
 
                         <div class="col-md-12">
                             <!--Numbers gotten from value chain array index-->
-                            <div v-if="form.yaedp_value_chain_id !== ''" class="row">
-                                <div class="col-12">
-                                    <h4 class="text-dark d-block">Product Parameters</h4>
+                            <TransitionGroup name="bounce">
+                                <div v-if="form.yaedp_value_chain_id !== ''" class="row">
+                                    <div class="col-12">
+                                        <h6 class="text-dark d-block">Product Parameters</h6>
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 1 || form.yaedp_value_chain_id === 2 || form.yaedp_value_chain_id === 5 || form.yaedp_value_chain_id === 6"
+                                         class="col-md-4">
+                                        <label class="form-label">Moisture Content</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.moisture_content">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 1" class="col-md-4">
+                                        <label class="form-label">Extraneous Matter</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.extraneous_matter">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 1" class="col-md-4">
+                                        <label class="form-label">Total Defective Grains</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.total_defective_grains">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 1" class="col-md-4">
+                                        <label class="form-label">Split Beans</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.split_beans">
+                                    </div>
+
+                                    <div v-if="form.yaedp_value_chain_id === 2 || form.yaedp_value_chain_id === 3" class="col-md-4">
+                                        <label class="form-label">Oil Content</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.oil_content">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 2 || form.yaedp_value_chain_id === 5" class="col-md-4">
+                                        <label class="form-label">Admixture</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.admixture">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 2" class="col-md-4">
+                                        <label class="form-label">FFA</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.ffa">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 2 || form.yaedp_value_chain_id === 5" class="col-md-4">
+                                        <label class="form-label">Foreign Matters</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.foreign_matters">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 3" class="col-md-4">
+                                        <label class="form-label">Fibre Content</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.fibre_content">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 3" class="col-md-4">
+                                        <label class="form-label">Volatile Oil Content</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.volatile_oil_content">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 3" class="col-md-4">
+                                        <label class="form-label">Non-volatile Ether Extract</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.non_volatile_ether_extract">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
+                                        <label class="form-label">Proximate Content</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.proximate_content">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
+                                        <label class="form-label">Color</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.color">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
+                                        <label class="form-label">Dry Matter</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.dry_matter">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
+                                        <label class="form-label">Starch Yield</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.starch_yield">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
+                                        <label class="form-label">Amylose Content</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.amylose_content">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
+                                        <label class="form-label">Cynanide Content</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.cynanide_content">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
+                                        <label class="form-label">Flour Particle Size</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.flour_particle_size">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 5" class="col-md-4">
+                                        <label class="form-label">Nut Count</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.nut_count">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 5" class="col-md-4">
+                                        <label class="form-label">Kernel Out-turn Ratio (KOR)</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.kor">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 5" class="col-md-4">
+                                        <label class="form-label">Defective Nuts</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.defective_nuts">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 5" class="col-md-4">
+                                        <label class="form-label">Float Rate</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.float_rate">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 5 || form.yaedp_value_chain_id === 6" class="col-md-4">
+                                        <label class="form-label">Slaty</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.slaty">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 6" class="col-md-4">
+                                        <label class="form-label">Bean Count</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.bean_count">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 6" class="col-md-4">
+                                        <label class="form-label">Mould</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.mould">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 6 || form.yaedp_value_chain_id === 3"
+                                         class="col-md-4">
+                                        <label class="form-label">Impurity</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.impurity">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 6" class="col-md-4">
+                                        <label class="form-label">Cluster Bean</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.cluster_bean">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 6" class="col-md-4">
+                                        <label class="form-label">Broken Beans</label>
+                                        <input type="text" class="form-input mb-2"
+                                               v-model="form.broken_beans">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 3"
+                                         class="col-md-4">
+                                        <label class="form-label">Microbes</label>
+                                        <input type="text" class="form-input mb-2" v-model="form.microbes">
+                                    </div>
+                                    <div v-if="form.yaedp_value_chain_id === 3"
+                                         class="col-md-4">
+                                        <label class="form-label">Aflatoxin</label>
+                                        <input type="text" class="form-input mb-2" v-model="form.aflatoxin">
+                                    </div>
                                 </div>
-                                <div v-if="form.yaedp_value_chain_id === 1" class="col-md-4">
-                                    <label class="form-label">Moisture Content</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.moisture_content">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 1" class="col-md-4">
-                                    <label class="form-label">Crude Fat</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.crude_fat">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 1" class="col-md-4">
-                                    <label class="form-label">Protein Content</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.protein_content">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 2 || form.yaedp_value_chain_id === 5 || form.yaedp_value_chain_id === 6"
-                                     class="col-md-4">
-                                    <label class="form-label">Moisture Content</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.moisture_content">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 2" class="col-md-4">
-                                    <label class="form-label">Oil Content</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.oil_content">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 2" class="col-md-4">
-                                    <label class="form-label">Admixture</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.admixture">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 2" class="col-md-4">
-                                    <label class="form-label">FFA</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.ffa">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 2 || form.yaedp_value_chain_id === 6"
-                                     class="col-md-4">
-                                    <label class="form-label">Foreign Matters</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.foreign_matters">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 3" class="col-md-4">
-                                    <label class="form-label">Fibre Content</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.fibre_content">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 3" class="col-md-4">
-                                    <label class="form-label">Volatile Oil Content</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.volatile_oil_content">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 3" class="col-md-4">
-                                    <label class="form-label">Non-volatile Ether Extract</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.non_volatile_ether_extract">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
-                                    <label class="form-label">Proximate Content</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.proximate_content">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
-                                    <label class="form-label">Color</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.color">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
-                                    <label class="form-label">Dry Matter</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.dry_matter">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
-                                    <label class="form-label">Starch Yield</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.starch_yield">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
-                                    <label class="form-label">Amylose Content</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.amylose_content">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
-                                    <label class="form-label">Cynanide Content</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.cynanide_content">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 4" class="col-md-4">
-                                    <label class="form-label">Flour Particle Size</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.flour_particle_size">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 5" class="col-md-4">
-                                    <label class="form-label">Nut Count</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.nut_count">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 5" class="col-md-4">
-                                    <label class="form-label">KOR</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.kor">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 5" class="col-md-4">
-                                    <label class="form-label">Defective Nuts</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.defective_nuts">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 5 || form.yaedp_value_chain_id === 6" class="col-md-4">
-                                    <label class="form-label">Slaty</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.slaty">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 6" class="col-md-4">
-                                    <label class="form-label">Bean Count</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.bean_count">
-                                </div>
-                                <div v-if="form.yaedp_value_chain_id === 6" class="col-md-4">
-                                    <label class="form-label">Mould</label>
-                                    <input type="text" class="form-input mb-2"
-                                           v-model="form.mould">
-                                </div>
-                            </div>
+                            </TransitionGroup>
                         </div>
 
                         <div class="col-md-12 mt-2">
                             <div class="row">
+                                <div class="col-12">
+                                    <ul>
+                                        <li class="brand-text-orange">Upload a maximum of 3 images</li>
+                                        <li class="brand-text-orange">Kindly upload clear professional picture(s) of your product showing front and back view</li>
+                                        <li class="brand-text-orange">Only jpeg and png are required with a maximum of 5mb</li>
+                                    </ul>
+                                </div>
                                 <div v-for="(image, index) in images" :key="index"
                                      class="col-md-3">
                                     <img :src="image.src" :alt="image.file.name"
@@ -344,8 +400,6 @@ export default {
                 quantity_available: '',
 
                 moisture_content: '',
-                crude_fat: '',
-                protein_content: '',
                 oil_content: '',
                 admixture: '',
                 ffa: '',
@@ -366,6 +420,15 @@ export default {
                 slaty: '',
                 bean_count: '',
                 mould: '',
+                impurity: '',
+                cluster_bean: '',
+                broken_beans: '',
+                float_rate: '',
+                total_defective_grains: '',
+                split_beans: '',
+                extraneous_matter: '',
+                microbes: '',
+                aflatoxin: '',
             },
             valueChains: [],
             images: [],
@@ -544,5 +607,41 @@ export default {
 </script>
 
 <style scoped>
+/* Bounce transition */
+.bounce-enter-active {
+    animation: bounce-in 0.5s;
+}
+.bounce-leave-active {
+    animation: bounce-in 0.5s reverse;
+}
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 
+/* Fade transition */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+/* Zoom Transition */
+.zoom-enter-active, .zoom-leave-active {
+    transition: all .5s;
+}
+.zoom-enter, .zoom-leave-to {
+    transform: scale(0.5);
+}
 </style>

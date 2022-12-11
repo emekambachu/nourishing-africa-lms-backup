@@ -3,7 +3,6 @@
 namespace App\Models\Yaedp;
 
 use App\Models\ExportDiagnosticTool\ExportSelectedUser;
-use App\Models\Yaedp\YaedpValueChain;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

@@ -27,20 +27,22 @@
                     <div class="tab-content">
 
                         <div class="tab-pane active" id="tab1">
-                            <div v-if="getProductsComponent" class="row justify-content-center">
-                                <yaedp-product-details
-                                    @add-product-form="addProductForm"
-                                    :selected_user="selected_user"
-                                ></yaedp-product-details>
-                            </div>
+                            <TransitionGroup name="bounce">
+                                <div v-if="getProductsComponent" class="row justify-content-center">
+                                    <yaedp-product-details
+                                        @add-product-form="addProductForm"
+                                        :selected_user="selected_user"
+                                    ></yaedp-product-details>
+                                </div>
 
-                            <div v-if="addProductComponent" class="row justify-content-center">
-                                <yaedp-add-product
-                                    @show-products="showProducts"
-                                    :yaedp_user="yaedp_user"
-                                    :selected_user="selected_user"
-                                ></yaedp-add-product>
-                            </div>
+                                <div v-if="addProductComponent" class="row justify-content-center">
+                                    <yaedp-add-product
+                                        @show-products="showProducts"
+                                        :yaedp_user="yaedp_user"
+                                        :selected_user="selected_user"
+                                    ></yaedp-add-product>
+                                </div>
+                            </TransitionGroup>
                         </div>
 
                         <div class="tab-pane" id="tab2">
@@ -53,14 +55,16 @@
 
                         <div class="tab-pane" id="tab3">
                             <div class="row justify-content-center">
-                                <yaedp-certifications v-if="showCertificationsComponent === true"
-                                    @add-certification-form="addCertificationForm"
-                                    :selected_user="selected_user"
-                                ></yaedp-certifications>
-                                <yaedp-certification-form v-if="showCertificationFormComponent === true"
-                                    @show-certifications="showCertifications"
-                                    :selected_user="selected_user"
-                                ></yaedp-certification-form>
+                                <TransitionGroup name="bounce">
+                                    <yaedp-certifications v-if="showCertificationsComponent === true"
+                                        @add-certification-form="addCertificationForm"
+                                        :selected_user="selected_user"
+                                    ></yaedp-certifications>
+                                    <yaedp-certification-form v-if="showCertificationFormComponent === true"
+                                        @show-certifications="showCertifications"
+                                        :selected_user="selected_user"
+                                    ></yaedp-certification-form>
+                                </TransitionGroup>
                             </div>
                         </div>
 
@@ -162,5 +166,35 @@ input[type=file]::file-selector-button {
 input[type=file]::file-selector-button:hover {
     background-color: #c0f8c0;
     border: 1px solid #979191;
+}
+
+/* Bounce transition */
+.bounce-enter-active {
+    animation: bounce-in 0.5s;
+}
+.bounce-leave-active {
+    animation: bounce-in 0.5s reverse;
+}
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Fade transition */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
 }
 </style>

@@ -48,6 +48,7 @@
 
                         <div class="col-md-12">
                             <label class="form-label">Upload Document</label>
+                            <i>Kindly upload certifications related to the product like NAFDAC, SON, HALAL, FDA, HACCP, ECOCERT etc. <span class="text-danger">DO NOT upload license certifications (e.g NEPC, CAC)</span></i>
                             <input @change="uploadDocument" class="form-control" type="file"/>
                         </div>
 

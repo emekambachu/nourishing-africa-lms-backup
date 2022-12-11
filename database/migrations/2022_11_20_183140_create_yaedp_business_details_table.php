@@ -27,7 +27,9 @@ class CreateYaedpBusinessDetailsTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('twitter')->nullable();
             $table->string('facebook')->nullable();
-            $table->integer('staff_size')->nullable();
+            $table->string('staff_size')->nullable();
+            $table->boolean('export_license')->default(0);
+            $table->boolean('registered_cac')->default(0);
             $table->timestamps();
         });
     }
