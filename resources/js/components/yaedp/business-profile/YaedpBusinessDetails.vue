@@ -9,7 +9,7 @@
         </div>
 
         <template v-if="dataLoaded">
-            <div v-if="business !== null || submittedBusiness" class="row justify-content-center">
+            <div v-if="submittedBusiness || selected_user.business" class="row justify-content-center">
                 <div class="col-12 card-header">
                     <div class="row">
                         <div class="col-10">
@@ -28,6 +28,10 @@
                         {{ business.name }}
                     </p>
                     <p>
+                        <strong class="na-text-dark-green">Business Description:</strong>
+                        {{ business.business_description }}
+                    </p>
+                    <p>
                         <strong class="na-text-dark-green">Date of Establishment:</strong>
                         {{ business.date_of_establishment }}
                     </p>
@@ -40,19 +44,45 @@
                         {{ business.physical_address }}
                     </p>
                     <p>
-                        <strong class="na-text-dark-green">Online Address:</strong>
-                        {{ business.online_address }}
+                        <strong class="na-text-dark-green">Online:</strong><br>
+                        <a v-if="business.website" title="Website"
+                           :href="business.website">
+                            <img class="width-30 mr-1" :src="'/images/icons/web.png'"/>
+                        </a>
+                        <a v-if="business.linkedin" title="Linkedin"
+                           :href="business.linkedin">
+                            <img class="width-30 mr-1" :src="'/images/icons/linkedin.png'"/>
+                        </a>
+                        <a v-if="business.facebook" title="Facebook"
+                           :href="business.facebook">
+                            <img class="width-30 mr-1" :src="'/images/icons/facebook.png'"/>
+                        </a>
+                        <a v-if="business.twitter" title="Twitter"
+                           :href="business.twitter">
+                            <img class="width-30 mr-1" :src="'/images/icons/twitter.png'"/>
+                        </a>
+                        <a v-if="business.instagram" title="Instagram"
+                           :href="business.instagram">
+                            <img class="width-30 mr-1" :src="'/images/icons/instagram.png'"/>
+                        </a>
                     </p>
                     <p>
-                        <strong class="na-text-dark-green">Staff Size:</strong>
+                        <strong class="na-text-dark-green">Number of staff:</strong>
                         {{ business.staff_size }}
                     </p>
                     <p>
-                        <strong class="na-text-dark-green">Business Description:</strong>
-                        {{ business.business_description }}
+                        <strong class="na-text-dark-green">Export License:</strong>
+                        <span v-if="business.export_license"> Yes</span>
+                        <span v-else> No</span>
+                    </p>
+                    <p>
+                        <strong class="na-text-dark-green">Registered CAC:</strong>
+                        <span v-if="business.registered_cac"> Yes</span>
+                        <span v-else> No</span>
                     </p>
                 </div>
             </div>
+
             <form v-else @submit.prevent="submitBusiness">
                 <div class="row">
                     <div class="col-12">
@@ -365,7 +395,8 @@ export default {
                         .then((response) => {
                             if(response.data.success === true){
                                 this.formSuccess(response);
-                                this.form = this.business;
+                                // on submittion success, add form details to business object
+                                this.business = this.form;
                                 this.submittedBusiness = true;
                             }else{
                                 this.formError(response);
@@ -440,7 +471,7 @@ export default {
     },
 
     mounted(){
-        console.log('business -'+this.selected_user.business);
+        console.log('business -'+this.selected_user.business.name);
         this.getBusinessDetails();
     }
 }
