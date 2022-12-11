@@ -20,6 +20,7 @@ class YaedpProductDetail extends Model
         'nutrition_information_provided',
         'how_to_prepare',
         'weight_per_pack',
+        'weight_per_bag',
         'capacity',
         'packaging_method',
         'quantity_available',

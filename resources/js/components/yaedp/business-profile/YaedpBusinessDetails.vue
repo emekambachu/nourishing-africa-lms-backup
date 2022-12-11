@@ -372,8 +372,8 @@ export default {
                             }
                             console.log(response.data.message);
                         }).catch((error) => {
-                        console.log(error);
-                    });
+                            console.log(error);
+                        });
 
                 } else if (result.isDenied) {
                     return false;

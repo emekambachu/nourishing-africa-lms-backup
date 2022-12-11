@@ -21,9 +21,9 @@ class CreateYaedpProductDetailsTable extends Migration
             $table->string('type');
             $table->unsignedBigInteger('yaedp_value_chain_id')->index();
             $table->string('source_of_material')->nullable();
-            $table->boolean('originally_produced')->default(0);
-            $table->boolean('nutrition_information_provided')->default(0);
-            $table->boolean('how_to_prepare')->default(0);
+            $table->boolean('originally_produced')->default(0)->nullable();
+            $table->boolean('nutrition_information_provided')->default(0)->nullable();
+            $table->boolean('how_to_prepare')->default(0)->nullable();
             $table->string('weight_per_pack')->nullable();
             $table->string('weight_per_bag')->nullable();
             $table->string('capacity')->nullable();

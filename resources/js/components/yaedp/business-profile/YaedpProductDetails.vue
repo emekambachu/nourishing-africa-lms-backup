@@ -22,7 +22,7 @@
                             <span class="na-text-dark-green float-right border-rounded-green"
                                   title="edit">Edit</span>
                             <span @click="deleteProduct(product.id, index)"
-                                  class="fa fa-trash-alt text-danger float-right mr-2"
+                                  class="fa fa-trash-alt text-danger float-right mr-2 mt-1"
                                   title="delete"></span>
                         </div>
                     </div>
@@ -30,12 +30,16 @@
                 <div class="col-12 yaedp-card-body">
                     <div class="row">
                         <div class="col-12">
-                            <h3 class="na-text-dark-green">{{ product.title }}</h3>
+                            <h4 class="na-text-dark-green">{{ product.name }}</h4>
                         </div>
                         <div class="col-md-6">
-                            <p>
-                                <strong class="text-dark">Weight:</strong><br>
+                            <p v-if="product.weight_per_pack !== null">
+                                <strong class="text-dark">Weight per pack:</strong><br>
                                 {{ product.weight_per_pack }}
+                            </p>
+                            <p v-else>
+                                <strong class="text-dark">Weight per bag:</strong><br>
+                                {{ product.weight_per_bag }}
                             </p>
                         </div>
                         <div class="col-md-6">

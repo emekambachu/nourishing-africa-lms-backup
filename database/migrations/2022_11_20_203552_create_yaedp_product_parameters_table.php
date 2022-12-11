@@ -50,6 +50,7 @@ class CreateYaedpProductParametersTable extends Migration
             $table->string('split_beans')->nullable();
             $table->string('microbes')->nullable();
             $table->string('aflatoxin')->nullable();
+            $table->string('others')->nullable();
             $table->timestamps();
         });
     }
