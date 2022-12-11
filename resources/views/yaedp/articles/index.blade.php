@@ -155,22 +155,24 @@ YAEDP Articles
     <div class="">
         <div class="row">
 
-            @for ($i = 0; $i < 9; $i++)
+            @foreach ($articles as $article)
+              
+           
                 
             <div class="col-sm-4 mb-3 rounded-5">
                 <div class="card border border-dark article-card shadow-none" >
                   
                     <div class="card-body">
-                      <h5 class="card-title article-header">Article Title Here</h5>
+                      <h5 class="card-title article-header">{{ $article->title }}</h5>
                       <p class="card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
-                      </p>
+                        {!! Str::words($article->content , 50, ' ...') !!}
+                          </p>
                      
                     </div>
                   </div>
             </div>
            
-            @endfor
+            @endforeach
         </div>
     </div>
     {{-- <div class="row"> 

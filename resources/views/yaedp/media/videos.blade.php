@@ -162,27 +162,19 @@ Media | yaedp
 <div class="gallary">
     <div class="">
         <div class="row">
+          @foreach ($vedios as $item)
+              
+        
             <div class="col-sm-4 ">
                
                 <div class="embed-responsive embed-responsive-16by9 rounded">
-                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+                    <iframe class="embed-responsive-item" src="{{ $item->video }}"></iframe>
                 </div>
-                <h5>Short title for videos</h5>
+                <h5>{{ $item->title }}</h5>
             </div>
-            <div class="col-sm-4">
-               
-                <div class="embed-responsive embed-responsive-16by9 rounded">
-                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
-                </div>
-                <h5>Short title for videos</h5>
-            </div>
-            <div class="col-sm-4">
-               
-                <div class="embed-responsive embed-responsive-16by9 rounded">
-                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
-                </div>
-                <h5>Short title for videos</h5>
-            </div>
+            @endforeach
+           
+           
         </div>
     </div>
     {{-- <div class="row"> 

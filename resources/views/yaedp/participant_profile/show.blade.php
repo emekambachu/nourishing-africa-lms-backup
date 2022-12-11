@@ -198,7 +198,7 @@ padding: 30px;
             Participant’s Profile
         </h5>
 
-<p>Cocoa/ Jelli farm limited</p>
+<p>{{ $product->value_chain->name }}/ {{ $product->user->name }}</p>
         <div class="border border-5  border-top-0 border-left-0 border-right-0"></div>
     </div>
 
@@ -210,21 +210,21 @@ padding: 30px;
             
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    @foreach ($product->images as $image)  
+                  <li data-target="#carouselExampleIndicators" data-slide-to="{{  $loop->iteration -1 }}" class="{{ $loop->iteration == 1 ? 'active': '' }}"></li>
+                  @endforeach
+                  {{-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> --}}
                 </ol>
                 <div class="carousel-inner">
+
+                    @foreach ($product->images as $image)   
                   <div class="carousel-item active">
-                    <img src="/images/Rectangle 202.png" class="d-block w-100" alt="...">
+                    <img src="{{ $image->path.'/'.$image->image }}" class="d-block w-100" alt="...">
                   
                   </div>
-                  <div class="carousel-item">
-                    <img src="/images/Rectangle 202.png" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/images/Rectangle 202.png" class="d-block w-100" alt="...">
-                  </div>
+                  @endforeach
+                 
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -241,20 +241,20 @@ padding: 30px;
             <div class="row">
                 <div class="col-md-6 product-details">
                     <h6 class="text-afc-orange ">
-                        Irish Cacao
+                       {{$product->name}}
                     </h6>
                     <h5>
                         Type of product
                     </h5>
                     <p>
-                        Fresh agricultural commodity
+                        {{ $product->type }}
                     </p>
 
                     <h5>
                         Product Weight per pack
                     </h5>
                     <p>
-                        40 Kg
+                        {{ $product->weight_per_pack }}
                     </p>
                     <h5>
                         Product state / form
@@ -266,7 +266,7 @@ padding: 30px;
                         Quantitiy available
                     </h5>
                     <p>
-                        500 MT
+                        {{ $product->quantity_available }}
                     </p>
                     <h5>
                         Nutitional information provided?
@@ -296,7 +296,7 @@ padding: 30px;
                     Packaging method
                    </h5>
                    <p>
-                    Jute bag
+                    {{ $product->packaging_method }}
                    </p>
                    <h5>
                     Organically produced?
@@ -348,7 +348,7 @@ padding: 30px;
         <div class="col-md-6 ">
             
             <h5 class="product-detail-heading mt-4">
-                About Jelli Farm Limited
+                About {{ $product->user->name }}
             </h5>
             <p class="product-details-text">
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
@@ -385,13 +385,13 @@ padding: 30px;
             Contact Details
         </h5>
         <p>
-            Email - xyz@gmail.com
+            Email - {{ $product->user->email }}
         </p>
         <p>
-            Mobile number - 09048574892
+            Mobile number -  {{ $product->user->phone }}
         </p>
         <p>
-            Website - www.reelfruits.com
+            Website -  {{ $product->user->website }}
         </p>
      </div>
     </div>

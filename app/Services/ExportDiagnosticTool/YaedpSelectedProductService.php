@@ -31,6 +31,10 @@ class YaedpSelectedProductService
         return  YaedpProductDetail::where('yaedp_value_chain_id', $valued_chain->id);
     }    
     
+    public function getYaedpProductsById($id){
+        return $this->yaedpProductDetail()->where('id', $id);
+    }
+
     public function yaedpProductDetail(): YaedpProductDetail
     {
         return new YaedpProductDetail();

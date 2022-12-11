@@ -257,21 +257,22 @@ Route::get('/yaedp/export-diagnostic/logout',
 
    
 
-    Route::get('/yaedp/articles', static function (){
-        return view('yaedp.articles.index');
-    })->name('yaedp.articles.index');
+    // Route::get('/yaedp/articles', static function (){
+    //     return view('yaedp.articles.index');
+    // })->name('yaedp.articles.index');
+
+    Route::get('/yaedp/articles',
+    [App\Http\Controllers\Yaedp\ArticleController::class, 'index'])
+    ->name('yaedp.articles.index');
 
     Route::get('/yaedp/participant/profile',
     [App\Http\Controllers\Yaedp\YaedpSelectedProductController::class, 'getProductsByValuedChain'])
     ->name('yaedp.participant.profile');
 
-    // Route::get('/yaedp/participant/profile', static function (){
-    //     return view('yaedp.participant_profile.index');
-    // })->name('yaedp.participant.profile');
+    Route::get('/yaedp/participant/profile/{id}',
+    [App\Http\Controllers\Yaedp\YaedpSelectedProductController::class, 'getProductsById'])
+    ->name('yaedp.participant.profile.show');
 
-    Route::get('/yaedp/participant/profile/{id}', static function (){
-        return view('yaedp.participant_profile.show');
-    })->name('yaedp.participant.profile.show');
 
 //Tests
 Route::get('/yaedp/archive-ineligible-users', [TestController::class, 'archiveIneligibleUsers']);
