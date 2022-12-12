@@ -8,6 +8,7 @@ use App\Models\Yaedp\YaedpProductParameter;
 use App\Services\Base\CrudService;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use App\Services\Yaedp\YaedpValuedChainService;
 
 /**
  * Class ExportSelectedProductService.
@@ -15,11 +16,24 @@ use Intervention\Image\Facades\Image;
 class YaedpSelectedProductService
 {
     protected ExportSelectedUserService $selectedUser;
-    public function __construct(ExportSelectedUserService $selectedUser){
+    public function __construct(ExportSelectedUserService $selectedUser,YaedpValuedChainService $valuedChain){
         $this->selectedUser = $selectedUser;
+        $this->valuedChain = $valuedChain;
     }
 
     protected string $imagePath = 'photos/yaedp/products';
+
+
+    public function yaedpProductDetailByValuedChainName($valued_chain)
+    {
+        $valued_chain= $this->valuedChain->getValuedChainByName($valued_chain)->first();
+
+        return  YaedpProductDetail::where('yaedp_value_chain_id', $valued_chain->id);
+    }    
+    
+    public function getYaedpProductsById($id){
+        return $this->yaedpProductDetail()->where('id', $id);
+    }
 
     public function yaedpProductDetail(): YaedpProductDetail
     {

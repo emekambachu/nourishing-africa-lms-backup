@@ -41,6 +41,10 @@ class YaedpProductDetail extends Model
     {
         return $this->hasMany(YaedpProductImage::class, 'yaedp_product_detail_id', 'id');
     }
+    public function first_image(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(YaedpProductImage::class, 'yaedp_product_detail_id', 'id')->latest();
+    }
 
     public function parameter(): \Illuminate\Database\Eloquent\Relations\HasOne
     {

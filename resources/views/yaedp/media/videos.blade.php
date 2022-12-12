@@ -154,35 +154,27 @@ Media | yaedp
        
        
       </ul>
-
-      <h5 class="mt-5 text-afc-orange">Lagos Workshop Event</h5>
+      @foreach ($vedios as $item)
+      <h5 class="mt-5 text-afc-orange">{{ $item->title }}</h5>
 
 
 
 <div class="gallary">
     <div class="">
         <div class="row">
+        
+              
+          @foreach ($item->videos as $video)
             <div class="col-sm-4 ">
                
                 <div class="embed-responsive embed-responsive-16by9 rounded">
-                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+                    <iframe class="embed-responsive-item" src="{{ $video->video }}"></iframe>
                 </div>
-                <h5>Short title for videos</h5>
+                <h5>{{ $video->title }}</h5>
             </div>
-            <div class="col-sm-4">
-               
-                <div class="embed-responsive embed-responsive-16by9 rounded">
-                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
-                </div>
-                <h5>Short title for videos</h5>
-            </div>
-            <div class="col-sm-4">
-               
-                <div class="embed-responsive embed-responsive-16by9 rounded">
-                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
-                </div>
-                <h5>Short title for videos</h5>
-            </div>
+            
+           @endforeach
+           
         </div>
     </div>
     {{-- <div class="row"> 
@@ -209,7 +201,7 @@ Media | yaedp
     </div>
     </div>
 </div>
-
+@endforeach
  <br><br>
 
 

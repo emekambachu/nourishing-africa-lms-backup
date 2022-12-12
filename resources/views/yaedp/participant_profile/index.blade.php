@@ -196,33 +196,16 @@ text-align: left;
         <div class="border border-5  border-top-0 border-left-0 border-right-0"></div>
 
         <div class="row  pt-4 pb-4">
+            @foreach ($valued_chains as $valued_chain)
             <div class="">
-                <a href="#" class="btn btn-outline-primary btn-afc-orange rounded-pill p-">Cocoa</a>
+                <a href="{{ route('yaedp.participant.profile')."?valued_chain=$valued_chain->name"}}" class="btn btn-outline-primary  rounded-pill @if(returnActiveClass($_GET['valued_chain'] ?? '', $valued_chain->name , $loop->iteration)) btn-afc-orange @else  btn-afc-green @endif">{{ $valued_chain->name }}</a>
             </div>
-            <div class="">
+            @endforeach
+           
+            {{-- <div class="">
                 <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Cassava</a>
-            </div>
-            <div class="">
-                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Cashew</a>
-            </div>
-            <div class="">
-                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Seesame</a>
-            </div>
-            <div class="">
-                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Ginger</a>
-            </div>
-            <div class="">
-                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Soy - Beans</a>
-            </div>
-            <div class="">
-                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Spices</a>
-            </div>
-            <div class="">
-                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Rubber</a>
-            </div>
-            <div class="">
-                <a href="#" class="btn btn-outline-primary btn-afc-green rounded-pill">Shea - Butter</a>
-            </div>
+            </div> --}}
+           
         </div>
         <div class="border border-5  border-top-0 border-left-0 border-right-0"></div>
 
@@ -241,7 +224,7 @@ text-align: left;
                 
                 <div class="row">
 
-                    @for ($i = 0; $i < 6; $i++)
+                    @foreach ($products as $product)
                         <div class="col-sm-6 mb-3 rounded-5">
                             <div class="card border border-dark article-card shadow-none">
 
@@ -252,10 +235,10 @@ text-align: left;
                                     <div class="d-flex justify-content-between">
                                         <div class="">
                                             <img src="/images/Vector 2.png" alt="">
-                                            <h6>Jelli Farms Ltd</h6>
+                                            <h6>{{ $product->user->name }}</h6>
                                         </div>
                                         <div class="">
-                                            <a href="{{ route('yaedp.participant.profile.show',1) }}"
+                                            <a href="{{ route('yaedp.participant.profile.show',$product->id) }}"
                                                 class="btn btn-outline-primary btn-afc-orange rounded">See all
                                                 details</a>
                                         </div>
@@ -263,7 +246,7 @@ text-align: left;
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="card border border-dark article-card shadow-none rounded-0 " style="">
-                                                <img src="/images/product_image_1.png" class="p-4 " alt="" style="height:300px;width: auto;object-fit:contain; ">
+                                                <img src="{{ $product->first_image->path.'/'.$product->first_image->image }}" class="p-4 " alt="" style="height:300px;width: auto;object-fit:contain; ">
                                             </div>
                                             <button type="button" class="btn btn-primary mt-3 btn-afc-orange-green rounded-pill text-afc-orange">Certified &#10003;</button>
                                         </div>
@@ -273,11 +256,13 @@ text-align: left;
                                                     <h6>
                                                         Product Name
                                                     </h6>
-                                                    <p>Reel Fruit & nut mix</p>
+                                                    <p>{{ $product->name }}</p>
                                                 </div>
                                                 <div class="">
                                                     <h6>Product Type</h6>
-                                                    <p class="text-right">Processed Food</p>
+                                                    <p class="text-right">
+                                                        {{ $product->type }}
+                                                    </p>
                                                 </div>
                                             </div>
 
@@ -286,11 +271,15 @@ text-align: left;
                                                     <h6>
                                                         Quantity Available
                                                     </h6>
-                                                    <p>20,000 MT</p>
+                                                    <p>
+                                                        {{ $product->quantity_available }}
+                                                    </p>
                                                 </div>
                                                 <div class="">
                                                     <h6>Production Capacity</h6>
-                                                    <p class="text-right">30 T</p>
+                                                    <p class="text-right">
+                                                        {{ $product->capacity }}
+                                                    </p>
                                                 </div>
                                             </div>
 
@@ -300,11 +289,15 @@ text-align: left;
                                                     <h6>
                                                         Packaging
                                                     </h6>
-                                                    <p>Flexibag</p>
+                                                    <p>
+                                                        {{ $product->packaging_method }}
+                                                    </p>
                                                 </div>
                                                 <div class="">
                                                     <h6>Weight</h6>
-                                                    <p class="text-right">14kg</p>
+                                                    <p class="text-right">
+                                                        {{ $product->weight_per_pack }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -314,7 +307,7 @@ text-align: left;
                                 </div>
                             </div>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
             {{-- <div class="row"> 
