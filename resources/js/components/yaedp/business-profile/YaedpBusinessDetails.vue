@@ -9,7 +9,7 @@
         </div>
 
         <template v-if="dataLoaded">
-            <div v-if="submittedBusiness || selected_user.business !== ''"
+            <div v-if="submittedBusiness || business"
                  class="row justify-content-center">
                 <div class="col-12 card-header">
                     <div class="row">
