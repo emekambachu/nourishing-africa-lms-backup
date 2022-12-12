@@ -473,8 +473,8 @@ export default {
     },
 
     mounted(){
-        console.log('business -'+this.selected_user.business.name);
         this.getBusinessDetails();
+        console.log('business -'+this.selected_user.business.name);
     }
 }
 </script>
