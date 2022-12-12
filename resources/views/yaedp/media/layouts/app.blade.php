@@ -395,7 +395,7 @@ color: #000000;
                                             <ul id="accordion-mobile" class="nav navbar-nav no-margin alt-font text-normal d-none d-sm-none d-md-none d-lg-block" data-in="fadeIn" data-out="fadeOut" style="background-color: transparent !important;">
                             <li class="dropdown simple-dropdown" style="background-color: #efb443 !important; border-radius: 5px;">
                                 <a href="javascript:void(0)" class="m-0 text-white" style="background-color: #efb443 !important; padding: 8px; border-radius: 5px; font-family: inter; font-size: 14px;">
-                                    Login / Join
+                                    Participant Login 
                                     <i class="dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 </a>
                                 <!-- start sub menu -->

@@ -150,23 +150,31 @@
        
       </ul>
 
-      <h5 class="mt-5 text-afc-orange">Lagos Workshop Event</h5>
+
+
+      @foreach ($photos as $item)
+          
+     
+      <h5 class="mt-5 text-afc-orange">{{ $item->title }}</h5>
 
 
 
 <div class="gallary">
     <div class="row"> 
       
-      
+     
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 img-div">
-        <img src="/images/workshop_images/Rectangle 214.png"  class="img-fluid">
+        @foreach ($item->images as $image)
+        <img src="{{  $image->path.$image->image }}"  class="img-fluid">
+        @endforeach
+        {{-- <img src="/images/workshop_images/Rectangle 214.png"  class="img-fluid">
         <img src="/images/workshop_images/Rectangle 215.png"  class="img-fluid">
-        <img src="/images/workshop_images/Rectangle 216.png"  class="img-fluid">
+        <img src="/images/workshop_images/Rectangle 216.png"  class="img-fluid"> --}}
       </div>
       
       
       
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 img-div">
+      {{-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 img-div">
         <img src="/images/workshop_images/Rectangle 217.png"  class="img-fluid">
         <img src="/images/workshop_images/Rectangle 218.png"  class="img-fluid">
         <img src="/images/workshop_images/Rectangle 219.png"  class="img-fluid">
@@ -188,7 +196,7 @@
         <img src="/images/workshop_images/Rectangle 225.png"  class="img-fluid">
       </div>
       
-      
+       --}}
       
       
       
@@ -196,7 +204,7 @@
     </div>
     </div>
 </div>
-
+@endforeach
  <br><br>
 
 
