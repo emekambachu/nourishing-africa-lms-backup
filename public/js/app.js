@@ -23732,8 +23732,10 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.selected_user.business);
       axios.get('/api/yaedp/' + this.selected_user.id + '/business').then(function (response) {
         if (response.data.success === true) {
+          console.log('has business');
           _this.business = response.data.business;
         } else {
+          console.log('No business');
           console.log(response.data.message);
         }
 

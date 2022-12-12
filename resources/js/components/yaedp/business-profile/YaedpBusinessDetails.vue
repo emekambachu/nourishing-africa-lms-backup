@@ -307,8 +307,10 @@ export default {
             axios.get('/api/yaedp/'+this.selected_user.id+'/business')
                 .then((response) => {
                     if(response.data.success === true){
+                        console.log('has business');
                         this.business = response.data.business;
                     }else{
+                        console.log('No business');
                         console.log(response.data.message);
                     }
                     this.dataLoaded = true;
