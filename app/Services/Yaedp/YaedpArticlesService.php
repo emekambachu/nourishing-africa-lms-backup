@@ -9,7 +9,7 @@ class YaedpArticlesService
 
     public static function getAll(){
 
-        return   Article::where('type', '=', 'yaedp')
+        return   Article::where('type', '=', 'Yaedp')
         ->where('status', '=', 1)->whereNotNull('image_id');
     }
 
