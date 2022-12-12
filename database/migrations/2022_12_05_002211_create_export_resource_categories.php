@@ -15,6 +15,8 @@ class CreateExportResourceCategories extends Migration
     {
         Schema::create('export_resource_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

@@ -9,6 +9,11 @@ class ExportResourceCategory extends Model
 {
     use HasFactory;
     protected $fillable = [
-      'name'
+      'name',
+      'slug'
     ];
+
+    public function export_resources(){
+        return $this->hasMany(ExportResource::class, 'export_resource_category_id', 'id');
+    }
 }

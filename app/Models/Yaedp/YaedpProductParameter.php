@@ -45,6 +45,7 @@ class YaedpProductParameter extends Model
         'split_beans',
         'microbes',
         'aflatoxin',
+        'others',
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

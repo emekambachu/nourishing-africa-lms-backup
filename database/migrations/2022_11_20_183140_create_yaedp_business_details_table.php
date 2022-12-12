@@ -16,7 +16,7 @@ class CreateYaedpBusinessDetailsTable extends Migration
         Schema::create('yaedp_business_details', static function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedBigInteger('yaedp_value_chain_id')->index();
+            $table->unsignedBigInteger('yaedp_value_chain_id')->nullable();
             $table->string('name');
             $table->longText('business_description')->nullable();
             $table->dateTime('date_of_establishment');

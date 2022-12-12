@@ -15,6 +15,9 @@ class CreateExportResources extends Migration
     {
         Schema::create('export_resources', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('export_resource_category_id')->index();
+            $table->string('email');
+            $table->string('website')->nullable();
             $table->timestamps();
         });
     }

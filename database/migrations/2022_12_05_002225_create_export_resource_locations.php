@@ -15,6 +15,8 @@ class CreateExportResourceLocations extends Migration
     {
         Schema::create('export_resource_locations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('export_resource_id')->index();
+            $table->string('name');
             $table->timestamps();
         });
     }

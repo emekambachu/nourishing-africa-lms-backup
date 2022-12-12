@@ -18,20 +18,20 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-md-12">
-                            <label class="form-label">Product Name</label>
+                        <div class="col-md-12 mb-2">
+                            <label class="form-label text-dark">Product Name</label>
                             <input type="text" class="form-input mb-2"
                                    v-model="form.name">
                         </div>
 
-                        <div class="col-md-12">
-                            <label class="form-label">Product Description</label>
+                        <div class="col-md-12 mb-2">
+                            <label class="form-label text-dark">Product Description</label>
                             <textarea class="form-input mb-2" v-model="form.description"></textarea>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12 mb-2">
                             <div class="form-group">
-                                <p>Type of Product</p>
+                                <p class="text-dark">Type of Product</p>
                                 <select class="form-control form-input-select"
                                         v-model="form.type" required>
                                     <option value="">Select</option>
@@ -41,15 +41,15 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12" v-if="form.type === 'Raw Commodities'">
-                            <label class="form-label">Source of Raw Material</label>
+                        <div class="col-md-12 mb-2" v-if="form.type === 'Raw Commodities'">
+                            <label class="form-label text-dark">Source of Raw Material</label>
                             <input type="text" class="form-input mb-2"
                                    v-model="form.source_of_material">
                         </div>
 
-                        <div v-if="form.type === 'Processed Food'" class="col-md-12">
+                        <div v-if="form.type === 'Processed Food'" class="col-md-12 mb-2">
                             <div class="form-group">
-                                <p>Organically Produced</p>
+                                <p class="text-dark">Organically Produced</p>
                                 <div class="form-check">
                                     <input v-model="form.organically_produced" :value="1"
                                            class="form-check-input" type="radio" id="flexRadioDefault1">
@@ -66,9 +66,9 @@
                             </div>
                         </div>
 
-                        <div v-if="form.type === 'Processed Food'" class="col-md-12">
+                        <div v-if="form.type === 'Processed Food'" class="col-md-12 mb-2">
                             <div class="form-group">
-                                <p>Nutritional Information Provided</p>
+                                <p class="text-dark">Nutritional Information Provided</p>
                                 <div class="form-check">
                                     <input v-model="form.nutrition_information_provided" :value="1"
                                            class="form-check-input" type="radio" id="flexRadioDefault1">
@@ -85,9 +85,9 @@
                             </div>
                         </div>
 
-                        <div v-if="form.type === 'Processed Food'" class="col-md-12">
+                        <div v-if="form.type === 'Processed Food'" class="col-md-12 mb-2">
                             <div class="form-group">
-                                <p>How to prepare provided on the packaging</p>
+                                <p class="text-dark">How to prepare provided on the packaging</p>
                                 <div class="form-check">
                                     <input v-model="form.how_to_prepare" :value="1"
                                            class="form-check-input" type="radio" id="flexRadioDefault1">
@@ -104,26 +104,26 @@
                             </div>
                         </div>
 
-                        <div v-if="form.type === 'Raw Commodities'" class="col-md-12">
-                            <label class="form-label">Product Weight Per Bag (KG)</label>
-                            <input type="text" class="form-input mb-2" v-model="form.weight_per_bag">
+                        <div v-if="form.type === 'Raw Commodities'" class="col-md-12 mb-2">
+                            <label class="form-label text-dark">Product Weight Per Bag (KG)</label>
+                            <input type="number" class="form-input mb-2" v-model="form.weight_per_bag">
                         </div>
 
-                        <div v-if="form.type === 'Processed Food'" class="col-md-12">
-                            <label class="form-label">Product Weight Per Pack (G/KG)</label>
-                            <input type="text" class="form-input mb-2" v-model="form.weight_per_pack">
+                        <div v-if="form.type === 'Processed Food'" class="col-md-12 mb-2">
+                            <label class="form-label text-dark">Product Weight Per Pack (G/KG)</label>
+                            <input type="number" class="form-input mb-2" v-model="form.weight_per_pack">
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12 mb-2">
                             <label v-if="form.type === 'Processed Food'"
-                                   class="form-label">Production Capacity Per Month (KG)</label>
+                                   class="form-label text-dark">Production Capacity Per Month (KG)</label>
                             <label v-else
-                                   class="form-label">Production Capacity Per Month (Metric Ton)</label>
+                                   class="form-label text-dark">Production Capacity Per Month (Metric Ton)</label>
                             <input type="text" class="form-input mb-2" v-model="form.capacity">
                         </div>
 
-                        <div v-if="form.type === 'Raw Commodities'" class="col-md-12">
-                            <label class="form-label">Packaging Material</label>
+                        <div v-if="form.type === 'Raw Commodities'" class="col-md-12 mb-2">
+                            <label class="form-label text-dark">Packaging Material</label>
                             <select class="form-control form-input-select"
                                     v-model="form.packaging_method">
                                 <option value="">Select</option>
@@ -132,8 +132,8 @@
                             </select>
                         </div>
 
-                        <div v-if="form.type === 'Processed Food'" class="col-md-12">
-                            <label class="form-label">Packaging Material</label>
+                        <div v-if="form.type === 'Processed Food'" class="col-md-12 mb-2">
+                            <label class="form-label text-dark">Packaging Material</label>
                             <select class="form-control form-input-select"
                                     v-model="form.packaging_method" required>
                                 <option value="">Select</option>
@@ -149,13 +149,13 @@
                             </select>
                         </div>
 
-                        <div class="col-md-12">
-                            <label class="form-label">Quantity Available</label>
+                        <div class="col-md-12 mb-2">
+                            <label class="form-label text-dark">Quantity Available</label>
                             <input type="text" class="form-input mb-2" v-model="form.quantity_available">
                         </div>
 
-                        <div class="col-md-12">
-                            <label class="form-label">Value Chain</label>
+                        <div class="col-md-12 mb-2">
+                            <label class="form-label text-dark">Value Chain</label>
                             <select class="form-control form-input-select"
                                     v-model="form.yaedp_value_chain_id" required>
                                 <option value="">Select</option>
@@ -325,6 +325,11 @@
                                         <label class="form-label">Aflatoxin</label>
                                         <input type="text" class="form-input mb-2" v-model="form.aflatoxin">
                                     </div>
+                                    <div v-if="form.yaedp_value_chain_id === 7"
+                                         class="col-md-4">
+                                        <label class="form-label">Others</label>
+                                        <input type="text" class="form-input mb-2" v-model="form.others">
+                                    </div>
                                 </div>
                             </TransitionGroup>
                         </div>
@@ -429,6 +434,7 @@ export default {
                 extraneous_matter: '',
                 microbes: '',
                 aflatoxin: '',
+                others: '',
             },
             valueChains: [],
             images: [],
@@ -530,9 +536,10 @@ export default {
             axios.post('/api/yaedp/'+this.selected_user.id+'/products/add', formData, config)
                 .then((response) => {
                     if(response.data.success === true){
-                        this.formSuccess(response)
+                        this.formSuccess(response);
+                        this.formEmpty();
                     }else{
-                        this.formError(response)
+                        this.formError(response);
                     }
                     this.messageAlert = response.data.message;
                     console.log(response.data.message);

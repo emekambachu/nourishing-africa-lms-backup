@@ -14,6 +14,11 @@ class ExportResource extends Model
       'email',
     ];
 
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(ExportResourceCategory::class, 'export_resource_category_id', 'id');
+    }
+
     public function locations(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(ExportResourceLocation::class, 'export_resource_id', 'id');
