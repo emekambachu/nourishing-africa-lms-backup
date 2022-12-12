@@ -49,6 +49,8 @@ class YaedpSelectedUserController extends Controller
     }
 
     public function exportResources(){
-        return view('yaedp.account.selected-users.export-resources');
+        $data['yaedpUser'] = $this->yaedpUser->yaedpUserByEmail(Auth::user()->email);
+        $data['selectedUser'] = $this->selecteduser->exportSelectedUserByEmail(Auth::user()->email);
+        return view('yaedp.account.selected-users.export-resources', $data);
     }
 }

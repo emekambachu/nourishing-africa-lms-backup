@@ -195,8 +195,8 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
                                                         href="https://afchub.org/about">About Us</a></li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                        href="https://afchub.org/our-team-new?page=our_team">Our Team</a></li>
+{{--                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"--}}
+{{--                                                        href="https://afchub.org/our-team-new?page=our_team">Our Team</a></li>--}}
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
                                                         href="https://afchub.org/our-team-new?page=our_partners">Partners</a></li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
@@ -358,8 +358,8 @@
                     <ul class="list-unstyled add-link-sub">
                         <li><a class="text-small text-white"
                                href="https://afchub.org/subscribe">Subscribe</a></li>
-                        <li><a class="text-small text-white"
-                               href="https://afchub.org/team">The Team</a></li>
+{{--                        <li><a class="text-small text-white"--}}
+{{--                               href="https://afchub.org/team">The Team</a></li>--}}
                         <li><a class="text-small text-white"
                                href="https://afchub.org/terms-of-use">Terms of Use</a></li>
                         <li><a class="text-small text-white"

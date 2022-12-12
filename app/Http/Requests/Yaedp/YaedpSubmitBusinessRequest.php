@@ -31,8 +31,7 @@ class YaedpSubmitBusinessRequest extends FormRequest
             'date_of_establishment' => 'required',
             'years_of_operation' => 'required|integer',
             'physical_address' => 'required',
-            'online_address' => 'required',
-            'staff_size' => 'required|integer',
+            'staff_size' => 'required',
             'business_description' => 'required',
             'images' => 'required|mimes:jpg,jpeg,png|max:5048',
         ];

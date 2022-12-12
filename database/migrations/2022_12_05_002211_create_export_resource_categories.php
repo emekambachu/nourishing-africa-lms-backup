@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateYaedpGalleriesTable extends Migration
+class CreateExportResourceCategories extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateYaedpGalleriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('yaedp_galleries', static function (Blueprint $table) {
+        Schema::create('export_resource_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
+            $table->string('name');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateYaedpGalleriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('yaedp_galleries');
+        Schema::dropIfExists('export_resource_categories');
     }
 }

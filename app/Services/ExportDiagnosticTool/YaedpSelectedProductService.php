@@ -5,6 +5,7 @@ namespace App\Services\ExportDiagnosticTool;
 use App\Models\Yaedp\YaedpProductDetail;
 use App\Models\Yaedp\YaedpProductImage;
 use App\Models\Yaedp\YaedpProductParameter;
+use App\Services\Base\CrudService;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
@@ -25,8 +26,22 @@ class YaedpSelectedProductService
         return new YaedpProductDetail();
     }
 
+    public function yaedpProductParameter(): YaedpProductParameter
+    {
+        return new YaedpProductParameter();
+    }
+
+    public function yaedpProductImage(): YaedpProductImage
+    {
+        return new YaedpProductImage();
+    }
+
     public function getYaedpProductsByUserId($id){
         return $this->yaedpProductDetail()->where('user_id', $id);
+    }
+
+    public function getApprovedYaedpProducts(){
+        return $this->yaedpProductDetail()->where('status', 1);
     }
 
     public function addProductByUserId($request, $id): array
@@ -81,13 +96,22 @@ class YaedpSelectedProductService
         ];
     }
 
-    public function yaedpProductParameter(): YaedpProductParameter
+    public function deleteUserProduct($userId, $productId): array
     {
-        return new YaedpProductParameter();
+        $product = $this->yaedpProductDetail()
+            ->with('parameter')->findOrFail($productId);
+        if($product->user_id !== $userId){
+            return [
+               'success' => false,
+               'message' => 'You are not authorized to delete this item.'
+            ];
+        }
+        CrudService::deleteRelations($product->images, $this->imagePath);
+        CrudService::deleteRelations($product->parameter);
+        return [
+            'success' => true,
+            'message' => 'Deleted'
+        ];
     }
 
-    public function yaedpProductImage(): YaedpProductImage
-    {
-        return new YaedpProductImage();
-    }
 }

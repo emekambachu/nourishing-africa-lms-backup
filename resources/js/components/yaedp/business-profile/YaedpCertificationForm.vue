@@ -7,11 +7,12 @@
                         class="module-btn-2 na-bg-dark-green text-white">
                     <i class="fa fa-lemon mr-1"></i> My Certifications</button>
             </div>
+            <!--Error notifications-->
             <div v-if="errors.length > 0" class="col-12">
                 <p class="text-danger" v-for="(error, index) in errors" :key="index">
-                    {{ error }}
-                </p>
+                    {{ error }}</p>
             </div>
+            <p v-if="messageAlert !== ''" class="text-danger text-center">{{ messageAlert }}</p>
         </div>
 
         <form @submit.prevent="submitCertification">
@@ -45,6 +46,12 @@
                             <input type="date" class="form-input mb-2" v-model="form.valid_to">
                         </div>
 
+                        <div class="col-md-12">
+                            <label class="form-label">Upload Document</label>
+                            <i>Kindly upload certifications related to the product like NAFDAC, SON, HALAL, FDA, HACCP, ECOCERT etc. <span class="text-danger">DO NOT upload license certifications (e.g NEPC, CAC)</span></i>
+                            <input @change="uploadDocument" class="form-control" type="file"/>
+                        </div>
+
                     </div>
                 </div>
 
@@ -52,7 +59,7 @@
 
             <div class="d-flex justify-content-center">
                 <button style="width:150px;"
-                        class="module-btn bg-light-brown d-flex justify-content-center">
+                        class="module-btn-2 na-bg-dark-green text-white">
                     Add</button>
             </div>
 
@@ -75,10 +82,10 @@ export default {
                 issuing_organisation: '',
                 date_issued: '',
                 valid_to: '',
+                document: null,
             },
-            errorAlert: false,
             messageAlert: '',
-            imageValidation: '',
+            documentValidation: '',
             errors: []
         }
     },
@@ -86,6 +93,30 @@ export default {
     methods: {
         emitShowCertifications (event) {
             this.$emit('show-certifications', true);
+        },
+
+        // upload and preview image
+        uploadDocument: function(event){
+            this.form.document = event.target.files[0];
+            this.validateDocument(this.form.document);
+        },
+
+        // Validate image
+        validateDocument: function(file){
+            let allowedExtensions = /(\.pdf|\.doc|\.docx|\.jpg|\.png|\.jpeg)$/i;
+            if(!allowedExtensions.exec(file.name)){
+                this.documentValidation = 'Invalid file format, only documents allowed';
+                return false;
+            }else{
+                this.documentValidation = '';
+            }
+
+            if(file.size > 10000000){
+                this.documentValidation = 'File too large, 10mb max.';
+                return false;
+            }else{
+                this.documentValidation = '';
+            }
         },
 
         submitCertification(){
@@ -99,7 +130,6 @@ export default {
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-
                     this.formLoading();
                     let formData = new FormData();
                     // iterate form object
@@ -120,8 +150,8 @@ export default {
                             }
                             console.log(response.data.message);
                         }).catch((error) => {
-                        console.log(error);
-                    });
+                            console.log(error);
+                        });
 
                 } else if (result.isDenied) {
                     return false;
@@ -146,6 +176,7 @@ export default {
 
         formSuccess(response){
             this.errors = [];
+            this.messageAlert = '';
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -170,7 +201,8 @@ export default {
                 showConfirmButton: false,
                 timer: 2500
             });
-            this.errors = response.data.errors;
+            this.errors = response.data.errors !== undefined ? response.data.errors : [];
+            this.messageAlert = response.data.message !== undefined ? response.data.message : '';
             console.log(this.errors);
             console.log(response.data.message);
         },
@@ -189,7 +221,7 @@ export default {
     },
 
     mounted() {
-        this.getValueChains();
+
     }
 }
 </script>

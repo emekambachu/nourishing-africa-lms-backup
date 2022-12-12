@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateYaedpVideosTable extends Migration
+class CreateExportResources extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateYaedpVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('yaedp_videos', static function (Blueprint $table) {
+        Schema::create('export_resources', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('video');
+            $table->unsignedBigInteger('export_resource_category_id')->index();
+            $table->string('email');
+            $table->string('website')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateYaedpVideosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('yaedp_videos');
+        Schema::dropIfExists('export_resources');
     }
 }
