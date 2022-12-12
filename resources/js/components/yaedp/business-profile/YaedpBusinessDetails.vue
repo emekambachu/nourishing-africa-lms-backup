@@ -9,7 +9,8 @@
         </div>
 
         <template v-if="dataLoaded">
-            <div v-if="submittedBusiness || selected_user.business" class="row justify-content-center">
+            <div v-if="submittedBusiness || selected_user.business !== null"
+                 class="row justify-content-center">
                 <div class="col-12 card-header">
                     <div class="row">
                         <div class="col-10">
