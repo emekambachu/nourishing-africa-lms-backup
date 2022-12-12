@@ -54,6 +54,10 @@ class YaedpSelectedProductService
         return $this->yaedpProductDetail()->where('user_id', $id);
     }
 
+    public function getApprovedYaedpProducts(){
+        return $this->yaedpProductDetail()->where('status', 1);
+    }
+
     public function addProductByUserId($request, $id): array
     {
         $input = $request->all();

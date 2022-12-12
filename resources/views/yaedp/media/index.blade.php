@@ -162,7 +162,6 @@
         <img src="/images/workshop_images/Rectangle 214.png"  class="img-fluid">
         <img src="/images/workshop_images/Rectangle 215.png"  class="img-fluid">
         <img src="/images/workshop_images/Rectangle 216.png"  class="img-fluid">
-       
       </div>
       
       

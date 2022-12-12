@@ -8,7 +8,12 @@ class YaedpGalleryService
 {
     public static function getAllPhotos(){
 
-        return  new YaedpGallery();
+        return   YaedpGallery::has('images');
+    }
+
+    public static function getAllVideos(){
+
+        return   YaedpGallery::has('videos');
     }
 
 

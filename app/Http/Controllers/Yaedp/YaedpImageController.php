@@ -16,7 +16,10 @@ class YaedpImageController extends Controller
 
     public function index()
     {
-        $data['photos'] = $this->yaedpGallery->getAllPhotos()->latest()->get(); 
+        $data['photos'] = $this->yaedpGallery->getAllPhotos()->latest()->get();
+
+
+       // dd($data['photos']);
 
         return view('yaedp.media.index', $data);
     }

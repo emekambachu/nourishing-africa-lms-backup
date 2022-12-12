@@ -3,7 +3,6 @@
 namespace App\Models\Yaedp;
 
 use App\Models\ExportDiagnosticTool\ExportSelectedUser;
-use App\Models\Yaedp\YaedpValueChain;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +12,7 @@ class YaedpProductDetail extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'description',
         'type',
         'yaedp_value_chain_id',
         'source_of_material',
@@ -20,10 +20,10 @@ class YaedpProductDetail extends Model
         'nutrition_information_provided',
         'how_to_prepare',
         'weight_per_pack',
-        'form',
         'capacity',
         'packaging_method',
         'quantity_available',
+        'status',
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

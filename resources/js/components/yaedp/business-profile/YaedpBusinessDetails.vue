@@ -57,50 +57,125 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
-                            <div class="col-md-12">
-                                <label class="form-label">Business Name</label>
+                            <div class="col-md-12 mb-2">
+                                <label class="form-label text-dark">Business Name</label>
                                 <input type="text" class="form-input mb-2"
                                        v-model="form.name">
                             </div>
 
-                            <div class="col-md-12">
-                                <label class="form-label">Date of Establishment</label>
-                                <input type="date" class="form-input mb-2"
-                                       v-model="form.date_of_establishment">
-                            </div>
-
-                            <div class="col-md-12">
-                                <label class="form-label">Years of Operation</label>
-                                <input type="number" class="form-input mb-2"
-                                       v-model="form.years_of_operation">
-                            </div>
-
-                            <div class="col-md-12">
-                                <label class="form-label">Physical Address</label>
-                                <input type="text" class="form-input mb-2"
-                                       v-model="form.physical_address">
-                            </div>
-
-                            <div class="col-md-12">
-                                <label class="form-label">Online Address</label>
-                                <input type="text" class="form-input mb-2"
-                                       v-model="form.online_address">
-                            </div>
-
-                            <div class="col-md-12">
-                                <label class="form-label">Staff Size</label>
-                                <input type="text" class="form-input mb-2"
-                                       v-model="form.staff_size">
-                            </div>
-
-                            <div class="col-md-12">
-                                <label class="form-label">Business Description</label>
+                            <div class="col-md-12 mb-2">
+                                <label class="form-label text-dark">Business Description</label>
+                                <i>Kindly include information about your current buyers, operations, and years in operations</i>
                                 <textarea class="form-input mb-2"
                                           v-model="form.business_description"></textarea>
                             </div>
 
+                            <div class="col-md-12 mb-2">
+                                <label class="form-label text-dark">Date of Establishment</label>
+                                <input type="date" class="form-input mb-2"
+                                       v-model="form.date_of_establishment">
+                            </div>
+
+                            <div class="col-md-12 mb-2">
+                                <label class="form-label text-dark">Years of Operation</label>
+                                <input type="number" class="form-input mb-2"
+                                       v-model="form.years_of_operation">
+                            </div>
+
+                            <div class="col-md-12 mb-2">
+                                <label class="form-label text-dark">Physical Address</label>
+                                <input type="text" class="form-input mb-2"
+                                       v-model="form.physical_address">
+                            </div>
+
+                            <div class="col-md-12 mb-2">
+                                <label class="form-label text-dark">Website</label>
+                                <input type="text" class="form-input mb-2"
+                                       v-model="form.website">
+                            </div>
+
+                            <div class="col-md-12 mb-2">
+                                <label class="form-label text-dark">Linkedin</label>
+                                <input type="text" class="form-input mb-2"
+                                       v-model="form.linkedin">
+                            </div>
+
+                            <div class="col-md-12 mb-2">
+                                <label class="form-label text-dark">Facebook</label>
+                                <input type="text" class="form-input mb-2"
+                                       v-model="form.facebook">
+                            </div>
+
+                            <div class="col-md-12 mb-2">
+                                <label class="form-label text-dark">Instagram</label>
+                                <input type="text" class="form-input mb-2"
+                                       v-model="form.instagram">
+                            </div>
+
+                            <div class="col-md-12 mb-2">
+                                <label class="form-label text-dark">Twitter</label>
+                                <input type="text" class="form-input mb-2"
+                                       v-model="form.twitter">
+                            </div>
+
+                            <div class="col-md-12 mb-2">
+                                <label class="form-label text-dark">Number of staff</label>
+                                <select v-model="form.staff_size" class="form-control">
+                                    <option value="0 - 5">0 - 5</option>
+                                    <option value="6 - 10">6 - 10</option>
+                                    <option value="10 - 20">10 - 20</option>
+                                    <option value="20 - 50">20 - 50</option>
+                                    <option value="50 and above">50 and above</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-12 mb-2">
+                                <div class="form-group">
+                                    <p class="text-dark">Do you have an export license?</p>
+                                    <div class="form-check">
+                                        <input v-model="form.export_license" :value="1"
+                                               class="form-check-input" type="radio" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Yes</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input v-model="form.export_license" :value="0"
+                                               class="form-check-input" type="radio" id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            No</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mb-2">
+                                <div class="form-group">
+                                    <p>Is your business registered with CAC?</p>
+                                    <div class="form-check">
+                                        <input v-model="form.registered_cac" :value="1"
+                                               class="form-check-input" type="radio" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Yes</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input v-model="form.registered_cac" :value="0"
+                                               class="form-check-input" type="radio" id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            No</label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-md-12">
                                 <div class="row">
+                                    <div class="col-12">
+                                        <ul>
+                                            <li class="brand-text-orange">Upload a maximum of 3 images</li>
+                                            <li class="brand-text-orange">Upload clear professional picture(s) of your business logo, facility, processing activity, and warehouse. <span class="text-danger">DO NOT add pictures of your product/produce here</span></li>
+                                            <li class="brand-text-orange">Only jpeg and png are required with a maximum of 5mb</li>
+                                        </ul>
+                                    </div>
                                     <div v-for="(image, index) in images" :key="index"
                                          class="col-md-3">
                                         <img :src="image.src" :alt="image.file.name"
@@ -170,14 +245,20 @@ export default {
     data(){
         return {
             form: {
-                name: this.selected_user.name,
+                name: this.selected_user.business_name,
                 user_id: this.selected_user.id,
                 date_of_establishment: '',
                 years_of_operation: '',
                 physical_address: '',
-                online_address: '',
+                website: '',
+                facebook: '',
+                linkedin: '',
+                instagram: '',
+                twitter: '',
                 staff_size: '',
                 business_description: '',
+                export_license: '',
+                registered_cac: '',
             },
             images: [],
             errorAlert: false,

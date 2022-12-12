@@ -36,6 +36,15 @@ class YaedpProductParameter extends Model
         'slaty',
         'bean_count',
         'mould',
+        'impurity',
+        'cluster_bean',
+        'broken_beans',
+        'float_rate',
+        'total_defective_grains',
+        'extraneous_matter',
+        'split_beans',
+        'microbes',
+        'aflatoxin',
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
