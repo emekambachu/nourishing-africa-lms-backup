@@ -32,6 +32,7 @@ class YaedpSelectedProductController extends Controller
 
     public function getProductsByValuedChain(Request $request)
     {
+        
         $products = $this->product->yaedpProductDetailByValuedChainName($request->valued_chain)->latest()->get();
         $valued_chains = $this->valuedChain->getAll()->latest()->get();
 

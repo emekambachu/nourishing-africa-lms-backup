@@ -26,7 +26,7 @@ class YaedpSelectedProductService
 
     public function yaedpProductDetailByValuedChainName($valued_chain)
     {
-        $valued_chain= $this->valuedChain->getValuedChainByName($valued_chain)->first();
+        $valued_chain= $this->valuedChain->getValuedChainByName($valued_chain ?? 'Soybeans')->first();
 
         return  YaedpProductDetail::where('yaedp_value_chain_id', $valued_chain->id);
     }    

@@ -183,7 +183,7 @@ text-align: left;
                 <a class="nav-link " href="{{ route('yaedp.articles.index') }}">YAEDP Articles</a>
             </li>
             <li class="nav-item  tab-heading-active">
-                <a class="nav-link tab-link-last  tab-text-active" href="{{ route('yaedp.participant.profile') }}">Participant’s Profile</a>
+                <a class="nav-link tab-link-last  tab-text-active" href="{{ route('yaedp.participant.profile') }}">Participants’ Profiles</a>
             </li>
 
         </ul>
@@ -211,7 +211,7 @@ text-align: left;
 
 
         <h3 class="mt-4">
-            Cocoa
+            {{ $_GET['valued_chain'] ?? 'Soybeans' }}
         </h3>
         <br><br>
 
@@ -235,7 +235,7 @@ text-align: left;
                                     <div class="d-flex justify-content-between">
                                         <div class="">
                                             <img src="/images/Vector 2.png" alt="">
-                                            <h6>{{ $product->user->name }}</h6>
+                                            <h5><b>{{ $product->user->name }}</b></h5>
                                         </div>
                                         <div class="">
                                             <a href="{{ route('yaedp.participant.profile.show',$product->id) }}"
@@ -248,7 +248,7 @@ text-align: left;
                                             <div class="card border border-dark article-card shadow-none rounded-0 " style="">
                                                 <img src="{{ $product->first_image->path.'/'.$product->first_image->image }}" class="p-4 " alt="" style="height:300px;width: auto;object-fit:contain; ">
                                             </div>
-                                            <button type="button" class="btn btn-primary mt-3 btn-afc-orange-green rounded-pill text-afc-orange">Certified &#10003;</button>
+                                            <button type="button" class="btn btn-primary mt-3 btn-afc-orange-green rounded-pill text-afc-orange">Certification Available &#10003;</button>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="d-flex justify-content-between">
@@ -275,19 +275,14 @@ text-align: left;
                                                         {{ $product->quantity_available }}
                                                     </p>
                                                 </div>
-                                                <div class="">
-                                                    <h6>Production Capacity</h6>
-                                                    <p class="text-right">
-                                                        {{ $product->capacity }}
-                                                    </p>
-                                                </div>
+                                               
                                             </div>
 
 
                                             <div class="d-flex justify-content-between">
                                                 <div class="">
                                                     <h6>
-                                                        Packaging
+                                                        Packaging Material
                                                     </h6>
                                                     <p>
                                                         {{ $product->packaging_method }}

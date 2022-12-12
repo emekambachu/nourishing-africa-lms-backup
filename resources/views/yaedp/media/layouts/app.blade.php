@@ -416,13 +416,13 @@ color: #000000;
     
     @yield('top-panel')
 </header>
-<section class="wow fadeIn parallax padding-four-bottom" data-stellar-background-ratio="0.5" style="background-image: url('/images/Mask group.png'); visibility: visible; animation-name: fadeIn;">
+<section class="wow fadeIn parallax padding-four-bottom" data-stellar-background-ratio="0.5" style="background-image: url('/images/header_1.jpeg'); visibility: visible; animation-name: fadeIn;">
     <div class="opacity-medium bg-extra-dark-gray"></div>
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-12 d-flex flex-column justify-content-center text-center extra-small-screen page-title-large">
                 <!-- start page title -->
-                <h1 class="text-white-2 text-center alt-font font-weight-500 letter-spacing-minus-1 margin-10px-bottom">Youth In Agric Export Development Program</h1>
+                <h1 class="text-white-2 text-center alt-font font-weight-500 letter-spacing-minus-1 margin-10px-bottom">Youth In Agrifood Export Development Program (YAEDP)</h1>
                 <!-- end page title -->
             </div>
         </div>

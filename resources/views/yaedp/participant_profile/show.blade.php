@@ -204,6 +204,7 @@ padding: 30px;
 
 
   <div class="container-fluid p-5  container-2" style="margin-top: -90px;">
+    <h5><b>{{ $product->user->name }}</b></h5>
     <div class="row">
 
         <div class="col-md-6">
