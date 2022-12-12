@@ -117,6 +117,32 @@ YAEDP Articles
     .article-card{
         border-radius: 10px;
     }
+
+    .row {
+  display:flex;
+}
+
+.col-md-4 {
+  flex: 0 0 auto!important;
+  /* width: 25%; */
+}
+
+.card {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+.card-body {
+ 
+  flex: 1;
+  min-height:300px;
+}
+
+.card-text {
+ 
+  max-width:100%;
+}
     </style>
 @stop
 
@@ -159,17 +185,19 @@ YAEDP Articles
               
            
                 
-            <div class="col-sm-4 mb-3 rounded-5">
+            <div class="col-md-4 mb-3 rounded-5 ">
+              <a href="https://afchub.org/news-update/view/{{$article->slug }}">
                 <div class="card border border-dark article-card shadow-none" >
                   
-                    <div class="card-body">
-                      <h5 class="card-title article-header">{{ $article->title }}</h5>
-                      <p class="card-text">
-                        {!! Str::words($article->content , 50, ' ...') !!}
-                          </p>
-                     
-                    </div>
+                  <div class="card-body">
+                    <h5 class="card-title article-header">{{ $article->title }}</h5>
+                    <p class="card-text">
+                      {!! Str::limit($article->content , 100, ' ...') !!}
+                        </p>
+                   
                   </div>
+                </div>
+              </a>
             </div>
            
             @endforeach
