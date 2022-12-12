@@ -20,7 +20,6 @@
                         <span class="na-text-dark-green float-right border-rounded-green"
                               title="edit">Edit</span>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-12 card-body bg-white">
