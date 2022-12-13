@@ -397,7 +397,7 @@
                             Product state / form
                         </h5>
                         <p>
-                            Cocoa powder
+                            {{-- Cocoa powder --}}
                         </p>
                         <h5>
                             Quantitiy available
@@ -409,7 +409,7 @@
                             Nutitional information provided?
                         </h5>
                         <p>
-                            Yes
+                            {{-- Yes --}}
                         </p>
                     </div>
                     <div class="col-md-6 product-details">
@@ -421,13 +421,13 @@
                             Source of raw material
                         </h5>
                         <p>
-                            Kogi State
+                            {{-- Kogi State --}}
                         </p>
                         <h5>
                             Organcally Produced
                         </h5>
                         <p>
-                            Yes
+                            {{-- Yes --}}
                         </p>
                         <h5>
                             Packaging method
@@ -439,13 +439,13 @@
                             Organically produced?
                         </h5>
                         <p>
-                            Yes
+                            {{-- Yes --}}
                         </p>
                         <h5>
                             How to prepare provided on the packaging?
                         </h5>
                         <p>
-                            No
+                            {{-- No --}}
                         </p>
                     </div>
                 </div>
@@ -479,13 +479,7 @@
                     About {{ $product->user->name }}
                 </h5>
                 <p class="product-details-text">
-                    Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis
-                    enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
-                    ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation
-                    veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                    sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
-                    Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis
-                    enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+                    {{ $product->user->about }}
                 </p>
 
             </div>
@@ -498,19 +492,19 @@
                         Product Parameters
                     </h5>
                     <p>
-                        Mould Content - 3.5
+                        {{-- Mould Content - 3.5 --}}
                     </p>
                     <p>
-                        Moisture content - 07%
+                        {{-- Moisture content - 07% --}}
                     </p>
                     <p>
-                        Slaty - 4
+                        {{-- Slaty - 4 --}}
                     </p>
                     <p>
-                        Bean Count - 22 / T
+                        {{-- Bean Count - 22 / T --}}
                     </p>
                     <p>
-                        Foreign Matter - 13
+                        {{-- Foreign Matter - 13 --}}
                     </p>
                 </div>
             </div>
