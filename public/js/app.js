@@ -23721,7 +23721,7 @@ __webpack_require__.r(__webpack_exports__);
       imageValidation: '',
       errors: [],
       submittedBusiness: false,
-      business: null,
+      business: false,
       dataLoaded: false
     };
   },

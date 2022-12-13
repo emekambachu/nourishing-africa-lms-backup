@@ -296,7 +296,7 @@ export default {
             imageValidation: '',
             errors: [],
             submittedBusiness: false,
-            business: null,
+            business: false,
             dataLoaded: false,
         }
     },
