@@ -1,7 +1,7 @@
 @extends('yaedp.media.layouts.app')
 
 @section('title')
-Participant’s Profile
+    Participant’s Profile
 @endsection
 
 @section('meta-tags')
@@ -131,52 +131,186 @@ Participant’s Profile
             border-color: #333333;
             text-transform: none;
         }
+
         .btn-afc-orange-green {
-           
+
             border-color: #DDFFDD;
             text-transform: none;
             background-color: #DDFFDD;
         }
-        .product-details > h5{ 
+
+        .product-details>h5 {
             font-family: Inter;
-font-size: 18px;
-font-weight: 500;
-line-height: 22px;
-letter-spacing: 0em;
-text-align: left;
-color:#333333;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 22px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #333333;
 
         }
-        .product-details >p{
+
+        .product-details>p {
             font-family: Inter;
-font-size: 16px;
-font-weight: 400;
-line-height: 19px;
-letter-spacing: 0em;
-text-align: left;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 19px;
+            letter-spacing: 0em;
+            text-align: left;
 
         }
-        .carousel-item >img{
+
+        .carousel-item>img {
             height: 466px;
-        width: auto;
-        object-fit:contain;
-border-radius: 10px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 10px;
 
         }
-.certificates{
-padding: 30px;
 
-}
+        .certificates {
+            padding: 30px;
 
+        }
+
+        /* Tablet and up */
+
+        @media screen and (min-width: 768px) {
+
+            .carousel-inner .active,
+            .carousel-inner .active+.carousel-item {
+                display: block;
+            }
+
+            .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+            .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item {
+                -webkit-transition: none;
+                transition: none;
+            }
+
+            .carousel-inner .carousel-item-next,
+            .carousel-inner .carousel-item-prev {
+                position: relative;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+
+            .carousel-inner .active.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+                position: absolute;
+                top: 0;
+                right: -50%;
+                z-index: -1;
+                display: block;
+                visibility: visible;
+            }
+
+            /* left or forward direction */
+            .active.carousel-item-left+.carousel-item-next.carousel-item-left,
+            .carousel-item-next.carousel-item-left+.carousel-item {
+                position: relative;
+                -webkit-transform: translate3d(-100%, 0, 0);
+                transform: translate3d(-100%, 0, 0);
+                visibility: visible;
+            }
+
+            /* farthest right hidden item must be abso position for animations */
+            .carousel-inner .carousel-item-prev.carousel-item-right {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                display: block;
+                visibility: visible;
+            }
+
+            /* right or prev direction */
+            .active.carousel-item-right+.carousel-item-prev.carousel-item-right,
+            .carousel-item-prev.carousel-item-right+.carousel-item {
+                position: relative;
+                -webkit-transform: translate3d(100%, 0, 0);
+                transform: translate3d(100%, 0, 0);
+                visibility: visible;
+                display: block;
+                visibility: visible;
+            }
+        }
+
+        /* Desktop and up */
+
+        @media screen and (min-width: 992px) {
+
+            .carousel-inner .active,
+            .carousel-inner .active+.carousel-item,
+            .carousel-inner .active+.carousel-item+.carousel-item {
+                display: block;
+            }
+
+            .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+            .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item,
+            .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item+.carousel-item {
+                -webkit-transition: none;
+                transition: none;
+            }
+
+            .carousel-inner .carousel-item-next,
+            .carousel-inner .carousel-item-prev {
+                position: relative;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+
+            .carousel-inner .active.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+                position: absolute;
+                top: 0;
+                right: -33.3333%;
+                z-index: -1;
+                display: block;
+                visibility: visible;
+            }
+
+            /* left or forward direction */
+            .active.carousel-item-left+.carousel-item-next.carousel-item-left,
+            .carousel-item-next.carousel-item-left+.carousel-item,
+            .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item,
+            .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item+.carousel-item {
+                position: relative;
+                -webkit-transform: translate3d(-100%, 0, 0);
+                transform: translate3d(-100%, 0, 0);
+                visibility: visible;
+            }
+
+            /* farthest right hidden item must be abso position for animations */
+            .carousel-inner .carousel-item-prev.carousel-item-right {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                display: block;
+                visibility: visible;
+            }
+
+            /* right or prev direction */
+            .active.carousel-item-right+.carousel-item-prev.carousel-item-right,
+            .carousel-item-prev.carousel-item-right+.carousel-item,
+            .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item,
+            .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item+.carousel-item {
+                position: relative;
+                -webkit-transform: translate3d(100%, 0, 0);
+                transform: translate3d(100%, 0, 0);
+                visibility: visible;
+                display: block;
+                visibility: visible;
+            }
+        }
     </style>
 @stop
 
 @section('content')
 
-   
+
 
     <div class="container-fluid p-5  container-2">
-        
+
 
         <ul class="nav">
             <li class="nav-item tab-heading " sty>
@@ -189,7 +323,8 @@ padding: 30px;
                 <a class="nav-link " href="{{ route('yaedp.articles.index') }}">YAEDP Articles</a>
             </li>
             <li class="nav-item  tab-heading-active">
-                <a class="nav-link tab-link-last  tab-text-active" href="{{ route('yaedp.participant.profile') }}">Participant’s Profile</a>
+                <a class="nav-link tab-link-last  tab-text-active"
+                    href="{{ route('yaedp.participant.profile') }}">Participant’s Profile</a>
             </li>
 
         </ul>
@@ -198,213 +333,315 @@ padding: 30px;
             Participant’s Profile
         </h5>
 
-<p>{{ $product->value_chain->name }}/ {{ $product->user->name }}</p>
+        <p>{{ $product->value_chain->name }}/ {{ $product->user->name }}</p>
         <div class="border border-5  border-top-0 border-left-0 border-right-0"></div>
     </div>
 
 
-  <div class="container-fluid p-5  container-2" style="margin-top: -90px;">
-    <h5><b>{{ $product->user->name }}</b></h5>
-    <div class="row">
+    <div class="container-fluid p-5  container-2" style="margin-top: -90px;">
+        <h5><b>{{ $product->user->name }}</b></h5>
+        <div class="row">
 
-        <div class="col-md-6">
-            
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    @foreach ($product->images as $image)  
-                  <li data-target="#carouselExampleIndicators" data-slide-to="{{  $loop->iteration -1 }}" class="{{ $loop->iteration == 1 ? 'active': '' }}"></li>
-                  @endforeach
-                  {{-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <div class="col-md-6">
+
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        @foreach ($product->images as $image)
+                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ $loop->iteration - 1 }}"
+                                class="{{ $loop->iteration == 1 ? 'active' : '' }}"></li>
+                        @endforeach
+                        {{-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> --}}
-                </ol>
-                <div class="carousel-inner">
+                    </ol>
+                    <div class="carousel-inner">
 
-                    @foreach ($product->images as $image)   
-                  <div class="carousel-item active">
-                    <img src="{{ $image->path.'/'.$image->image }}" class="d-block w-100" alt="...">
-                  
-                  </div>
-                  @endforeach
-                 
+                        @foreach ($product->images as $image)
+                            <div class="carousel-item active">
+                                <img src="{{ $image->path . '/' . $image->image }}" class="d-block w-100" alt="...">
+
+                            </div>
+                        @endforeach
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
-        </div>
+            </div>
 
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-6 product-details">
-                    <h6 class="text-afc-orange ">
-                       {{$product->name}}
-                    </h6>
-                    <h5>
-                        Type of product
-                    </h5>
-                    <p>
-                        {{ $product->type }}
-                    </p>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 product-details">
+                        <h6 class="text-afc-orange ">
+                            {{ $product->name }}
+                        </h6>
+                        <h5>
+                            Type of product
+                        </h5>
+                        <p>
+                            {{ $product->type }}
+                        </p>
 
-                    <h5>
-                        Product Weight per pack
-                    </h5>
-                    <p>
-                        {{ $product->weight_per_pack }}
-                    </p>
-                    <h5>
-                        Product state / form
-                    </h5>
-                    <p>
-                        Cocoa powder
-                    </p>
-                    <h5>
-                        Quantitiy available
-                    </h5>
-                    <p>
-                        {{ $product->quantity_available }}
-                    </p>
-                    <h5>
-                        Nutitional information provided?
-                    </h5>
-                    <p>
-                        Yes
-                    </p>
-                </div>
-                <div class="col-md-6 product-details">
-                   
-                   <h5>
-                    &nbsp;&nbsp;
-                   </h5>
-                   <h5>
-                    Source of raw material
-                   </h5>
-                   <p>
-                    Kogi State
-                   </p>
-                   <h5>
-                    Organcally Produced
-                   </h5>
-                   <p>
-                    Yes
-                   </p>
-                   <h5>
-                    Packaging method
-                   </h5>
-                   <p>
-                    {{ $product->packaging_method }}
-                   </p>
-                   <h5>
-                    Organically produced?
-                   </h5>
-                   <p>
-                    Yes
-                   </p>
-                   <h5>
-                    How to prepare provided on the packaging?
-                   </h5>
-                   <p>
-                    No
-                   </p>
+                        <h5>
+                            Product Weight per pack
+                        </h5>
+                        <p>
+                            {{ $product->weight_per_pack }}
+                        </p>
+                        <h5>
+                            Product state / form
+                        </h5>
+                        <p>
+                            Cocoa powder
+                        </p>
+                        <h5>
+                            Quantitiy available
+                        </h5>
+                        <p>
+                            {{ $product->quantity_available }}
+                        </p>
+                        <h5>
+                            Nutitional information provided?
+                        </h5>
+                        <p>
+                            Yes
+                        </p>
+                    </div>
+                    <div class="col-md-6 product-details">
+
+                        <h5>
+                            &nbsp;&nbsp;
+                        </h5>
+                        <h5>
+                            Source of raw material
+                        </h5>
+                        <p>
+                            Kogi State
+                        </p>
+                        <h5>
+                            Organcally Produced
+                        </h5>
+                        <p>
+                            Yes
+                        </p>
+                        <h5>
+                            Packaging method
+                        </h5>
+                        <p>
+                            {{ $product->packaging_method }}
+                        </p>
+                        <h5>
+                            Organically produced?
+                        </h5>
+                        <p>
+                            Yes
+                        </p>
+                        <h5>
+                            How to prepare provided on the packaging?
+                        </h5>
+                        <p>
+                            No
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row mt-5 ">
-        <div class="col-md-6 container">
-            <div class="card  shadow-none border border-dark p-3 certificates" style="
+        <div class="row mt-5 ">
+            <div class="col-md-6 container">
+                <div class="card  shadow-none border border-dark p-3 certificates" style="
             ">
-                <h5>
-                    Certificates
+                    <h5>
+                        Certificates
+                    </h5>
+
+                    <div class="">
+                        @if (!empty($product->user->certifications))
+                        @foreach ($product->user->certifications as $certificate)
+                        <button type="button" class="btn btn-outline-primary btn-afc-orange rounded mb-3">
+                           {{$certificate->name}}</button> 
+                        @endforeach  
+                        @endif
+                       
+
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 ">
+
+                <h5 class="product-detail-heading mt-4">
+                    About {{ $product->user->name }}
                 </h5>
+                <p class="product-details-text">
+                    Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis
+                    enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
+                    ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation
+                    veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+                    sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+                    Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis
+                    enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+                </p>
 
-              <div class="">
-
-    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded mb-3">NAFDAC Certificate</button> 
-
-
-    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded mb-3">BIL Certificate</button> 
-
-
-    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded mb-3">ISO Certificate</button> 
-
-
-    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded mb-3">BIL Certificate</button> 
-
-
-    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded mb-3">BIL Certificate</button> 
-
-
-    <button type="button" class="btn btn-outline-primary btn-afc-orange rounded mb-3">BIL Certificate</button> 
-
-              </div>
             </div>
         </div>
-        <div class="col-md-6 ">
-            
-            <h5 class="product-detail-heading mt-4">
-                About {{ $product->user->name }}
-            </h5>
-            <p class="product-details-text">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
-            </p>
-        
+
+        <div class="row">
+            <div class="col-md-6 container">
+                <div class="card  shadow-none border-0  p-3 certificates">
+                    <h5>
+                        Product Parameters
+                    </h5>
+                    <p>
+                        Mould Content - 3.5
+                    </p>
+                    <p>
+                        Moisture content - 07%
+                    </p>
+                    <p>
+                        Slaty - 4
+                    </p>
+                    <p>
+                        Bean Count - 22 / T
+                    </p>
+                    <p>
+                        Foreign Matter - 13
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h5>
+                    Contact Details
+                </h5>
+                <p>
+                    Email - {{ $product->user->email }}
+                </p>
+                <p>
+                    Mobile number - {{ $product->user->phone }}
+                </p>
+                <p>
+                    Website - {{ $product->user->website }}
+                </p>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-     <div class="col-md-6 container">
-        <div class="card  shadow-none border-0  p-3 certificates">
-        <h5>
-            Product Parameters
-          </h5>
-          <p>
-            Mould  Content - 3.5
-          </p>
-          <p>
-            Moisture content - 07%
-          </p>
-          <p>
-            Slaty - 4
-          </p>
-          <p>
-            Bean Count - 22 / T
-          </p>
-          <p>
-            Foreign Matter - 13
-          </p>
+    <br><br>
+
+
+    <div class="container-fluid bg-afc-orange-green ">
+        <br>
+        <h6 class="text-center my-3 text-afc-orange mb-4">  Similar Products </h6>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner row w-100 mx-auto bg-afc-orange-green ">
+
+               @foreach ($products as $product)
+                    
+                <div class="carousel-item col-sm-6 {{ $loop->iteration==1 ? 'active': '' }}">
+                    <div class=" mb-3 rounded-5">
+                        <div class="card border border-dark article-card shadow-none bg-afc-orange-green">
+
+
+                            <div class="card-body">
+
+                                <p class="card-text">
+                                <div class="d-flex justify-content-between">
+                                    <div class="">
+                                        <img src="/images/Vector 2.png" alt="">
+                                        <h5><b>{{ $product->user->name }}</b></h5>
+                                    </div>
+                                    <div class="">
+                                        <a href="{{ route('yaedp.participant.profile.show',$product->id) }}"
+                                            class="btn btn-outline-primary btn-afc-orange rounded">See all
+                                            details</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card border border-dark article-card shadow-none rounded-0 " style="">
+                                            <img src="{{ $product->first_image->path.'/'.$product->first_image->image }}" class="p-4 " alt="" style="height:300px;width: auto;object-fit:contain; ">
+                                        </div>
+                                        <button type="button" class="btn btn-primary mt-3 btn-afc-orange-green rounded-pill text-afc-orange">Certification Available &#10003;</button>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="">
+                                                <h6>
+                                                    Product Name
+                                                </h6>
+                                                <p>{{ $product->name }}</p>
+                                            </div>
+                                            <div class="">
+                                                <h6>Product Type</h6>
+                                                <p class="text-right">
+                                                    {{ $product->type }}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <div class="">
+                                                <h6>
+                                                    Quantity Available
+                                                </h6>
+                                                <p>
+                                                    {{ $product->quantity_available }}
+                                                </p>
+                                            </div>
+                                           
+                                        </div>
+
+
+                                        <div class="d-flex justify-content-between">
+                                            <div class="">
+                                                <h6>
+                                                    Packaging Material
+                                                </h6>
+                                                <p>
+                                                    {{ $product->packaging_method }}
+                                                </p>
+                                            </div>
+                                            <div class="">
+                                                <h6>Weight</h6>
+                                                <p class="text-right">
+                                                    {{ $product->weight_per_pack }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+             
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mt-4">
+                        <a class="btn btn-outline-secondary mx-1 prev" href="javascript:void(0)" title="Previous">
+                            <i class="fa fa-lg fa-chevron-left"></i>
+                        </a>
+                        <a class="btn btn-outline-secondary mx-1 next" href="javascript:void(0)" title="Next">
+                            <i class="fa fa-lg fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <br><br>
+            </div>
         </div>
-     </div>
-     <div class="col-md-6">
-        <h5>
-            Contact Details
-        </h5>
-        <p>
-            Email - {{ $product->user->email }}
-        </p>
-        <p>
-            Mobile number -  {{ $product->user->phone }}
-        </p>
-        <p>
-            Website -  {{ $product->user->website }}
-        </p>
-     </div>
     </div>
-  </div>
-       
-        <br><br>
 
 
-
-
-
-        <div class="bg-afc-orange-green ">
+    {{-- <div class="bg-afc-orange-green ">
             <div class="bg-afc-orange-green container-fluid p-5 container-2">
                 <h6 class="text-afc-orange">
                     Similar Products
@@ -489,7 +726,7 @@ padding: 30px;
             </div>
           
 
-        </div>
+        </div> --}}
     </div>
     </div>
 
@@ -499,3 +736,5 @@ padding: 30px;
 
     </section>
 @stop
+
+<script></script>

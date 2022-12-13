@@ -202,11 +202,11 @@
       
       
     </div>
-    </div>
+   
 </div>
 @endforeach
  <br><br>
-
+</div>
 
 
 </section>

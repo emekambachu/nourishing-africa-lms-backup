@@ -9,7 +9,7 @@
         </div>
 
         <template v-if="dataLoaded">
-            <div v-if="submittedBusiness || selected_user.business !== null"
+            <div v-if="submittedBusiness || business"
                  class="row justify-content-center">
                 <div class="col-12 card-header">
                     <div class="row">
@@ -20,7 +20,6 @@
                         <span class="na-text-dark-green float-right border-rounded-green"
                               title="edit">Edit</span>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-12 card-body bg-white">
@@ -308,8 +307,10 @@ export default {
             axios.get('/api/yaedp/'+this.selected_user.id+'/business')
                 .then((response) => {
                     if(response.data.success === true){
+                        console.log('has business');
                         this.business = response.data.business;
                     }else{
+                        console.log('No business');
                         console.log(response.data.message);
                     }
                     this.dataLoaded = true;
@@ -472,8 +473,8 @@ export default {
     },
 
     mounted(){
-        console.log('business -'+this.selected_user.business.name);
         this.getBusinessDetails();
+        console.log('business -'+this.selected_user.business.name);
     }
 }
 </script>

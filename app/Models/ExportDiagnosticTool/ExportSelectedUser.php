@@ -2,6 +2,7 @@
 
 namespace App\Models\ExportDiagnosticTool;
 
+use App\Models\Yaedp\YaedpCertification;
 use App\Models\YaedpUser;
 use App\Models\Yaedp\YaedpBusinessDetail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,5 +32,10 @@ class ExportSelectedUser extends Model
     public function business(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(YaedpBusinessDetail::class, 'user_id', 'id');
+    }
+
+    public function certifications(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(YaedpCertification::class, 'user_id', 'id');
     }
 }

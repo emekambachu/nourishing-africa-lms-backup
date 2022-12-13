@@ -44,8 +44,10 @@ class YaedpSelectedProductController extends Controller
     public function getProductsById($id)
     {
         $product = $this->product->getYaedpProductsById($id)->firstOrFail();
+        $products = $this->product->yaedpProductDetail()->get();
+       // dd($products);
 
-        return view('yaedp.participant_profile.show', compact('product'));
+        return view('yaedp.participant_profile.show', compact('product','products'));
       
      
     }

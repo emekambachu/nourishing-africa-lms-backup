@@ -204,6 +204,7 @@ Media | yaedp
 @endforeach
  <br><br>
 </div>
+</div>
 
 
 </section>
