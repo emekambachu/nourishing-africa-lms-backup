@@ -566,7 +566,9 @@
                                         <div class="card border border-dark article-card shadow-none rounded-0 " style="">
                                             <img src="{{ $product->first_image->path.'/'.$product->first_image->image }}" class="p-4 " alt="" style="height:300px;width: auto;object-fit:contain; ">
                                         </div>
+                                        @if (!empty($product->user->certifications))
                                         <button type="button" class="btn btn-primary mt-3 btn-afc-orange-green rounded-pill text-afc-orange">Certification Available &#10003;</button>
+                                   @endif
                                     </div>
                                     <div class="col-md-8">
                                         <div class="d-flex justify-content-between">
