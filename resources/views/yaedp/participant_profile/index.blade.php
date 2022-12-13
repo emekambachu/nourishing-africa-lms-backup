@@ -174,7 +174,7 @@ text-align: left;
 
         <ul class="nav">
             <li class="nav-item tab-heading " sty>
-                <a class="nav-link tab-link-first" href="{{ route('yaedp.media.pictures') }}">Overview</a>
+                <a class="nav-link tab-link-first" href="https://afchub.org/yaedp/application">Overview</a>
             </li>
             <li class="nav-item    tab-heading">
                 <a class="nav-link " aria-current="page" href="{{ route('yaedp.media.pictures') }}">Media</a>
