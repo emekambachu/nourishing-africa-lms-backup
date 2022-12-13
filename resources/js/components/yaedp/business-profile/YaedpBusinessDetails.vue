@@ -9,7 +9,7 @@
         </div>
 
         <template v-if="dataLoaded">
-            <div v-if="submittedBusiness || business"
+            <div v-if="business"
                  class="row justify-content-center">
                 <div class="col-12 card-header">
                     <div class="row">
@@ -399,7 +399,6 @@ export default {
                                 this.formSuccess(response);
                                 // on submittion success, add form details to business object
                                 this.business = this.form;
-                                this.submittedBusiness = true;
                             }else{
                                 this.formError(response);
                             }
