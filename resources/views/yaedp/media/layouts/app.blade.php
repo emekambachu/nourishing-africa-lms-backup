@@ -125,24 +125,21 @@
 <style>
     .tab-heading{
         border-bottom: 5px solid #D9D9D9; 
-        font-family: 'Inter';
-font-style: normal;
+      
 font-weight: 400;
 font-size: 18px;
 line-height: 22px;
     }
     .tab-heading-active{
         border-bottom: 5px solid #D94C01; 
-        font-family: 'Inter';
-font-style: normal;
+        
 font-weight: 600;
 font-size: 18px;
 line-height: 22px;
     }
     .tab-text-active{
      color: #D94C01;  
-     font-family: 'Inter';
-font-style: normal;
+    
 font-weight: 600;
 font-size: 18px;
 line-height: 22px; 
@@ -152,15 +149,13 @@ line-height: 22px;
     }
     .tab-heading-active-2{
         border-bottom: 5px solid #006600; 
-        font-family: 'Inter';
-font-style: normal;
+       
 font-weight: 400;
 font-size: 18px;
 line-height: 22px;  
     }
     h1,h2,h3,h4,h5{
-        font-family: 'Inter';
-font-style: normal;
+      
 
     }
   .text-afc-orange{

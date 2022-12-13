@@ -94,6 +94,7 @@ YAEDP Articles
 
 @section('top-assets')
     <style>
+      
         .privacy-policy-accordion-header{
             background: #046B60;
             color: #fff;
@@ -169,7 +170,7 @@ YAEDP Articles
        
       </ul>
       
-      <h5 class="mt-5 text-dark">
+      <h5 class="mt-5 text-dark text-inter">
         YAEDP Articles
       </h5>
 
