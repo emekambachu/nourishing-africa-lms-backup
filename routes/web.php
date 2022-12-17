@@ -24,76 +24,76 @@ use Illuminate\Support\Facades\Route;
 
 // Redirect to external NA full url
 Route::get('home', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('home');
 Route::get('about', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('about');
 Route::get('team', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('team');
 Route::get('careers', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('careers');
 Route::get('entrepreneurs', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('entrepreneurs');
 Route::get('membership', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('membership');
 Route::get('esp/page', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('esp.page');
 Route::get('esp/login', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('esp.login');
 Route::get('data', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('data');
 Route::get('funding', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('funding');
 Route::get('capacity-building', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('capacity-building');
 Route::get('events', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('events');
 Route::get('jobs', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('jobs');
 Route::get('trainings', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('trainings');
 Route::get('training-innovation', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('training-innovation');
 Route::get('technology-innovation', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('technology-innovation');
 Route::get('ask-an-expert', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('ask-an-expert');
 Route::get('association-directory', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('association-directory');
 Route::get('first-thursdays', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('first-thursdays');
 Route::get('podcasts', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('podcasts');
 Route::get('food', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('food');
 Route::get('chefs-and-cooks', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('chefs-and-cooks');
 Route::get('news-and-updates', static function (){
-    return Redirect::to('http://nourishingafrica.com');
+    return Redirect::to('http://afchub.org');
 })->name('news-and-updates');
 Route::get('member/login', static function (){
-    return Redirect::to('http://nourishingafrica.com/login');
+    return Redirect::to('http://afchub.org/login');
 })->name('member.login');
 
 
@@ -106,11 +106,7 @@ Auth::routes([
 ]);
 
 // Public
-Route::get('/yaedp/images', static function (){
-    return view('terms');
-})->name('yaedp.terms');
-
-Route::get('/yaedp/videos', static function (){
+Route::get('/yaedp/terms', static function (){
     return view('terms');
 })->name('yaedp.terms');
 
@@ -249,13 +245,13 @@ Route::get('/yaedp/export-diagnostic/logout',
     Route::get('/yaedp/media',
     [App\Http\Controllers\Yaedp\YaedpImageController::class, 'index'])
     ->name('yaedp.media.pictures');
-   
+
 
     Route::get('/yaedp/media/videos',
     [App\Http\Controllers\Yaedp\YaedpVideoController::class, 'index'])
     ->name('yaedp.media.videos');
 
-   
+
 
     // Route::get('/yaedp/articles', static function (){
     //     return view('yaedp.articles.index');

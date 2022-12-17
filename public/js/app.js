@@ -23871,10 +23871,10 @@ __webpack_require__.r(__webpack_exports__);
     getValueChains: function getValueChains() {
       var _this = this;
 
-      console.log('getting value chains...');
       axios.get('/api/yaedp/value-chains').then(function (response) {
         if (response.data.success === true) {
           _this.valueChains = response.data.value_chains;
+          console.log('getting value chains...' + response.data.value_chains);
         } else {
           console.log(response.data.message);
         }
@@ -24031,7 +24031,8 @@ __webpack_require__.r(__webpack_exports__);
       this.images = [];
     }
   },
-  mounted: function mounted() {
+  mounted: function mounted() {},
+  created: function created() {
     this.getValueChains();
   }
 });
@@ -34411,7 +34412,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* Bounce transition */\n.bounce-enter-active[data-v-6d5628b5] {\r\n    -webkit-animation: bounce-in-6d5628b5 0.5s;\r\n            animation: bounce-in-6d5628b5 0.5s;\n}\n.bounce-leave-active[data-v-6d5628b5] {\r\n    animation: bounce-in-6d5628b5 0.5s reverse;\n}\n@-webkit-keyframes bounce-in-6d5628b5 {\n0% {\r\n        transform: scale(0);\n}\n50% {\r\n        transform: scale(1.25);\n}\n100% {\r\n        transform: scale(1);\n}\n}\n@keyframes bounce-in-6d5628b5 {\n0% {\r\n        transform: scale(0);\n}\n50% {\r\n        transform: scale(1.25);\n}\n100% {\r\n        transform: scale(1);\n}\n}\r\n\r\n/* Fade transition */\n.fade-enter-active[data-v-6d5628b5],\r\n.fade-leave-active[data-v-6d5628b5] {\r\n    transition: opacity 0.5s ease;\n}\n.fade-enter-from[data-v-6d5628b5],\r\n.fade-leave-to[data-v-6d5628b5] {\r\n    opacity: 0;\n}\r\n\r\n/* Zoom Transition */\n.zoom-enter-active[data-v-6d5628b5], .zoom-leave-active[data-v-6d5628b5] {\r\n    transition: all .5s;\n}\n.zoom-enter[data-v-6d5628b5], .zoom-leave-to[data-v-6d5628b5] {\r\n    transform: scale(0.5);\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n/* Bounce transition */\n.bounce-enter-active[data-v-6d5628b5] {\n    -webkit-animation: bounce-in-6d5628b5 0.5s;\n            animation: bounce-in-6d5628b5 0.5s;\n}\n.bounce-leave-active[data-v-6d5628b5] {\n    animation: bounce-in-6d5628b5 0.5s reverse;\n}\n@-webkit-keyframes bounce-in-6d5628b5 {\n0% {\n        transform: scale(0);\n}\n50% {\n        transform: scale(1.25);\n}\n100% {\n        transform: scale(1);\n}\n}\n@keyframes bounce-in-6d5628b5 {\n0% {\n        transform: scale(0);\n}\n50% {\n        transform: scale(1.25);\n}\n100% {\n        transform: scale(1);\n}\n}\n\n/* Fade transition */\n.fade-enter-active[data-v-6d5628b5],\n.fade-leave-active[data-v-6d5628b5] {\n    transition: opacity 0.5s ease;\n}\n.fade-enter-from[data-v-6d5628b5],\n.fade-leave-to[data-v-6d5628b5] {\n    opacity: 0;\n}\n\n/* Zoom Transition */\n.zoom-enter-active[data-v-6d5628b5], .zoom-leave-active[data-v-6d5628b5] {\n    transition: all .5s;\n}\n.zoom-enter[data-v-6d5628b5], .zoom-leave-to[data-v-6d5628b5] {\n    transform: scale(0.5);\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -34459,7 +34460,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ninput[type=file][data-v-2c0e6f8a]::-webkit-file-upload-button {\n    content: 'Choose file';\n    padding: .2em .4em;\n    background: #E9FEE9;\n    border: 1px solid #979191;\n    box-sizing: border-box;\n    border-radius: 5px;\n    -webkit-transition: 1s;\n    transition: 1s;\n}\ninput[type=file][data-v-2c0e6f8a]::file-selector-button {\n    content: 'Choose file';\n    padding: .2em .4em;\n    background: #E9FEE9;\n    border: 1px solid #979191;\n    box-sizing: border-box;\n    border-radius: 5px;\n    transition: 1s;\n}\ninput[type=file][data-v-2c0e6f8a]::-webkit-file-upload-button:hover {\n    background-color: #c0f8c0;\n    border: 1px solid #979191;\n}\ninput[type=file][data-v-2c0e6f8a]::file-selector-button:hover {\n    background-color: #c0f8c0;\n    border: 1px solid #979191;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ninput[type=file][data-v-2c0e6f8a]::-webkit-file-upload-button {\r\n    content: 'Choose file';\r\n    padding: .2em .4em;\r\n    background: #E9FEE9;\r\n    border: 1px solid #979191;\r\n    box-sizing: border-box;\r\n    border-radius: 5px;\r\n    -webkit-transition: 1s;\r\n    transition: 1s;\n}\ninput[type=file][data-v-2c0e6f8a]::file-selector-button {\r\n    content: 'Choose file';\r\n    padding: .2em .4em;\r\n    background: #E9FEE9;\r\n    border: 1px solid #979191;\r\n    box-sizing: border-box;\r\n    border-radius: 5px;\r\n    transition: 1s;\n}\ninput[type=file][data-v-2c0e6f8a]::-webkit-file-upload-button:hover {\r\n    background-color: #c0f8c0;\r\n    border: 1px solid #979191;\n}\ninput[type=file][data-v-2c0e6f8a]::file-selector-button:hover {\r\n    background-color: #c0f8c0;\r\n    border: 1px solid #979191;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
