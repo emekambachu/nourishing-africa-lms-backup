@@ -2,11 +2,13 @@
 
 namespace App\Services\ExportDiagnosticTool;
 
+use App\Exports\ExportDiagnosticTool\ExportDiagnosticToolUsers;
 use App\Models\ExportDiagnosticTool\ExportDiagnosticAnswer;
 use App\Models\ExportDiagnosticTool\ExportDiagnosticHiddenQuestion;
 use App\Models\ExportDiagnosticTool\ExportDiagnosticUser;
 use App\Services\Base\BaseService;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Class ExportDiagnosticToolService.
@@ -180,6 +182,22 @@ class ExportDiagnosticUserService extends BaseService
             'total' => 0,
             'search_values' => $request->session()->get('search_values')
         ];
+    }
+
+    public function exportUsers(): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    {
+        $input = [];
+        if(Session::has('search_inputs')){
+            foreach(Session::get('search_inputs') as $key => $value){
+                if($key !== 'page'){
+                    $input[$key] = $value;
+                }
+            }
+        }
+        // forget session after storing into $input array
+        Session::forget('search_inputs');
+        $diagnosticUser = $this->exportDiagnosticUserWithRelations();
+        return Excel::download(new ExportDiagnosticToolUsers($input, $diagnosticUser), 'export-diagnostic-tool-users-result.xlsx');
     }
 
     public function deleteUserWithAnswers($id): void

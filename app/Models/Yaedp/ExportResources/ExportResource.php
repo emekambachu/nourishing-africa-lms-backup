@@ -10,8 +10,13 @@ class ExportResource extends Model
     use HasFactory;
     protected $fillable = [
       'export_resource_category_id',
+      'name',
       'website',
       'email',
+      'description',
+      'locations',
+      'services',
+      'status'
     ];
 
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -2,13 +2,15 @@
 
 namespace App\Services\ExportDiagnosticTool;
 
+use App\Models\ExportDiagnosticTool\ExportDiagnosticCategory;
 use App\Models\ExportDiagnosticTool\ExportDiagnosticOption;
 use App\Models\ExportDiagnosticTool\ExportDiagnosticQuestion;
+use App\Models\ExportDiagnosticTool\ExportDiagnosticQuestionCategory;
 
 /**
  * Class ExportDiagnosticToolQuestionService.
  */
-class ExportDiagnosticQuestionService
+class ExportDiagnosticQuestionService Extends ExportDiagnosticCategoryService
 {
     public static function question(){
         return new ExportDiagnosticQuestion();
@@ -35,13 +37,17 @@ class ExportDiagnosticQuestionService
         // Check if inputs exist
         // Iterate all inputs and add them individually
         $inputs = $request->all();
+        // Assign conditional question
+        $inputs['conditional'] = $inputs['conditional'] === "1" ? 1 : 0;
         return self::question()->create($inputs);
     }
 
     public static function updateQuestion($request, $id){
         $question = self::question()->findOrFail($id);
-        $input = $request->all();
-        $question->update($input);
+        $inputs = $request->all();
+        // Assign conditional question
+        $inputs['conditional'] = $inputs['conditional'] === "1" ? 1 : 0;
+        $question->update($inputs);
         return $question;
     }
 
@@ -66,6 +72,9 @@ class ExportDiagnosticQuestionService
                     'option' => $input['option'],
                     'sort' => $input['sort'],
                     'points' => $input['points'],
+                    'conditions' => $input['conditions'],
+                    'display_text' => $input['display_text'],
+                    'hide_questions' => !empty($input['hide_questions']) ? $input['hide_questions'] : Null,
                 ]);
             }
         }

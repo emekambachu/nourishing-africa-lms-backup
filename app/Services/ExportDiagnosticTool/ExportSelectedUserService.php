@@ -2,9 +2,11 @@
 
 namespace App\Services\ExportDiagnosticTool;
 
+use App\Exports\ExportDiagnosticTool\ExportDiagnosticSelectedUsers;
 use App\Models\ExportDiagnosticTool\ExportSelectedUser;
 use App\Services\Base\BaseService;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Class ExportSelectedUserService.
@@ -18,7 +20,7 @@ class ExportSelectedUserService
 
     public function exportSelectedUserRelations(): \Illuminate\Database\Eloquent\Builder
     {
-        return $this->exportSelectedUser()->with('user', 'business')->has('user');
+        return $this->exportSelectedUser()->with('user')->has('user');
     }
 
     public function exportSelectedUserById($id){
@@ -130,5 +132,21 @@ class ExportSelectedUserService
             'total' => 0,
             'search_values' => Session::get('search_values')
         ];
+    }
+
+    public function exportUsers(): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    {
+        $input = [];
+        if(Session::has('search_values')){
+            foreach(Session::get('search_values') as $key => $value){
+                if($key !== 'page'){
+                    $input[$key] = $value;
+                }
+            }
+        }
+        // forget session after storing into $input array
+        Session::forget('search_inputs');
+        $selectedUser = $this->exportSelectedUserRelations();
+        return Excel::download(new ExportDiagnosticSelectedUsers($input, $selectedUser), 'export-diagnostic-selected-users.xlsx');
     }
 }

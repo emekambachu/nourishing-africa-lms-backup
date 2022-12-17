@@ -47,7 +47,7 @@ import YaedpExportResources from './components/yaedp/export-resources/YaedpExpor
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-createApp({
+let App = createApp({
     components: {
         AccountSettingsComponent,
         DocumentUploads,
@@ -57,5 +57,11 @@ createApp({
 
         ExportDiagnosticLogin,
         ExportDiagnosticApplication,
-    }
-}).use(router, axios, VueAxios).mount('#app');
+    },
+})
+
+// Check if application is in production, switch to live url
+// Else use local/development url
+App.config.globalProperties.appUrl = 'https://afchub.org';
+// App.config.globalProperties.appUrl = 'http://127.0.0.1:8000';
+App.use(router, axios, VueAxios).mount('#app');
