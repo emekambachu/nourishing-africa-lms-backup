@@ -7,6 +7,7 @@ use App\Models\Learning\Assessment\LearningAssessment;
 use App\Models\Learning\Course\LearningCourseView;
 use App\Models\Learning\LearningDocumentUpload;
 use App\Models\Learning\Module\LearningModuleView;
+use App\Models\Location\State;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
