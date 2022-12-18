@@ -22,7 +22,11 @@ class YaedpSelectedProductController extends Controller
         YaedpSelectedProductService $product,
         YaedpValuedChainService $valuedChain
     ){
-        $this->middleware(['auth:yaedp-users', 'export.selected'],['except' =>['getProductsByValuedChain', 'getProductsById'] ]);
+        $this->middleware(
+            ['auth:yaedp-users', 'export.selected'],
+            ['except' => ['getProductsByValuedChain', 'getProductsById'] ]
+        );
+
         $this->yaedpUser = $yaedpUser;
         $this->selectedUser = $selectedUser;
         $this->product = $product;
@@ -32,25 +36,24 @@ class YaedpSelectedProductController extends Controller
 
     public function getProductsByValuedChain(Request $request)
     {
-        
+
         $products = $this->product->yaedpProductDetailByValuedChainName($request->valued_chain)->latest()->get();
         $valued_chains = $this->valuedChain->getAll()->latest()->get();
 
         return view('yaedp.participant_profile.index', compact('products', 'valued_chains'));
-      
-     
+
+
     }
 
-    public function getProductsById($id)
-    {
+    public function getProductsById($id){
+
         $product = $this->product->getYaedpProductsById($id)->firstOrFail();
         $products = $this->product->yaedpProductDetail()->get();
        // dd($products);
 
         return view('yaedp.participant_profile.show', compact('product','products'));
-      
-     
     }
+
     public function getUserProducts($id): \Illuminate\Http\JsonResponse
     {
         try {
@@ -109,4 +112,5 @@ class YaedpSelectedProductController extends Controller
             ]);
         }
     }
+
 }
