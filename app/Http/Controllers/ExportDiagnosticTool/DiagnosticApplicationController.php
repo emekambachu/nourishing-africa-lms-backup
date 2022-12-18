@@ -13,7 +13,7 @@ class DiagnosticApplicationController extends Controller
     /**
      * @var ExportDiagnosticApplicationService
      */
-    private $application;
+    private ExportDiagnosticApplicationService $application;
     public function __construct(ExportDiagnosticApplicationService $application){
         $this->application = $application;
     }

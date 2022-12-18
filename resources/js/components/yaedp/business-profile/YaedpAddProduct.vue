@@ -451,11 +451,12 @@ export default {
         },
 
         getValueChains(){
-            console.log('getting value chains...')
+
             axios.get('/api/yaedp/value-chains')
                 .then((response) => {
                     if(response.data.success === true){
                         this.valueChains = response.data.value_chains;
+                        console.log('getting value chains...'+response.data.value_chains);
                     }else{
                         console.log(response.data.message);
                     }
@@ -608,6 +609,10 @@ export default {
     },
 
     mounted() {
+
+    },
+
+    created() {
         this.getValueChains();
     }
 }

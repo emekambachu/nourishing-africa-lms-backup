@@ -105,7 +105,8 @@
 
             <div v-if="dataLoaded" class="col-12 text-center">
                 <h5 class="na-text-dark-green custom-font2">Assessment Complete</h5>
-                <p class="custom-font1 text-large">Thank you for completing the assessment, we will evaluate your responses in accordance with the program requirements and contact successful participants for further steps.</p>
+                <p class="custom-font1 text-large">Thank you for taking the export-readiness diagnostic tool. <br>
+                    Here is your result: You are {{ status.percent }}% export-ready.</p>
             </div>
 
             <div class="col-12" v-else>
@@ -169,17 +170,8 @@
                 }else{
                     this.display_text = '';
                 }
-
-                // if(this.question.conditional === 1){
-                //
-                //
-                //     if(condition === 'input_text'){
-                //         this.input_text = true;
-                //     }else{
-                //         this.input_text = false;
-                //     }
-                // }
             },
+
             getQuestion(){
                 this.dataLoaded = false;
                 axios.get('/api/yaedp/export-diagnostic/get-question')
@@ -195,6 +187,7 @@
                                 this.question = false;
                                 this.status = response.data.status;
                                 this.dataLoaded = true;
+                                console.log('percent '+this.status.percent);
                             }
                         }else{
                             console.log(response.data.message);

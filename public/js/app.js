@@ -23632,16 +23632,7 @@ __webpack_require__.r(__webpack_exports__);
         this.display_text = display_text;
       } else {
         this.display_text = '';
-      } // if(this.question.conditional === 1){
-      //
-      //
-      //     if(condition === 'input_text'){
-      //         this.input_text = true;
-      //     }else{
-      //         this.input_text = false;
-      //     }
-      // }
-
+      }
     },
     getQuestion: function getQuestion() {
       var _this = this;
@@ -23660,6 +23651,7 @@ __webpack_require__.r(__webpack_exports__);
             _this.question = false;
             _this.status = response.data.status;
             _this.dataLoaded = true;
+            console.log('percent ' + _this.status.percent);
           }
         } else {
           console.log(response.data.message);
@@ -23871,10 +23863,10 @@ __webpack_require__.r(__webpack_exports__);
     getValueChains: function getValueChains() {
       var _this = this;
 
-      console.log('getting value chains...');
       axios.get('/api/yaedp/value-chains').then(function (response) {
         if (response.data.success === true) {
           _this.valueChains = response.data.value_chains;
+          console.log('getting value chains...' + response.data.value_chains);
         } else {
           console.log(response.data.message);
         }
@@ -24031,7 +24023,8 @@ __webpack_require__.r(__webpack_exports__);
       this.images = [];
     }
   },
-  mounted: function mounted() {
+  mounted: function mounted() {},
+  created: function created() {
     this.getValueChains();
   }
 });
@@ -25905,13 +25898,14 @@ var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_38 = {
   "class": "custom-font1 text-large"
-}, "Thank you for completing the assessment, we will evaluate your responses in accordance with the program requirements and contact successful participants for further steps.", -1
+};
+
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_39 = [_hoisted_37, _hoisted_38];
 var _hoisted_40 = {
   key: 1,
   "class": "col-12"
@@ -26094,7 +26088,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("show participant feedback"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [$data.dataLoaded ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, _hoisted_39)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContentLoader, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("show participant feedback"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [$data.dataLoaded ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, [_hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Thank you for taking the export-readiness diagnostic tool. "), _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Here is your result: You are " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.status.percent) + "% export-ready.", 1
+  /* TEXT */
+  )])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContentLoader, {
     viewBox: "0 0 400 150",
     height: "{130}",
     width: "{400}"
@@ -34459,7 +34455,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ninput[type=file][data-v-2c0e6f8a]::-webkit-file-upload-button {\n    content: 'Choose file';\n    padding: .2em .4em;\n    background: #E9FEE9;\n    border: 1px solid #979191;\n    box-sizing: border-box;\n    border-radius: 5px;\n    -webkit-transition: 1s;\n    transition: 1s;\n}\ninput[type=file][data-v-2c0e6f8a]::file-selector-button {\n    content: 'Choose file';\n    padding: .2em .4em;\n    background: #E9FEE9;\n    border: 1px solid #979191;\n    box-sizing: border-box;\n    border-radius: 5px;\n    transition: 1s;\n}\ninput[type=file][data-v-2c0e6f8a]::-webkit-file-upload-button:hover {\n    background-color: #c0f8c0;\n    border: 1px solid #979191;\n}\ninput[type=file][data-v-2c0e6f8a]::file-selector-button:hover {\n    background-color: #c0f8c0;\n    border: 1px solid #979191;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ninput[type=file][data-v-2c0e6f8a]::-webkit-file-upload-button {\r\n    content: 'Choose file';\r\n    padding: .2em .4em;\r\n    background: #E9FEE9;\r\n    border: 1px solid #979191;\r\n    box-sizing: border-box;\r\n    border-radius: 5px;\r\n    -webkit-transition: 1s;\r\n    transition: 1s;\n}\ninput[type=file][data-v-2c0e6f8a]::file-selector-button {\r\n    content: 'Choose file';\r\n    padding: .2em .4em;\r\n    background: #E9FEE9;\r\n    border: 1px solid #979191;\r\n    box-sizing: border-box;\r\n    border-radius: 5px;\r\n    transition: 1s;\n}\ninput[type=file][data-v-2c0e6f8a]::-webkit-file-upload-button:hover {\r\n    background-color: #c0f8c0;\r\n    border: 1px solid #979191;\n}\ninput[type=file][data-v-2c0e6f8a]::file-selector-button:hover {\r\n    background-color: #c0f8c0;\r\n    border: 1px solid #979191;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -56776,7 +56772,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AccountSettingsComponent_vue_vue_type_template_id_7e03801e_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AccountSettingsComponent.vue?vue&type=template&id=7e03801e&scoped=true */ "./resources/js/components/account-settings/AccountSettingsComponent.vue?vue&type=template&id=7e03801e&scoped=true");
 /* harmony import */ var _AccountSettingsComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AccountSettingsComponent.vue?vue&type=script&lang=js */ "./resources/js/components/account-settings/AccountSettingsComponent.vue?vue&type=script&lang=js");
 /* harmony import */ var _AccountSettingsComponent_vue_vue_type_style_index_0_id_7e03801e_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AccountSettingsComponent.vue?vue&type=style&index=0&id=7e03801e&scoped=true&lang=css */ "./resources/js/components/account-settings/AccountSettingsComponent.vue?vue&type=style&index=0&id=7e03801e&scoped=true&lang=css");
-/* harmony import */ var C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -56784,7 +56780,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_AccountSettingsComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AccountSettingsComponent_vue_vue_type_template_id_7e03801e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-7e03801e"],['__file',"resources/js/components/account-settings/AccountSettingsComponent.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_AccountSettingsComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AccountSettingsComponent_vue_vue_type_template_id_7e03801e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-7e03801e"],['__file',"resources/js/components/account-settings/AccountSettingsComponent.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -56806,13 +56802,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _DocumentUploads_vue_vue_type_template_id_129de8f3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DocumentUploads.vue?vue&type=template&id=129de8f3 */ "./resources/js/components/document-uploads/DocumentUploads.vue?vue&type=template&id=129de8f3");
 /* harmony import */ var _DocumentUploads_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DocumentUploads.vue?vue&type=script&lang=js */ "./resources/js/components/document-uploads/DocumentUploads.vue?vue&type=script&lang=js");
-/* harmony import */ var C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DocumentUploads_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DocumentUploads_vue_vue_type_template_id_129de8f3__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/document-uploads/DocumentUploads.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DocumentUploads_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DocumentUploads_vue_vue_type_template_id_129de8f3__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/document-uploads/DocumentUploads.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -56834,13 +56830,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ExportDiagnosticApplication_vue_vue_type_template_id_5215d096__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExportDiagnosticApplication.vue?vue&type=template&id=5215d096 */ "./resources/js/components/export-diagnostic-tool/ExportDiagnosticApplication.vue?vue&type=template&id=5215d096");
 /* harmony import */ var _ExportDiagnosticApplication_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExportDiagnosticApplication.vue?vue&type=script&lang=js */ "./resources/js/components/export-diagnostic-tool/ExportDiagnosticApplication.vue?vue&type=script&lang=js");
-/* harmony import */ var C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ExportDiagnosticApplication_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ExportDiagnosticApplication_vue_vue_type_template_id_5215d096__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/export-diagnostic-tool/ExportDiagnosticApplication.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ExportDiagnosticApplication_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ExportDiagnosticApplication_vue_vue_type_template_id_5215d096__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/export-diagnostic-tool/ExportDiagnosticApplication.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -56862,13 +56858,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ExportDiagnosticLogin_vue_vue_type_template_id_01b6bea2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExportDiagnosticLogin.vue?vue&type=template&id=01b6bea2 */ "./resources/js/components/export-diagnostic-tool/ExportDiagnosticLogin.vue?vue&type=template&id=01b6bea2");
 /* harmony import */ var _ExportDiagnosticLogin_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExportDiagnosticLogin.vue?vue&type=script&lang=js */ "./resources/js/components/export-diagnostic-tool/ExportDiagnosticLogin.vue?vue&type=script&lang=js");
-/* harmony import */ var C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ExportDiagnosticLogin_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ExportDiagnosticLogin_vue_vue_type_template_id_01b6bea2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/export-diagnostic-tool/ExportDiagnosticLogin.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ExportDiagnosticLogin_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ExportDiagnosticLogin_vue_vue_type_template_id_01b6bea2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/export-diagnostic-tool/ExportDiagnosticLogin.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -56891,7 +56887,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _YaedpAddProduct_vue_vue_type_template_id_6d5628b5_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./YaedpAddProduct.vue?vue&type=template&id=6d5628b5&scoped=true */ "./resources/js/components/yaedp/business-profile/YaedpAddProduct.vue?vue&type=template&id=6d5628b5&scoped=true");
 /* harmony import */ var _YaedpAddProduct_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./YaedpAddProduct.vue?vue&type=script&lang=js */ "./resources/js/components/yaedp/business-profile/YaedpAddProduct.vue?vue&type=script&lang=js");
 /* harmony import */ var _YaedpAddProduct_vue_vue_type_style_index_0_id_6d5628b5_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./YaedpAddProduct.vue?vue&type=style&index=0&id=6d5628b5&scoped=true&lang=css */ "./resources/js/components/yaedp/business-profile/YaedpAddProduct.vue?vue&type=style&index=0&id=6d5628b5&scoped=true&lang=css");
-/* harmony import */ var C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -56899,7 +56895,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_YaedpAddProduct_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpAddProduct_vue_vue_type_template_id_6d5628b5_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-6d5628b5"],['__file',"resources/js/components/yaedp/business-profile/YaedpAddProduct.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_YaedpAddProduct_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpAddProduct_vue_vue_type_template_id_6d5628b5_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-6d5628b5"],['__file',"resources/js/components/yaedp/business-profile/YaedpAddProduct.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -56921,13 +56917,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _YaedpBusinessDetails_vue_vue_type_template_id_fe9f256a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./YaedpBusinessDetails.vue?vue&type=template&id=fe9f256a */ "./resources/js/components/yaedp/business-profile/YaedpBusinessDetails.vue?vue&type=template&id=fe9f256a");
 /* harmony import */ var _YaedpBusinessDetails_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./YaedpBusinessDetails.vue?vue&type=script&lang=js */ "./resources/js/components/yaedp/business-profile/YaedpBusinessDetails.vue?vue&type=script&lang=js");
-/* harmony import */ var C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_YaedpBusinessDetails_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpBusinessDetails_vue_vue_type_template_id_fe9f256a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/yaedp/business-profile/YaedpBusinessDetails.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_YaedpBusinessDetails_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpBusinessDetails_vue_vue_type_template_id_fe9f256a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/yaedp/business-profile/YaedpBusinessDetails.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -56950,7 +56946,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _YaedpBusinessProfile_vue_vue_type_template_id_046df932_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./YaedpBusinessProfile.vue?vue&type=template&id=046df932&scoped=true */ "./resources/js/components/yaedp/business-profile/YaedpBusinessProfile.vue?vue&type=template&id=046df932&scoped=true");
 /* harmony import */ var _YaedpBusinessProfile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./YaedpBusinessProfile.vue?vue&type=script&lang=js */ "./resources/js/components/yaedp/business-profile/YaedpBusinessProfile.vue?vue&type=script&lang=js");
 /* harmony import */ var _YaedpBusinessProfile_vue_vue_type_style_index_0_id_046df932_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./YaedpBusinessProfile.vue?vue&type=style&index=0&id=046df932&scoped=true&lang=css */ "./resources/js/components/yaedp/business-profile/YaedpBusinessProfile.vue?vue&type=style&index=0&id=046df932&scoped=true&lang=css");
-/* harmony import */ var C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -56958,7 +56954,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_YaedpBusinessProfile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpBusinessProfile_vue_vue_type_template_id_046df932_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-046df932"],['__file',"resources/js/components/yaedp/business-profile/YaedpBusinessProfile.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_YaedpBusinessProfile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpBusinessProfile_vue_vue_type_template_id_046df932_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-046df932"],['__file',"resources/js/components/yaedp/business-profile/YaedpBusinessProfile.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -56980,13 +56976,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _YaedpCertificationForm_vue_vue_type_template_id_f9439572__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./YaedpCertificationForm.vue?vue&type=template&id=f9439572 */ "./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=template&id=f9439572");
 /* harmony import */ var _YaedpCertificationForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./YaedpCertificationForm.vue?vue&type=script&lang=js */ "./resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue?vue&type=script&lang=js");
-/* harmony import */ var C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_YaedpCertificationForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpCertificationForm_vue_vue_type_template_id_f9439572__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_YaedpCertificationForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpCertificationForm_vue_vue_type_template_id_f9439572__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/yaedp/business-profile/YaedpCertificationForm.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -57008,13 +57004,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _YaedpCertifications_vue_vue_type_template_id_6eee8cc0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./YaedpCertifications.vue?vue&type=template&id=6eee8cc0 */ "./resources/js/components/yaedp/business-profile/YaedpCertifications.vue?vue&type=template&id=6eee8cc0");
 /* harmony import */ var _YaedpCertifications_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./YaedpCertifications.vue?vue&type=script&lang=js */ "./resources/js/components/yaedp/business-profile/YaedpCertifications.vue?vue&type=script&lang=js");
-/* harmony import */ var C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_YaedpCertifications_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpCertifications_vue_vue_type_template_id_6eee8cc0__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/yaedp/business-profile/YaedpCertifications.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_YaedpCertifications_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpCertifications_vue_vue_type_template_id_6eee8cc0__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/yaedp/business-profile/YaedpCertifications.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -57036,13 +57032,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _YaedpProductDetails_vue_vue_type_template_id_033f5bfa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./YaedpProductDetails.vue?vue&type=template&id=033f5bfa */ "./resources/js/components/yaedp/business-profile/YaedpProductDetails.vue?vue&type=template&id=033f5bfa");
 /* harmony import */ var _YaedpProductDetails_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./YaedpProductDetails.vue?vue&type=script&lang=js */ "./resources/js/components/yaedp/business-profile/YaedpProductDetails.vue?vue&type=script&lang=js");
-/* harmony import */ var C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_YaedpProductDetails_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpProductDetails_vue_vue_type_template_id_033f5bfa__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/yaedp/business-profile/YaedpProductDetails.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_YaedpProductDetails_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpProductDetails_vue_vue_type_template_id_033f5bfa__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/yaedp/business-profile/YaedpProductDetails.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -57065,7 +57061,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _YaedpExportResources_vue_vue_type_template_id_2c0e6f8a_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./YaedpExportResources.vue?vue&type=template&id=2c0e6f8a&scoped=true */ "./resources/js/components/yaedp/export-resources/YaedpExportResources.vue?vue&type=template&id=2c0e6f8a&scoped=true");
 /* harmony import */ var _YaedpExportResources_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./YaedpExportResources.vue?vue&type=script&lang=js */ "./resources/js/components/yaedp/export-resources/YaedpExportResources.vue?vue&type=script&lang=js");
 /* harmony import */ var _YaedpExportResources_vue_vue_type_style_index_0_id_2c0e6f8a_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./YaedpExportResources.vue?vue&type=style&index=0&id=2c0e6f8a&scoped=true&lang=css */ "./resources/js/components/yaedp/export-resources/YaedpExportResources.vue?vue&type=style&index=0&id=2c0e6f8a&scoped=true&lang=css");
-/* harmony import */ var C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -57073,7 +57069,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishingafrica_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_YaedpExportResources_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpExportResources_vue_vue_type_template_id_2c0e6f8a_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-2c0e6f8a"],['__file',"resources/js/components/yaedp/export-resources/YaedpExportResources.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_wamp64_www_nourishing_africa_lms_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_YaedpExportResources_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_YaedpExportResources_vue_vue_type_template_id_2c0e6f8a_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-2c0e6f8a"],['__file',"resources/js/components/yaedp/export-resources/YaedpExportResources.vue"]])
 /* hot reload */
 if (false) {}
 
